@@ -1,0 +1,40 @@
+Votación con código QR
+Marcar pinchos probados
+
+Actores:
+Jurado profesional
+	Miembro del jurado que selecciona pinchos finalistas y ganadores por categorías. Vota desde la aplicación sin códigos.
+Jurado popular
+	Miembro del jurado que vota de manera normal los pinchos al mejor de 3. Vota con un código.
+Establecimiento
+	Participante del concurso. Debe exponer sus pinchos.
+Organizador
+	Admin.
+
+Casos de uso:
+-----------------------
+
+Clases:
+Concurso
+	Título, fecha, logo, fechas de celebración, patrocinadores, bases del concurso, premios.
+Folleto(Concurso)
+Pincho(Establecimiento)
+	Cada establecimiento solo puede presentar un pincho (1,1)
+	Nombre, descripción, precio, ingredientes, fotos, apto celíacos, otros comentarios.
+	--> Finalistas, premiados
+Establecimiento(Concurso)
+	Nombre, dirección, horario, fotos, página web/URLs.
+Mapa(Establecimiento)
+	Colección de claves/valor de Establecimiento
+Premio profesional(Jurado profesional)
+	
+Premio popular(Jurado popular)
+
+Premio a jurado (Jurado popular)
+
+Jurado profesional(Concurso)
+	Se genera antes del concurso.
+Jurado popular(Concurso)
+	Se registra y debe meter un código único para votar.
+Organizador(Concurso)
+	Hace lo que le peta

@@ -1,0 +1,30 @@
+Modelo		- DAO
+Vista		- HTML
+Controlador - Controlador
+
+Partes a implementar
+	Común[Manu/Peter]:
+		Login, registro.
+	Pinchos [Hector]:
+		Consultar, listar votables, proponer pincho, valorar pincho.
+	Jurado profesional [Peter]:
+		Consultar, registrar, eliminar, listar.
+	Establecimiento[Hector]: 
+		Registrarse en concurso.
+	Concurso [Manu]:
+		Consultar, crear, eliminar, listar, modificar.
+		
+	
+	Estructura de carpetas:
+	Bean
+		PinchoBean, JuradoBean, ConcursoBean.
+	Controlador
+		Comun
+		Pincho
+		Jurado
+		Concurso
+	DAO/Model
+		PinchoDAO, ConcursoDAO, JuradoDAO
+	Excepciones	.*
+	Vistas .*
+	
