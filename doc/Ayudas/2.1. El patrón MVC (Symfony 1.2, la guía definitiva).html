@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<!-- saved from url=(0061)http://librosweb.es/symfony_1_2/capitulo_2/el_patron_mvc.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://ogp.me/ns#" xmlns:fb="https://www.facebook.com/2008/fbml" xml:lang="es" lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        
+        <title>2.1. El patrón MVC (Symfony 1.2, la guía definitiva)</title>
+        <link href="./2.1. El patrón MVC (Symfony 1.2, la guía definitiva)_files/main_b507273.css" rel="stylesheet" type="text/css">
+        <script async="" src="./2.1. El patrón MVC (Symfony 1.2, la guía definitiva)_files/analytics.js"></script><script type="text/javascript">
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-82842-2', 'librosweb.es');
+            ga('require', 'displayfeatures');
+            ga('send', 'pageview');
+        </script>
+        <link rel="apple-touch-icon" type="image/png" href="http://librosweb.es/apple-touch-icon.png">
+        <link rel="apple-touch-icon-precomposed" type="image/png" href="http://librosweb.es/apple-touch-icon.png">
+        <meta name="apple-mobile-web-app-title" content="LibrosWeb">
+        <link rel="shortcut icon" type="image/png" href="http://librosweb.es/favicon.png">
+        <meta name="site-version" content="b507273">
+        <link rel="publisher" href="http://plus.google.com/112008023125011571577">
+        <link rel="prev" href="http://librosweb.es/symfony_1_2/capitulo_2.html">
+        <link rel="next" href="http://librosweb.es/symfony_1_2/capitulo_2/organizacion_del_codigo.html">
+        <link rel="start" href="http://librosweb.es/symfony_1_2">
+        <meta name="twitter:site" content="@librosweb">
+        <link rel="search" type="application/opensearchdescription+xml" href="http://librosweb.es/opensearch/documentation.xml" title="LibrosWeb">
+        <meta property="fb:page_id" content="437758756273955">
+        <meta property="fb:app_id" content="437758756273955">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="2.1. El patrón MVC (Symfony 1.2, la guía definitiva)">
+        <meta property="og:image" content="http://www.gravatar.com/avatar/9f219b4dfaa677bfd0f47753c02d5126.png?s=200">
+        <meta name="msapplication-TileColor" content="#CC1414">
+        <meta name="application-name" content="LibrosWeb">
+        <meta name="msapplication-tooltip" content="Libros y tutoriales sobre HTML, CSS, JavaScript, PHP y otras tecnologías web.">
+    </head>
+
+    <body id="p-1-2" class="books book_page symfony_1_2">
+    <div id="wrapper" class="container">
+                    <div id="header" class="col-lg-2">
+                <div id="header-contents" class="row">
+                    <div id="header-logo" class="col-xs-6 col-md-2 col-lg-12">
+                        <a href="http://librosweb.es/" title="LibrosWeb.es">
+                            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 132 32" preserveAspectRatio="xMinYMin meet">
+<g fill="#CC1414" transform="translate(-21.738 -21.148)">
+<path d="m24.062 23.486v28h9.64v-5h-4.04v-23h-5.6"></path>
+<path d="m40.796 23.486h-5.6v28h5.6v-28"></path>
+<path d="m53.932 37.006c1.48-0.56 2.32-1.76 2.32-4.16v-4.16c0-3.48-1.72-5.2-5.2-5.2h-8.24v28h8.32c3.48 0 5.2-1.72 5.2-5.2v-5.68c0-2.04-0.72-3.12-2.4-3.6m-3.24-7.72v4.64c0 0.68-0.32 1-1 1h-1.32v-6.64h1.32c0.68 0 1 0.32 1 1m-2.32 10.32h1.4c0.68 0 1 0.32 1 1v5.08c0 0.68-0.32 1-1 1h-1.4v-7.08"></path>
+<path d="m69.284 38.246c1.52-0.56 2.4-1.76 2.4-4.16v-5.4c0-3.48-1.72-5.2-5.2-5.2h-8.36v28h5.6v-10.6h1.4c0.68 0 1 0.32 1 1v9.6h5.6v-9.64c0-2.04-0.72-3.12-2.44-3.6m-3.2-8.88v5.76c0 0.68-0.32 1-1 1h-1.36v-7.76h1.36c0.68 0 1 0.32 1 1"></path>
+<path d="m87.513 46.526v-18.08c0-3.48-1.72-5.2-5.2-5.2h-3.6c-3.48 0-5.2 1.72-5.2 5.2v18.08c0 3.48 1.72 5.2 5.2 5.2h3.6c3.48 0 5.2-1.72 5.2-5.2m-5.6-17.48v16.88c0 0.68-0.32 1-1 1h-0.8c-0.68 0-1-0.32-1-1v-16.88c0-0.68 0.32-1 1-1h0.8c0.68 0 1 0.32 1 1"></path>
+<path d="m100.57 36.966-4.8-3.56c-0.68-0.48-0.96-0.92-0.96-1.8v-2.64c0-0.68 0.32-1 1-1h0.44c0.68 0 1 0.32 1 1v4.6h5.48v-5.12c0-3.48-1.72-5.2-5.2-5.2h-3.04c-3.48 0-5.2 1.72-5.2 5.2v4.44c0 2 0.52 3.16 2.24 4.4l4.8 3.56c0.68 0.48 0.96 0.92 0.96 1.8v3.36c0 0.68-0.32 1-1 1h-0.52c-0.68 0-1-0.32-1-1v-5.44h-5.48v5.96c0 3.48 1.72 5.2 5.2 5.2h3.12c3.48 0 5.2-1.72 5.2-5.2v-5.16c0-2.08-0.52001-3.16-2.24-4.4"></path>
+<path d="m106.98 51.486h6.16l1.44-12.72 1.44 12.72h6.16l3.4-28h-4.96l-1.44 14.88-1.6-14.88h-5.28l-1.6 14.92-1.44-14.92h-5.68l3.4 28"></path>
+<path d="m126.87 23.486v28h10.48v-5h-4.88v-6.72h4.6v-5h-4.6v-6.28h4.8v-5h-10.4"></path>
+<path d="m150.26 37.006c1.48-0.56 2.32-1.76 2.32-4.16v-4.16c0-3.48-1.72-5.2-5.2-5.2h-8.24v28h8.32c3.48 0 5.2-1.72 5.2-5.2v-5.68c0-2.04-0.72001-3.12-2.4-3.6m-3.24-7.72v4.64c0 0.68-0.32001 1-1 1h-1.32v-6.64h1.32c0.67999 0 1 0.32 1 1m-2.32 10.32h1.4c0.67999 0 1 0.32 1 1v5.08c0 0.68-0.32001 1-1 1h-1.4v-7.08"></path>
+</g>
+</svg>
+                            <span>LibrosWeb</span>
+                        </a>
+                    </div>
+
+                    <div id="header-nav" class="col-xs-12 col-md-10 col-lg-12">
+                        <div class="visible-xs visible-sm">
+                            <a href="http://librosweb.es/symfony_1_2/capitulo_2/el_patron_mvc.html#header-menu" class="header-nav-open">
+                                <i class="fa fa-menu"></i>
+                            </a>
+                        </div>
+
+                                                                            <ul id="header-menu">
+                                                        <li class="">
+                                <a href="http://librosweb.es/">
+                                    <i class="fa fa-home"></i> Inicio
+                                </a>
+                            </li>
+                                                        <li class="active">
+                                <a href="http://librosweb.es/libros/">
+                                    <i class="fa fa-book"></i> Libros
+                                </a>
+                            </li>
+                                                        <li class="">
+                                <a href="http://librosweb.es/tutoriales/">
+                                    <i class="fa fa-doc-text"></i> Tutoriales
+                                </a>
+                            </li>
+                                                        <li class="">
+                                <a href="http://librosweb.es/eventos/">
+                                    <i class="fa fa-globe"></i> Eventos
+                                </a>
+                            </li>
+                                                        <li class="">
+                                <a href="http://librosweb.es/foro/">
+                                    <i class="fa fa-chat"></i> Foro
+                                </a>
+                            </li>
+                                                        <li class="">
+                                <a href="http://librosweb.es/buscar">
+                                    <i class="fa fa-search"></i> Buscar
+                                </a>
+                            </li>
+                                                        <li class="visible-xs visible-sm header-nav-close">
+                                <a href="http://librosweb.es/symfony_1_2/capitulo_2/el_patron_mvc.html#header">Cerrar</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        
+        <div id="content" class="col-lg-10 col-lg-offset-2">
+
+                            <div class="row">
+                    <div id="main" class="col-md-9">
+                        
+
+
+
+    <div id="book-toc-anchor" class="well visible-xs">
+        <a href="http://librosweb.es/symfony_1_2/capitulo_2/el_patron_mvc.html#indice">
+            Índice de contenidos del libro →
+        </a>
+    </div>
+
+    <div id="breadcrumb" class="hidden-xs">
+        <ol>
+            <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                <a href="http://librosweb.es/" itemprop="url">
+                    <span itemprop="title">Inicio</span>
+                </a>
+            </li>
+
+                            <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                <a href="http://librosweb.es/symfony_1_2/" itemprop="url">
+                    <span itemprop="title">Symfony 1.2, la guía definitiva</span>
+                </a>
+            </li>
+        
+                    <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                <a href="http://librosweb.es/symfony_1_2/capitulo_2.html" itemprop="url">
+                    <span itemprop="title">Capítulo 2. Explorando el interior de Symfony</span>
+                </a>
+            </li>
+        
+            <li class="active">
+                <span>2.1. El patrón MVC</span>
+            </li>
+        </ol>
+    </div>
+
+    <h1 id="el_patron_mvc" class="title">
+        <span>2.1.</span> El patrón MVC
+    </h1>
+
+    
+
+<p>Symfony está basado en un patrón clásico del diseño web conocido como arquitectura MVC, que está formado por tres niveles</p>
+
+<ul>
+<li>El Modelo representa la información con la que trabaja la aplicación, es decir, su lógica de negocio.</li>
+<li>La Vista transforma el modelo en una página web que permite al usuario interactuar con ella.</li>
+<li>El Controlador se encarga de procesar las interacciones del usuario y realiza los cambios apropiados en el modelo o en la vista.</li>
+</ul>
+
+<p>La Figura 2-1 ilustra el funcionamiento del patrón MVC.</p>
+
+<p>La arquitectura MVC separa la lógica de negocio (el modelo) y la presentación (la vista) por lo que se consigue un mantenimiento más sencillo de las aplicaciones. Si por ejemplo una misma aplicación debe ejecutarse tanto en un navegador estándar como un un navegador de un dispositivo móvil, solamente es necesario crear una vista nueva para cada dispositivo; manteniendo el controlador y el modelo original. El controlador se encarga de aislar al modelo y a la vista de los detalles del protocolo utilizado para las peticiones (HTTP, consola de comandos, email, etc.). El modelo se encarga de la abstracción de la lógica relacionada con los datos, haciendo que la vista y las acciones sean independientes de, por ejemplo, el tipo de gestor de bases de datos utilizado por la aplicación.</p>
+
+<div class="figure" id="figure_2_1">
+    <img src="./2.1. El patrón MVC (Symfony 1.2, la guía definitiva)_files/f0201.png" alt="El patrón MVC">
+
+    <p class="caption"><strong>Figura 2.1</strong> El patrón MVC</p>
+</div>
+
+
+<h3 id="las_capas_de_la_arquitectura_mvc">2.1.1. Las capas de la arquitectura MVC</h3>
+
+<p>Para poder entender las ventajas de utilizar el patrón MVC, se va a transformar una aplicación simple realizada con PHP en una aplicación que sigue la arquitectura MVC. Un buen ejemplo para ilustrar esta explicación es el de mostrar una lista con las últimas entradas o artículos de un blog.</p>
+
+<h4 id="programacion_simple">2.1.1.1. Programación simple</h4>
+
+<p>Utilizando solamente PHP normal y corriente, el script necesario para mostrar los artículos almacenados en una base de datos se muestra en el siguiente listado:</p>
+
+<p><strong>Listado 2-1 - Un script simple</strong></p>
+
+<div class="code php">
+<pre class="php"><span class="kw2">&lt;?php</span>
+&nbsp;
+<span class="co1">// Conectar con la base de datos y seleccionarla</span>
+<span class="re0">$conexion</span> <span class="sy0">=</span> <span class="kw3">mysql_connect</span><span class="br0">(</span><span class="st_h">'localhost'</span><span class="sy0">,</span> <span class="st_h">'miusuario'</span><span class="sy0">,</span> <span class="st_h">'micontrasena'</span><span class="br0">)</span><span class="sy0">;</span>
+<span class="kw3">mysql_select_db</span><span class="br0">(</span><span class="st_h">'blog_db'</span><span class="sy0">,</span> <span class="re0">$conexion</span><span class="br0">)</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// Ejecutar la consulta SQL</span>
+<span class="re0">$resultado</span> <span class="sy0">=</span> <span class="kw3">mysql_query</span><span class="br0">(</span><span class="st_h">'SELECT fecha, titulo FROM articulo'</span><span class="sy0">,</span> <span class="re0">$conexion</span><span class="br0">)</span><span class="sy0">;</span>
+&nbsp;
+<span class="sy1">?&gt;</span>
+&nbsp;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Listado de Artículos&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+   &lt;h1&gt;Listado de Artículos&lt;/h1&gt;
+   &lt;table&gt;
+     &lt;tr&gt;&lt;th&gt;Fecha&lt;/th&gt;&lt;th&gt;Titulo&lt;/th&gt;&lt;/tr&gt;
+<span class="kw2">&lt;?php</span>
+<span class="co1">// Mostrar los resultados con HTML</span>
+<span class="kw1">while</span> <span class="br0">(</span><span class="re0">$fila</span> <span class="sy0">=</span> <span class="kw3">mysql_fetch_array</span><span class="br0">(</span><span class="re0">$resultado</span><span class="sy0">,</span> MYSQL_ASSOC<span class="br0">)</span><span class="br0">)</span>
+<span class="br0">{</span>
+<span class="kw1">echo</span> <span class="st0">"<span class="es1">\t</span>&lt;tr&gt;<span class="es1">\n</span>"</span><span class="sy0">;</span>
+<span class="kw3">printf</span><span class="br0">(</span><span class="st0">"<span class="es1">\t</span><span class="es1">\t</span>&lt;td&gt; <span class="es6">%s</span> &lt;/td&gt;<span class="es1">\n</span>"</span><span class="sy0">,</span> <span class="re0">$fila</span><span class="br0">[</span><span class="st_h">'fecha'</span><span class="br0">]</span><span class="br0">)</span><span class="sy0">;</span>
+<span class="kw3">printf</span><span class="br0">(</span><span class="st0">"<span class="es1">\t</span><span class="es1">\t</span>&lt;td&gt; <span class="es6">%s</span> &lt;/td&gt;<span class="es1">\n</span>"</span><span class="sy0">,</span> <span class="re0">$fila</span><span class="br0">[</span><span class="st_h">'titulo'</span><span class="br0">]</span><span class="br0">)</span><span class="sy0">;</span>
+<span class="kw1">echo</span> <span class="st0">"<span class="es1">\t</span>&lt;/tr&gt;<span class="es1">\n</span>"</span><span class="sy0">;</span>
+<span class="br0">}</span>
+<span class="sy1">?&gt;</span>
+    &lt;/table&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+&nbsp;
+<span class="kw2">&lt;?php</span>
+&nbsp;
+<span class="co1">// Cerrar la conexion</span>
+<span class="kw3">mysql_close</span><span class="br0">(</span><span class="re0">$conexion</span><span class="br0">)</span><span class="sy0">;</span>
+&nbsp;
+<span class="sy1">?&gt;</span></pre>
+</div>
+
+<p>El script anterior es fácil de escribir y rápido de ejecutar, pero muy difícil de mantener y actualizar. Los principales problemas del código anterior son:</p>
+
+<ul>
+<li>No existe protección frente a errores (¿qué ocurre si falla la conexión con la base de datos?).</li>
+<li>El código HTML y el código PHP están mezclados en el mismo archivo e incluso en algunas partes están entrelazados.</li>
+<li>El código solo funciona si la base de datos es MySQL.</li>
+</ul>
+
+<h4 id="separando_la_presentacion">2.1.1.2. Separando la presentación</h4>
+
+<p>Las llamadas a <code>echo</code> y <code>printf</code> del listado 2-1 dificultan la lectura del código. De hecho, modificar el código HTML del script anterior para mejorar la presentación es un follón debido a cómo está programado. Así que el código va a ser dividido en dos partes. En primer lugar, el código PHP puro con toda la lógica de negocio se incluye en el script del controlador, como se muestra en el listado 2-2.</p>
+
+<p><strong>Listado 2-2 - La parte del controlador, en <code>index.php</code></strong></p>
+
+<div class="code php">
+<pre class="php"><span class="kw2">&lt;?php</span>
+&nbsp;
+<span class="co1">// Conectar con la base de datos y seleccionarla</span>
+<span class="re0">$conexion</span> <span class="sy0">=</span> <span class="kw3">mysql_connect</span><span class="br0">(</span><span class="st_h">'localhost'</span><span class="sy0">,</span> <span class="st_h">'miusuario'</span><span class="sy0">,</span> <span class="st_h">'micontrasena'</span><span class="br0">)</span><span class="sy0">;</span>
+<span class="kw3">mysql_select_db</span><span class="br0">(</span><span class="st_h">'blog_db'</span><span class="sy0">,</span> <span class="re0">$conexion</span><span class="br0">)</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// Ejecutar la consulta SQL</span>
+<span class="re0">$resultado</span> <span class="sy0">=</span> <span class="kw3">mysql_query</span><span class="br0">(</span><span class="st_h">'SELECT fecha, titulo FROM articulo'</span><span class="sy0">,</span> <span class="re0">$conexion</span><span class="br0">)</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// Crear el array de elementos para la capa de la vista</span>
+<span class="re0">$articulos</span> <span class="sy0">=</span> <span class="kw3">array</span><span class="br0">(</span><span class="br0">)</span><span class="sy0">;</span>
+<span class="kw1">while</span> <span class="br0">(</span><span class="re0">$fila</span> <span class="sy0">=</span> <span class="kw3">mysql_fetch_array</span><span class="br0">(</span><span class="re0">$resultado</span><span class="sy0">,</span> MYSQL_ASSOC<span class="br0">)</span><span class="br0">)</span>
+<span class="br0">{</span>
+  <span class="re0">$articulos</span><span class="br0">[</span><span class="br0">]</span> <span class="sy0">=</span> <span class="re0">$fila</span><span class="sy0">;</span>
+<span class="br0">}</span>
+&nbsp;
+<span class="co1">// Cerrar la conexión</span>
+<span class="kw3">mysql_close</span><span class="br0">(</span><span class="re0">$conexion</span><span class="br0">)</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// Incluir la lógica de la vista</span>
+<span class="kw1">require</span><span class="br0">(</span><span class="st_h">'vista.php'</span><span class="br0">)</span><span class="sy0">;</span></pre>
+</div>
+
+<p>El código HTML, que contiene cierto código PHP a modo de plantilla, se almacena en el script de la vista, como se muestra en el listado 2-3.</p>
+
+<p><strong>Listado 2-3 - La parte de la vista, en <code>vista.php</code></strong></p>
+
+<div class="code php">
+<pre class="php">&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Listado de Artículos&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Listado de Artículos&lt;/h1&gt;
+    &lt;table&gt;
+      &lt;tr&gt;&lt;th&gt;Fecha&lt;/th&gt;&lt;th&gt;Título&lt;/th&gt;&lt;/tr&gt;
+    <span class="kw2">&lt;?php</span> <span class="kw1">foreach</span> <span class="br0">(</span><span class="re0">$articulos</span> <span class="kw1">as</span> <span class="re0">$articulo</span><span class="br0">)</span><span class="sy0">:</span> <span class="sy1">?&gt;</span>
+      &lt;tr&gt;
+        &lt;td&gt;<span class="kw2">&lt;?php</span> <span class="kw1">echo</span> <span class="re0">$articulo</span><span class="br0">[</span><span class="st_h">'fecha'</span><span class="br0">]</span> <span class="sy1">?&gt;</span>&lt;/td&gt;
+        &lt;td&gt;<span class="kw2">&lt;?php</span> <span class="kw1">echo</span> <span class="re0">$articulo</span><span class="br0">[</span><span class="st_h">'titulo'</span><span class="br0">]</span> <span class="sy1">?&gt;</span>&lt;/td&gt;
+      &lt;/tr&gt;
+    <span class="kw2">&lt;?php</span> <span class="kw1">endforeach</span><span class="sy0">;</span> <span class="sy1">?&gt;</span>
+    &lt;/table&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</pre>
+</div>
+
+<p>Una buena regla general para determinar si la parte de la vista está suficientemente <em>limpia</em> de código es que debería contener una cantidad mínima de código PHP, la suficiente como para que un diseñador HTML sin conocimientos de PHP pueda entenderla. Las instrucciones más comunes en la parte de la vista suelen ser <code>echo</code>, <code>if/endif</code>, <code>foreach/endforeach</code> y poco más. Además, no se deben incluir instrucciones PHP que generen etiquetas HTML.</p>
+
+<p>Toda la lógica se ha centralizado en el script del controlador, que solamente contiene código PHP y ningún tipo de HTML. De hecho, y como puedes imaginar, el mismo controlador se puede reutilizar para otros tipos de presentaciones completamente diferentes, como por ejemplo un archivo PDF o una estructura de tipo XML.</p>
+
+<h4 id="separando_la_manipulacion_de_los_datos">2.1.1.3. Separando la manipulación de los datos</h4>
+
+<p>La mayor parte del script del controlador se encarga de la manipulación de los datos. Pero, ¿qué ocurre si se necesita la lista de entradas del blog para otro controlador, por ejemplo uno que se dedica a generar el canal RSS de las entradas del blog? ¿Y si se quieren centralizar todas las consultas a la base de datos en un único sitio para evitar duplicidades? ¿Qué ocurre si cambia el modelo de datos y la tabla <code>articulo</code> pasa a llamarse <code>articulo_blog</code>? ¿Y si se quiere cambiar a PostgreSQL en vez de MySQL? Para poder hacer todo esto, es imprescindible eliminar del controlador todo el código que se encarga de la manipulación de los datos y ponerlo en otro script, llamado <em>el modelo</em>, tal y como se muestra en el listado 2-4.</p>
+
+<p><strong>Listado 2-4 - La parte del modelo, en <code>modelo.php</code></strong></p>
+
+<div class="code php">
+<pre class="php"><span class="kw2">&lt;?php</span>
+&nbsp;
+<span class="kw2">function</span> getTodosLosArticulos<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+  <span class="co1">// Conectar con la base de datos y seleccionarla</span>
+  <span class="re0">$conexion</span> <span class="sy0">=</span> <span class="kw3">mysql_connect</span><span class="br0">(</span><span class="st_h">'localhost'</span><span class="sy0">,</span> <span class="st_h">'miusuario'</span><span class="sy0">,</span> <span class="st_h">'micontrasena'</span><span class="br0">)</span><span class="sy0">;</span>
+  <span class="kw3">mysql_select_db</span><span class="br0">(</span><span class="st_h">'blog_db'</span><span class="sy0">,</span> <span class="re0">$conexion</span><span class="br0">)</span><span class="sy0">;</span>
+&nbsp;
+  <span class="co1">// Ejecutar la consulta SQL</span>
+  <span class="re0">$resultado</span> <span class="sy0">=</span> <span class="kw3">mysql_query</span><span class="br0">(</span><span class="st_h">'SELECT fecha, titulo FROM articulo'</span><span class="sy0">,</span> <span class="re0">$conexion</span><span class="br0">)</span><span class="sy0">;</span>
+&nbsp;
+  <span class="co1">// Crear el array de elementos para la capa de la vista</span>
+  <span class="re0">$articulos</span> <span class="sy0">=</span> <span class="kw3">array</span><span class="br0">(</span><span class="br0">)</span><span class="sy0">;</span>
+  <span class="kw1">while</span> <span class="br0">(</span><span class="re0">$fila</span> <span class="sy0">=</span> <span class="kw3">mysql_fetch_array</span><span class="br0">(</span><span class="re0">$resultado</span><span class="sy0">,</span> MYSQL_ASSOC<span class="br0">)</span><span class="br0">)</span>
+  <span class="br0">{</span>
+    <span class="re0">$articulos</span><span class="br0">[</span><span class="br0">]</span> <span class="sy0">=</span> <span class="re0">$fila</span><span class="sy0">;</span>
+  <span class="br0">}</span>
+&nbsp;
+  <span class="co1">// Cerrar la conexión</span>
+  <span class="kw3">mysql_close</span><span class="br0">(</span><span class="re0">$conexion</span><span class="br0">)</span><span class="sy0">;</span>
+&nbsp;
+  <span class="kw1">return</span> <span class="re0">$articulos</span><span class="sy0">;</span>
+<span class="br0">}</span></pre>
+</div>
+
+<p>El controlador modificado se puede ver en el listado 2-5.</p>
+
+<p><strong>Listado 2-5 - La parte del controlador, modificada, en <code>index.php</code></strong></p>
+
+<div class="code php">
+<pre class="php"><span class="kw2">&lt;?php</span>
+&nbsp;
+<span class="co1">// Incluir la lógica del modelo</span>
+<span class="kw1">require_once</span><span class="br0">(</span><span class="st_h">'modelo.php'</span><span class="br0">)</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// Obtener la lista de artículos</span>
+<span class="re0">$articulos</span> <span class="sy0">=</span> getTodosLosArticulos<span class="br0">(</span><span class="br0">)</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// Incluir la lógica de la vista</span>
+<span class="kw1">require</span><span class="br0">(</span><span class="st_h">'vista.php'</span><span class="br0">)</span><span class="sy0">;</span></pre>
+</div>
+
+<p>Ahora el controlador es mucho más fácil de leer. Su única tarea es la de obtener los datos del modelo y pasárselos a la vista. En las aplicaciones más complejas, el controlador se encarga además de procesar las peticiones, las sesiones de los usuarios, la autenticación, etc. El uso de nombres apropiados para las funciones del modelo hacen que sea innecesario añadir comentarios al código del controlador.</p>
+
+<p>El script del modelo solamente se encarga del acceso a los datos y puede ser reorganizado a tal efecto. Todos los parámetros que no dependen de la capa de datos (como por ejemplo los parámetros de la petición del usuario) se deben obtener a través del controlador y por tanto, no se puede acceder a ellos directamente desde el modelo. Las funciones del modelo se pueden reutilizar fácilmente en otros controladores.</p>
+
+<h3 id="separacion_en_capas_mas_alla_del_mvc">2.1.2. Separación en capas más allá del MVC</h3>
+
+<p>El principio más importante de la arquitectura MVC es la separación del código del programa en tres capas, dependiendo de su naturaleza. La lógica relacionada con los datos se incluye en el modelo, el código de la presentación en la vista y la lógica de la aplicación en el controlador.</p>
+
+<p>La programación se puede simplificar si se utilizan otros patrones de diseño. De esta forma, las capas del modelo, la vista y el controlador se pueden subidividir en más capas.</p>
+
+<h4 id="abstraccion_de_la_base_de_datos">2.1.2.1. Abstracción de la base de datos</h4>
+
+<p>La capa del modelo se puede dividir en la capa de acceso a los datos y en la capa de abstracción de la base de datos. De esta forma, las funciones que acceden a los datos no utilizan sentencias ni consultas que dependen de una base de datos, sino que utilizan otras funciones para realizar las consultas. Así, si se cambia de sistema gestor de bases de datos, solamente es necesario actualizar la capa de abstracción de la base de datos.</p>
+
+<p>El listado 2-6 muestra un ejemplo de capa de abstracción de la base de datos y el listado 2-7 muestra una capa de acceso a datos específica para MySQL.</p>
+
+<p><strong>Listado 2-6 - La parte del modelo correspondiente a la abstracción de la base de datos</strong></p>
+
+<div class="code php">
+<pre class="php"><span class="kw2">&lt;?php</span>
+&nbsp;
+<span class="kw2">function</span> crear_conexion<span class="br0">(</span><span class="re0">$servidor</span><span class="sy0">,</span> <span class="re0">$usuario</span><span class="sy0">,</span> <span class="re0">$contrasena</span><span class="br0">)</span>
+<span class="br0">{</span>
+  <span class="kw1">return</span> <span class="kw3">mysql_connect</span><span class="br0">(</span><span class="re0">$servidor</span><span class="sy0">,</span> <span class="re0">$usuario</span><span class="sy0">,</span> <span class="re0">$contrasena</span><span class="br0">)</span><span class="sy0">;</span>
+<span class="br0">}</span>
+&nbsp;
+<span class="kw2">function</span> cerrar_conexion<span class="br0">(</span><span class="re0">$conexion</span><span class="br0">)</span>
+<span class="br0">{</span>
+  <span class="kw3">mysql_close</span><span class="br0">(</span><span class="re0">$conexion</span><span class="br0">)</span><span class="sy0">;</span>
+<span class="br0">}</span>
+&nbsp;
+<span class="kw2">function</span> consulta_base_de_datos<span class="br0">(</span><span class="re0">$consulta</span><span class="sy0">,</span> <span class="re0">$base_datos</span><span class="sy0">,</span> <span class="re0">$conexion</span><span class="br0">)</span>
+<span class="br0">{</span>
+  <span class="kw3">mysql_select_db</span><span class="br0">(</span><span class="re0">$base_datos</span><span class="sy0">,</span> <span class="re0">$conexion</span><span class="br0">)</span><span class="sy0">;</span>
+&nbsp;
+  <span class="kw1">return</span> <span class="kw3">mysql_query</span><span class="br0">(</span><span class="re0">$consulta</span><span class="sy0">,</span> <span class="re0">$conexion</span><span class="br0">)</span><span class="sy0">;</span>
+<span class="br0">}</span>
+&nbsp;
+<span class="kw2">function</span> obtener_resultados<span class="br0">(</span><span class="re0">$resultado</span><span class="br0">)</span>
+<span class="br0">{</span>
+  <span class="kw1">return</span> <span class="kw3">mysql_fetch_array</span><span class="br0">(</span><span class="re0">$resultado</span><span class="sy0">,</span> MYSQL_ASSOC<span class="br0">)</span><span class="sy0">;</span>
+<span class="br0">}</span></pre>
+</div>
+
+<p><strong>Listado 2-7 - La parte del modelo correspondiente al acceso a los datos</strong></p>
+
+<div class="code php">
+<pre class="php"><span class="kw2">function</span> getTodosLosArticulos<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+  <span class="co1">// Conectar con la base de datos</span>
+  <span class="re0">$conexion</span> <span class="sy0">=</span> crear_conexion<span class="br0">(</span><span class="st_h">'localhost'</span><span class="sy0">,</span> <span class="st_h">'miusuario'</span><span class="sy0">,</span> <span class="st_h">'micontrasena'</span><span class="br0">)</span><span class="sy0">;</span>
+&nbsp;
+  <span class="co1">// Ejecutar la consulta SQL</span>
+  <span class="re0">$resultado</span> <span class="sy0">=</span> consulta_base_de_datos<span class="br0">(</span><span class="st_h">'SELECT fecha, titulo FROM articulo'</span><span class="sy0">,</span> <span class="st_h">'blog_db'</span><span class="sy0">,</span> <span class="re0">$conexion</span><span class="br0">)</span><span class="sy0">;</span>
+&nbsp;
+  <span class="co1">// Crear el array de elementos para la capa de la vista</span>
+  <span class="re0">$articulos</span> <span class="sy0">=</span> <span class="kw3">array</span><span class="br0">(</span><span class="br0">)</span><span class="sy0">;</span>
+  <span class="kw1">while</span> <span class="br0">(</span><span class="re0">$fila</span> <span class="sy0">=</span> obtener_resultados<span class="br0">(</span><span class="re0">$resultado</span><span class="br0">)</span><span class="br0">)</span>
+  <span class="br0">{</span>
+     <span class="re0">$articulos</span><span class="br0">[</span><span class="br0">]</span> <span class="sy0">=</span> <span class="re0">$fila</span><span class="sy0">;</span>
+  <span class="br0">}</span>
+&nbsp;
+  <span class="co1">// Cerrar la conexión</span>
+  cerrar_conexion<span class="br0">(</span><span class="re0">$conexion</span><span class="br0">)</span><span class="sy0">;</span>
+&nbsp;
+  <span class="kw1">return</span> <span class="re0">$articulos</span><span class="sy0">;</span>
+<span class="br0">}</span></pre>
+</div>
+
+<p>Como se puede comprobar, la capa de acceso a datos no contiene funciones dependientes de ningún sistema gestor de bases de datos, por lo que es independiente de la base de datos utilizada. Además, las funciones creadas en la capa de abstracción de la base de datos se pueden reutilizar en otras funciones del modelo que necesiten acceder a la base de datos.</p>
+
+<div class="admonition note"><p><strong class="title">Nota</strong> Los ejemplos de los listados 2-6 y 2-7 no son completos, y todavía hace falta añadir algo de código para tener una completa abstracción de la base de datos (abstraer el código SQL mediante un constructor de consultas independiente de la base de datos, añadir todas las funciones a una clase, etc.) El propósito de este libro no es mostrar cómo se puede escribir todo ese código, ya que en el capítulo 8 se muestra cómo Symfony realiza de forma automática toda la abstracción.</p></div>
+
+<h4 id="los_elementos_de_la_vista">2.1.2.2. Los elementos de la vista</h4>
+
+<p>La capa de la vista también puede aprovechar la separación de código. Las páginas web suelen contener elementos que se muestran de forma idéntica a lo largo de toda la aplicación: cabeceras de la página, el <em>layout</em> genérico, el pie de página y la navegación global. Normalmente sólo cambia el interior de la página. Por este motivo, la vista se separa en un layout y en una plantilla. Normalmente, el layout es global en toda la aplicación o al menos en un grupo de páginas. La plantilla sólo se encarga de visualizar las variables definidas en el controlador. Para que estos componentes interaccionen entre sí correctamente, es necesario añadir cierto código. Siguiendo estos principios, la parte de la vista del listado 2-3 se puede separar en tres partes, como se muestra en los listados 2-8, 2-9 y 2-10.</p>
+
+<p><strong>Listado 2-8 - La parte de la plantilla de la vista, en <code>miplantilla.php</code></strong></p>
+
+<div class="code php">
+<pre class="php">&lt;h1&gt;Listado de Artículos&lt;/h1&gt;
+&lt;table&gt;
+&lt;tr&gt;&lt;th&gt;Fecha&lt;/th&gt;&lt;th&gt;Título&lt;/th&gt;&lt;/tr&gt;
+<span class="kw2">&lt;?php</span> <span class="kw1">foreach</span> <span class="br0">(</span><span class="re0">$articulos</span> <span class="kw1">as</span> <span class="re0">$articulo</span><span class="br0">)</span><span class="sy0">:</span> <span class="sy1">?&gt;</span>
+  &lt;tr&gt;
+    &lt;td&gt;<span class="kw2">&lt;?php</span> <span class="kw1">echo</span> <span class="re0">$articulo</span><span class="br0">[</span><span class="st_h">'fecha'</span><span class="br0">]</span> <span class="sy1">?&gt;</span>&lt;/td&gt;
+    &lt;td&gt;<span class="kw2">&lt;?php</span> <span class="kw1">echo</span> <span class="re0">$articulo</span><span class="br0">[</span><span class="st_h">'titulo'</span><span class="br0">]</span> <span class="sy1">?&gt;</span>&lt;/td&gt;
+  &lt;/tr&gt;
+<span class="kw2">&lt;?php</span> <span class="kw1">endforeach</span><span class="sy0">;</span> <span class="sy1">?&gt;</span>
+&lt;/table&gt;</pre>
+</div>
+
+<p><strong>Listado 2-9 - La parte de la lógica de la vista</strong></p>
+
+<div class="code php">
+<pre class="php"><span class="kw2">&lt;?php</span>
+&nbsp;
+<span class="re0">$titulo</span> <span class="sy0">=</span> <span class="st_h">'Listado de Artículos'</span><span class="sy0">;</span>
+<span class="re0">$contenido</span> <span class="sy0">=</span> <span class="kw1">include</span><span class="br0">(</span><span class="st_h">'miplantilla.php'</span><span class="br0">)</span><span class="sy0">;</span></pre>
+</div>
+
+<p><strong>Listado 2-10 - La parte del layout de la vista</strong></p>
+
+<div class="code php">
+<pre class="php">&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;<span class="kw2">&lt;?php</span> <span class="kw1">echo</span> <span class="re0">$titulo</span> <span class="sy1">?&gt;</span>&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    <span class="kw2">&lt;?php</span> <span class="kw1">echo</span> <span class="re0">$contenido</span> <span class="sy1">?&gt;</span>
+  &lt;/body&gt;
+&lt;/html&gt;</pre>
+</div>
+
+<h4 id="acciones_y_controlador_frontal">2.1.2.3. Acciones y controlador frontal</h4>
+
+<p>En el ejemplo anterior, el controlador no se encargaba de realizar muchas tareas, pero en las aplicaciones web reales el controlador suele tener mucho trabajo. Una parte importante de su trabajo es común a todos los controladores de la aplicación. Entre las tareas comunes se encuentran el manejo de las peticiones del usuario, el manejo de la seguridad, cargar la configuración de la aplicación y otras tareas similares. Por este motivo, el controlador normalmente se divide en un controlador frontal, que es único para cada aplicación, y las acciones, que incluyen el código específico del controlador de cada página.</p>
+
+<p>Una de las principales ventajas de utilizar un controlador frontal es que ofrece un punto de entrada único para toda la aplicación. Así, en caso de que sea necesario impedir el acceso a la aplicación, solamente es necesario editar el script correspondiente al controlador frontal. Si la aplicación no dispone de controlador frontal, se debería modificar cada uno de los controladores.</p>
+
+<h4 id="orientacion_a_objetos">2.1.2.4. Orientación a objetos</h4>
+
+<p>Los ejemplos anteriores utilizan la programación procedimental. Las posibilidades que ofrecen los lenguajes de programación modernos para trabajar con objetos permiten simplificar la programación, ya que los objetos pueden encapsular la lógica, pueden heredar métodos y atributos entre diferentes objetos y proporcionan una serie de convenciones claras sobre la forma de nombrar a los objetos.</p>
+
+<p>La implementación de una arquitectura MVC en un lenguaje de programación que no está orientado a objetos puede encontrarse con problemas de <em>namespaces</em> y código duplicado, dificultando la lectura del código de la aplicación.</p>
+
+<p>La orientación a objetos permite a los desarrolladores trabajar con objetos de la vista, objetos del controlador y clases del modelo, transformando las funciones de los ejemplos anteriores en métodos. Se trata de un requisito obligatorio para las arquitecturas de tipo MVC.</p>
+
+<div class="admonition tip"><p><strong class="title">Truco</strong> Si quieres profundizar en el tema de los patrones de diseño para las aplicaciones web en el contexto de la orientación a objetos, puedes leer <em>"Patterns of Enterprise Application Architecture"</em> de Martin Fowler (Addison-Wesley, ISBN: 0-32112-742-0). El código de ejemplo del libro de Fowler está escrito en Java y en C#, pero es bastante fácil de leer para los programadores de PHP.</p></div>
+
+<h3 id="la_implementacion_del_mvc_que_realiza_symfony">2.1.3. La implementación del MVC que realiza Symfony</h3>
+
+<p>Piensa por un momento cuántos componentes se necesitarían para realizar una página sencilla que muestre un listado de las entradas o artículos de un blog. Como se muestra en la figura 2-2, son necesarios los siguientes componentes:</p>
+
+<ul>
+<li>La capa del Modelo
+
+<ul>
+<li>Abstracción de la base de datos</li>
+<li>Acceso a los datos</li>
+</ul></li>
+<li>La capa de la Vista
+
+<ul>
+<li>Vista</li>
+<li>Plantilla</li>
+<li>Layout</li>
+</ul></li>
+<li>La capa del Controlador
+
+<ul>
+<li>Controlador frontal</li>
+<li>Acción</li>
+</ul></li>
+</ul>
+
+<p>En total son siete scripts, lo que parecen muchos archivos para abrir y modificar cada vez que se crea una página. Afortunadamente, Symfony simplifica este proceso. Symfony toma lo mejor de la arquitectura MVC y la implementa de forma que el desarrollo de aplicaciones sea rápido y sencillo.</p>
+
+<p>En primer lugar, el controlador frontal y el layout son comunes para todas las acciones de la aplicación. Se pueden tener varios controladores y varios layouts, pero solamente es obligatorio tener uno de cada. El controlador frontal es un componente que sólo tiene código relativo al MVC, por lo que no es necesario crear uno, ya que Symfony lo genera de forma automática.</p>
+
+<p>La otra buena noticia es que las clases de la capa del modelo también se generan automáticamente, en función de la estructura de datos de la aplicación. La librería Propel se encarga de esta generación automática, ya que crea el <em>esqueleto</em> o estructura básica de las clases y genera automáticamente el código necesario. Cuando Propel encuentra restricciones de claves foráneas (o externas) o cuando encuentra datos de tipo fecha, crea métodos especiales para acceder y modificar esos datos, por lo que la manipulación de datos se convierte en un juego de niños. La abstracción de la base de datos es completamente transparente para el programador, ya que se realiza de forma nativa mediante PDO  <em>PHP Data Objects</em>). Así, si se cambia el sistema gestor de bases de datos en cualquier momento, no se debe reescribir ni una línea de código, ya que tan sólo es necesario modificar un parámetro en un archivo de configuración.</p>
+
+<p>Por último, la lógica de la vista se puede transformar en un archivo de configuración sencillo, sin necesidad de programarla.</p>
+
+<div class="figure" id="figure_2_2">
+    <img src="./2.1. El patrón MVC (Symfony 1.2, la guía definitiva)_files/f0202.png" alt="El flujo de trabajo de Symfony">
+
+    <p class="caption"><strong>Figura 2.2</strong> El flujo de trabajo de Symfony</p>
+</div>
+
+
+<p>Considerando todo lo anterior, el ejemplo de la página que muestra un listado con todas las entradas del blog solamente requiere de tres archivos en Symfony, que se muestran en los listados 2-11, 2-12 y 2-13.</p>
+
+<p><strong>Listado 2-11 - Acción <code>listado</code>, en <code>miproyecto/apps/miaplicacion/modules/weblog/actions/actions.class.php</code></strong></p>
+
+<div class="code php">
+<pre class="php"><span class="kw2">&lt;?php</span>
+&nbsp;
+<span class="kw2">class</span> weblogActions <span class="kw2">extends</span> sfActions
+<span class="br0">{</span>
+  <span class="kw2">public</span> <span class="kw2">function</span> executeListado<span class="br0">(</span><span class="br0">)</span>
+  <span class="br0">{</span>
+    <span class="re0">$this</span><span class="sy0">-&gt;</span><span class="me1">articulos</span> <span class="sy0">=</span> ArticuloPeer<span class="sy0">::</span><span class="me2">doSelect</span><span class="br0">(</span><span class="kw2">new</span> Criteria<span class="br0">(</span><span class="br0">)</span><span class="br0">)</span><span class="sy0">;</span>
+  <span class="br0">}</span>
+<span class="br0">}</span></pre>
+</div>
+
+<p><strong>Listado 2-12 - Plantilla <code>listado</code>, en <code>miproyecto/apps/miaplicacion/modules/weblog/templates/listadoSuccess.php</code></strong></p>
+
+<div class="code php">
+<pre class="php"><span class="kw2">&lt;?php</span> slot<span class="br0">(</span><span class="st_h">'titulo'</span><span class="sy0">,</span> <span class="st_h">'Listado de Artículos'</span><span class="br0">)</span> <span class="sy1">?&gt;</span>
+&nbsp;
+&lt;h1&gt;Listado de Artículos&lt;/h1&gt;
+&lt;table&gt;
+&lt;tr&gt;&lt;th&gt;Fecha&lt;/th&gt;&lt;th&gt;Título&lt;/th&gt;&lt;/tr&gt;
+<span class="kw2">&lt;?php</span> <span class="kw1">foreach</span> <span class="br0">(</span><span class="re0">$articulos</span> <span class="kw1">as</span> <span class="re0">$articulo</span><span class="br0">)</span><span class="sy0">:</span> <span class="sy1">?&gt;</span>
+  &lt;tr&gt;
+    &lt;td&gt;<span class="kw2">&lt;?php</span> <span class="kw1">echo</span> <span class="re0">$articulo</span><span class="sy0">-&gt;</span><span class="me1">getFecha</span><span class="br0">(</span><span class="br0">)</span> <span class="sy1">?&gt;</span>&lt;/td&gt;
+    &lt;td&gt;<span class="kw2">&lt;?php</span> <span class="kw1">echo</span> <span class="re0">$articulo</span><span class="sy0">-&gt;</span><span class="me1">getTitulo</span><span class="br0">(</span><span class="br0">)</span> <span class="sy1">?&gt;</span>&lt;/td&gt;
+  &lt;/tr&gt;
+<span class="kw2">&lt;?php</span> <span class="kw1">endforeach</span><span class="sy0">;</span> <span class="sy1">?&gt;</span>
+&lt;/table&gt;</pre>
+</div>
+
+<p>Además es necesario crear un layout como el del listado 2-13. Afortunadamente, el mismo layout se puede reutilizar muchas veces.</p>
+
+<p><strong>Listado 2-13 - Layout, en <code>miproyecto/apps/miaplicacion/templates/layout.php</code></strong></p>
+
+<div class="code php">
+<pre class="php">&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;<span class="kw2">&lt;?php</span> include_slot<span class="br0">(</span><span class="st_h">'titulo'</span><span class="br0">)</span> <span class="sy1">?&gt;</span>&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    <span class="kw2">&lt;?php</span> <span class="kw1">echo</span> <span class="re0">$sf_content</span> <span class="sy1">?&gt;</span>
+  &lt;/body&gt;
+&lt;/html&gt;</pre>
+</div>
+
+<p>Estos scripts son todo lo que necesita la aplicación del ejemplo. El código mostrado es el necesario para crear la misma página que generaba el script simple del listado 2-1. Symfony se encarga del resto de tareas, como hacer que los componentes interactuen entre sí. Si se considera el número de líneas de código, el listado de entradas de blog creado según la arquitectura MVC no requiere más líneas ni más tiempo de programación que un script simple. Sin embargo, la arquitectura MVC proporciona grandes ventajas, como la organización del código, la reutilización, la flexibilidad y una programación mucho más entretenida. Por si fuera poco, crear la aplicación con Symfony permite crear páginas XHTML válidas, depurar fácilmente las aplicaciones, crear una configuración sencilla, abstracción de la base de datos utilizada, enrutamiento con URL <em>limpias</em>, varios entornos de desarrollo y muchas otras utilidades para el desarrollo de aplicaciones.</p>
+
+<h3 id="las_clases_que_forman_el_nucleo_de_symfony">2.1.4. Las clases que forman el núcleo de Symfony</h3>
+
+<p>La implementación que realiza Symfony de la arquitectura MVC incluye varias clases que se mencionan una y otra vez a lo largo del libro:</p>
+
+<ul>
+<li><code>sfController</code> es la clase del controlador. Se encarga de decodificar la petición y transferirla a la acción correspondiente.</li>
+<li><code>sfRequest</code> almacena todos los elementos que forman la petición (parámetros, cookies, cabeceras, etc.)</li>
+<li><code>sfResponse</code> contiene las cabeceras de la respuesta y los contenidos. El contenido de este objeto se transforma en la respuesta HTML que se envía al usuario.</li>
+<li>El contexto (que se obtiene mediante <code>sfContext::getInstance()</code>) almacena una referencia a todos los objetos que forman el núcleo de Symfony y puede ser accedido desde cualquier punto de la aplicación.</li>
+</ul>
+
+<p>El capítulo 6 explica en detalle todos estos objetos.</p>
+
+<p>Como se ha visto, todas las clases de Symfony utilizan el prefijo <code>sf</code>, como también hacen todas las variables principales de Symfony en las plantillas. De esta forma, se evitan las <em>colisiones</em> en los nombres de clases y variables de Symfony y los nombres de tus propias clases y variables, además de que las clases del framework son más fáciles de reconocer.</p>
+
+<div class="admonition note"><p><strong class="title">Nota</strong> Entre las normas seguidas por el código de Symfony, se encuentra el estándar <em>"UpperCamelCase"</em> para el nombre de las clases y variables. Solamente existen dos excepciones: las clases del núcleo de Symfony empiezan por <code>sf</code> (por tanto en minúsculas) y las variables utilizadas en las plantillas que utilizan la sintaxis de separar las palabras con guiones bajos.</p>
+
+<p><strong>Nota del traductor</strong>
+La notación <em>"CamelCase"</em> consiste en escribir frases o palabras compuestas eliminando los espacios intermedios y poniendo en mayúscula la primera letra de cada palabra. La variante <em>"UpperCamelCase"</em> también pone en mayúscula la primera letra de todas.</p></div>
+
+
+
+
+    <div class="module module-ad module-ad-responsive module-ad-bottom">
+    <script async="" src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1491000300253750" data-ad-slot="3770792827" data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+
+
+    <div id="book-pager">
+        <ul class="row pager">
+            <li class="col-xs-6 previous ">
+                                    <a href="http://librosweb.es/symfony_1_2/capitulo_2.html">
+                        <strong>← Anterior</strong>
+                        <small>Capítulo 2. Explorando el interior de Symfony</small>
+                    </a>
+                            </li>
+
+            <li class="col-xs-6 next ">
+                                    <a href="http://librosweb.es/symfony_1_2/capitulo_2/organizacion_del_codigo.html">
+                        <strong>Siguiente →</strong>
+                        <small>2.2. Organización del código</small>
+                    </a>
+                            </li>
+        </ul>
+    </div>
+
+                    </div>
+
+                    <div id="sidebar" class="col-md-3">
+                        
+    <div class="module module-share">
+        <h3>Compartir</h3>
+    <ul>
+    <li><a id="share_twitter" href="https://twitter.com/share?text=El%20patr%C3%B3n%20MVC%20%28Symfony%201.2%2C%20la%20gu%C3%ADa%20definitiva%29&lang=es" title="Compartir en Twitter">Twitter</a></li>
+    <li><a id="share_facebook" href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Flibrosweb.es%2Fsymfony_1_2%2Fcapitulo_2%2Fel_patron_mvc.html&t=El%20patr%C3%B3n%20MVC%20%28Symfony%201.2%2C%20la%20gu%C3%ADa%20definitiva%29" title="Compartir en Facebook">Facebook</a></li>
+    <li><a id="share_google" href="https://plus.google.com/share?url=http%3A%2F%2Flibrosweb.es%2Fsymfony_1_2%2Fcapitulo_2%2Fel_patron_mvc.html&hl=es" title="Compartir en Google+">Google+</a></li>
+</ul>
+
+<script type="text/javascript">
+var title    = 'El%20patr%C3%B3n%20MVC%20%28Symfony%201.2%2C%20la%20gu%C3%ADa%20definitiva%29';
+var page_url = encodeURIComponent(window.location);
+var options  = 'menubar=no,toolbar=no,resizable=yes,scrollbars=no,width=640,height=350';
+var services = {
+    share_twitter:  'https://twitter.com/share?text=' + title + '&lang=es',
+    share_facebook: 'http://www.facebook.com/sharer.php?u=' + page_url + '&t=' + title,
+    share_google:   'https://plus.google.com/share?url=' + page_url + '&hl=es'
+};
+
+for (var id in services) {
+    if (services.hasOwnProperty(id)) {
+        document.getElementById(id).href = services[id];
+        document.getElementById(id).onclick = function(a) {
+            a = a || window.event;
+            a = a.target || a.srcElement;
+
+            ga('send', 'social', {
+                'socialNetwork' : a.id.substr(6),
+                'socialAction'  : 'share',
+                'socialTarget'  : window.location
+            });
+
+            window.open(services[a.id], a.title, options);
+
+            return false;
+        };
+    }
+}
+</script>
+
+    </div>
+
+    
+            <div class="module module-ad module-ad-responsive">
+            <div class="module module-ad module-ad-responsive module-ad-top">
+    <script async="" src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1491000300253750" data-ad-slot="3770792827" data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+        </div>
+        
+
+    <div id="book-toc" class="module">
+        <a id="indice"></a>
+
+        <h3>Indice de contenidos</h3>
+        <ul class="toc text-links">
+                                            <li class="level-1">
+                <span>1.</span> <a href="http://librosweb.es/symfony_1_2/capitulo_1.html"> Introducción a Symfony</a>
+            </li>
+                                                                                            <li class="level-1 ">
+                <a href="http://librosweb.es/symfony_1_2/capitulo_2.html">
+                    <span>Capítulo 2.</span> Explorando el interior de Symfony
+                </a>
+            </li>
+                                            <li class="level-2 active">
+                <a href="./2.1. El patrón MVC (Symfony 1.2, la guía definitiva)_files/2.1. El patrón MVC (Symfony 1.2, la guía definitiva).html">
+                    <span>2.1.</span> El patrón MVC
+                </a>
+            </li>
+                                            <li class="level-2 ">
+                <a href="http://librosweb.es/symfony_1_2/capitulo_2/organizacion_del_codigo.html">
+                    <span>2.2.</span> Organización del código
+                </a>
+            </li>
+                                            <li class="level-2 ">
+                <a href="http://librosweb.es/symfony_1_2/capitulo_2/herramientas_comunes.html">
+                    <span>2.3.</span> Herramientas comunes
+                </a>
+            </li>
+                                            <li class="level-2 ">
+                <a href="http://librosweb.es/symfony_1_2/capitulo_2/resumen_2.html">
+                    <span>2.4.</span> Resumen
+                </a>
+            </li>
+                                            <li class="level-1">
+                <span>3.</span> <a href="http://librosweb.es/symfony_1_2/capitulo_3.html"> Ejecutar aplicaciones Symfony</a>
+            </li>
+                                                                                                                                                            <li class="level-1">
+                <span>4.</span> <a href="http://librosweb.es/symfony_1_2/capitulo_4.html"> Introducción a la creación de páginas</a>
+            </li>
+                                                                                                            <li class="level-1">
+                <span>5.</span> <a href="http://librosweb.es/symfony_1_2/capitulo_5.html"> Configurar Symfony</a>
+            </li>
+                                                                                                                                                            <li class="level-1">
+                <span>6.</span> <a href="http://librosweb.es/symfony_1_2/capitulo_6.html"> El Controlador</a>
+            </li>
+                                                                                                                                                                                            <li class="level-1">
+                <span>7.</span> <a href="http://librosweb.es/symfony_1_2/capitulo_7.html"> La Vista</a>
+            </li>
+                                                                                                                                            <li class="level-1">
+                <span>8.</span> <a href="http://librosweb.es/symfony_1_2/capitulo_8.html"> El modelo</a>
+            </li>
+                                                                                                                                                                                            <li class="level-1">
+                <span>9.</span> <a href="http://librosweb.es/symfony_1_2/capitulo_9.html"> Enlaces y sistema de enrutamiento</a>
+            </li>
+                                                                                                                                            <li class="level-1">
+                <span>10.</span> <a href="http://librosweb.es/symfony_1_2/capitulo_10.html"> Formularios</a>
+            </li>
+                                                                                                                            <li class="level-1">
+                <span>11.</span> <a href="http://librosweb.es/symfony_1_2/capitulo_11.html"> Integración con Ajax</a>
+            </li>
+                                                                                                                                                                            <li class="level-1">
+                <span>12.</span> <a href="http://librosweb.es/symfony_1_2/capitulo_12.html"> Uso de la cache</a>
+            </li>
+                                                                                                                            <li class="level-1">
+                <span>13.</span> <a href="http://librosweb.es/symfony_1_2/capitulo_13.html"> Internacionalización y localización</a>
+            </li>
+                                                                                                                            <li class="level-1">
+                <span>14.</span> <a href="http://librosweb.es/symfony_1_2/capitulo_14.html"> Generador de la parte de administración</a>
+            </li>
+                                                                                                                            <li class="level-1">
+                <span>15.</span> <a href="http://librosweb.es/symfony_1_2/capitulo_15.html"> Pruebas unitarias y funcionales</a>
+            </li>
+                                                                                                                                            <li class="level-1">
+                <span>16.</span> <a href="http://librosweb.es/symfony_1_2/capitulo_16.html"> Herramientas para la administración de aplicaciones</a>
+            </li>
+                                                                                                                                            <li class="level-1">
+                <span>17.</span> <a href="http://librosweb.es/symfony_1_2/capitulo_17.html"> Personalizar Symfony</a>
+            </li>
+                                                                                                                            <li class="level-1">
+                <span>18.</span> <a href="http://librosweb.es/symfony_1_2/capitulo_18.html"> Rendimiento</a>
+            </li>
+                                                                                                                                                            <li class="level-1">
+                <span>19.</span> <a href="http://librosweb.es/symfony_1_2/capitulo_19.html"> Configuración avanzada</a>
+            </li>
+                                                                                                        </ul>
+    </div>
+
+                    </div>
+                </div>
+            
+                            <div id="footer">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-9">
+                            © 2014 LibrosWeb.es
+                            <a href="http://librosweb.es/sitio/contacto">Contacto</a>
+                            <a href="https://plus.google.com/+librosweb">Novedades</a>
+                            <a href="http://librosweb.es/sitio/condiciones">Condiciones</a>
+                            <a href="http://librosweb.es/sitio/privacidad">Privacidad</a>
+                        </div>
+                        <div class="col-xs-12 col-sm-3 counter">
+                            2.907 días online
+                        </div>
+                    </div>
+                </div>
+            
+        </div>
+    </div>
+    
+
+</body></html>
