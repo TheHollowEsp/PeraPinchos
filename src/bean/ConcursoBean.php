@@ -74,8 +74,12 @@ class ConcursoBean {
 	
 	public function toString() {
 		
-		return "ConcursoBean:nombreConcurso = ".$this->nombreConcurso.",
-				Fecha Fin = ".$this->
+		return "ConcursoBean:Nombre Concurso = ".$this->nombreConcurso.",
+				Fecha Fin = ".$this->fechaFin.",
+				Fecha inicio = ".$this->fechaFin.",
+				Bases del concurso = ".$this->basesConcurso.",
+				Patrocinadores = ".$this->patrocinadores.",
+				Premios = ".$this->premios;
 	}
 	
 }
