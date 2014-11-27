@@ -1,0 +1,9 @@
+las vistas llaman a los controladores de la forma:
+index.php?controller=users&amp;action=login
+donde controller=user define el cotrolador a usar, y la action, la funcion dentro del controlador.
+
+El controlador tiene todas las funciones necesarias, en nuestro caso serian los listar, modificar, eliminar, consultar...
+El constructor crea un objeto del modelo(UsersMapper.php) para poder usar sus funciones.
+
+En la parte de modelo, el *Mapper.php se encarga de terner las sentencias SQL para un mejor uso de ellas.
+Este Mapper tiene en el contructor un objeto que usará para los get y los set, tambien conocido como "Bean" en nuestro caso.
