@@ -1,0 +1,53 @@
+<?php
+
+require_once(__DIR__."/../core/ViewManager.php");
+require_once(__DIR__."/../core/I18n.php");
+
+require_once(__DIR__."/../model/User.php");
+require_once(__DIR__."/../model/UserMapper.php");
+
+require_once(__DIR__."/../controller/BaseController.php");
+
+/**
+ * Class PinchosController
+ * 
+ * Controller to Listar pinchos, consultar pincho, valorar pincho
+ * 
+ * @author hrlopez
+ */
+class PinchosController extends BaseController {
+  
+  /**
+   * Utilizar pinchoMapper para llegar a la DB
+   * @var pinchoMapper
+   */  
+  private $pinchoMapper;    
+  
+  public function __construct() {    
+    parent::__construct();
+    
+    $this->pinchoMapper = new PinchoMapper();
+
+    // Users controller operates in a "welcome" layout
+    // different to the "default" layout where the internal
+    // menu is displayed
+    $this->view->setLayout("welcome"); //pendiente de cambio
+  }
+  
+	  
+    public function listar() {
+	
+   
+  }
+  
+    public function consultar() {
+	
+   
+  }
+  
+    public function valorar() {
+	
+   
+  }
+}
+?>
