@@ -1,0 +1,14 @@
+
+	Para cada conjunto de casos de uso: 
+		- Crear su "bean" con getters, setters y utilidades 			-> /model/Cosa.php
+		- Crear su mapper (DAO) con las funciones con SQL para la DB 	-> /model/CosaMapper.php
+		- Crear el controlador y crear las funciones necesarias 		-> /controller/CosaController.php
+		- Crear la vista para cada una de las funciones 				-> /view/cosa/*
+		                                                                   
+	Las siguientes carpetas no requieren añadir nada, solo configurar:
+	/core
+	/css
+	
+	Cuando acabéis con los beans, borrad la carpeta /bean
+	                                                              
+		                                                                  
