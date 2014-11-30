@@ -3,6 +3,7 @@
 require_once (__DIR__ . "/../core/PDOConnection.php");
 
 require_once (__DIR__ . "/../model/Establecimiento.php");
+
 require_once (__DIR__ . "/../model/Pincho.php");
 
 /**
@@ -79,7 +80,7 @@ class PinchoMapper {
 		$pincho -> getFotosPincho(), 
 		$pincho -> getInfoPincho(), 
 		$pincho -> getIsValidado(), 
-		$pincho -> getEstablecimiento() -> getUsername() //Revisar
+		$pincho -> getEstablecimiento() -> getNombre() //Revisar
 		));
 	}
 
