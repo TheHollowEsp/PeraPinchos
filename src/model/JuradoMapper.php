@@ -32,24 +32,6 @@ class JuradoMapper {
 		return $juradoL;
 	}
   
-  public function juradoExistsByName(Jurado $nombreJurado) {
-    $stmt = $this->db->prepare("SELECT count(nombreJurado) FROM Jurado where nombreJurado=?");
-    $stmt->execute(array($nombreJurado));
-    
-    if ($stmt->fetchColumn() > 0) {   
-      return true;
-    } 
-  }
-  
-  public function juradoExistsByDNI($dniJurado) {
-    $stmt = $this->db->prepare("SELECT count(dniJurado) FROM Jurado where dniJurado=?");
-    $stmt->execute(array($dniJurado));
-    
-    if ($stmt->fetchColumn() > 0) {   
-      return true;
-    } 
-  }
-  
   public function isValidJurado($dniJurado, $nombreJurado) {
     $stmt = $this->db->prepare("SELECT count(dniJurado) FROM Jurado where dniJurado=? and nombreJurado=?");
     $stmt->execute(array($dniJurado, $nombreJurado));
