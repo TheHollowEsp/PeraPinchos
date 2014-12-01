@@ -35,22 +35,36 @@ class JuradoProfesionalController extends BaseController {
     // menu is displayed
     $this->view->setLayout("welcome"); //pendiente de cambio
   }
-  
+  	/**
+	 * Se llama a esta funcion con un GET para obtener el formulario
+	 * Se llama a esta funcion con un POST para intentar registrar al Jurado
+	 * Los datos que se esperan son dniJurado y nombreJurado
+	 */
 	public function registrar() {
 	
    
   }
-  
+    /**
+	 * Se llama a esta funcion solo con un GET para obtener la lista de elementos de la tabla Jurado
+	 */
     public function listar() {
 	
    
   }
-  
+  	/**
+	 * Se llama a esta funcion solo con un GET para obtener la información especifica
+	 * de un unico elemento de la tabla Jurado
+	 * El dato que se espera es dniJurado
+	 */
     public function consultar() {
 	
    
   }
-  
+  	/**
+	 * Se llama a esta funcion con un GET para obtener la informacion del elemento que se desea borrar
+	 * Se llama a esta funcion con un POST para borrar el elemento si todo es correcto
+	 * El dato que se espera es dniJurado
+	 */
     public function eliminar() {
 	
    
