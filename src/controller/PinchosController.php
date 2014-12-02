@@ -7,7 +7,7 @@ require_once (__DIR__ . "/../model/PinchoMapper.php");
 require_once (__DIR__ . "/../model/Establecimiento.php");
 
 require_once (__DIR__ . "/../controller/BaseController.php");
-
+ini_set('display_errors', 'On');
 /**
  * Class PinchosController
  *
@@ -36,7 +36,7 @@ class PinchosController extends BaseController {
 	}
 
 	//Equivalente a "listar todo"
-	public function index() {
+	public function listar() {
 		$pinchos = $this -> pinchoMapper -> findAll();
 
 		// manda el array que contiene los pinchos a la vista(view)
@@ -46,10 +46,10 @@ class PinchosController extends BaseController {
 		$this -> view -> render("pinchos", "index");
 
 	}
-	
+
 	// TODO: Pensar en una forma de hacer el join m:n para saber cuales son
 	public function listarParaJurado(){
-		
+
 	}
 
 	public function consultar() {
@@ -68,11 +68,11 @@ class PinchosController extends BaseController {
 		// Manda el objeto pincho a la vista
 		$this -> view -> setVariable("pincho", $pincho);
 
-		// renderiza la vista (/view/pinchos/view.php)
-		$this -> view -> render("pinchos", "view");
+		// renderiza la vista (/view/pinchos/consultar.php)
+		$this -> view -> render("pinchos", "consultar");
 
 	}
-	
+
 	//FIXME: En proceso
 	public function valorar() {
 		if (!isset($_GET["nombrePincho"])) {
@@ -111,9 +111,9 @@ class PinchosController extends BaseController {
 				$this -> postMapper -> update($post);
 
 				// POST-REDIRECT-GET
-				// Everything OK				
+				// Everything OK
 				$this -> view -> setFlash(sprintf(i18n("Post \"%s\" successfully updated."), $post -> getTitle()));
-				
+
 				// header("Location: index.php?controller=posts&action=index")
 				// die();
 				$this -> view -> redirect("posts", "index");

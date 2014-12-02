@@ -3,6 +3,7 @@
 
 require_once (__DIR__ . "/../core/ValidationException.php");
 
+ini_set('display_errors', 'On');
 /**
  * Class Establecimiento
  *

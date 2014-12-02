@@ -6,6 +6,8 @@ require_once (__DIR__ . "/../model/Establecimiento.php");
 
 require_once (__DIR__ . "/../model/Pincho.php");
 
+
+ini_set('display_errors', 'On');
 /**
  * Class PinchoMapper
  *
@@ -38,9 +40,10 @@ class PinchoMapper {
 
 		$pinchos = array();
 
-		foreach ($pinchos_db as $pincho) {			
+		foreach ($pinchos_db as $pincho) {
 			$establecimiento = new Establecimiento($pincho["Establecimiento_NombreEst"]);
-			array_push($pinchos, new Pincho($pincho["nombrePincho"], $pincho["Descripcion"], $pincho["Precio"], $pincho["Ingredientes"], $pincho["Info"]));
+			//Usar nombres de las columnas en la DB
+			array_push($pinchos, new Pincho($pincho["NombrePincho"], $pincho["Descripcion"], $pincho["Precio"], $pincho["Ingredientes"],$pincho["Fotos"], $pincho["Informacion"],$pincho["Validado"], $pincho["Establecimiento_NombreEst"]));
 		}
 
 		return $pinchos;
@@ -54,12 +57,12 @@ class PinchoMapper {
 	 * @return Pincho / NULL si no encuentra el pincho
 	 */
 	public function findById($nombrePincho) {
-		$stmt = $this -> db -> prepare("SELECT * FROM pincho WHERE id=? AND isValidado=1");
+		$stmt = $this -> db -> prepare("SELECT * FROM pincho WHERE NombrePincho=? AND Validado=1");
 		$stmt -> execute(array($nombrePincho));
 		$pincho = $stmt -> fetch(PDO::FETCH_ASSOC);
 
-		if (!sizeof($post) == 0) {
-			return new Pincho($pincho["nombrePincho"], $pincho["Descripcion"], $pincho["Precio"], $pincho["Ingredientes"], $pincho["Info"], new Establecimiento($pincho["Establecimiento_NombreEst"]));
+		if (!sizeof($pincho) == 0) {
+			return new Pincho($pincho["NombrePincho"], $pincho["Descripcion"], $pincho["Precio"], $pincho["Ingredientes"],$pincho["Fotos"], $pincho["Informacion"],$pincho["Validado"], $pincho["Establecimiento_NombreEst"]);
 		} else {
 			return NULL;
 		}
@@ -73,13 +76,13 @@ class PinchoMapper {
 	public function save(Pincho $pincho) {
 		$stmt = $this -> db -> prepare("INSERT INTO pincho (NombrePincho, Descripcion, Precio, Ingredientes, Fotos, Informacion, Validado, Establecimiento_NombreEst) (?,?,?,?,?,?,?,?)");
 		$stmt -> execute(array(
-		$pincho -> getNombrePincho(), 
-		$pincho -> getDescripcionPincho(), 
-		$pincho -> getPrecioPincho(), 
-		$pincho -> getIngredientesPincho(), 
-		$pincho -> getFotosPincho(), 
-		$pincho -> getInfoPincho(), 
-		$pincho -> getIsValidado(), 
+		$pincho -> getNombrePincho(),
+		$pincho -> getDescripcionPincho(),
+		$pincho -> getPrecioPincho(),
+		$pincho -> getIngredientesPincho(),
+		$pincho -> getFotosPincho(),
+		$pincho -> getInfoPincho(),
+		$pincho -> getIsValidado(),
 		$pincho -> getEstablecimiento() -> getNombre() //Revisar
 		));
 	}
@@ -92,14 +95,14 @@ class PinchoMapper {
 	public function update(Pincho $pincho) {
 		$stmt = $this -> db -> prepare("UPDATE pincho set Descripcion=?, Precio=?, Ingredientes=?, Fotos=?, Informacion=?, Validado=? where NombrePincho=?");
 		$stmt -> execute(array(
-		$pincho -> getDescripcionPincho(), 
-		$pincho -> getPrecioPincho(), 
-		$pincho -> getIngredientesPincho(), 
-		$pincho -> getFotosPincho(), 
-		$pincho -> getInfoPincho(), 
+		$pincho -> getDescripcionPincho(),
+		$pincho -> getPrecioPincho(),
+		$pincho -> getIngredientesPincho(),
+		$pincho -> getFotosPincho(),
+		$pincho -> getInfoPincho(),
 		$pincho -> getIsValidado(),
 		$pincho -> getNombrePincho()
-		)); 
+		));
 	} //Aquí no se cambia la clave foranea
 
 	/**

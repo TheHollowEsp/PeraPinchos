@@ -3,7 +3,9 @@
 
 require_once (__DIR__ . "/../core/ValidationException.php");
 
-class Post {
+ini_set('display_errors', 'On');
+
+class Pincho {
 
 	private $nombrePincho;
 	private $descripcionPincho;
@@ -14,7 +16,8 @@ class Post {
 	private $isValidado;
 	private $establecimiento;
 	//Poner la lista en el constructor luego.
-	public function __construct($nombrePincho = NULL, $descripcionPincho = NULL, $precioPincho = NULL, $ingredientesPincho = NULL, $fotosPincho = NULL, $infoPincho = NULL, $isValidado = NULL, Establecimiento $establecimiento = NULL) {
+
+	public function __construct($nombrePincho = NULL, $descripcionPincho = NULL, $precioPincho = NULL, $ingredientesPincho = NULL, $fotosPincho = NULL, $infoPincho = NULL, $isValidado = NULL, $establecimiento = NULL) {
 		$this -> nombrePincho = $nombrePincho;
 		$this -> descripcionPincho = $descripcionPincho;
 		$this -> precioPincho = $precioPincho;
