@@ -3,7 +3,7 @@
 
 require_once (__DIR__ . "/../core/ValidationException.php");
 
-class JuradoBean {
+class Concurso {
 	var $NombreC;
 	var $FechaIni;
 	var $FechaFin;
