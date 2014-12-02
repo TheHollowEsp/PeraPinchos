@@ -3,7 +3,7 @@
 
 require_once (__DIR__ . "/../core/ValidationException.php");
 
-class JuradoBean {
+class Jurado {
 	var $dniJurado;
 	var $nombreJurado;
 	var $isJuradoP;
@@ -47,12 +47,13 @@ class JuradoBean {
 	//revisa si el elemento jurado a troducir es correcto
 	public function checkIsValidForRegisterJurado() {
 		$errors = array();
-		if (strlen(trim($this -> dniJurado)) == 0) {
+		//if (strlen(trim($this -> dniJurado)) == 0) {
+		if(dniJurado == NULL){
 			$errors["dniJurado"] = "El DNI es obligatorio";
-			if (strlen($this->dniJurado) < 9) {
+		}else if (!strlen($this->dniJurado) == 9) {
 				$errors["dniJurado"] = "El DNI introducido tiene una longitud invalida";
-			}
-		}
+				}
+		
 		if (strlen(trim($this -> nombreJurado)) == 0) {
 			$errors["nombreJurado"] = "El Nombre del Jurado es obligatorio";
 		}
