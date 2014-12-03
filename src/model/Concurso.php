@@ -60,8 +60,8 @@ class Concurso {
 		$this -> Patrocinadores = $Patrocinadores;
 	}
 	
-	public function getNombreC() {
-		return $this -> NombreC;
+	public function getPremios() {
+		return $this -> $Premios;
 	}
 	
 	public function setPremios($Premios) {

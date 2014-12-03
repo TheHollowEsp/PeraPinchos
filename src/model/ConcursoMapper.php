@@ -38,11 +38,11 @@ class concursoMapper {
 		$concurso = array();
 
 		foreach ($concursos_db as $concurso) {			
-			$organizador = new Organizador($concurso["Organizador_DniOrg"]);
-			array_push($concurso, new concurso($concurso["nombreConcurso"], $concurso["fechaInicio"], $concurso["fechaFin"], $concurso["basesConcurso"], $concurso["patrocinadores"],$concurso["premios"],$organizador));
+			//$organizador = new Organizador($concurso["Organizador_DniOrg"]);
+			array_push($concurso, new concurso($concurso["NombreC"], $concurso["FechaIni"], $concurso["FechaFin"], $concurso["BasesCon"], $concurso["Patrocinadores"],$concurso["Premios"]));
 		}
 
-		return $concursos;
+		return $concurso;
 	}
 
 	/**
@@ -58,7 +58,7 @@ class concursoMapper {
 		$concurso = $stmt -> fetch(PDO::FETCH_ASSOC);
 
 		if (!sizeof($post) == 0) {
-			return new concurso($concurso["nombreConcurso"], $concurso["fechaInicio"], $concurso["fechaFin"], $concurso["basesConcurso"], $concurso["patrocinadores"], $concurso["premios"],new Organizador($concurso["Org"]));
+			return  new concurso($concurso["NombreC"], $concurso["FechaIni"], $concurso["FechaFin"], $concurso["BasesCon"], $concurso["Patrocinadores"],$concurso["Premios"]);
 		} else {
 			return NULL;
 		}

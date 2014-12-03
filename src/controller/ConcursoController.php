@@ -56,18 +56,13 @@ class ConcursoController extends BaseController {
 	 * Se llama a esta funcion solo con un GET para obtener la lista de elementos de la tabla Jurado
 	 */
 	public function listar() {
-		//Esta funcion solo la puede hacer el organizador, hay que poner al inicio de todo una comprobacion
-		//de sesion, falta cambiar
-		$concursoL = $this->ConcursoMapper->findAll();
-		if(!concursoL == NULL){
-			foreach ($concursoL as $concurso) {
-				$concursoT = $this->Concurso->__toString();//no se si esta bien
-				//falta agregar la vista, no se continuar
-			}
-		}else{
-			throw new Exception("No existe ningun concurso creado aun");
-		}
-		$this->view->render("posts", "view");//falta cambiar
+		$concurso = $this -> ConcursoMapper -> findAll();
+
+		// manda el array que contiene los pinchos a la vista(view)
+		$this -> view -> setVariable("concurso", $concurso);
+
+		// renderiza la vista (/view/pinchos/listar.php)
+		$this -> view -> render("concurso", "listar");
 	}
 	/**
 	 * Se llama a esta funcion solo con un GET para obtener la información especifica
