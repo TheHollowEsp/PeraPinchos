@@ -12,23 +12,11 @@ $errors = $view->getVariable("errors");
 
 $view->setVariable("title", "Consultar jurado");
 
-?><h1><?= i18n("jurado").": ".htmlentities($jurado->getDniJurado()) ?></h1>
-    <em><?= sprintf(i18n("Por %s"),$jurado->getNombreJurado) ?></em>
-    <p>
-    <?= htmlentities($jurado->getIsProfesional()) ?>
-    </p>
-
-
-
+?><h1><?= i18n("Jurado").": ".htmlentities($jurado->getNombreJurado()) ?></h1>
+	<em><?= sprintf(i18n("DNI: %s"),$jurado->getDniJurado()) ?></em> </br>
+	<em><?= sprintf(i18n("Nombre: %s"),$jurado->getNombreJurado()) ?></em></br>
+	<em><?= sprintf(i18n("Es jurado Profesional?\r\n")) ?></em></br>
+	<?php if ($jurado->getIsProfesional() == NULL){echo "NO";}else{echo "SI";}?>
 <?php
 
-if ($pincho->getIsValidado() == 0) echo(i18n("PINCHO NO VALIDADO"));
-?><h1><?= i18n("Pincho").": ".htmlentities($pincho->getNombrePincho()) ?></h1>
-	<em><?= sprintf(i18n("Descripcion: %s"),$pincho->getDescripcionPincho()) ?></em> </br>
-	<em><?= sprintf(i18n("Coste: %s"),$pincho->getPrecioPincho()) ?></em></br>
-	<em><?= sprintf(i18n("Ingredientes: %s"),$pincho->getIngredientesPincho()) ?></em></br>
-	<em><?= sprintf(i18n("Informacion adicional: %s"),$pincho->getInfoPincho()) ?></em></br>
 
-    <p>
-    <?= sprintf(i18n("Solo en: %s"),$pincho->getEstablecimiento()) ?>
-    </p>
