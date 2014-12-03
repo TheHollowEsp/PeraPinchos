@@ -1,16 +1,15 @@
 <?php
+require_once (__DIR__."/../core/ViewManager.php");
+require_once (__DIR__."/../core/I18n.php");
 
-require_once(__DIR__."/../core/ViewManager.php");
-require_once(__DIR__."/../core/I18n.php");
+require_once (__DIR__."/../model/Jurado.php");
+require_once (__DIR__."/../model/JuradoMapper.php");
 
-require_once(__DIR__."/../model/User.php");
-require_once(__DIR__."/../model/UserMapper.php");
-
-require_once(__DIR__."/../controller/BaseController.php");
+require_once (__DIR__."/../controller/BaseController.php");
 
 ini_set('display_errors', 'On');
 
-class JuradoProfesionalController extends BaseController {
+class JuradoController extends BaseController {
 
 	private $JuradoMapper;    
   
@@ -28,13 +27,13 @@ class JuradoProfesionalController extends BaseController {
 	public function registrarNewJurado() {
 		$jurado = new Jurado();
     
-		if (isset($_POST["dniJurado"])){
-		$jurado->setDniJurado($_POST["dniJurado"]);
-		$jurado->setNombreJurado($_POST["nombreJurado"]);
+		if (isset($_POST["DniJur"])){
+		$jurado->setDniJurado($_POST["DniJur"]);
+		$jurado->setNombreJurado($_POST["Nombre"]);
       
 		try{
 		$jurado->checkIsValidForRegisterJurado();
-		if (!$this->JuradoMapper->juradoExistsByDNI($_POST["dniJurado"])){
+		if (!$this->JuradoMapper->juradoExistsByDNI($_POST["DniJur"])){
 		$this->JuradoMapper->save($jurado);
 		$this->view->setFlash("dniJurado ".$jurado->getNombreJurado()." successfully added. Please login now");
 		$this->view->redirect("users", "login");//falta cambiar
@@ -50,7 +49,7 @@ class JuradoProfesionalController extends BaseController {
 		}
     }
     $this->view->setVariable("jurado", $jurado);//falta cambiar
-    $this->view->render("users", "register");//falta cambiar
+    $this->view->render("jurado", "registroJurado");//falta cambiar
   }
   
     /**
@@ -60,15 +59,9 @@ class JuradoProfesionalController extends BaseController {
 	//Esta funcion solo la puede hacer el organizador, hay que poner al inicio de todo una comprobacion
 	//de sesion, falta cambiar
 		$juradoL = $this->JuradoMapper->findAll();
-		if(!juradoL == NULL){
-		foreach ($juradoL as $jurado) {
-			$juradoT = $this->Jurado->__toString();//no se si esta bien
+		$this -> view -> setVariable("jurado", $juradoL);
 			//falta agregar la vista, no se continuar
-		}
-		}else{
-			throw new Exception("No existe ningun elemento en la tablar Jurado para listar");
-		}
-		$this->view->render("posts", "view");//falta cambiar
+		$this->view->render("jurado", "index");//falta cambiar
   }
   	/**
 	* Se llama a esta funcion solo con un GET para obtener la información especifica
@@ -85,8 +78,8 @@ class JuradoProfesionalController extends BaseController {
 		if ($jurado == NULL) {
 		throw new Exception("No existe ningun jurado con DNI: ".$juradodni);
 		}
-		$this->view->setVariable("post", $jurado);//falta cambiar
-		$this->view->render("posts", "view");//falta cambiar
+		$this->view->setVariable("jurado", $jurado);//falta cambiar
+		$this->view->render("jurado", "consultar");//falta cambiar
    
   }
   	/**
