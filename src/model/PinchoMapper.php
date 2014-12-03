@@ -76,6 +76,21 @@ class PinchoMapper {
 
 		return $pinchos;
 	}
+	
+	public function findAllNoValidado() {
+		$stmt = $this -> db -> query("SELECT * FROM pincho where Validado=0");
+		$pinchos_db = $stmt -> fetchAll(PDO::FETCH_ASSOC);
+
+		$pinchos = array();
+
+		foreach ($pinchos_db as $pincho) {
+			//$establecimiento = new Establecimiento($pincho["Establecimiento_NombreEst"]);
+			//Usar nombres de las columnas en la DB
+			array_push($pinchos, new Pincho($pincho["NombrePincho"], $pincho["Descripcion"], $pincho["Precio"], $pincho["Ingredientes"], $pincho["Fotos"], $pincho["Informacion"], $pincho["Validado"], $pincho["Establecimiento_NombreEst"]));
+		}
+
+		return $pinchos;
+	}
 
 	/**
 	 * Busca un pincho por su nombre en la DB.
