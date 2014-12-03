@@ -21,14 +21,11 @@ $view->setVariable ( "title", "Jurado" );
 			href="index.php?controller=jurado&amp;action=consultar&amp;dniJurado=<?= $jur->getDniJurado() ?>"><?= htmlentities($jur->getDniJurado()) ?></a>
 		</td>
 		<td>
-		<?= $jur->getDniJurado()?>
+		<?= $jur->getNombreJurado()?>
 	      </td>
 				<td>
-				<?= $jur->getNombreJurado()?>
+				<?= $jur->getIsProfesional()?>
 						</td>
-						<td>
-						<?= $jur->getIsProfesional()?>
-								</td>
 		
 	</tr>
     <?php endforeach; ?>
