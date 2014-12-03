@@ -35,19 +35,19 @@ class concursoMapper {
 		$stmt = $this -> db -> query("SELECT * FROM concurso");
 		$concursos_db = $stmt -> fetchAll(PDO::FETCH_ASSOC);
 
-		$concurso = array();
+		$concursoL = array();
 
 		foreach ($concursos_db as $concurso) {			
 			//$organizador = new Organizador($concurso["Organizador_DniOrg"]);
-			array_push($concurso, new concurso($concurso["NombreC"], $concurso["FechaIni"], $concurso["FechaFin"], $concurso["BasesCon"], $concurso["Patrocinadores"],$concurso["Premios"]));
+			array_push($concursoL, new Concurso($concurso["NombreC"], $concurso["FechaIni"], $concurso["FechaFin"], $concurso["BasesCon"], $concurso["Patrocinadores"],$concurso["Premios"]));
 		}
 
-		return $concurso;
+		return $concursoL;
 	}
 
 	/**
 	 * Busca un concurso por su nombre en la DB.
-	 * Nota: Solo buscará entre los concursos validados
+	 * Nota: Solo buscarï¿½ entre los concursos validados
 	 * Practicamente un consultar
 	 * @throws PDOException if a database error occurs
 	 * @return concurso / NULL si no encuentra el concurso
@@ -98,7 +98,7 @@ class concursoMapper {
 		$concurso -> getPatrocinadores(), 
 		$concurso -> getPremios(), 
 		)); 
-	} //Aquí no se cambia la clave foranea
+	} //Aquï¿½ no se cambia la clave foranea
 
 	/**
 	 * Borra el concurso de la base de datos

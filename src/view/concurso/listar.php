@@ -21,25 +21,23 @@ $view->setVariable ( "title", "Concurso" );
     <?php foreach ($concurso as $con): ?>
 	    <tr>
 			<td><a
-				href="index.php?controller=concurso&amp;action=consultar&amp;NombreC=<?= $con->getNombreC() ?>"><?= htmlentities($con->getNombreC()) ?></a>
-			</td>
-			<td>
-				<?= $con->getNombreC()?>
+				href="index.php?controller=concurso&amp;action=consultar&amp;NombreCon=<?= $con->getNombreCon() ?>"><?= htmlentities($con->getNombreCon()) ?></a>
+
 	    	</td>
 		  	<td>
-				<?= $con->getFechaIni()?>
+				<?= $con->getFechaIniCon()?>
 			</td>
 			<td>
-				<?= $con->getFechaFin()?>
+				<?= $con->getFechaFinCon()?>
 			</td>
 			<td>
-				<?= $con->getBasesCon()?>
+				<?= $con->getBasesConcurso()?>
 	    	</td>
 		  	<td>
-				<?= $con->getPatrocinadores()?>
+				<?= $con->getPatrocinadoresCon()?>
 			</td>
 			<td>
-				<?= $con->getPremios()?>
+				<?= $con->getPremiosCon()?>
 			</td>
 		
 	</tr>

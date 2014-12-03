@@ -1,5 +1,4 @@
 <?php
-
 require_once(__DIR__."/../core/ViewManager.php");
 require_once(__DIR__."/../core/I18n.php");
 
@@ -12,7 +11,7 @@ ini_set('display_errors', 'On');
 
 class ConcursoController extends BaseController {
 
-	private $ConcursoController;
+	private $ConcursoMapper;
 
 	public function __construct() {
 		parent::__construct();
@@ -35,7 +34,7 @@ class ConcursoController extends BaseController {
 				$concurso->checkIsValidForRegisterConcurso();//pendiente
 				if (!$this->ConcursoMapper->ConcursoExistsByDNI($_POST["NombreC"])){
 					$this->ConcursoMapper->save($concurso);
-					$this->view->setFlash("NombreC".$concurso->getNombreC()."Concurso añadido correctamente");
+					$this->view->setFlash("NombreC".$concurso->getNombreC()."Concurso aï¿½adido correctamente");
 					//$this->view->redirect("users", "login"); creo que sobra o mas bien no tiene mucho sentido aqui
 					 
 				} else {
@@ -56,16 +55,16 @@ class ConcursoController extends BaseController {
 	 * Se llama a esta funcion solo con un GET para obtener la lista de elementos de la tabla Jurado
 	 */
 	public function listar() {
-		$concurso = $this -> ConcursoMapper -> findAll();
+		$concursoL = $this -> ConcursoMapper -> findAll();
 
 		// manda el array que contiene los pinchos a la vista(view)
-		$this -> view -> setVariable("concurso", $concurso);
+		$this -> view -> setVariable("concurso", $concursoL);
 
 		// renderiza la vista (/view/pinchos/listar.php)
 		$this -> view -> render("concurso", "listar");
 	}
 	/**
-	 * Se llama a esta funcion solo con un GET para obtener la información especifica
+	 * Se llama a esta funcion solo con un GET para obtener la informaciï¿½n especifica
 	 * de un unico elemento de la tabla Jurado
 	 * El dato que se espera es dniJurado
 	 */

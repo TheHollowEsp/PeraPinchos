@@ -4,78 +4,78 @@
 require_once (__DIR__ . "/../core/ValidationException.php");
 
 class Concurso {
-	var $NombreC;
-	var $FechaIni;
-	var $FechaFin;
-	var $BasesCon;
-	var $Patrocinadores;
-	var $Premios;
+	var $NombreCon;
+	var $FechaIniCon;
+	var $FechaFinCon;
+	var $BasesConcurso;
+	var $PatrocinadoresCon;
+	var $PremiosCon;
 	
-	public function __construct($NombreC=NULL, $FechaIni=NULL, $FechaFin=NULL,$BasesCon=NULL,$Patrocinadores=NULL,$Premios=NULL) {
-		$this -> NombreC = $NombreC;
-		$this -> FechaIni = $FechaIni;
-		$this -> FechaFin = $FechaFin;
-		$this -> BasesCon = $BasesCon;
-		$this -> Patrocinadores = $Patrocinadores;
-		$this -> Premios = $Premios;
+	public function __construct($NombreCon=NULL, $FechaIniCon=NULL, $FechaFinCon=NULL,$BasesConcurso=NULL,$PatrocinadoresCon=NULL,$PremiosCon=NULL) {
+		$this -> NombreCon = $NombreCon;
+		$this -> FechaIniCon = $FechaIniCon;
+		$this -> FechaFinCon = $FechaFinCon;
+		$this -> BasesConcurso = $BasesConcurso;
+		$this -> PatrocinadoresCon = $PatrocinadoresCon;
+		$this -> PremiosCon = $PremiosCon;
 	}
 	
-	public function getNombreC() {
-		return $this -> NombreC;
+	public function getNombreCon() {
+		return $this -> NombreCon;
 	}
 	
-	public function setNombreC($nombreC) {
-		$this -> nombreC = $nombreC;
+	public function setNombreCon($NombreCon) {
+		$this -> NombreCon = $NombreCon;
 	}
 	
-	public function getFechaIni() {
-		return $this -> FechaIni;
+	public function getFechaIniCon() {
+		return $this -> FechaIniCon;
 	}
 	
-	public function setFechaIni($FechaIni) {
-		$this -> FechaIni = $FechaIni;
+	public function setFechaIniCon($FechaIniCon) {
+		$this -> FechaIniCon = $FechaIniCon;
 	}
 	
-	public function getFechaFin() {
-		return $this -> FechaFin;
+	public function getFechaFinCon() {
+		return $this -> FechaFinCon;
 	}
 	
-	public function setFechaFin($FechaFin) {
-		$this -> FechaFin = $FechaFin;
+	public function setFechaFinCon($FechaFinCon) {
+		$this -> FechaFinCon = $FechaFinCon;
 	}
 	
-	public function getBasesCon() {
-		return $this -> BsesCon;
+	public function getBasesConcurso() {
+		return $this -> BasesConcurso;
 	}
 	
-	public function setBasesCon($BasesCon) {
-		$this -> BasesCon = $BasesCon;
+	public function setBasesConcurso($BasesConcurso) {
+		$this -> BasesConcurso = $BasesConcurso;
 	}
 	
-	public function getPatrocinadores() {
-		return $this -> Patrocinadores;
+	public function getPatrocinadoresCon() {
+		return $this -> PatrocinadoresCon;
 	}
 	
-	public function setPatrocinadores($Patrocinadores) {
-		$this -> Patrocinadores = $Patrocinadores;
+	public function setPatrocinadoresCon($PatrocinadoresCon) {
+		$this -> PatrocinadoresCon = $PatrocinadoresCon;
 	}
 	
-	public function getPremios() {
-		return $this -> $Premios;
+	public function getPremiosCon() {
+		return $this -> PremiosCon;
 	}
 	
-	public function setPremios($Premios) {
-		$this -> Premios = $Premios;
+	public function setPremiosCon($PremiosCon) {
+		$this -> PremiosCon = $PremiosCon;
 	}
 	
 	public function __toString() {
 		return "ConcursoBean:
-			 nombre = $this->NombreC," . "
-			 fecha de inicio = $this->FechaIni," . "
-			 fecha de fin = $this->FechaFin," . "
-			 bases de concurso = $this->BasesCon, " . "
-			 patrocinadores = $this->Patrocinadores, " . "
-			 premios = $this->infoPincho, ";
+			 nombre = $this->NombreCon," . "
+			 fecha de inicio = $this->FechaIniCon," . "
+			 fecha de fin = $this->FechaFinCon," . "
+			 bases de concurso = $this->BasesConcurso, " . "
+			 PatrocinadoresCon = $this->PatrocinadoresCon, " . "
+			 PremiosCon = $this->infoPincho, ";
 	}
 	
 	/**
@@ -87,23 +87,23 @@ class Concurso {
 	 */
 	public function checkIsValidForCreate() {
 		$errors = array();
-		if (strlen(trim($this -> nombreC)) == 0) {
-			$errors["nombreC"] = "El nombre es obligatorio";
+		if (strlen(trim($this -> NombreCon)) == 0) {
+			$errors["NombreCon"] = "El nombre es obligatorio";
 		}
-		if (strlen(trim($this -> FechaIni)) == 0) {
-			$errors["FechaIni"] = "Necesita fecha de inicio";
+		if (strlen(trim($this -> FechaIniCon)) == 0) {
+			$errors["FechaIniCon"] = "Necesita fecha de inicio";
 		}
-		if (strlen(trim($this -> FechaFin)) == 0) {
-			$errors["FechaFin"] = "Necesita fecha de fin";
+		if (strlen(trim($this -> FechaFinCon)) == 0) {
+			$errors["FechaFinCon"] = "Necesita fecha de fin";
 		}
-		if (strlen(trim($this -> BasesCon)) == 0) {
-			$errors["BasesCon"] = "Es obligatorio poner las bases del concurso";
+		if (strlen(trim($this -> BasesConcurso)) == 0) {
+			$errors["BasesConcurso"] = "Es obligatorio poner las bases del concurso";
 		}
-		if (strlen(trim($this -> Patrocinadores)) == 0) {
-			$errors["Patrocinadores"] = "Se deben incluir los patrocinadores";
+		if (strlen(trim($this -> PatrocinadoresCon)) == 0) {
+			$errors["PatrocinadoresCon"] = "Se deben incluir los PatrocinadoresCon";
 		}
-		if (strlen(trim($this -> Premios)) == 0) {
-			$errors["Premios"] = "Deben existir los premios";
+		if (strlen(trim($this -> PremiosCon)) == 0) {
+			$errors["PremiosCon"] = "Deben existir los PremiosCon";
 		}
 		if (sizeof($errors) > 0) {
 			throw new ValidationException($errors, "Concurso no valido");
@@ -121,8 +121,8 @@ class Concurso {
 	public function checkIsValidForUpdate() {
 		$errors = array();
 	
-		if (!isset($this -> NombreC)) {
-			$errors["NombreCUpdate"] = "Es obligatorio que tenga nombre";
+		if (!isset($this -> NombreCon)) {
+			$errors["NombreConUpdate"] = "Es obligatorio que tenga nombre";
 		}
 	
 		try {
