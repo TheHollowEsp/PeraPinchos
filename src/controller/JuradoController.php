@@ -61,7 +61,7 @@ class JuradoController extends BaseController {
 		$juradoL = $this->JuradoMapper->findAll();
 		$this -> view -> setVariable("jurado", $juradoL);
 			//falta agregar la vista, no se continuar
-		$this->view->render("jurado", "index");//falta cambiar
+		$this->view->render("jurado", "listar");//falta cambiar
   }
   	/**
 	* Se llama a esta funcion solo con un GET para obtener la información especifica
