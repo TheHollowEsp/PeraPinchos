@@ -16,7 +16,7 @@
 <input type="submit" value="<?= i18n("Login") ?>">
 </form>
 
-<p><?= i18n("Not user?")?> <a href="index.php?controller=users&amp;action=register"><?= i18n("Register here!")?></a></p>
+<p><?= i18n("Not user?")?> <a href="index.php?controller=registro&amp;action=registrar"><?= i18n("Register here!")?></a></p>
 <?php $view->moveToFragment("css");?>
     <link rel="stylesheet" type="text/css" src="css/style2.css">
 <?php $view->moveToDefaultFragment(); ?>

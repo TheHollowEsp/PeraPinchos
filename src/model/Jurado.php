@@ -48,11 +48,9 @@ class Jurado {
 	public function checkIsValidForRegisterJurado() {
 		$errors = array();
 		//if (strlen(trim($this -> dniJurado)) == 0) {
-		if(dniJurado == NULL){
-			$errors["dniJurado"] = "El DNI es obligatorio";
-		}else if (!strlen($this->dniJurado) == 9) {
+		if (strlen($this->dniJurado) != 9) {
 				$errors["dniJurado"] = "El DNI introducido tiene una longitud invalida";
-				}
+		}
 		
 		if (strlen(trim($this -> nombreJurado)) == 0) {
 			$errors["nombreJurado"] = "El Nombre del Jurado es obligatorio";

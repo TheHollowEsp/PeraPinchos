@@ -15,5 +15,5 @@
 </form>
 
 <form action="index.php?controller=establecimiento&amp;action=registrarEstablecimiento" method="POST">
-<input type="submit" value="<?= i18n("Registrate como Establecimiento") ?>"> "hay que crearlo en el controlador del establecimiento" 
+<input type="submit" value="<?= i18n("Registrate como Establecimiento") ?>">
 </form>

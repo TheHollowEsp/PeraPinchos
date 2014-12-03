@@ -4,19 +4,9 @@
 require_once(__DIR__."/../core/PDOConnection.php");
 
 ini_set('display_errors', 'On');
-/**
- * Class EstablecimientoMapper
- *
- * Interfaz DB para entidades Establecimiento
- * 
- * @author hrlopez
- */
+
 class EstablecimientoMapper {
 
-  /**
-   * Reference to the PDO connection
-   * @var PDO
-   */
   private $db;
   
   public function __construct() {
@@ -39,9 +29,9 @@ class EstablecimientoMapper {
    * @param string $username the username to check
    * @return boolean true if the username exists, false otherwise
    */
-  public function usernameExists($username) {
+  public function establecimientoExists($nombreEst) {
     $stmt = $this->db->prepare("SELECT count(NombreEst) FROM establecimiento where NombreEst=?");
-    $stmt->execute(array($username));
+    $stmt->execute(array($nombreEst));
     
     if ($stmt->fetchColumn() > 0) {   
       return true;

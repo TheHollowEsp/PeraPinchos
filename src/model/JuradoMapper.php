@@ -3,6 +3,8 @@
 
 require_once(__DIR__."/../core/PDOConnection.php");
 
+
+
 class JuradoMapper {
 
   private $db;

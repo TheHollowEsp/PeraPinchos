@@ -66,5 +66,16 @@ class Establecimiento {
 	public function setWeb($web) {
 		$this -> web = $web;
 	}
-
+	
+	public function checkIsValidForRegisterEstablecimiento() {
+		$errors = array();
+		//if (strlen(trim($this -> dniJurado)) == 0) {
+		if(nombreEst == NULL){
+			$errors["nombreEst"] = "El nombre del estalbecimiento es obligatorio";
+		}
+		
+		if (sizeof($errors)>0){
+			throw new ValidationException($errors, "Jurado no valido");
+		}
+  }
 }
