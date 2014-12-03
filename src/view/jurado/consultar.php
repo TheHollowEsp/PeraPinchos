@@ -17,7 +17,7 @@ $view->setVariable("title", "Consultar jurado");
 	<em><?= sprintf(i18n("Nombre: %s"),$jurado->getNombreJurado()) ?></em></br>
 	<em><?= sprintf(i18n("Es jurado Profesional?\r\n")) ?></em></br>
 	<?php if ($jurado->getIsProfesional() == NULL){echo "NO";}else{echo "SI";}?>
-	<form action="index.php?controller=jurado&amp;action=eliminar" method="POST">      
+	<form action="index.php?controller=jurado&amp;action=eliminar&dniJurado=<?= $jurado->getDniJurado()?>"  method="POST">      
       <input type="submit" value="<?= i18n("Eliminar")?>">
 </form>
 <?php
