@@ -88,9 +88,6 @@ class JuradoController extends BaseController {
 	* El dato que se espera es dniJurado
 	*/
     public function eliminar() {
-		if (!isset($_POST["dniJurado"])) {
-			throw new Exception("Es obligatorio proporcionar el DNI del jurado a eliminar");
-		}
 		$juradodni = $_REQUEST["dniJurado"];
 		$jurado = $this->JuradoMapper->findByDNI($juradodni);
 		if ($jurado == NULL) {
@@ -99,14 +96,14 @@ class JuradoController extends BaseController {
     
     // habria que comprobar, por temas de seguridad, que fuese el organizador el que 
 	// elimina, sino, quitar este if
-		if ($jurado->getAuthor() != $this->currentUser) {
-			throw new Exception("Post author is not the logged user");
-		}// falta cmabiar todo este if
+		//if ($jurado->getAuthor() != $this->currentUser) {
+		//	throw new Exception("Post author is not the logged user");
+		//}// falta cmabiar todo este if
     
 		$this->JuradoMapper->delete($jurado);
 
 		$this->view->setFlash("jurado \"".$jurado ->getNombreJurado()."\" eliminado correctamente.");    
-		$this->view->redirect("posts", "index");//falta cambiar
+		$this->view->redirect("jurado", "listar");
   }
 }
 ?>
