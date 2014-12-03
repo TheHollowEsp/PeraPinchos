@@ -16,7 +16,7 @@ ini_set ( 'display_errors', 'On' );
   </head>
 <body>
 	<header>
-		<h1><?= i18n("Welcome to the Blog App!") ?></h1>
+		<h1><?= i18n("Bienvenido a la plataforma Pera Pinchos") ?></h1>
 	</header>
 	<main> <!-- flash message -->
 	<div id="flash">

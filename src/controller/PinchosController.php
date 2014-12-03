@@ -42,8 +42,8 @@ class PinchosController extends BaseController {
 		// manda el array que contiene los pinchos a la vista(view)
 		$this -> view -> setVariable("pinchos", $pinchos);
 
-		// renderiza la vista (/view/pinchos/index.php)
-		$this -> view -> render("pinchos", "index");
+		// renderiza la vista (/view/pinchos/listar.php)
+		$this -> view -> render("pinchos", "listar");
 
 	}
 

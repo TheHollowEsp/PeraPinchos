@@ -57,7 +57,8 @@ class PinchoMapper {
 	 * @return Pincho / NULL si no encuentra el pincho
 	 */
 	public function findById($nombrePincho) {
-		$stmt = $this -> db -> prepare("SELECT * FROM pincho WHERE NombrePincho=? AND Validado=1");
+		//$stmt = $this -> db -> prepare("SELECT * FROM pincho WHERE NombrePincho=? AND Validado=1");
+		$stmt = $this -> db -> prepare("SELECT * FROM pincho WHERE NombrePincho=?");
 		$stmt -> execute(array($nombrePincho));
 		$pincho = $stmt -> fetch(PDO::FETCH_ASSOC);
 
