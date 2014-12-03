@@ -90,7 +90,7 @@ class PinchosController extends BaseController {
 				$pincho -> checkIsValidForCreate();
 				// if it fails, ValidationException
 
-				if (!$this -> pinchoMapper -> pinchoExists($_POST["pincho"])) {
+				if (!$this -> pinchoMapper -> pinchoExists($_POST["nombre"])) {
 
 					// save the User object into the database
 					$this -> pinchoMapper -> save($pincho);

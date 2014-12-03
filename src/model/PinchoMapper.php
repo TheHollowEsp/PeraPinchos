@@ -119,7 +119,15 @@ class PinchoMapper {
 	 */
 	public function save(Pincho $pincho) {
 		$stmt = $this -> db -> prepare("INSERT INTO pincho (NombrePincho, Descripcion, Precio, Ingredientes, Fotos, Informacion, Validado, Establecimiento_NombreEst) (?,?,?,?,?,?,?,?)");
-		$stmt -> execute(array($pincho -> getNombrePincho(), $pincho -> getDescripcionPincho(), $pincho -> getPrecioPincho(), $pincho -> getIngredientesPincho(), $pincho -> getFotosPincho(), $pincho -> getInfoPincho(), $pincho -> getIsValidado(), $pincho -> getEstablecimiento() -> getNombre() //Revisar
+		$stmt -> execute(array(
+		 $pincho -> getNombrePincho(),
+		 $pincho -> getDescripcionPincho(),
+		 $pincho -> getPrecioPincho(),
+		 $pincho -> getIngredientesPincho(), 
+		 $pincho -> getFotosPincho(), 
+		 $pincho -> getInfoPincho(), 
+		 $pincho -> getIsValidado(),
+		 $pincho -> getEstablecimiento()
 		));
 	}
 
@@ -142,5 +150,14 @@ class PinchoMapper {
 		$stmt = $this -> db -> prepare("DELETE from pincho WHERE NombrePincho=?");
 		$stmt -> execute(array($pincho -> getNombrePincho()));
 	}
+	
+	public function pinchoExists($nombrePincho) {
+		$stmt = $this->db->prepare("SELECT count(NombrePincho) FROM pincho where NombrePincho=?");
+		$stmt->execute(array($nombreJurado));
+    
+		if ($stmt->fetchColumn() > 0) {
+			return true;
+		}
+  }
 
 }

@@ -7,25 +7,25 @@ ini_set('display_errors', 'On');
 
 class Pincho {
 
-	private $nombrePincho;
-	private $descripcionPincho;
-	private $precioPincho;
-	private $ingredientesPincho;
-	private $fotosPincho;
-	private $infoPincho;
-	private $isValidado;
-	private $establecimiento;
+	private $NombrePincho;
+	private $Descripcion;
+	private $Precio;
+	private $Ingredientes;
+	private $Fotos;
+	private $Informacion;
+	private $Validado;
+	private $Establecimiento_NombreEst;
 	//Poner la lista en el constructor luego.
 
-	public function __construct($nombrePincho = NULL, $descripcionPincho = NULL, $precioPincho = NULL, $ingredientesPincho = NULL, $fotosPincho = NULL, $infoPincho = NULL, $isValidado = NULL, $establecimiento = NULL) {
+	public function __construct($nombrePincho = NULL, $Descripcion = NULL, $Precio = NULL, $Ingredientes = NULL, $Fotos = NULL, $Informacion = NULL, $Validado = NULL, $Establecimiento_NombreEst_NombreEst = NULL) {
 		$this -> nombrePincho = $nombrePincho;
-		$this -> descripcionPincho = $descripcionPincho;
-		$this -> precioPincho = $precioPincho;
-		$this -> ingredientesPincho = $ingredientesPincho;
-		$this -> fotosPincho = $fotosPincho;
-		$this -> infoPincho = $infoPincho;
-		$this -> isValidado = $isValidado;
-		$this -> establecimiento = $establecimiento;
+		$this -> Descripcion = $Descripcion;
+		$this -> Precio = $Precio;
+		$this -> Ingredientes = $Ingredientes;
+		$this -> Fotos = $Fotos;
+		$this -> Informacion = $Informacion;
+		$this -> Validado = $Validado;
+		$this -> Establecimiento_NombreEst = $Establecimiento_NombreEst;
 	}
 
 	public function getNombrePincho() {
@@ -37,63 +37,63 @@ class Pincho {
 	}
 
 	public function getDescripcionPincho() {
-		return $this -> descripcionPincho;
+		return $this -> Descripcion;
 	}
 
-	public function setDescripcionPincho($descripcionPincho) {
-		$this -> descripcionPincho = $descripcionPincho;
+	public function setDescripcionPincho($Descripcion) {
+		$this -> Descripcion = $Descripcion;
 	}
 
 	public function getPrecioPincho() {
-		return $this -> precioPincho;
+		return $this -> Precio;
 	}
 
-	public function setPrecioPincho($precioPincho) {
-		$this -> precioPincho = $precioPincho;
+	public function setPrecioPincho($Precio) {
+		$this -> precioPincho = $Precio;
 	}
 
 	public function getIngredientesPincho() {
-		return $this -> ingredientesPincho;
+		return $this -> Ingredientes;
 	}
 
-	public function setIngredientesPincho($ingredientesPincho) {
-		$this -> ingredientesPincho = $ingredientesPincho;
+	public function setIngredientesPincho($Ingredientes) {
+		$this -> Ingredientes = $Ingredientes;
 	}
 
 	public function getFotosPincho() {
-		return $this -> fotosPincho;
+		return $this -> Fotos;
 	}
 
-	public function setFotosPincho($fotosPincho) {
-		$this -> fotosPincho = $fotosPincho;
+	public function setFotosPincho($Fotos) {
+		$this -> Fotos = $Fotos;
 	}
 
 	public function getInfoPincho() {
-		return $this -> infoPincho;
+		return $this -> Informacion;
 	}
 
-	public function setInfoPincho($infoPincho) {
-		$this -> infoPincho = $infoPincho;
+	public function setInfoPincho($Informacion) {
+		$this -> Informacion = $Informacion;
 	}
 
 	public function getIsValidado() {
-		return $this -> isValidado;
+		return $this -> Validado;
 	}
 
-	public function setIsValidado($isValidado) {
-		$this -> isValidado = $isValidado;
+	public function setIsValidado($Validado) {
+		$this -> Validado = $Validado;
 	}
 
 	public function getEstablecimiento() {
-		return $this -> establecimiento;
+		return $this -> Establecimiento_NombreEst;
 	}
 
-	public function setEstablecimiento($establecimiento) {
-		$this -> establecimiento = $establecimiento;
+	public function setEstablecimiento($Establecimiento_NombreEst) {
+		$this -> Establecimiento_NombreEst = $Establecimiento_NombreEst;
 	}
 
 	public function __toString() {
-		return "UsuarioBean: nombre = $this->nombrePincho," . "descripcion = $this->descripcionPincho," . "precio = $this->precioPincho," . "ingredientes = $this->ingredientesPincho, " . "fotos = $this->fotosPincho, " . "info = $this->infoPincho, " . "isValidado = $this->isValidado";
+		return "PinchoBean: nombre = $this->nombrePincho," . "descripcion = $this->Descripcion," . "precio = $this->Precio," . "ingredientes = $this->Ingredientes, " . "fotos = $this->Fotos, " . "info = $this->Informacion, " . "Validado = $this->Validado";
 	}
 
 	/**
@@ -108,23 +108,23 @@ class Pincho {
 		if (strlen(trim($this -> nombrePincho)) == 0) {
 			$errors["nombrePincho"] = "El titulo es obligatorio";
 		}
-		if (strlen(trim($this -> precioPincho)) == 0) {
-			$errors["precioPincho"] = "El precio es obligatorio";
+		if (strlen(trim($this -> Precio)) == 0) {
+			$errors["Precio"] = "El precio es obligatorio";
 		}
-		if (strlen(trim($this -> ingredientesPincho)) == 0) {
-			$errors["ingredientesPincho"] = "Es necesario el listado de ingredientes";
+		if (strlen(trim($this -> Ingredientes)) == 0) {
+			$errors["Ingredientes"] = "Es necesario el listado de ingredientes";
 		}
-		if (strlen(trim($this -> fotosPincho)) == 0) {
-			$errors["fotosPincho"] = "Es obligatorio que tenga foto";
+		if (strlen(trim($this -> Fotos)) == 0) {
+			$errors["Fotos"] = "Es obligatorio que tenga foto";
 		}
-		if (strlen(trim($this -> descripcionPincho)) == 0) {
-			$errors["descripcionPincho"] = "La descrpcion no puede estar vacia";
+		if (strlen(trim($this -> Descripcion)) == 0) {
+			$errors["Descripcion"] = "La descrpcion no puede estar vacia";
 		}
-		if (strlen(trim($this -> infoPincho)) == 0) {
-			$errors["infoPincho"] = "La informacion adicional no puede estar vacia";
+		if (strlen(trim($this -> Informacion)) == 0) {
+			$errors["Informacion"] = "La informacion adicional no puede estar vacia";
 		}
-		if (strlen(trim($this -> isValidado)) > 1) {
-			$errors["isValidado"] = "Error en estatus de validacion";
+		if (strlen(trim($this -> Validado)) > 1) {
+			$errors["Validado"] = "Error en estatus de validacion";
 		}
 		if (sizeof($errors) > 0) {
 			throw new ValidationException($errors, "Pincho no valido");
