@@ -17,11 +17,11 @@ class JuradoMapper {
 	* @return void
 	*/
 	public function save(Jurado $jurado) {
-		$stmt = $this->db->prepare("INSERT INTO Jurado values (?,?,?)");
+		$stmt = $this->db->prepare("INSERT INTO jurado values (?,?,?)");
 		$stmt->execute(array(
 		$jurado->getDniJurado(), 
 		$jurado->getNombreJurado(), 
-		$jurado->getIsProfesional));  
+		$jurado->getIsProfesional()));  
   }
   
   	/**
@@ -47,12 +47,12 @@ class JuradoMapper {
 	* @return void
 	*/
 	public function juradoExistsByName(Jurado $nombreJurado) {
-		$stmt = $this->db->prepare("SELECT count(nombreJurado) FROM Jurado where nombreJurado=?");
+		$stmt = $this->db->prepare("SELECT count(nombreJurado) FROM jurado where Nombre=?");
 		$stmt->execute(array($nombreJurado));
     
-		if ($stmt->fetchColumn() > 0) {   
+		if ($stmt->fetchColumn() > 0) {
 			return true;
-		} 
+		}
   }
   
 	/**
@@ -61,12 +61,12 @@ class JuradoMapper {
 	* @return void
 	*/
 	public function juradoExistsByDNI($dniJurado) {
-		$stmt = $this->db->prepare("SELECT count(dniJurado) FROM Jurado where dniJurado=?");
+		$stmt = $this->db->prepare("SELECT count(DniJur) FROM jurado where DniJur=?");
 		$stmt->execute(array($dniJurado));
     
 		if ($stmt->fetchColumn() > 0) {   
 			return true;
-		} 
+		}
   }
   
 	/**
@@ -75,7 +75,7 @@ class JuradoMapper {
 	* @return jurado
 	*/
     public function findByDNI($juradodni){
-		$stmt = $this->db->prepare("SELECT * FROM Jurado WHERE dniJurado=?");
+		$stmt = $this->db->prepare("SELECT * FROM jurado WHERE DniJur=?");
 		$stmt->execute(array($juradodni));
 		$jurado = $stmt->fetch(PDO::FETCH_ASSOC);
     
@@ -83,7 +83,7 @@ class JuradoMapper {
 			return new jurado(
 		$jurado["DniJur"],
 		$jurado["Nombre"],
-		$jurado["Juradocol"],
+		$jurado["Juradocol"]);
 		} else {
 			return NULL;
 		}   
@@ -95,7 +95,7 @@ class JuradoMapper {
 	* @return void
 	*/
 	public function isValidJurado($dniJurado, $nombreJurado) {
-		$stmt = $this->db->prepare("SELECT count(dniJurado) FROM Jurado where dniJurado=? and nombreJurado=?");
+		$stmt = $this->db->prepare("SELECT count(DniJur) FROM jurado where DniJur=? and Nombre=?");
 		$stmt->execute(array($dniJurado, $nombreJurado));
     
 		if ($stmt->fetchColumn() > 0) {
@@ -109,7 +109,7 @@ class JuradoMapper {
 	 * @return void
 	 */
   	public function delete(Jurado $jurado) {
-		$stmt = $this -> db -> prepare("DELETE from jurado WHERE dniJurado=?");
+		$stmt = $this -> db -> prepare("DELETE from jurado WHERE DniJur=?");
 		$stmt -> execute(array($jurado -> getDniJurado()));
 	}
 	

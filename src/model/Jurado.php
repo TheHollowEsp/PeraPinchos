@@ -8,7 +8,7 @@ class Jurado {
 	var $nombreJurado;
 	var $isJuradoP;
 	
-	public function __construct(dniJurado=NULL, nombreJurado=NULL, isJuradoP=NULL) {
+	public function __construct($dniJurado=NULL, $nombreJurado=NULL, $isJuradoP=NULL) {
 		$this -> dniJurado = $dniJurado;
 		$this -> nombreJurado = $nombreJurado;
 		$this -> isJuradoP = $isJuradoP;
