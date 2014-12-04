@@ -122,9 +122,9 @@ class JuradoMapper {
 	 * 
 	 */
 	 
-	    public function isValidUser($DniJur, $PasswordJ) {
-		$stmt = $this->db->prepare("SELECT count(NombreEst) FROM Jurado where DniJur=? and PasswordJ=?");
-		$stmt->execute(array($DniJur, $PasswordJ));
+	    public function isValidUser($username, $passwd) {
+		$stmt = $this->db->prepare("SELECT count(DniJur) FROM jurado where DniJur=? and PasswordJ=?");
+		$stmt->execute(array($username, $passwd));
 		if ($stmt->fetchColumn() > 0) {
 		return true;
 	}

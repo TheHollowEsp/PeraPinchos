@@ -8,7 +8,7 @@ $organizador= $view -> getVariable("organizador");
 $view -> setVariable("title", "Registrar organizador");
 ?>
 <h1><?= i18n("Registrarse como Organizador") ?></h1>
-<form action="index.php?controller=pinchos&amp;action=proponer" method="POST">
+<form action="index.php?controller=organizador&amp;action=registrarOrganizador" method="POST">
       <?= i18n("DNI") ?>: <input type="text" name="DniOrg" 
 			value="">
       <?= isset($errors["DniOrg"]) ? $errors["DniOrg"] : "" ?><br>
@@ -24,6 +24,10 @@ $view -> setVariable("title", "Registrar organizador");
       <?= i18n("Email") ?>: <input type="text" name="Email" 
 			value="">
       <?= isset($errors["Email"]) ? $errors["Email"] : "" ?><br>
+      
+      <?= i18n("PasswordO") ?>: <input type="password" name="PasswordO" 
+			value="">
+      <?= isset($errors["PasswordO"]) ? $errors["PasswordO"] : "" ?><br>
       
       <input type="submit" value="<?= i18n("Registrarse") ?>">
 </form>

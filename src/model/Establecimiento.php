@@ -18,13 +18,15 @@ class Establecimiento {
 	private $horario;
 	private $fotos;
 	private $web;
+	private $passwordE;
 
-	public function __construct($nombreEst = NULL, $direccion = NULL, $horario = NULL, $fotos = NULL, $web = NULL) {
+	public function __construct($nombreEst = NULL, $direccion = NULL, $horario = NULL, $fotos = NULL, $web = NULL, $passwordE = NULL) {
 		$this -> nombreEst = $nombreEst;
 		$this -> direccion = $direccion;
 		$this -> horario = $horario;
 		$this -> fotos = $fotos;
 		$this -> web = $web;
+		$this -> passwordE = $passwordE;
 	}
 
 	public function getNombreEst() {
@@ -67,13 +69,22 @@ class Establecimiento {
 		$this -> web = $web;
 	}
 	
+		public function getPasswordE() {
+		return $this -> passwordE;
+	}
+
+	public function setPasswordE($passwordE) {
+		$this -> passwordE = $passwordE;
+	}
 	public function checkIsValidForRegisterEstablecimiento() {
 		$errors = array();
 		//if (strlen(trim($this -> dniJurado)) == 0) {
-		if(nombreEst == NULL){
+		if(strlen(trim($this -> nombreEst)) == 0){
 			$errors["nombreEst"] = "El nombre del estalbecimiento es obligatorio";
 		}
-		
+				if(strlen(trim($this -> passwordE)) == 0){
+			$errors["passwordE"] = "El password del estalbecimiento es obligatorio";
+		}
 		if (sizeof($errors)>0){
 			throw new ValidationException($errors, "Jurado no valido");
 		}

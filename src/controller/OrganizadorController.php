@@ -45,19 +45,30 @@ class OrganizadorController extends BaseController {
 	 */
 	public function registrarOrganizador(){
 		$organizador = new Organizador();
-		
+		if (isset($_POST["DniOrg"])){
+		$organizador->setDniOrg($_POST["DniOrg"]);
+		$organizador->setNombreOrg($_POST["NombreOrg"]);
+		$organizador->setTelefono($_POST["Telefono"]);
+		$organizador->setEmail($_POST["Email"]);
+		$organizador->setPasswordO($_POST["PasswordO"]);
 		try{
 			$organizador -> checkIsValidForCreate();
-			$this->OrganizadorMapper->save($organizador);
-			$this->view->setFlash("Organizador añadido correctamente, ya puedes loguearte");
+			if (!$this->OrganizadorMapper->organizadorExistsByDNI($_POST["DniOrg"])){
+				$this->OrganizadorMapper->save($organizador);
+			$this->view->setFlash("Organizador creado correctamente, ya puedes loguearte");
 			$this->view->redirect("users","login"); //falta cambiar
+			}else{
+			$errors = array();
+			$errors["DniOrg"] = "Ya existe un organizador con ese mismo DNI";
+			$this->view->setVariable("errors", $errors);
+			}
 		}catch(ValidationException $ex){
 			$errors = $ex->getErrors();
 			$this->view->setVariable("errors",$errors);
 		}
-		
+		}
 		$this->view->setVariable("organizador",$organizador);//falta cambiar
-		$this->view->render("users","register");//falta cambiar
+		$this->view->render("organizador","registro");//falta cambiar
 	}
 	
 	public function validarPincho(){

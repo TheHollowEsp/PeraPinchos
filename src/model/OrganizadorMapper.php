@@ -2,14 +2,16 @@
 // file: model/PostMapper.php
 require_once (__DIR__ . "/../core/PDOConnection.php");
 
-require_once (__DIR__ . "/../model/Organizador.php");
-
 /**
  * Interfaz de la DB para los concursos
  */
-class ConcursoMapper {
+class OrganizadorMapper {
 
+	private $db;
 
+	public function __construct() {
+		$this -> db = PDOConnection::getInstance();
+	}
 
 	/*
 	 * Guarda el concurso en la DB
@@ -17,15 +19,13 @@ class ConcursoMapper {
 	 * @return void
 	 */
 	public function save(Organizador $organizador) {
-		$stmt = $this -> db -> prepare("INSERT INTO organizador (DniOrg, NombreOrg, Telefono, Email) (?,?,?,?)");
+		$stmt = $this -> db -> prepare("INSERT INTO organizador values (?,?,?,?,?)");
 		$stmt -> execute(array(
 		$organizador -> getDniOrg(), 
 		$organizador -> getNombreOrg(), 
 		$organizador -> getTelefono(), 
-		$organizador-> getEmail(),  
-		
-		//$concurso -> getEstablecimiento() -> getUsername() //Revisar
-		));
+		$organizador-> getEmail(),
+		$organizador -> getPasswordO()));
 	}
 	
 	/**
@@ -33,13 +33,13 @@ class ConcursoMapper {
 	 * 
 	 */
 	 
-	    public function isValidUser($DniJur, $PasswordJ) {
+	    public function isValidUser($DniOrg, $PasswordO) {
 		$stmt = $this->db->prepare("SELECT count(DniOrg) FROM Organizador where DniOrg=? and PasswordO=?");
 		$stmt->execute(array($DniOrg, $PasswordO));
 		if ($stmt->fetchColumn() > 0) {
 		return true;
 	}
-
+		}
 	/**
 	 * Le hace el update a un concurso
 	 * @throws PDOException if a database error occurs
@@ -52,8 +52,9 @@ class ConcursoMapper {
 		$organizador -> getNombreOrg(),
 		$organizador -> getTelefono(),
 		$organizador-> getEmail(),
+		$organizador-> getPasswordO()
 		)); 
-	} //Aquí no se cambia la clave foranea
+	} //Aquï¿½ no se cambia la clave foranea
 
 	/**
 	 * Borra el concurso de la base de datos
@@ -64,5 +65,14 @@ class ConcursoMapper {
 		$stmt = $this -> db -> prepare("DELETE from concurso WHERE Nombrec=?");
 		$stmt -> execute(array($concurso -> getNombreconcurso()));
 	}
+	
+		public function organizadorExistsByDNI($DniOrg) {
+		$stmt = $this->db->prepare("SELECT count(DniOrg) FROM organizador where DniOrg=?");
+		$stmt->execute(array($DniOrg));
+    
+		if ($stmt->fetchColumn() > 0) {
+			return true;
+		}
+  }
 
 }

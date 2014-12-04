@@ -64,41 +64,24 @@ class UsersController extends BaseController {
    * @return void
    */
   public function login() {
-    if (isset($_POST["username"])){ // reaching via HTTP Post...
-	//process login form
-	$tipo = $_POST["type"];
-	if($tipo == "Establecimiento"){
-		 if ($this->EstablecimientoMapper->isValidUser($_POST["username"], $_POST["passwd"])) {
-			$_SESSION["currentuser"]=$_POST["username"];
-			// send user to the restricted area (HTTP 302 code)
-			$this->view->redirect("posts", "index");//falta redireccion
-		}else{
-			$errors = array();
-			$errors["general"] = "Usuario no valido";
-			$this->view->setVariable("errors", $errors);
-			}
-	}
-	if($tipo == "Organizador"){
-		if ($this->OrganizadorMapper->isValidUser($_POST["username"], $_POST["passwd"])) {
-			$_SESSION["currentuser"]=$_POST["username"];
-			// send user to the restricted area (HTTP 302 code)
-			$this->view->redirect("posts", "index");//falta redireccion
-		}else{
-			$errors = array();
-			$errors["general"] = "Usuario no valido";
-			$this->view->setVariable("errors", $errors);
-			}
-	}
-	if($tipo == "Jurado"){
-		if ($this->JuradoMapper->isValidUser($_POST["username"], $_POST["passwd"])) {
-			$_SESSION["currentuser"]=$_POST["username"];
-			// send user to the restricted area (HTTP 302 code)
-			$this->view->redirect("posts", "index");//falta redireccion
-		}else{
-			$errors = array();
-			$errors["general"] = "Usuario no valido";
-			$this->view->setVariable("errors", $errors);
-			}
+	 if (isset($_POST["username"])){ // reaching via HTTP Post...
+      //process login form    
+      if ($this->userMapper->isValidUser($_POST["username"], 						   $_POST["passwd"])) {
+	
+	$_SESSION["currentuser"]=$_POST["username"];
+	
+	// send user to the restricted area (HTTP 302 code)
+	$this->view->redirect("posts", "index");
+	
+      }else{
+	$errors = array();
+	$errors["general"] = "Username is not valid";
+	$this->view->setVariable("errors", $errors);
+      }
+    }       
+    
+    // render the view (/view/users/login.php)
+    $this->view->render("users", "login");    
 	}
   public function register() {
     

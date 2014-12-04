@@ -8,12 +8,15 @@ class Organizador {
 	var $NombreOrg;
 	var $Telefono;
 	var $Email;
+	var $PasswordO;
 	
-	public function __construct($DniOrg=NULL, $NombreOrg=NULL, $Telefono=NULL,$Email=NULL) {
+
+	public function __construct($DniOrg=NULL, $NombreOrg=NULL, $Telefono=NULL,$Email=NULL,$PasswordO=NULL) {
 		$this -> DniOrg = $DniOrg;
 		$this -> NombreOrg = $NombreOrg;
 		$this -> Telefono = $Telefono;
 		$this -> Email = $Email;
+		$this -> PasswordO = $PasswordO;
 	}
 	
 	public function getDniOrg() {
@@ -24,7 +27,7 @@ class Organizador {
 		$this -> DniOrg = $DniOrg;
 	}
 	
-	public function NombreOrg() {
+	public function getNombreOrg() {
 		return $this -> NombreOrg;
 	}
 	
@@ -48,6 +51,14 @@ class Organizador {
 		$this -> Email = $Email;
 	}
 	
+	public function getPasswordO() {
+		return $this -> PasswordO;
+	}
+	
+	public function setPasswordO($PasswordO) {
+		$this -> PasswordO = $PasswordO;
+	}
+	
 	public function __toString() {
 		return "ConcursoBean:
 			 Dni = $this->DniOrg," . "
@@ -65,8 +76,8 @@ class Organizador {
 	 */
 	public function checkIsValidForCreate() {
 		$errors = array();
-		if (strlen(trim($this -> DniOrg)) == 0) {
-			$errors["DniOrg"] = "El DNI es obligatorio";
+		if (strlen(trim($this -> DniOrg)) != 9) {
+			$errors["DniOrg"] = "El DNI tiene una longitud invalida";
 		}
 		if (strlen(trim($this -> NombreOrg)) == 0) {
 			$errors["Nombre"] = "El nombre es obligatorio";
@@ -76,6 +87,10 @@ class Organizador {
 		}
 		if (strlen(trim($this -> Email)) == 0) {
 			$errors["Email"] = "Debes indicar el correo electronico";
+		}
+		
+		if (strlen(trim($this -> PasswordO)) == 0) {
+			$errors["PasswordO"] = "Debes indicar la contraseña";
 		}
 		if (sizeof($errors) > 0) {
 			throw new ValidationException($errors, "Concurso no valido");

@@ -21,3 +21,6 @@
 <form action="index.php?controller=organizador&amp;action=registrarOrganizador" method="POST">
 <input type="submit" value="<?= i18n("Registrate como Organizador") ?>">
 </form>
+
+<form action="index.php?controller=users&amp;action=login"  method="POST">      
+<input type="submit" value="<?= i18n("Inicio sesion")?>">

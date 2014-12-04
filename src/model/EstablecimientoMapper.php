@@ -18,7 +18,7 @@ class EstablecimientoMapper {
   */
   
    public function isValidUser($NombreEst, $PasswordE) {
-		$stmt = $this->db->prepare("SELECT count(NombreEst) FROM users where NombreEst=? and PasswordE=?");
+		$stmt = $this->db->prepare("SELECT count(NombreEst) FROM establecimiento where NombreEst=? and PasswordE=?");
 		$stmt->execute(array($NombreEst, $PasswordE));
 		if ($stmt->fetchColumn() > 0) {
 		return true;
@@ -31,8 +31,8 @@ class EstablecimientoMapper {
    * @return void
    */      
   public function save($establecimiento) {
-    $stmt = $this->db->prepare("INSERT INTO establecimiento values (?,?,?,?,?)");
-    $stmt->execute(array($establecimiento-> getNombreEst(), $establecimiento->getDireccion(), $establecimiento->getHorario(), $establecimiento->getFotos(), $establecimiento->getWeb()));  
+    $stmt = $this->db->prepare("INSERT INTO establecimiento values (?,?,?,?,?,?)");
+    $stmt->execute(array($establecimiento-> getNombreEst(), $establecimiento->getDireccion(), $establecimiento->getHorario(), $establecimiento->getFotos(), $establecimiento->getWeb(), $establecimiento->getPasswordE()));  
   }
   
   /**
