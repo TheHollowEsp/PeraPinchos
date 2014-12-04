@@ -44,6 +44,7 @@ CREATE TABLE IF NOT EXISTS `PeraPinchos`.`Establecimiento` (
   `Horario` VARCHAR(45) NOT NULL,
   `Fotos` BLOB(512) NULL,
   `Web` VARCHAR(150) NULL,
+  `PasswordE` VARCHAR(150) NOT NULL,
   PRIMARY KEY (`NombreEst`))
 ENGINE = InnoDB;
 
