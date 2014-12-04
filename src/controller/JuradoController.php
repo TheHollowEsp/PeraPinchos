@@ -11,7 +11,7 @@ ini_set('display_errors', 'On');
 
 class JuradoController extends BaseController {
 
-	private $JuradoMapper;    
+	private $JuradoMapper;
   
 	public function __construct() {
 		parent::__construct();
@@ -30,6 +30,7 @@ class JuradoController extends BaseController {
 		if (isset($_POST["DniJur"])){
 		$jurado->setDniJurado($_POST["DniJur"]);
 		$jurado->setNombreJurado($_POST["Nombre"]);
+		$jurado->setPasswordJurado($_POST["PasswordJ"]);
       
 		try{
 		$jurado->checkIsValidForRegisterJurado();

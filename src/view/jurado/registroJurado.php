@@ -17,5 +17,9 @@
 			value="">
       <?= isset($errors["Nombre"])?$errors["Nombre"]:"" ?><br>
       
+      <?= i18n("Contraseña")?>: <input type="password" name="PasswordJ" 
+			value="">
+      <?= isset($errors["PasswordJ"])?$errors["PasswordJ"]:"" ?><br>
+      
       <input type="submit" value="<?= i18n("Registro")?>">
 </form>

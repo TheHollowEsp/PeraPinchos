@@ -41,6 +41,7 @@ CREATE TABLE IF NOT EXISTS `PeraPinchos`.`Establecimiento` (
   `NombreEst` VARCHAR(50) NOT NULL,
   `Direccion` VARCHAR(45) NOT NULL,
   `Horaio` VARCHAR(45) NOT NULL,
+  `PasswordE` VARCHAR(20) NOT NULL,
   `Fotos` BLOB(512) NULL,
   `Web` VARCHAR(150) NULL,
   PRIMARY KEY (`NombreEst`))
@@ -121,6 +122,7 @@ DROP TABLE IF EXISTS `PeraPinchos`.`Jurado` ;
 CREATE TABLE IF NOT EXISTS `PeraPinchos`.`Jurado` (
   `DniJur` VARCHAR(9) NOT NULL,
   `Nombre` VARCHAR(50) NOT NULL,
+  `PasswordJ` VARCHAR(20) NOT NULL,
   `Juradocol` VARCHAR(45) NULL,
   PRIMARY KEY (`DniJur`))
 ENGINE = InnoDB;
@@ -208,14 +210,14 @@ INSERT INTO `PeraPinchos`.`Organizador` (`DniOrg`, `NombreOrg`, `Telefono`, `Ema
 INSERT INTO `PeraPinchos`.`Concurso` (`NombreC`, `FechaIni`, `FechaFin`, `BasesCon`, `Patrocinadores`, `Premios`, `Organizador_DniOrg`) VALUES ('Pera Pinchos 24/11', '2014-11-24 00:00:00', '2014-11-30 00:00:00', 'Todos los pinchos admitidos.', 'Muchos.', 'Sueldo mensual.', '33344455X');
 
 /* Establecimientos */
-INSERT INTO `PeraPinchos`.`Establecimiento` (`NombreEst`, `Direccion`, `Horaio`, `Fotos`, `Web`) VALUES ('A casa do Perico', 'localhost', '10 a 22', NULL, 'hollow.es');
-INSERT INTO `PeraPinchos`.`Establecimiento` (`NombreEst`, `Direccion`, `Horaio`, `Fotos`, `Web`) VALUES ('A casa do Manolo', 'Al lado de Perico', '10 a 20', NULL, 'rotting.no-ip.biz');
+INSERT INTO `PeraPinchos`.`Establecimiento` (`NombreEst`, `Direccion`, `Horaio`, `PasswordE`, `Fotos`, `Web`) VALUES ('A casa do Perico', 'localhost', '10 a 22', '123123', NULL, 'hollow.es');
+INSERT INTO `PeraPinchos`.`Establecimiento` (`NombreEst`, `Direccion`, `Horaio`, `PasswordE`, `Fotos`, `Web`) VALUES ('A casa do Manolo', 'Al lado de Perico', '10 a 20', '321321', NULL, 'rotting.no-ip.biz');
 
 /* Pinchos */
 INSERT INTO `PeraPinchos`.`Pincho` (`NombrePincho`, `Descripcion`, `Precio`, `Ingredientes`, `Informacion`, `Validado`, `Establecimiento_NombreEst`) VALUES ('Babel Tower Split', 'La torre de Babel ha vuelto', '12', 'Platos y cubiertos', 'No apto para maniaticos', '0', 'A casa do Perico');
 
 /* Jurado */
-INSERT INTO `PeraPinchos`.`Jurado` (`DniJur`, `Nombre`, `Juradocol`) VALUES ('33344455L', 'Juan de Troya', NULL);
+INSERT INTO `PeraPinchos`.`Jurado` (`DniJur`, `Nombre`, `PasswordJ`, `Juradocol`) VALUES ('33344455L', 'Juan de Troya','123123', NULL);
 /* Mapa */
 INSERT INTO `PeraPinchos`.`Gastromapa` (`NombreGas`, `MapaUrl`, `Concurso_NombreC`) VALUES ('Pera Pinchos 24/11 Map', 'http://hollow.es', 'Pera Pinchos 24/11');
 

@@ -7,11 +7,13 @@ class Jurado {
 	var $dniJurado;
 	var $nombreJurado;
 	var $isJuradoP;
+	var $passJurado;
 	
-	public function __construct($dniJurado=NULL, $nombreJurado=NULL, $isJuradoP=NULL) {
+	public function __construct($dniJurado=NULL, $nombreJurado=NULL, $isJuradoP=NULL, $passJurado=NULL) {
 		$this -> dniJurado = $dniJurado;
 		$this -> nombreJurado = $nombreJurado;
 		$this -> isJuradoP = $isJuradoP;
+		$this -> passJurado = $passJurado;
 	}
 	
 	public function getDniJurado() {
@@ -29,7 +31,15 @@ class Jurado {
 	public function setNombreJurado($nombreJurado) {
 		$this->nombreJurado = $nombreJurado;
 	}
-
+	
+	public function getPasswordJurado() {
+		return $this->passJurado;
+	}
+	
+	public function setPasswordJurado($passJurado) {
+		$this->passJurado = $passJurado;
+	}
+	
 	public function getIsProfesional() {
 		return $this->isJuradoP;
 	}
@@ -41,6 +51,7 @@ class Jurado {
 	public function __toString() {
 		return "DNI: ".$this->dniJurado.
 			 ", Nombre: ".$this->nombreJurado.
+			 ", Password: ".$this->passJurado.
 			 ", Profesional: ".$this->isJuradoP;
 	}
 	
@@ -49,7 +60,10 @@ class Jurado {
 		$errors = array();
 		//if (strlen(trim($this -> dniJurado)) == 0) {
 		if (strlen($this->dniJurado) != 9) {
-				$errors["dniJurado"] = "El DNI introducido tiene una longitud invalida";
+			$errors["dniJurado"] = "El DNI introducido tiene una longitud invalida";
+		}
+		if(strlen($this->passJurado) == 0){
+			$errors["passJurado"] = "La contraseña introducida tiene una longitud invalida";
 		}
 		
 		if (strlen(trim($this -> nombreJurado)) == 0) {

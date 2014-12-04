@@ -19,10 +19,11 @@ class JuradoMapper {
 	* @return void
 	*/
 	public function save(Jurado $jurado) {
-		$stmt = $this->db->prepare("INSERT INTO jurado values (?,?,?)");
+		$stmt = $this->db->prepare("INSERT INTO jurado values (?,?,?,?)");
 		$stmt->execute(array(
 		$jurado->getDniJurado(), 
 		$jurado->getNombreJurado(), 
+		$jurado->getPasswordJurado(),
 		$jurado->getIsProfesional()));  
   }
   
@@ -85,6 +86,7 @@ class JuradoMapper {
 			return new jurado(
 		$jurado["DniJur"],
 		$jurado["Nombre"],
+		$jurado["PasswordJ"],
 		$jurado["Juradocol"]);
 		} else {
 			return NULL;
