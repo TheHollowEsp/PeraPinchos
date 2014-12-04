@@ -75,8 +75,9 @@ class PinchosController extends BaseController {
 
 	public function proponer() {
 		$pincho = new Pincho();
-		if (isset($_POST["pincho"])) {
 
+		if (isset($_POST["nombre"])) {
+			echo "He entrado en el seteo\n";
 			$pincho -> setNombrePincho($_POST["nombre"]);
 			$pincho -> setDescripcionPincho($_POST["descripcion"]);
 			$pincho -> setPrecioPincho($_POST["precio"]);
@@ -84,17 +85,18 @@ class PinchosController extends BaseController {
 			$pincho -> setFotosPincho($_POST["foto"]);
 			$pincho -> setInfoPincho($_POST["info"]);
 			$pincho -> setIsValidado(0);
-			$pincho -> setNombreEstablecimiento($currentUser);
-
+			$pincho -> setEstablecimiento($_POST["establecimiento"]);
+			
 			try {
+				
 				$pincho -> checkIsValidForCreate();
 				// if it fails, ValidationException
-
-				if (!$this -> pinchoMapper -> pinchoExists($_POST["nombre"])) {
-
+				
+				if (!$this -> pinchoMapper -> pinchoExists($pincho->getNombrePincho())) {
+					
 					// save the User object into the database
 					$this -> pinchoMapper -> save($pincho);
-
+					
 					// POST-REDIRECT-GET
 					// Everything OK, we will redirect the user to the list of posts
 					// We want to see a message after redirection, so we establish
@@ -105,7 +107,7 @@ class PinchosController extends BaseController {
 					// perform the redirection. More or less:
 					// header("Location: index.php?controller=users&action=login")
 					// die();
-					//$this -> view -> redirect("users", "login");
+					$this -> view -> redirect("pinchos", "listar");
 				} else {
 					$errors = array();
 					$errors["nombre"] = "El nombre ya existe";

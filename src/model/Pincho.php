@@ -17,8 +17,8 @@ class Pincho {
 	private $Establecimiento_NombreEst;
 	//Poner la lista en el constructor luego.
 
-	public function __construct($nombrePincho = NULL, $Descripcion = NULL, $Precio = NULL, $Ingredientes = NULL, $Fotos = NULL, $Informacion = NULL, $Validado = NULL, $Establecimiento_NombreEst_NombreEst = NULL) {
-		$this -> nombrePincho = $nombrePincho;
+	public function __construct($NombrePincho = NULL, $Descripcion = NULL, $Precio = NULL, $Ingredientes = NULL, $Fotos = NULL, $Informacion = NULL, $Validado = NULL, $Establecimiento_NombreEst = NULL) {
+		$this -> NombrePincho = $NombrePincho;
 		$this -> Descripcion = $Descripcion;
 		$this -> Precio = $Precio;
 		$this -> Ingredientes = $Ingredientes;
@@ -29,11 +29,11 @@ class Pincho {
 	}
 
 	public function getNombrePincho() {
-		return $this -> nombrePincho;
+		return $this -> NombrePincho;
 	}
 
-	public function setNombrePincho($nombrePincho) {
-		$this -> nombrePincho = $nombrePincho;
+	public function setNombrePincho($NombrePincho) {
+		$this -> NombrePincho = $NombrePincho;
 	}
 
 	public function getDescripcionPincho() {
@@ -49,7 +49,7 @@ class Pincho {
 	}
 
 	public function setPrecioPincho($Precio) {
-		$this -> precioPincho = $Precio;
+		$this -> Precio = $Precio;
 	}
 
 	public function getIngredientesPincho() {
@@ -105,27 +105,36 @@ class Pincho {
 	 */
 	public function checkIsValidForCreate() {
 		$errors = array();
-		if (strlen(trim($this -> nombrePincho)) == 0) {
+		if (strlen(trim($this -> NombrePincho)) == 0) {
 			$errors["nombrePincho"] = "El titulo es obligatorio";
+			echo "El titulo es obligatorio\n";
 		}
-		if (strlen(trim($this -> Precio)) == 0) {
+		if ($this -> Precio <= 0) {
 			$errors["Precio"] = "El precio es obligatorio";
+			echo "El precio es obligatorio\n";
+			echo $this -> Precio;
+			echo "El precio es obligatorio\n";
 		}
 		if (strlen(trim($this -> Ingredientes)) == 0) {
 			$errors["Ingredientes"] = "Es necesario el listado de ingredientes";
+			echo "El ingrediente es obligatorio\n";
 		}
 		if (strlen(trim($this -> Fotos)) == 0) {
 			$errors["Fotos"] = "Es obligatorio que tenga foto";
+			echo "El foto es obligatorio\n";
 		}
 		if (strlen(trim($this -> Descripcion)) == 0) {
-			$errors["Descripcion"] = "La descrpcion no puede estar vacia";
+			$errors["Descripcion"] = "La descripcion no puede estar vacia";
+			echo "El descripcion es obligatorio\n";
 		}
 		if (strlen(trim($this -> Informacion)) == 0) {
 			$errors["Informacion"] = "La informacion adicional no puede estar vacia";
+			echo "El info es obligatorio\n";
 		}
-		if (strlen(trim($this -> Validado)) > 1) {
-			$errors["Validado"] = "Error en estatus de validacion";
-		}
+		/*if (strlen(trim($this -> Validado)) > 1) {
+		 $errors["Validado"] = "Error en estatus de validacion";
+		 echo "Te has colao\n";
+		 }*/
 		if (sizeof($errors) > 0) {
 			throw new ValidationException($errors, "Pincho no valido");
 		}

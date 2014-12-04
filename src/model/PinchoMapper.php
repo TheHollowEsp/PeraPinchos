@@ -76,7 +76,7 @@ class PinchoMapper {
 
 		return $pinchos;
 	}
-	
+
 	public function findAllNoValidado() {
 		$stmt = $this -> db -> query("SELECT * FROM pincho where Validado=0");
 		$pinchos_db = $stmt -> fetchAll(PDO::FETCH_ASSOC);
@@ -118,17 +118,9 @@ class PinchoMapper {
 	 * @return void
 	 */
 	public function save(Pincho $pincho) {
-		$stmt = $this -> db -> prepare("INSERT INTO pincho (NombrePincho, Descripcion, Precio, Ingredientes, Fotos, Informacion, Validado, Establecimiento_NombreEst) (?,?,?,?,?,?,?,?)");
-		$stmt -> execute(array(
-		 $pincho -> getNombrePincho(),
-		 $pincho -> getDescripcionPincho(),
-		 $pincho -> getPrecioPincho(),
-		 $pincho -> getIngredientesPincho(), 
-		 $pincho -> getFotosPincho(), 
-		 $pincho -> getInfoPincho(), 
-		 $pincho -> getIsValidado(),
-		 $pincho -> getEstablecimiento()
-		));
+		echo "Entrando en el guardado";
+		$stmt = $this -> db -> prepare("INSERT INTO pincho (NombrePincho, Descripcion, Precio, Ingredientes, Fotos, Informacion, Validado, Establecimiento_NombreEst) values (?,?,?,?,?,?,?,?)");
+		$stmt -> execute(array($pincho -> getNombrePincho(), $pincho -> getDescripcionPincho(), $pincho -> getPrecioPincho(), $pincho -> getIngredientesPincho(), $pincho -> getFotosPincho(), $pincho -> getInfoPincho(), $pincho -> getIsValidado(), $pincho -> getEstablecimiento()));
 	}
 
 	/**
@@ -150,14 +142,15 @@ class PinchoMapper {
 		$stmt = $this -> db -> prepare("DELETE from pincho WHERE NombrePincho=?");
 		$stmt -> execute(array($pincho -> getNombrePincho()));
 	}
-	
-	public function pinchoExists($nombrePincho) {
-		$stmt = $this->db->prepare("SELECT count(NombrePincho) FROM pincho where NombrePincho=?");
-		$stmt->execute(array($nombreJurado));
-    
-		if ($stmt->fetchColumn() > 0) {
+
+	public function pinchoExists($NombrePincho) {
+		echo "Comprobando existencia de " . $NombrePincho;
+		$stmt = $this -> db -> prepare("SELECT count(NombrePincho) FROM pincho where NombrePincho=?");
+		$stmt -> execute(array($NombrePincho));
+
+		if ($stmt -> fetchColumn() > 0) {
 			return true;
 		}
-  }
+	}
 
 }
