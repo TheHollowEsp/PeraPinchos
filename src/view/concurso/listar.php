@@ -16,6 +16,7 @@ $view->setVariable ( "title", "Concurso" );
 		<th><?= i18n("Bases Concurso")?></th>
 		<th><?= i18n("Patrocinadores")?></th>
 		<th><?= i18n("Premios")?></th>
+		<th><?= i18n("Participar")?></th>
 	</tr>
 
     <?php foreach ($concurso as $con): ?>
@@ -38,6 +39,13 @@ $view->setVariable ( "title", "Concurso" );
 			</td>
 			<td>
 				<?= $con->getPremiosCon()?>
+			</td>
+			<td><a
+				href="index.php?controller=establecimiento&amp;action=registrarseEnConcurso&amp;NombreCon=<?= $con->getNombreCon() ?>"><?= htmlentities("Registrate") ?></a>
+
+				<!-- <form action="index.php?controller=establecimiento&amp;action=registrarseEnConcurso&amp;NombreCon=<?= $con->getNombreCon() ?>" method="POST">
+				<input type="submit" value="<?= i18n("Registrate en el Concurso!") ?>">
+				</form> -->
 			</td>
 		
 	</tr>

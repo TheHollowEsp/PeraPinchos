@@ -5,6 +5,9 @@ require_once (__DIR__ . "/../core/I18n.php");
 require_once (__DIR__."/../model/Establecimiento.php");
 require_once (__DIR__."/../model/EstablecimientoMapper.php");
 
+require_once (__DIR__."/../model/Concurso.php");
+require_once (__DIR__."/../model/ConcursoMapper.php");
+
 require_once (__DIR__ . "/../controller/BaseController.php");
 
 ini_set('display_errors', 'On');
@@ -53,8 +56,23 @@ class EstablecimientoController extends BaseController {
     $this->view->render("establecimiento", "registroEstablecimiento");//falta cambiar
 	}
 	
-	// public function proponerPincho(){
-// 		
-	// }
+	 public function proponerPincho(){
+ 		
+	 }
+	 
+	 public function registrarseEnConcurso(){
+	 	if(true){
+	 		$concurso = new Concurso();
+			$nombreC = $_GET["NombreCon"];
+			$concurso -> setNombreCon($nombreC);
+			$this->EstablecimientoMapper->registrarEnConcurso($_SESSION['currentuser'], $nombreC);
+	 		$this->view->setVariable("concurso", $concurso);
+	 		$this->view->setFlash("Registrado correctamente en el concurso");
+	 		$this->view->render("concurso", "consultar");
+	 	}else{
+	 		$this->view->setFlash("Ya estas registrado en este concurso!");
+	 		$this->view->render("concurso", "listar");
+		}
+	 }
 }
 ?>
