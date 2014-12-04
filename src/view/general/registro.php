@@ -17,3 +17,7 @@
 <form action="index.php?controller=establecimiento&amp;action=registrarEstablecimiento" method="POST">
 <input type="submit" value="<?= i18n("Registrate como Establecimiento") ?>">
 </form>
+
+<form action="index.php?controller=organizador&amp;action=registrarOrganizador" method="POST">
+<input type="submit" value="<?= i18n("Registrate como Organizador") ?>">
+</form>
