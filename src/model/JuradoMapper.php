@@ -117,4 +117,16 @@ class JuradoMapper {
 		$stmt -> execute(array($jurado -> getDniJurado()));
 	}
 	
+	/**
+	 * Comprueba si el jurado es un usuario valido
+	 * 
+	 */
+	 
+	    public function isValidUser($DniJur, $PasswordJ) {
+		$stmt = $this->db->prepare("SELECT count(NombreEst) FROM Jurado where DniJur=? and PasswordJ=?");
+		$stmt->execute(array($DniJur, $PasswordJ));
+		if ($stmt->fetchColumn() > 0) {
+		return true;
+	}
+	
 }

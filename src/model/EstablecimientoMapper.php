@@ -42,7 +42,7 @@ class EstablecimientoMapper {
    * @return boolean true if the username exists, false otherwise
    */
   public function establecimientoExists($nombreEst) {
-    $stmt = $this->db->prepare("SELECT count(NombreEst) FROM establecimiento where NombreEst=?");
+    $stmt = $this->db->prepare("SELECT count(NombreEst) FROM Establecimiento where NombreEst=?");
     $stmt->execute(array($nombreEst));
     
     if ($stmt->fetchColumn() > 0) {   
