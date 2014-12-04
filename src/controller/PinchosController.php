@@ -4,6 +4,8 @@ require_once (__DIR__ . "/../core/I18n.php");
 
 require_once (__DIR__ . "/../model/Pincho.php");
 require_once (__DIR__ . "/../model/PinchoMapper.php");
+require_once (__DIR__ . "/../model/Jurado.php");
+require_once (__DIR__ . "/../model/JuradoMapper.php");
 require_once (__DIR__ . "/../model/Establecimiento.php");
 
 require_once (__DIR__ . "/../controller/BaseController.php");
@@ -22,11 +24,13 @@ class PinchosController extends BaseController {
 	 * @var pinchoMapper
 	 */
 	private $pinchoMapper;
+	private $juradoMapper;
 
 	public function __construct() {
 		parent::__construct();
 
 		$this -> pinchoMapper = new PinchoMapper();
+		$this -> $juradoMapper = new JuradoMapper();
 
 		// Users controller operates in a "welcome" layout
 		// different to the "default" layout where the internal
@@ -49,7 +53,23 @@ class PinchosController extends BaseController {
 
 	// TODO: Pensar en una forma de hacer el join m:n para saber cuales son
 	public function listarParaJurado() {
+		echo $_SESSION["currentuser"];
+		$jurado = $this -> $juradoMapper -> findByDNI($_SESSION["currentuser"]);
+		if ($jurado -> Juradocol == "SI") {//Si es profesional le buscamos sus pinchos
+			$pinchos = $this -> $pinchoMapper -> findAllForJuradoConcreto($jurado);
+			// manda el array que contiene los pinchos a la vista(view)
+			$this -> view -> setVariable("pinchos", $pinchos);
+			// renderiza la vista (/view/pinchos/listar.php)
+			$this -> view -> render("pinchos", "listarJuradoP");
+		} else {//Si no le redirigimos al listado normal
+			$pinchos = $this -> pinchoMapper -> findAll();
 
+			// manda el array que contiene los pinchos a la vista(view)
+			$this -> view -> setVariable("pinchos", $pinchos);
+
+			// renderiza la vista (/view/pinchos/listar.php)
+			$this -> view -> render("pinchos", "listar");
+		}
 	}
 
 	public function consultar() {
@@ -86,17 +106,17 @@ class PinchosController extends BaseController {
 			$pincho -> setInfoPincho($_POST["info"]);
 			$pincho -> setIsValidado(0);
 			$pincho -> setEstablecimiento($_POST["establecimiento"]);
-			
+
 			try {
-				
+
 				$pincho -> checkIsValidForCreate();
 				// if it fails, ValidationException
-				
-				if (!$this -> pinchoMapper -> pinchoExists($pincho->getNombrePincho())) {
-					
+
+				if (!$this -> pinchoMapper -> pinchoExists($pincho -> getNombrePincho())) {
+
 					// save the User object into the database
 					$this -> pinchoMapper -> save($pincho);
-					
+
 					// POST-REDIRECT-GET
 					// Everything OK, we will redirect the user to the list of posts
 					// We want to see a message after redirection, so we establish

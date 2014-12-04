@@ -45,12 +45,10 @@ class PinchoMapper {
 
 	//FIXME: Por probar, falta poner atributos de jurado en array
 	public function findAllForJuradoConcreto($jurado) {
-		$stmt = $this -> db -> prepare("SELECT * FROM pincho NATURAL JOIN pincho_has_jurado NATURAL JOIN jurado WHERE jurado.DNIJur=?");
+		$stmt = $this -> db -> query("SELECT * FROM pincho where NombrePincho = (SELECT Pincho_NombrePincho FROM pincho_has_jurado WHERE Jurado_DNIJur=?)");
 
 		$stmt -> execute(array($jurado -> getDniJurado()));
-
-		$pinchos_db = $stmt -> fetchAll(PDO::FETCH_ASSOC);
-
+		$pinchos_db = $stmt -> fetchAll(PDO::FETCH_ASSOC);		
 		$pinchos = array();
 		foreach ($pinchos_db as $pincho) {
 			//$establecimiento = new Establecimiento($pincho["Establecimiento_NombreEst"]);
