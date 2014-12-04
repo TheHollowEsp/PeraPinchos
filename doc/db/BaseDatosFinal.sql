@@ -124,7 +124,7 @@ CREATE TABLE IF NOT EXISTS `PeraPinchos`.`Jurado` (
   `DniJur` VARCHAR(9) NOT NULL,
   `Nombre` VARCHAR(50) NOT NULL,
   `PasswordJ` VARCHAR(50) NOT NULL,
-  `Juradocol` VARCHAR(45) NULL,
+  `Juradocol` VARCHAR(45) NULL DEFAULT 'NO',
   PRIMARY KEY (`DniJur`))
 ENGINE = InnoDB;
 
