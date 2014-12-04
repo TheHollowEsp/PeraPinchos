@@ -27,6 +27,18 @@ class ConcursoMapper {
 		//$concurso -> getEstablecimiento() -> getUsername() //Revisar
 		));
 	}
+	
+	/**
+	 * Comprueba si el organizador es un usuario valido
+	 * 
+	 */
+	 
+	    public function isValidUser($DniJur, $PasswordJ) {
+		$stmt = $this->db->prepare("SELECT count(DniOrg) FROM Organizador where DniOrg=? and PasswordO=?");
+		$stmt->execute(array($DniOrg, $PasswordO));
+		if ($stmt->fetchColumn() > 0) {
+		return true;
+	}
 
 	/**
 	 * Le hace el update a un concurso
