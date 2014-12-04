@@ -14,7 +14,7 @@ class RegistroController extends BaseController {
 		parent::__construct();
     
 		//$this->JuradoMapper = new JuradoMapper();
-		//$this->view->setLayout("welcome"); //pendiente de cambio
+		$this->view->setLayout("welcome"); //pendiente de cambio
   }
 
 	public function registrar() {
