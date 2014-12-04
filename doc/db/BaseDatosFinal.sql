@@ -210,8 +210,8 @@ INSERT INTO `PeraPinchos`.`Organizador` (`DniOrg`, `NombreOrg`, `Telefono`, `Ema
 INSERT INTO `PeraPinchos`.`Concurso` (`NombreC`, `FechaIni`, `FechaFin`, `BasesCon`, `Patrocinadores`, `Premios`, `Organizador_DniOrg`) VALUES ('Pera Pinchos 24/11', '2014-11-24 00:00:00', '2014-11-30 00:00:00', 'Todos los pinchos admitidos.', 'Muchos.', 'Sueldo mensual.', '33344455X');
 
 /* Establecimientos */
-INSERT INTO `PeraPinchos`.`Establecimiento` (`NombreEst`, `Direccion`, `Horaio`, `PasswordE`, `Fotos`, `Web`) VALUES ('A casa do Perico', 'localhost', '10 a 22', '123123', NULL, 'hollow.es');
-INSERT INTO `PeraPinchos`.`Establecimiento` (`NombreEst`, `Direccion`, `Horaio`, `PasswordE`, `Fotos`, `Web`) VALUES ('A casa do Manolo', 'Al lado de Perico', '10 a 20', '321321', NULL, 'rotting.no-ip.biz');
+INSERT INTO `PeraPinchos`.`Establecimiento` (`NombreEst`, `Direccion`, `Horario`, `PasswordE`, `Fotos`, `Web`) VALUES ('A casa do Perico', 'localhost', '10 a 22', '123123', NULL, 'hollow.es');
+INSERT INTO `PeraPinchos`.`Establecimiento` (`NombreEst`, `Direccion`, `Horario`, `PasswordE`, `Fotos`, `Web`) VALUES ('A casa do Manolo', 'Al lado de Perico', '10 a 20', '321321', NULL, 'rotting.no-ip.biz');
 
 /* Pinchos */
 INSERT INTO `PeraPinchos`.`Pincho` (`NombrePincho`, `Descripcion`, `Precio`, `Ingredientes`, `Informacion`, `Validado`, `Establecimiento_NombreEst`) VALUES ('Babel Tower Split', 'La torre de Babel ha vuelto', '12', 'Platos y cubiertos', 'No apto para maniaticos', '0', 'A casa do Perico');
