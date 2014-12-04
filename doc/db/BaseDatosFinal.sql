@@ -41,7 +41,7 @@ DROP TABLE IF EXISTS `PeraPinchos`.`Establecimiento` ;
 CREATE TABLE IF NOT EXISTS `PeraPinchos`.`Establecimiento` (
   `NombreEst` VARCHAR(50) NOT NULL,
   `Direccion` VARCHAR(45) NOT NULL,
-  `Horaio` VARCHAR(45) NOT NULL,
+  `Horario` VARCHAR(45) NOT NULL,
   `Fotos` BLOB(512) NULL,
   `Web` VARCHAR(150) NULL,
   PRIMARY KEY (`NombreEst`))
@@ -122,6 +122,7 @@ DROP TABLE IF EXISTS `PeraPinchos`.`Jurado` ;
 CREATE TABLE IF NOT EXISTS `PeraPinchos`.`Jurado` (
   `DniJur` VARCHAR(9) NOT NULL,
   `Nombre` VARCHAR(50) NOT NULL,
+  `PasswordJ` VARCHAR(50) NOT NULL,
   `Juradocol` VARCHAR(45) NULL,
   PRIMARY KEY (`DniJur`))
 ENGINE = InnoDB;
