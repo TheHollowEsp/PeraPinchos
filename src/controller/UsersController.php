@@ -65,52 +65,41 @@ class UsersController extends BaseController {
    */
   public function login() {
     if (isset($_POST["username"])){ // reaching via HTTP Post...
-      //process login form    
-      if ($this->userMapper->isValidUser($_POST["username"], 						   $_POST["passwd"])) {
-	
-	$_SESSION["currentuser"]=$_POST["username"];
-	
-	// send user to the restricted area (HTTP 302 code)
-	$this->view->redirect("posts", "index");
-	
-      }else{
-	$errors = array();
-	$errors["general"] = "Username is not valid";
-	$this->view->setVariable("errors", $errors);
-      }
-    }       
-    
-    // render the view (/view/users/login.php)
-    $this->view->render("users", "login");    
-  }
-
- /**
-   * Action to register
-   * 
-   * When called via GET, it shows the register form.
-   * When called via POST, it tries to add the user
-   * to the database.
-   * 
-   * The expected HTTP parameters are:
-   * <ul>
-   * <li>login: The username (via HTTP POST)</li>
-   * <li>passwd: The password (via HTTP POST)</li>      
-   * </ul>
-   *
-   * The views are:
-   * <ul>
-   * <li>users/register: If this action is reached via HTTP GET (via include)</li>
-   * <li>users/login: If login succeds (via redirect)</li>
-   * <li>users/register: If validation fails (via include). Includes these view variables:</li>
-   * <ul>   
-   *  <li>user: The current User instance, empty or being added
-   *  (but not validated)</li>      
-   *  <li>errors: Array including validation errors</li>   
-   * </ul>   
-   * </ul>
-   * 
-   * @return void
-   */
+	//process login form
+	$tipo = $_POST["type"];
+	if($tipo == "Establecimiento"){
+		 if ($this->EstablecimientoMapper->isValidUser($_POST["username"], $_POST["passwd"])) {
+			$_SESSION["currentuser"]=$_POST["username"];
+			// send user to the restricted area (HTTP 302 code)
+			$this->view->redirect("posts", "index");//falta redireccion
+		}else{
+			$errors = array();
+			$errors["general"] = "Usuario no valido";
+			$this->view->setVariable("errors", $errors);
+			}
+	}
+	if($tipo == "Organizador"){
+		if ($this->OrganizadorMapper->isValidUser($_POST["username"], $_POST["passwd"])) {
+			$_SESSION["currentuser"]=$_POST["username"];
+			// send user to the restricted area (HTTP 302 code)
+			$this->view->redirect("posts", "index");//falta redireccion
+		}else{
+			$errors = array();
+			$errors["general"] = "Usuario no valido";
+			$this->view->setVariable("errors", $errors);
+			}
+	}
+	if($tipo == "Jurado"){
+		if ($this->JuradoMapper->isValidUser($_POST["username"], $_POST["passwd"])) {
+			$_SESSION["currentuser"]=$_POST["username"];
+			// send user to the restricted area (HTTP 302 code)
+			$this->view->redirect("posts", "index");//falta redireccion
+		}else{
+			$errors = array();
+			$errors["general"] = "Usuario no valido";
+			$this->view->setVariable("errors", $errors);
+			}
+	}
   public function register() {
     
     $user = new User();
