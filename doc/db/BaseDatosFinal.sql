@@ -200,7 +200,26 @@ CREATE TABLE IF NOT EXISTS `PeraPinchos`.`Establecimiento_has_Concurso` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
+-- -----------------------------------------------------
+-- INSERTS
+-- -----------------------------------------------------
 
+/* Organizador */
+INSERT INTO `PeraPinchos`.`Organizador` (`DniOrg`, `NombreOrg`, `Telefono`, `Email`) VALUES ('33344455X', 'Perico de los Palotes', '666666666', 'riopedre2001@gmail.com');
+/* Concurso */
+INSERT INTO `PeraPinchos`.`Concurso` (`NombreC`, `FechaIni`, `FechaFin`, `BasesCon`, `Patrocinadores`, `Premios`, `Organizador_DniOrg`) VALUES ('Pera Pinchos 24/11', '2014-11-24 00:00:00', '2014-11-30 00:00:00', 'Todos los pinchos admitidos.', 'Muchos.', 'Sueldo mensual.', '33344455X');
+
+/* Establecimientos */
+INSERT INTO `PeraPinchos`.`Establecimiento` (`NombreEst`, `Direccion`, `Horaio`, `PasswordE`, `Fotos`, `Web`) VALUES ('A casa do Perico', 'localhost', '10 a 22', '123123', NULL, 'hollow.es');
+INSERT INTO `PeraPinchos`.`Establecimiento` (`NombreEst`, `Direccion`, `Horaio`, `PasswordE`, `Fotos`, `Web`) VALUES ('A casa do Manolo', 'Al lado de Perico', '10 a 20', '321321', NULL, 'rotting.no-ip.biz');
+
+/* Pinchos */
+INSERT INTO `PeraPinchos`.`Pincho` (`NombrePincho`, `Descripcion`, `Precio`, `Ingredientes`, `Informacion`, `Validado`, `Establecimiento_NombreEst`) VALUES ('Babel Tower Split', 'La torre de Babel ha vuelto', '12', 'Platos y cubiertos', 'No apto para maniaticos', '0', 'A casa do Perico');
+
+/* Jurado */
+INSERT INTO `PeraPinchos`.`Jurado` (`DniJur`, `Nombre`, `PasswordJ`, `Juradocol`) VALUES ('33344455L', 'Juan de Troya','123123', NULL);
+/* Mapa */
+INSERT INTO `PeraPinchos`.`Gastromapa` (`NombreGas`, `MapaUrl`, `Concurso_NombreC`) VALUES ('Pera Pinchos 24/11 Map', 'http://hollow.es', 'Pera Pinchos 24/11');
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
