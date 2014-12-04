@@ -12,6 +12,18 @@ class EstablecimientoMapper {
   public function __construct() {
     $this->db = PDOConnection::getInstance();
   }
+  
+  /**
+  * Funcion para validar user y pass establecimiento
+  */
+  
+   public function isValidUser($NombreEst, $PasswordE) {
+		$stmt = $this->db->prepare("SELECT count(NombreEst) FROM users where NombreEst=? and PasswordE=?");
+		$stmt->execute(array($NombreEst, $PasswordE));
+		if ($stmt->fetchColumn() > 0) {
+		return true;
+	}
+}
 
   /**
    * Guarda un establecimiento en la DB
