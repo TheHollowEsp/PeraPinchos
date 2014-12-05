@@ -30,9 +30,9 @@ if ($pincho->getIsValidado() == 0) echo(i18n("PINCHO NO VALIDADO"));
 <select name="valoracion">    
        <option value="1" selected="selected">1</option>
        <option value="2">2</option>
-       <option value="2">3</option>
-       <option value="2">4</option>
-       <option value="2">5</option>       
+       <option value="3">3</option>
+       <option value="4">4</option>
+       <option value="5">5</option>       
    </select>
 <input type="submit" value="<?= i18n("Valorar") ?>">
 </form>
