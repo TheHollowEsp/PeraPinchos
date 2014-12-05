@@ -39,7 +39,7 @@ class EstablecimientoController extends BaseController {
 	  //if (!$this->JuradoMapper->juradoExistsByDNI($_POST["DniJur"])){
 		if (!$this->EstablecimientoMapper->establecimientoExists($_POST["NombreEst"])){
 		$this->EstablecimientoMapper->save($establecimiento);
-		$this->view->setFlash("NombreEst ".$establecimiento->setNombreEst()." successfully added. Please login now");
+		//$this->view->setFlash("NombreEst ".$establecimiento->setNombreEst()." successfully added. Please login now");
 		$this->view->redirect("users", "login");//falta cambiar
 	  
 		} else {

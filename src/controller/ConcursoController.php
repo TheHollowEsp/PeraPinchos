@@ -40,7 +40,7 @@ class ConcursoController extends BaseController {
 				$concurso->checkIsValidForCreate();
 				if (!$this->ConcursoMapper->concursoExistsByName($_POST["NombreCon"])){
 					$this->ConcursoMapper->save($concurso);
-					$this->view->setFlash("NombreCon".$concurso->getNombreCon()."Concurso a�adido correctamente");
+					//$this->view->setFlash("NombreCon".$concurso->getNombreCon()."Concurso a�adido correctamente");
 					 
 				} else {
 					$errors = array();

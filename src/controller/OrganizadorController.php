@@ -55,7 +55,7 @@ class OrganizadorController extends BaseController {
 			$organizador -> checkIsValidForCreate();
 			if (!$this->OrganizadorMapper->organizadorExistsByDNI($_POST["DniOrg"])){
 				$this->OrganizadorMapper->save($organizador);
-			$this->view->setFlash("Organizador creado correctamente, ya puedes loguearte");
+			//$this->view->setFlash("Organizador creado correctamente, ya puedes loguearte");
 			$this->view->redirect("users","login"); //falta cambiar
 			}else{
 			$errors = array();
@@ -85,7 +85,7 @@ class OrganizadorController extends BaseController {
 		$DniOrg = $_SESSION['login'];
 		$organizador = $this->OrganizadorMapper->findByDni($DniOrg);
 		$this->OrganizadorMapper->delete($organizador);
-		$this->view->setFlash("Has sido eliminado junto con el concurso");
+		//$this->view->setFlash("Has sido eliminado junto con el concurso");
 		$this->view->redirect("index");
 	}
 

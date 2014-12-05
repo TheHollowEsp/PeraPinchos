@@ -19,5 +19,9 @@
 <form action="index.php?controller=concurso&amp;action=listarParaOrganizador"  method="POST">      
 <input type="submit" value="<?= i18n("Asignar jurado a concurso")?>"></form>
 
+<form action="index.php?controller=jurado&amp;action=listarParaUnirP"  method="POST">      
+<input type="submit" value="<?= i18n("Asignar pincho a jurado")?>"></form>
+
+
 <h1><?=i18n("Posts")?></h1>
 

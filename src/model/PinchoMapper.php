@@ -139,5 +139,16 @@ class PinchoMapper {
 			return true;
 		}
 	}
+		public function unirP($Pincho_NombreP, $Jurado_DniJ) {
+		$stmt = $this -> db -> prepare("SELECT count(Pincho_NombrePincho) FROM pincho_has_jurado where Pincho_NombrePincho=? and Jurado_DniJur=?");
+		$stmt -> execute(array($Pincho_NombreP, $Jurado_DniJ));
 
+		if ($stmt -> fetchColumn() == 0) {
+			$stmt = $this -> db -> prepare("INSERT INTO pincho_has_jurado values (?,?,?)");
+			$stmt -> execute(array($Pincho_NombreP, $Jurado_DniJ,NULL));
+			return true;
+		}else{
+			return false;
+		}
+	}
 }

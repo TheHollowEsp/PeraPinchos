@@ -5,6 +5,9 @@ require_once (__DIR__."/../core/I18n.php");
 require_once (__DIR__."/../model/Jurado.php");
 require_once (__DIR__."/../model/JuradoMapper.php");
 
+require_once (__DIR__."/../model/Pincho.php");
+require_once (__DIR__."/../model/PinchoMapper.php");
+
 require_once (__DIR__."/../controller/BaseController.php");
 
 ini_set('display_errors', 'On');
@@ -12,11 +15,13 @@ ini_set('display_errors', 'On');
 class JuradoController extends BaseController {
 
 	private $JuradoMapper;
+	private $PinchoMapper;
   
 	public function __construct() {
 		parent::__construct();
     
 		$this->JuradoMapper = new JuradoMapper();
+		$this->PinchoMapper = new PinchoMapper();
 		$this->view->setLayout("welcome"); //pendiente de cambio
   }
   	/**
@@ -36,7 +41,7 @@ class JuradoController extends BaseController {
 		$jurado->checkIsValidForRegisterJurado();
 		if (!$this->JuradoMapper->juradoExistsByDNI($_POST["DniJur"])){
 		$this->JuradoMapper->save($jurado);
-		$this->view->setFlash("dniJurado ".$jurado->getNombreJurado()." successfully added. Please login now");
+		//$this->view->setFlash("dniJurado ".$jurado->getNombreJurado()." successfully added. Please login now");
 		$this->view->redirect("users", "login");//falta cambiar
 	  
 		} else {
@@ -133,6 +138,25 @@ class JuradoController extends BaseController {
 	
 	public function inicio(){
 		$this->view->redirect("jurado", "inicioJurado");
+	}
+	
+		  public function listarParaUnirP() {
+	//Esta funcion solo la puede hacer el organizador, hay que poner al inicio de todo una comprobacion
+	//de sesion, falta cambiar
+		$juradoL = $this->JuradoMapper->findAll();
+		
+		$this -> view -> setVariable("jurado", $juradoL);
+			//falta agregar la vista, no se continuar
+		$this->view->render("jurado", "listarParaPincho");//falta cambiar
+  }
+	
+	public function listaAsignarPincho(){
+		$_SESSION["dnij"]=$_GET["dniJurado"];
+		$pinchoL = $this->PinchoMapper->findAll();
+		
+		$this -> view -> setVariable("pinchos", $pinchoL);
+			//falta agregar la vista, no se continuar
+		$this->view->render("pinchos", "listaPUnirJ");//falta cambiar
 	} 
 }
 ?>

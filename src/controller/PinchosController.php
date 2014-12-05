@@ -127,7 +127,7 @@ class PinchosController extends BaseController {
 					// We want to see a message after redirection, so we establish
 					// a "flash" message (which is simply a Session variable) to be
 					// get in the view after redirection.
-					$this -> view -> setFlash("Pincho " . $pincho -> getNombrePincho() . " successfully added.");
+					//$this -> view -> setFlash("Pincho " . $pincho -> getNombrePincho() . " successfully added.");
 
 					// perform the redirection. More or less:
 					// header("Location: index.php?controller=users&action=login")
@@ -173,6 +173,14 @@ class PinchosController extends BaseController {
 
 		
 	}
-
+			public function unir() {
+		
+		$nombrep = $_GET["nombrePincho"];
+		//$jurado = $this->PinchoMapper->findById($nombrep);
+    
+			$this->pinchoMapper->unirP($nombrep, $_SESSION["dnij"]);
+	 		$this->view->render("organizador", "inicioOrganizador");
+   
+  }
 }
 ?>

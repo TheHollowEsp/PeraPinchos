@@ -18,11 +18,7 @@ ini_set ( 'display_errors', 'On' );
 	<!-- header -->
 	<header>
 		<h1>Pinchos Pera</h1>
-		<nav id="menu" style="background-color: grey">
-			<ul>
-				<li><a href="index.php?controller=pinchos&amp;action=listar">Pinchos</a></li>
-			</ul>
-		</nav>
+
 	</header>
 
 	<main>
