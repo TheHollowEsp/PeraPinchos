@@ -4,12 +4,12 @@
 /**
  * Default controller if any controller is passed in the URL
  */
-define("DEFAULT_CONTROLLER", "pinchos");
+define("DEFAULT_CONTROLLER", "users");
 
 /**
  * Default action if any action is passed in the URL
  */
-define("DEFAULT_ACTION", "listar");
+define("DEFAULT_ACTION", "login");
 
 /**
  * Main router (single entry-point for all requests)

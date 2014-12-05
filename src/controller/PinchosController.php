@@ -108,7 +108,7 @@ class PinchosController extends BaseController {
 			$pincho -> setFotosPincho($_POST["foto"]);
 			$pincho -> setInfoPincho($_POST["info"]);
 			$pincho -> setIsValidado(0);
-			$pincho -> setEstablecimiento($_POST["establecimiento"]);
+			$pincho -> setEstablecimiento($_SESSION["currentuser"]);
 
 			try {
 

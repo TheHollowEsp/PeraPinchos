@@ -7,7 +7,7 @@ $pinchos = $view -> getVariable("pinchos");
 
 $view -> setVariable("title", "Pinchos");
 ?><h1><?=i18n("Pinchos") ?></h1>
-<strong><a href="index.php?controller=pinchos&amp;action=proponer">Proponer pincho</a></strong>
+
 
 <table border="1">
 	<tr>

@@ -34,9 +34,7 @@ $view -> setVariable("title", "Proponer pincho");
 			value="">
       <?= isset($errors["info"]) ? $errors["info"] : "" ?><br>
       
-      <?= i18n("Establecimiento") ?>: <input type="text" name="establecimiento" 
-			value="">
-      <?= isset($errors["info"]) ? $errors["info"] : "" ?><br>
+      
       
       
       <input type="submit" value="<?= i18n("Proponer") ?>">
