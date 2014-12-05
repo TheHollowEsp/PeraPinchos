@@ -161,7 +161,7 @@ DROP TABLE IF EXISTS `PeraPinchos`.`Pincho_has_Jurado` ;
 CREATE TABLE IF NOT EXISTS `PeraPinchos`.`Pincho_has_Jurado` (
   `Pincho_NombrePincho` VARCHAR(50) NOT NULL,
   `Jurado_DniJur` VARCHAR(9) NOT NULL,
-  `VotoPro` INT(2) NULL,
+  `VotoPro` INT(5) NULL,
   PRIMARY KEY (`Pincho_NombrePincho`, `Jurado_DniJur`),
   INDEX `fk_Pincho_has_Jurado_Jurado1_idx` (`Jurado_DniJur` ASC),
   INDEX `fk_Pincho_has_Jurado_Pincho1_idx` (`Pincho_NombrePincho` ASC),
@@ -214,12 +214,22 @@ INSERT INTO `PeraPinchos`.`Establecimiento` (`NombreEst`, `Direccion`, `Horario`
 INSERT INTO `PeraPinchos`.`Establecimiento` (`NombreEst`, `Direccion`, `Horario`, `PasswordE`, `Fotos`, `Web`) VALUES ('A casa do Manolo', 'Al lado de Perico', '10 a 20', '321321', NULL, 'rotting.no-ip.biz');
 
 /* Pinchos */
-INSERT INTO `PeraPinchos`.`Pincho` (`NombrePincho`, `Descripcion`, `Precio`, `Ingredientes`, `Informacion`, `Validado`, `Establecimiento_NombreEst`) VALUES ('Babel Tower Split', 'La torre de Babel ha vuelto', '12', 'Platos y cubiertos', 'No apto para maniaticos', '0', 'A casa do Perico');
+INSERT INTO `PeraPinchos`.`Pincho` (`NombrePincho`, `Descripcion`, `Precio`, `Ingredientes`, `Informacion`, `Validado`, `Establecimiento_NombreEst`) VALUES ('Babel Tower Split', 'La torre de Babel ha vuelto', '12', 'Platos y cubiertos', 'No apto para maniaticos', '1', 'A casa do Perico');
+INSERT INTO `perapinchos`.`pincho` (`NombrePincho`, `Descripcion`, `Precio`, `Ingredientes`, `Informacion`, `Validado`, `Establecimiento_NombreEst`) VALUES ('Pinchazo final', 'El mejor de los pinchos', '666', 'Demasiados', 'Solo lo mejor', '1', 'A casa do Manolo');
 
 /* Jurado */
-INSERT INTO `PeraPinchos`.`Jurado` (`DniJur`, `Nombre`, `PasswordJ`, `Juradocol`) VALUES ('33344455L', 'Juan de Troya','123123', NULL);
+INSERT INTO `PeraPinchos`.`Jurado` (`DniJur`, `Nombre`, `PasswordJ`, `Juradocol`) VALUES ('33344455L', 'Juan de Troya','123123', 'SI');
+INSERT INTO `perapinchos`.`jurado` (`DniJur`, `Nombre`, `PasswordJ`, `Juradocol`) VALUES ('11122233A', 'Merche Rguez', '22222', 'SI');
 /* Mapa */
 INSERT INTO `PeraPinchos`.`Gastromapa` (`NombreGas`, `MapaUrl`, `Concurso_NombreC`) VALUES ('Pera Pinchos 24/11 Map', 'http://hollow.es', 'Pera Pinchos 24/11');
+
+/* Votaciones */
+
+INSERT INTO `perapinchos`.`pincho_has_jurado` (`Pincho_NombrePincho`, `Jurado_DniJur`, `VotoPro`) VALUES ('Babel Tower Split', '11122233A', NULL);
+INSERT INTO `perapinchos`.`pincho_has_jurado` (`Pincho_NombrePincho`, `Jurado_DniJur`, `VotoPro`) VALUES ('Pinchazo final', '11122233A', NULL);
+INSERT INTO `perapinchos`.`pincho_has_jurado` (`Pincho_NombrePincho`, `Jurado_DniJur`, `VotoPro`) VALUES ('Babel Tower Split', '33344455L', NULL);
+INSERT INTO `perapinchos`.`pincho_has_jurado` (`Pincho_NombrePincho`, `Jurado_DniJur`, `VotoPro`) VALUES ('Pinchazo final', '33344455L', NULL);
+
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
