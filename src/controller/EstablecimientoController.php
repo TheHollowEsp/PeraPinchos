@@ -15,11 +15,13 @@ ini_set('display_errors', 'On');
 class EstablecimientoController extends BaseController {
 
 	private $EstablecimientoMapper;
+	private $ConcursoMapper;
 
 	public function __construct() {
 		parent::__construct();
 		
 		$this -> EstablecimientoMapper = new EstablecimientoMapper();
+		$this -> ConcursoMapper = new ConcursoMapper();
 		$this -> view -> setLayout("welcome");
 	}
 	
@@ -64,11 +66,9 @@ class EstablecimientoController extends BaseController {
 	 	if(true){
 	 		$concurso = new Concurso();
 			$nombreC = $_GET["NombreCon"];
-			$concurso -> setNombreCon($nombreC);
 			$this->EstablecimientoMapper->registrarEnConcurso($_SESSION['currentuser'], $nombreC);
-	 		$this->view->setVariable("concurso", $concurso);
-	 		$this->view->setFlash("Registrado correctamente en el concurso");
-	 		$this->view->render("concurso", "consultar");
+			$concurso=$this->ConcursoMapper->findByName($nombreC);
+	 		$this->view->render("establecimiento", "inicioEstablecimiento");
 	 	}else{
 	 		$this->view->setFlash("Ya estas registrado en este concurso!");
 	 		$this->view->render("concurso", "listar");

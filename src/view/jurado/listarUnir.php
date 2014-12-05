@@ -5,7 +5,7 @@ $view = ViewManager::getInstance();
 
 $jurado = $view -> getVariable("jurado");
 $view -> setVariable("title", "Jurado");
-?><h1><?=i18n("Posts") ?></h1>
+?><h1><?=i18n("Jurado") ?></h1>
 
 <table border="1">
 	<tr>

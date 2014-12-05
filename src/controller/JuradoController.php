@@ -57,6 +57,38 @@ class JuradoController extends BaseController {
     $this->view->setVariable("jurado", $jurado);//falta cambiar
     $this->view->render("jurado", "registroJurado");//falta cambiar
   }
+	
+	
+	
+		public function registrarJuradoProfesional() {
+		$jurado = new Jurado();
+    
+		if (isset($_POST["DniJur"])){
+		$jurado->setDniJurado($_POST["DniJur"]);
+		$jurado->setNombreJurado($_POST["Nombre"]);
+		$jurado->setPasswordJurado($_POST["PasswordJ"]);
+		$jurado->setIsProfesional("SI");
+      
+		try{
+		$jurado->checkIsValidForRegisterJurado();
+		if (!$this->JuradoMapper->juradoExistsByDNI($_POST["DniJur"])){
+		$this->JuradoMapper->save($jurado);
+		//$this->view->setFlash("dniJurado ".$jurado->getNombreJurado()." successfully added. Please login now");
+		$this->view->redirect("organizador", "inicioOrganizador");//falta cambiar
+	  
+		} else {
+			$errors = array();
+			$errors["dniJurado"] = "Ya existe un jurado con ese mismo DNI";
+			$this->view->setVariable("errors", $errors);
+		}
+		}catch(ValidationException $ex) {
+		$errors = $ex->getErrors();
+		$this->view->setVariable("errors", $errors);
+		}
+    }
+    $this->view->setVariable("jurado", $jurado);//falta cambiar
+    $this->view->render("jurado", "registroJuradoProfesional");//falta cambiar
+  }
   
     /**
 	* Se llama a esta funcion solo con un GET para obtener la lista de elementos de la tabla Jurado

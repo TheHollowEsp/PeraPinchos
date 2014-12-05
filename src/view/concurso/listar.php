@@ -6,7 +6,7 @@ $view = ViewManager::getInstance ();
 $concurso = $view->getVariable ( "concurso" );
 $view->setVariable ( "title", "Concurso" );
 
-?><h1><?=i18n("Posts")?></h1>
+?><h1><?=i18n("Concursos")?></h1>
 
 <table border="1">
 	<tr>

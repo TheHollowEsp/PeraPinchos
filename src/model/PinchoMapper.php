@@ -45,7 +45,7 @@ class PinchoMapper {
 	}
 
 	public function findAll() {
-		$stmt = $this -> db -> query("SELECT * FROM pincho");
+		$stmt = $this -> db -> query("SELECT * FROM pincho where Validado=1");
 		$pinchos_db = $stmt -> fetchAll(PDO::FETCH_ASSOC);
 
 		$pinchos = array();

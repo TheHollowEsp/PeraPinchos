@@ -3,6 +3,7 @@ require_once (__DIR__ . "/../core/ViewManager.php");
 require_once (__DIR__ . "/../core/I18n.php");
 
 require_once (__DIR__ . "/../model/Pincho.php");
+require_once (__DIR__ . "/../model/PinchoMapper.php");
 require_once (__DIR__ . "/../model/Organizador.php");
 require_once (__DIR__ . "/../model/OrganizadorMapper.php");
 require_once (__DIR__ . "/../model/Jurado.php");
@@ -24,11 +25,12 @@ class OrganizadorController extends BaseController {
 	 */
 	
 	private $OrganizadorMapper;
-
+	private $PinchoMapper;
 	public function __construct() {
 		parent::__construct();
 
 		$this -> OrganizadorMapper = new OrganizadorMapper();
+		$this -> PinchoMapper = new PinchoMapper();
 
 		// Users controller operates in a "welcome" layout
 		// different to the "default" layout where the internal
@@ -71,8 +73,23 @@ class OrganizadorController extends BaseController {
 		$this->view->render("organizador","registro");//falta cambiar
 	}
 	
+	public function listarPinchosNoValidado(){
+		$pinchos = $this -> PinchoMapper -> findAllNoValidado();
+
+		// manda el array que contiene los pinchos a la vista(view)
+		$this -> view -> setVariable("pinchos", $pinchos);
+
+		// renderiza la vista (/view/pinchos/listar.php)
+		$this -> view -> render("organizador", "listar");
+	}
+	
+	
 	public function validarPincho(){
-		
+		$nombrePincho = $_GET["nombrePincho"];
+		$pincho = $this -> PinchoMapper -> findById($nombrePincho);
+		$pincho->setIsValidado(1);
+		$this -> PinchoMapper -> update($pincho);
+		$this -> view -> render("organizador", "inicioOrganizador");
 	}
 	/**
 	 * 

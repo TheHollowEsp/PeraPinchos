@@ -41,6 +41,7 @@ class ConcursoController extends BaseController {
 				if (!$this->ConcursoMapper->concursoExistsByName($_POST["NombreCon"])){
 					$this->ConcursoMapper->save($concurso);
 					//$this->view->setFlash("NombreCon".$concurso->getNombreCon()."Concurso a�adido correctamente");
+					$this -> view -> render("organizador", "inicioOrganizador");
 					 
 				} else {
 					$errors = array();
@@ -51,9 +52,10 @@ class ConcursoController extends BaseController {
 				$errors = $ex->getErrors();
 				$this->view->setVariable("errors", $errors);
 			}
-		}
+		}else{
 		$this->view->setVariable("NombreCon", $concurso);//falta cambiar
 		$this->view->render("concurso", "registrar");//falta cambiar
+		}
 	}
 
 	/**
