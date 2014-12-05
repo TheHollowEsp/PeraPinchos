@@ -30,7 +30,7 @@ class PinchosController extends BaseController {
 		parent::__construct();
 
 		$this -> pinchoMapper = new PinchoMapper();
-		$this -> $juradoMapper = new JuradoMapper();
+		$this -> juradoMapper = new JuradoMapper();
 
 		// Users controller operates in a "welcome" layout
 		// different to the "default" layout where the internal
@@ -53,13 +53,16 @@ class PinchosController extends BaseController {
 
 	// TODO: Pensar en una forma de hacer el join m:n para saber cuales son
 	public function listarParaJurado() {
-		echo $_SESSION["currentuser"];
-		$jurado = $this -> $juradoMapper -> findByDNI($_SESSION["currentuser"]);
-		if ($jurado -> Juradocol == "SI") {//Si es profesional le buscamos sus pinchos
-			$pinchos = $this -> $pinchoMapper -> findAllForJuradoConcreto($jurado);
+		
+		$jurado = $this -> juradoMapper -> findByDNI($_SESSION["currentuser"]);
+		
+		if ($jurado -> isJuradoP == "SI") {//Si es profesional le buscamos sus pinchos
+			echo "Es jurado profesional!!!";
+			$pinchos = $this -> pinchoMapper -> findAllForJuradoConcreto($jurado);
+			
 			// manda el array que contiene los pinchos a la vista(view)
 			$this -> view -> setVariable("pinchos", $pinchos);
-			// renderiza la vista (/view/pinchos/listar.php)
+			// renderiza la vista (/view/pinchos/listarJuradoP.php)
 			$this -> view -> render("pinchos", "listarJuradoP");
 		} else {//Si no le redirigimos al listado normal
 			$pinchos = $this -> pinchoMapper -> findAll();

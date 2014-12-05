@@ -4,7 +4,6 @@ require_once (__DIR__ . "/../../core/ViewManager.php");
 $view = ViewManager::getInstance();
 
 $pinchos = $view -> getVariable("pinchos");
-// $currentuser = $view->getVariable("currentusername");
 
 $view -> setVariable("title", "Pinchos");
 ?><h1><?=i18n("Pinchos") ?></h1>

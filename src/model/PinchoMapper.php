@@ -27,36 +27,27 @@ class PinchoMapper {
 		$this -> db = PDOConnection::getInstance();
 	}
 
-	//FIXME: Le falta poner atributos de jurado
-	public function findAllForJuradoP() {
-		$stmt = query("SELECT * FROM pincho NATURAL JOIN pincho_has_jurado NATURAL JOIN jurado");
-		$pinchos_db = $stmt -> fetchAll(PDO::FETCH_ASSOC);
-
-		$pinchos = array();
-		foreach ($pinchos_db as $pincho) {
-			//$establecimiento = new Establecimiento($pincho["Establecimiento_NombreEst"]);
-			//Usar nombres de las columnas en la DB
-			array_push($pinchos, new Pincho($pincho["NombrePincho"], $pincho["Descripcion"], $pincho["Precio"], $pincho["Ingredientes"], $pincho["Fotos"], $pincho["Informacion"], $pincho["Validado"], $pincho["Establecimiento_NombreEst"]));
-		}
-
-		return $pinchos;
-
-	}
-
-	//FIXME: Por probar, falta poner atributos de jurado en array
 	public function findAllForJuradoConcreto($jurado) {
-		$stmt = $this -> db -> query("SELECT * FROM pincho where NombrePincho = (SELECT Pincho_NombrePincho FROM pincho_has_jurado WHERE Jurado_DNIJur=?)");
-
+			/*
+		$stmt = $this -> db -> prepare("SELECT Pincho_NombrePincho FROM pincho_has_jurado WHERE Jurado_DNIJur=?");
 		$stmt -> execute(array($jurado -> getDniJurado()));
-		$pinchos_db = $stmt -> fetchAll(PDO::FETCH_ASSOC);		
-		$pinchos = array();
-		foreach ($pinchos_db as $pincho) {
-			//$establecimiento = new Establecimiento($pincho["Establecimiento_NombreEst"]);
-			//Usar nombres de las columnas en la DB
-			array_push($pinchos, new Pincho($pincho["NombrePincho"], $pincho["Descripcion"], $pincho["Precio"], $pincho["Ingredientes"], $pincho["Fotos"], $pincho["Informacion"], $pincho["Validado"], $pincho["Establecimiento_NombreEst"]));
+		$pinchos_nombre = $stmt -> fetchAll(PDO::FETCH_ASSOC);
+		foreach ($pinchos_nombre as $pincho1) {
+			foreach ($pincho1 as $pincho2) {
+				echo $pincho2;
+			}
+
 		}
 
-		return $pinchos;
+		//$pinchos = array();
+		foreach ($pinchos_db as $pincho) {
+		 echo "Metiendo un pincho";
+		 //$establecimiento = new Establecimiento($pincho["Establecimiento_NombreEst"]);
+		 //Usar nombres de las columnas en la DB
+		 array_push($pinchos, new Pincho($pincho["NombrePincho"], $pincho["Descripcion"], $pincho["Precio"], $pincho["Ingredientes"], $pincho["Fotos"], $pincho["Informacion"], $pincho["Validado"], $pincho["Establecimiento_NombreEst"]));
+		 }
+		 echo "Retornando pincho";
+		 return $pinchos;*/
 
 	}
 
@@ -67,8 +58,6 @@ class PinchoMapper {
 		$pinchos = array();
 
 		foreach ($pinchos_db as $pincho) {
-			//$establecimiento = new Establecimiento($pincho["Establecimiento_NombreEst"]);
-			//Usar nombres de las columnas en la DB
 			array_push($pinchos, new Pincho($pincho["NombrePincho"], $pincho["Descripcion"], $pincho["Precio"], $pincho["Ingredientes"], $pincho["Fotos"], $pincho["Informacion"], $pincho["Validado"], $pincho["Establecimiento_NombreEst"]));
 		}
 

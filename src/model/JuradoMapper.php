@@ -83,7 +83,7 @@ class JuradoMapper {
 		$jurado = $stmt->fetch(PDO::FETCH_ASSOC);
     
 		if(!sizeof($jurado) == 0) {
-			return new jurado(
+			return new Jurado(
 		$jurado["DniJur"],
 		$jurado["Nombre"],
 		$jurado["PasswordJ"],

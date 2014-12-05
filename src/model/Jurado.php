@@ -9,11 +9,12 @@ class Jurado {
 	var $isJuradoP;
 	var $passJurado;
 	
-	public function __construct($dniJurado=NULL, $nombreJurado=NULL, $isJuradoP=NULL, $passJurado=NULL) {
+	public function __construct($dniJurado=NULL, $nombreJurado=NULL, $passJurado=NULL, $isJuradoP=NULL) {
 		$this -> dniJurado = $dniJurado;
 		$this -> nombreJurado = $nombreJurado;
-		$this -> isJuradoP = $isJuradoP;
 		$this -> passJurado = $passJurado;
+		$this -> isJuradoP = $isJuradoP;
+		
 	}
 	
 	public function getDniJurado() {

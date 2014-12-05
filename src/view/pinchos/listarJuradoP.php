@@ -4,13 +4,9 @@ require_once (__DIR__ . "/../../core/ViewManager.php");
 $view = ViewManager::getInstance();
 
 $pinchos = $view -> getVariable("pinchos");
-$currentusera = $_SESSION["currentuser"];
-echo $currentusera;
 
 $view -> setVariable("title", "Pinchos Especiales");
 ?><h1><?=i18n("Pinchos especiales") ?></h1>
-
-
 
 <table border="1">
 	<tr>
@@ -20,24 +16,22 @@ $view -> setVariable("title", "Pinchos Especiales");
 		<th><?= i18n("Establecimiento") ?></th>
 	</tr>
 
-    <?php foreach ($pinchos as $pincho): ?>
+    <?php foreach ($pinchos as $pin): ?>
 	    <tr>
 		<td><a
-			href="index.php?controller=pinchos&amp;action=consultar&amp;nombrePincho=<?= $pincho -> getNombrePincho() ?>"><?= htmlentities($pincho -> getNombrePincho()) ?></a>
+			href="index.php?controller=pinchos&amp;action=consultar&amp;nombrePincho=<?= $pin -> getNombrePincho() ?>"><?= htmlentities($pin -> getNombrePincho()) ?></a>
 		</td>
 		<td>
-		<?= $pincho -> getDescripcionPincho() ?>
+		<?= $pin -> getDescripcionPincho() ?>
 	      </td>
 				<td>
-				<?= $pincho -> getPrecioPincho() ?>
+				<?= $pin -> getPrecioPincho() ?>
 						</td>
 						<td>
-						<?= $pincho -> getEstablecimiento() ?>
+						<?= $pin -> getEstablecimiento() ?>
 								</td>
 		
 	</tr>
     <?php endforeach; ?>
 
     </table>
-    
- 
