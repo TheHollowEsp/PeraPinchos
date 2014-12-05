@@ -10,14 +10,16 @@ class Concurso {
 	var $BasesConcurso;
 	var $PatrocinadoresCon;
 	var $PremiosCon;
+	var $OrganizadorCon;
 	
-	public function __construct($NombreCon=NULL, $FechaIniCon=NULL, $FechaFinCon=NULL,$BasesConcurso=NULL,$PatrocinadoresCon=NULL,$PremiosCon=NULL) {
+	public function __construct($NombreCon=NULL, $FechaIniCon=NULL, $FechaFinCon=NULL,$BasesConcurso=NULL,$PatrocinadoresCon=NULL,$PremiosCon=NULL,$OrganizadorCon=NULL) {
 		$this -> NombreCon = $NombreCon;
 		$this -> FechaIniCon = $FechaIniCon;
 		$this -> FechaFinCon = $FechaFinCon;
 		$this -> BasesConcurso = $BasesConcurso;
 		$this -> PatrocinadoresCon = $PatrocinadoresCon;
 		$this -> PremiosCon = $PremiosCon;
+		$this -> OrganizadorCon = $OrganizadorCon;
 	}
 	
 	public function getNombreCon() {
@@ -67,6 +69,15 @@ class Concurso {
 	public function setPremiosCon($PremiosCon) {
 		$this -> PremiosCon = $PremiosCon;
 	}
+	
+	public function getOrganizadorCon() {
+		return $this -> OrganizadorCon;
+	}
+	
+	public function setOrganizadorCon($OrganizadorCon) {
+		$this -> OrganizadorCon = $OrganizadorCon;
+	}
+	
 	
 	public function __toString() {
 		return "ConcursoBean:

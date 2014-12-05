@@ -5,10 +5,16 @@
  $view = ViewManager::getInstance();
  $view->setVariable("title", "Inicio");
  $errors = $view->getVariable("errors");
+ $concursos = $view->getVariable ( "concurso" );
 ?>
 
-<h1><?= i18n("Estas en la pagina principal del organizador") ?></h1>
+<h1><?= i18n("Estas en la pagina principal del organizador, que quieres hacer") ?></h1>
 
-<form action="index.php?controller=jurado&amp;action=listar" method="POST">
-<input type="submit" value="<?= i18n("Eliminar Jurado Profesional") ?>">
-</form>
+<form action="index.php?controller=concurso&amp;action=registrarConcurso"  method="POST">      
+<input type="submit" value="<?= i18n("Registro de Concurso")?>"></form>
+
+<form action="index.php?controller=concurso&amp;action=listar"  method="POST">      
+<input type="submit" value="<?= i18n("Listar concursos")?>"></form>
+
+<h1><?=i18n("Posts")?></h1>
+

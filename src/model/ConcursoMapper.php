@@ -38,8 +38,8 @@ class concursoMapper {
 		$concursoL = array();
 
 		foreach ($concursos_db as $concurso) {			
-			//$organizador = new Organizador($concurso["Organizador_DniOrg"]);
-			array_push($concursoL, new Concurso($concurso["NombreC"], $concurso["FechaIni"], $concurso["FechaFin"], $concurso["BasesCon"], $concurso["Patrocinadores"],$concurso["Premios"]));
+			//$organizador = new Organizador($_SESSION['currentuser']);
+			array_push($concursoL, new Concurso($concurso["NombreC"], $concurso["FechaIni"], $concurso["FechaFin"], $concurso["BasesCon"], $concurso["Patrocinadores"],$concurso["Premios"],$_SESSION['currentuser']));
 		}
 
 		return $concursoL;
@@ -58,11 +58,24 @@ class concursoMapper {
 		$concurso = $stmt -> fetch(PDO::FETCH_ASSOC);
 
 		if (!sizeof($post) == 0) {
-			return  new concurso($concurso["NombreC"], $concurso["FechaIni"], $concurso["FechaFin"], $concurso["BasesCon"], $concurso["Patrocinadores"],$concurso["Premios"]);
+			return  new concurso($concurso["NombreC"], $concurso["FechaIni"], $concurso["FechaFin"], $concurso["BasesCon"], $concurso["Patrocinadores"],$concurso["Premios"],$concurso["Organizador"]);
 		} else {
 			return NULL;
 		}
 	}
+	
+	/**
+	 * Comprueba si existe el concurso
+	 * 
+	 */
+	 
+	    public function concursoExistsByName($NombreC) {
+		$stmt = $this->db->prepare("SELECT count(NombreC) FROM Concurso where NombreC=?");
+		$stmt->execute(array($NombreC));
+		if ($stmt->fetchColumn() > 0) {
+		return true;
+	}
+		}
 
 	/*
 	 * Guarda el concurso en la DB
@@ -70,16 +83,15 @@ class concursoMapper {
 	 * @return void
 	 */
 	public function save(concurso $concurso) {
-		$stmt = $this -> db -> prepare("INSERT INTO concurso (NombreConcurso, fechaInicio, fechaFin, basesConcurso, patrocinadores, premios, //aqui falta la foranea) (?,?,?,?,?,?,?,?)");
+		$stmt = $this -> db -> prepare("INSERT INTO concurso values (?,?,?,?,?,?,?)");
 		$stmt -> execute(array(
-		$concurso -> getNombreConcurso(), 
-		$concurso -> getFechaInicio(), 
-		$concurso -> getFechaFin(), 
+		$concurso -> getNombreCon(), 
+		$concurso -> getFechaIniCon(), 
+		$concurso -> getFechaFinCon(), 
 		$concurso -> getBasesConcurso(), 
-		$concurso -> getPatrocinadores(), 
-		$concurso -> getPremios(), 
-		
-		//$concurso -> getEstablecimiento() -> getUsername() //Revisar
+		$concurso -> getPatrocinadoresCon(), 
+		$concurso -> getPremiosCon(), 
+		$concurso -> getOrganizadorCon()
 		));
 	}
 
@@ -89,14 +101,15 @@ class concursoMapper {
 	 * @return void
 	 */
 	public function update(concurso $concurso) {
-		$stmt = $this -> db -> prepare("UPDATE concurso set NombreC=?, FechaIni=?, FechaFin=?, BasesCon=?, Patrocinadores=?, Premios=? where NombreC=?");
+		$stmt = $this -> db -> prepare("UPDATE concurso set NombreC=?, FechaIni=?, FechaFin=?, BasesCon=?, Patrocinadores=?, Premios=?, Organizador_DniOrg=? where NombreC=?");
 		$stmt -> execute(array(
-		$concurso -> getNombreConcurso(), 
-		$concurso -> getFechaInicio(), 
+		$concurso -> getNombreCon(), 
+		$concurso -> getFechaIni(), 
 		$concurso -> getFechaFin(), 
 		$concurso -> getBasesConcurso(), 
 		$concurso -> getPatrocinadores(), 
-		$concurso -> getPremios(), 
+		$concurso -> getPremios(),
+		$concurso -> getOrganizador()
 		)); 
 	} //Aqu� no se cambia la clave foranea
 
@@ -106,7 +119,7 @@ class concursoMapper {
 	 * @return void
 	 */
 	public function delete(concurso $concurso) {
-		$stmt = $this -> db -> prepare("DELETE from concurso WHERE Nombrec=?");
+		$stmt = $this -> db -> prepare("DELETE from concurso WHERE NombreC=?");
 		$stmt -> execute(array($concurso -> getNombreconcurso()));
 	}
 

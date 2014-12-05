@@ -27,19 +27,24 @@ class ConcursoController extends BaseController {
 	public function registrarConcurso() {
 		$concurso = new Concurso();
 
-		if (isset($_POST["NombreC"])){
-			$concurso->setNombreC($_POST["NombreC"]);
+		if (isset($_POST["NombreCon"])){
+			$concurso->setNombreCon($_POST["NombreCon"]);
+			$concurso->setFechaIniCon($_POST["FechaIniCon"]);
+			$concurso->setFechaFinCon($_POST["FechaFinCon"]);
+			$concurso->setBasesConcurso($_POST["BasesConcurso"]);
+			$concurso->setPatrocinadoresCon($_POST["PatrocinadoresCon"]);
+			$concurso->setPremiosCon($_POST["PremiosCon"]);
+			$concurso->setOrganizadorCon($_SESSION['currentuser']);
 
 			try{
-				$concurso->checkIsValidForRegisterConcurso();//pendiente
-				if (!$this->ConcursoMapper->ConcursoExistsByDNI($_POST["NombreC"])){
+				$concurso->checkIsValidForCreate();
+				if (!$this->ConcursoMapper->concursoExistsByName($_POST["NombreCon"])){
 					$this->ConcursoMapper->save($concurso);
-					$this->view->setFlash("NombreC".$concurso->getNombreC()."Concurso a�adido correctamente");
-					//$this->view->redirect("users", "login"); creo que sobra o mas bien no tiene mucho sentido aqui
+					$this->view->setFlash("NombreCon".$concurso->getNombreCon()."Concurso a�adido correctamente");
 					 
 				} else {
 					$errors = array();
-					$errors["NombreC"] = "Ya existe un concurso con el mismo nombre";
+					$errors["NombreCon"] = "Ya existe un concurso con el mismo nombre";
 					$this->view->setVariable("errors", $errors);
 				}
 			}catch(ValidationException $ex) {
@@ -47,8 +52,8 @@ class ConcursoController extends BaseController {
 				$this->view->setVariable("errors", $errors);
 			}
 		}
-		$this->view->setVariable("nombreC", $concurso);//falta cambiar
-		$this->view->render("users", "register");//falta cambiar
+		$this->view->setVariable("NombreCon", $concurso);//falta cambiar
+		$this->view->render("concurso", "registrar");//falta cambiar
 	}
 
 	/**
@@ -62,6 +67,7 @@ class ConcursoController extends BaseController {
 
 		// renderiza la vista (/view/pinchos/listar.php)
 		$this -> view -> render("concurso", "listar");
+		
 	}
 	/**
 	 * Se llama a esta funcion solo con un GET para obtener la informaci�n especifica
@@ -69,14 +75,14 @@ class ConcursoController extends BaseController {
 	 * El dato que se espera es dniJurado
 	 */
 	public function consultar() {
-		if (!isset($_GET["NombreC"])) {
+		if (!isset($_GET["NombreCon"])) {
 			throw new Exception("Escribe el nombre del concurso");
 		}
-		$NombreC = $_GET["NombreC"];
+		$NombreCon = $_GET["NombreCon"];
 		$concurso = $this->ConcursoMapper->findByName($concurso);
 
 		if ($concurso == NULL) {
-			throw new Exception("No existe ningun concurso con ese nombre: ".$NombreC);
+			throw new Exception("No existe ningun concurso con ese nombre: ".$NombreCon);
 		}
 		$this->view->setVariable("post", $concurso);//falta cambiar
 		$this->view->render("posts", "view");//falta cambiar
@@ -88,13 +94,13 @@ class ConcursoController extends BaseController {
 	 * El dato que se espera es dniJurado
 	 */
 	public function eliminar() {
-		if (!isset($_POST["NombreC"])) {
+		if (!isset($_POST["NombreCon"])) {
 			throw new Exception("Es obligatorio proporcionar el nombre del concurso a eliminar");
 		}
-		$NombreC = $_REQUEST["NombreC"];
-		$concurso = $this->ConcursoMapper->findByName($NombreC);
+		$NombreCon = $_REQUEST["NombreCon"];
+		$concurso = $this->ConcursoMapper->findByName($NombreCon);
 		if ($concurso == NULL) {
-			throw new Exception("No existe el concurso con ese nombre: ".$NombreC);
+			throw new Exception("No existe el concurso con ese nombre: ".$NombreCon);
 		}
 
 		// habria que comprobar, por temas de seguridad, que fuese el organizador el que
@@ -105,7 +111,7 @@ class ConcursoController extends BaseController {
 
 		$this->ConcursoMapper->delete($concurso);
 
-		$this->view->setFlash("Concurso \"".$concurso ->getNombreC()."\" eliminado correctamente.");
+		$this->view->setFlash("Concurso \"".$concurso ->getNombreCon()."\" eliminado correctamente.");
 		$this->view->redirect("posts", "index");//falta cambiar
 	}
 }
