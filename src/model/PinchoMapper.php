@@ -129,7 +129,14 @@ class PinchoMapper {
 		$stmt = $this -> db -> prepare("DELETE from pincho WHERE NombrePincho=?");
 		$stmt -> execute(array($pincho -> getNombrePincho()));
 	}
-
+	
+	public function valorarPincho($nombre,$valoracion,$user){
+		$stmt = $this -> db -> prepare("UPDATE pincho_has_jurado set VotoPro=? WHERE Pincho_NombrePincho=? AND Jurado_DniJur=?");
+		
+		$stmt -> execute(array($valoracion, $nombre,$user));
+	
+	}
+	
 	public function pinchoExists($NombrePincho) {
 		echo "Comprobando existencia de " . $NombrePincho;
 		$stmt = $this -> db -> prepare("SELECT count(NombrePincho) FROM pincho where NombrePincho=?");
