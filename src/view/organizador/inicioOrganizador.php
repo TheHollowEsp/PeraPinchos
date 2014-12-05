@@ -13,7 +13,7 @@
 <form action="index.php?controller=concurso&amp;action=registrarConcurso"  method="POST">      
 <input type="submit" value="<?= i18n("Registro de Concurso")?>"></form>
 
-<form action="index.php?controller=concurso&amp;action=listar"  method="POST">      
+<form action="index.php?controller=concurso&amp;action=listarParaOrganizador"  method="POST">      
 <input type="submit" value="<?= i18n("Listar concursos")?>"></form>
 
 <h1><?=i18n("Posts")?></h1>

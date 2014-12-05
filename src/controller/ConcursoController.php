@@ -90,13 +90,13 @@ class ConcursoController extends BaseController {
 			throw new Exception("Escribe el nombre del concurso");
 		}
 		$NombreCon = $_GET["NombreCon"];
-		$concurso = $this->ConcursoMapper->findByName($concurso);
+		$concurso = $this->ConcursoMapper->findByName($NombreCon);
 
 		if ($concurso == NULL) {
 			throw new Exception("No existe ningun concurso con ese nombre: ".$NombreCon);
 		}
-		$this->view->setVariable("post", $concurso);//falta cambiar
-		$this->view->render("posts", "view");//falta cambiar
+		$this->view->setVariable("concurso", $concurso);//falta cambiar
+		$this->view->render("concurso", "consultar");//falta cambiar
 		 
 	}
 	/**

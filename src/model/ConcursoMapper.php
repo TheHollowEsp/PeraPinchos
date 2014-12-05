@@ -57,8 +57,8 @@ class concursoMapper {
 		$stmt -> execute(array($nombreconcurso));
 		$concurso = $stmt -> fetch(PDO::FETCH_ASSOC);
 
-		if (!sizeof($post) == 0) {
-			return  new concurso($concurso["NombreC"], $concurso["FechaIni"], $concurso["FechaFin"], $concurso["BasesCon"], $concurso["Patrocinadores"],$concurso["Premios"],$concurso["Organizador"]);
+		if (!sizeof($concurso) == 0) {
+			return  new concurso($concurso["NombreC"], $concurso["FechaIni"], $concurso["FechaFin"], $concurso["BasesCon"], $concurso["Patrocinadores"],$concurso["Premios"],$concurso["Organizador_DniOrg"]);
 		} else {
 			return NULL;
 		}
