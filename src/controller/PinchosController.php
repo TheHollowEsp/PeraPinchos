@@ -173,6 +173,16 @@ class PinchosController extends BaseController {
 
 		
 	}
+	
+			public function unir() {
+		
+		$nombrep = $_GET["nombrePincho"];
+		//$jurado = $this->PinchoMapper->findById($nombrep);
+    
+			$this->pinchoMapper->unirP($nombrep, $_SESSION["dnij"]);
+	 		$this->view->render("organizador", "inicioOrganizador");
+   
+  }
 
 }
 ?>

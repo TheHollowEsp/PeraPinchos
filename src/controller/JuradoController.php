@@ -134,5 +134,27 @@ class JuradoController extends BaseController {
 	public function inicio(){
 		$this->view->redirect("jurado", "inicioJurado");
 	} 
+	
+		public function inicio(){
+		$this->view->redirect("jurado", "inicioJurado");
+	} 
+	  public function listarParaUnirP() {
+	//Esta funcion solo la puede hacer el organizador, hay que poner al inicio de todo una comprobacion
+	//de sesion, falta cambiar
+		$juradoL = $this->JuradoMapper->findAll();
+		
+		$this -> view -> setVariable("jurado", $juradoL);
+			//falta agregar la vista, no se continuar
+		$this->view->render("jurado", "listarParaPincho");//falta cambiar
+  }
+	
+	public function listaAsignarPincho(){
+		$_SESSION["dnij"]=$_GET["dniJurado"];
+		$pinchoL = $this->PinchoMapper->findAll();
+		
+		$this -> view -> setVariable("pinchos", $pinchoL);
+			//falta agregar la vista, no se continuar
+		$this->view->render("pinchos", "listarPUnirJ");//falta cambiar
+	}
 }
 ?>
