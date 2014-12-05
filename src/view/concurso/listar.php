@@ -16,6 +16,7 @@ $view->setVariable ( "title", "Concurso" );
 		<th><?= i18n("Bases Concurso")?></th>
 		<th><?= i18n("Patrocinadores")?></th>
 		<th><?= i18n("Premios")?></th>
+		<th><?= i18n("Añadir jurado")?></th>
 	</tr>
 
     <?php foreach ($concurso as $con): ?>
@@ -38,6 +39,11 @@ $view->setVariable ( "title", "Concurso" );
 			</td>
 			<td>
 				<?= $con->getPremiosCon()?>
+			</td>
+			
+			<td>
+				<a
+				href="index.php?controller=jurado&amp;action=listarParaUnir&amp;NombreCon=<?= $con->getNombreCon() ?>"><?= htmlentities("añadir") ?></a>
 			</td>
 		
 	</tr>

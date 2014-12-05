@@ -64,11 +64,32 @@ class JuradoController extends BaseController {
 			//falta agregar la vista, no se continuar
 		$this->view->render("jurado", "listar");//falta cambiar
   }
+  public function listarParaUnir() {
+	//Esta funcion solo la puede hacer el organizador, hay que poner al inicio de todo una comprobacion
+	//de sesion, falta cambiar
+	$_SESSION["nomCon"]=$_GET["NombreCon"];
+		$juradoL = $this->JuradoMapper->findAll();
+		
+		$this -> view -> setVariable("jurado", $juradoL);
+			//falta agregar la vista, no se continuar
+		$this->view->render("jurado", "listarUnir");//falta cambiar
+  }
   	/**
 	* Se llama a esta funcion solo con un GET para obtener la información especifica
 	* de un unico elemento de la tabla Jurado
 	* El dato que se espera es dniJurado
 	*/
+	    public function unir() {
+		
+		$juradodni = $_GET["dniJurado"];
+		$jurado = $this->JuradoMapper->findByDNI($juradodni);
+    
+			$this->JuradoMapper->unir($juradodni,$_SESSION["nomCon"]);
+			$this->view->setFlash("Unido correctamente en el concurso");
+	 		$this->view->render("organizador", "inicioOrganizador");
+   
+  }
+	
     public function consultar() {
 		if (!isset($_GET["dniJurado"])) {
 		throw new Exception("Es obligatorio proporcionar el DNI");

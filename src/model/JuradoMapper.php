@@ -130,4 +130,17 @@ class JuradoMapper {
 	}
 	
 }
+		
+			public function unir($Jurado_DniJur, $Concurso_NombreCon) {
+		$stmt = $this -> db -> prepare("SELECT count(Concurso_NombreC) FROM concurso_has_jurado where Jurado_DniJur=? and Concurso_NombreC=?");
+		$stmt -> execute(array($Jurado_DniJur, $Concurso_NombreCon));
+
+		if ($stmt -> fetchColumn() == 0) {
+			$stmt = $this -> db -> prepare("INSERT INTO concurso_has_jurado values (?,?)");
+			$stmt -> execute(array($Concurso_NombreCon, $Jurado_DniJur));
+			return true;
+		}else{
+			return false;
+		}
+	}
 }

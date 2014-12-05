@@ -125,5 +125,6 @@ class ConcursoController extends BaseController {
 		$this->view->setFlash("Concurso \"".$concurso ->getNombreCon()."\" eliminado correctamente.");
 		$this->view->redirect("posts", "index");//falta cambiar
 	}
+
 }
 ?>
