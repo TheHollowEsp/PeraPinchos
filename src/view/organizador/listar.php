@@ -34,7 +34,7 @@ $view -> setVariable("title", "Pinchos");
 								</td>
 								<td>
 									<a
-			href="index.php?controller=organizador&amp;action=validarPincho&amp;nombrePincho=<?= $pincho -> getNombrePincho() ?>"><?= htmlentities($pincho -> getNombrePincho()) ?></a>
+			href="index.php?controller=organizador&amp;action=validarPincho&amp;nombrePincho=<?= $pincho -> getNombrePincho() ?>">Validar</a>
 								
 								</td>
 		
