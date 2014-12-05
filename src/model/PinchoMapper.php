@@ -28,26 +28,19 @@ class PinchoMapper {
 	}
 
 	public function findAllForJuradoConcreto($jurado) {
-			/*
-		$stmt = $this -> db -> prepare("SELECT Pincho_NombrePincho FROM pincho_has_jurado WHERE Jurado_DNIJur=?");
+		
+		$stmt = $this -> db -> prepare("SELECT P.* FROM jurado J, pincho_has_jurado PJ, pincho P WHERE J.DniJur = PJ.Jurado_dniJur AND PJ.Pincho_NombrePincho = P.NombrePincho AND J.DniJur = ?");
 		$stmt -> execute(array($jurado -> getDniJurado()));
-		$pinchos_nombre = $stmt -> fetchAll(PDO::FETCH_ASSOC);
-		foreach ($pinchos_nombre as $pincho1) {
-			foreach ($pincho1 as $pincho2) {
-				echo $pincho2;
-			}
-
-		}
-
-		//$pinchos = array();
+		$pinchos_db = $stmt -> fetchAll(PDO::FETCH_ASSOC);
+		
+		$pinchos = array();
 		foreach ($pinchos_db as $pincho) {
 		 echo "Metiendo un pincho";
-		 //$establecimiento = new Establecimiento($pincho["Establecimiento_NombreEst"]);
-		 //Usar nombres de las columnas en la DB
+		 
 		 array_push($pinchos, new Pincho($pincho["NombrePincho"], $pincho["Descripcion"], $pincho["Precio"], $pincho["Ingredientes"], $pincho["Fotos"], $pincho["Informacion"], $pincho["Validado"], $pincho["Establecimiento_NombreEst"]));
 		 }
 		 echo "Retornando pincho";
-		 return $pinchos;*/
+		 return $pinchos;
 
 	}
 

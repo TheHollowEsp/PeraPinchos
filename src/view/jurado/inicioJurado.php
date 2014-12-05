@@ -9,4 +9,4 @@
 
 <h1><?= i18n("Estas en la pagina principal del jurado") ?></h1>
 
-<p><a href="index.php?controller=pincho&amp;action=listarParaJurado">Listar pinchos</a></p>
+<p><a href="index.php?controller=pinchos&amp;action=listarParaJurado">Listar pinchos asignados</a></p>
