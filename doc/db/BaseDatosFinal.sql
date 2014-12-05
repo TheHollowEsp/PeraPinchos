@@ -205,13 +205,15 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 
 /* Organizador */
-INSERT INTO `PeraPinchos`.`Organizador` (`DniOrg`, `NombreOrg`, `Telefono`, `Email`) VALUES ('33344455X', 'Perico de los Palotes', '666666666', 'riopedre2001@gmail.com');
+INSERT INTO `PeraPinchos`.`Organizador` (`DniOrg`, `NombreOrg`, `Telefono`, `Email`, `PasswordO`) VALUES ('33344455X', 'Perico de los Palotes', '666666666', 'vaya@cosa.com', '111');
+INSERT INTO `perapinchos`.`organizador` (`DniOrg`, `NombreOrg`, `Telefono`, `Email`, `PasswordO`) VALUES ('99999999C', 'Armando Casitas', '888999444', 'festival@humor.es', '999');
 /* Concurso */
-INSERT INTO `PeraPinchos`.`Concurso` (`NombreC`, `FechaIni`, `FechaFin`, `BasesCon`, `Patrocinadores`, `Premios`, `Organizador_DniOrg`) VALUES ('Pera Pinchos 24/11', '2014-11-24 00:00:00', '2014-11-30 00:00:00', 'Todos los pinchos admitidos.', 'Muchos.', 'Sueldo mensual.', '33344455X');
+INSERT INTO `PeraPinchos`.`Concurso` (`NombreC`, `FechaIni`, `FechaFin`, `BasesCon`, `Patrocinadores`, `Premios`, `Organizador_DniOrg`) VALUES ('Pera Pinchos 24/11', '2014-11-24 00:00:00', '2014-11-30 00:00:00', 'Todos los pinchos admitidos', 'Muchos', 'Sueldo mensual', '33344455X');
+INSERT INTO `perapinchos`.`concurso` (`NombreC`, `FechaIni`, `FechaFin`, `BasesCon`, `Patrocinadores`, `Premios`, `Organizador_DniOrg`) VALUES ('Vaya pincho', '2014-12-23 00:00:00', '2015-01-15 00:00:00', 'No vais a entrar', 'Sin patrocinadores', 'Un tortazo', '99999999C');
 
 /* Establecimientos */
-INSERT INTO `PeraPinchos`.`Establecimiento` (`NombreEst`, `Direccion`, `Horario`, `PasswordE`, `Fotos`, `Web`) VALUES ('A casa do Perico', 'localhost', '10 a 22', '123123', NULL, 'hollow.es');
-INSERT INTO `PeraPinchos`.`Establecimiento` (`NombreEst`, `Direccion`, `Horario`, `PasswordE`, `Fotos`, `Web`) VALUES ('A casa do Manolo', 'Al lado de Perico', '10 a 20', '321321', NULL, 'rotting.no-ip.biz');
+INSERT INTO `PeraPinchos`.`Establecimiento` (`NombreEst`, `Direccion`, `Horario`, `PasswordE`, `Fotos`, `Web`) VALUES ('A casa do Perico', 'localhost', '10 a 22', '123123', NULL, 'humor.es');
+INSERT INTO `PeraPinchos`.`Establecimiento` (`NombreEst`, `Direccion`, `Horario`, `PasswordE`, `Fotos`, `Web`) VALUES ('A casa do Manolo', 'Al lado de Perico', '10 a 20', '321321', NULL, 'bizarro.com');
 
 /* Pinchos */
 INSERT INTO `PeraPinchos`.`Pincho` (`NombrePincho`, `Descripcion`, `Precio`, `Ingredientes`, `Informacion`, `Validado`, `Establecimiento_NombreEst`) VALUES ('Babel Tower Split', 'La torre de Babel ha vuelto', '12', 'Platos y cubiertos', 'No apto para maniaticos', '1', 'A casa do Perico');
@@ -221,14 +223,19 @@ INSERT INTO `perapinchos`.`pincho` (`NombrePincho`, `Descripcion`, `Precio`, `In
 INSERT INTO `PeraPinchos`.`Jurado` (`DniJur`, `Nombre`, `PasswordJ`, `Juradocol`) VALUES ('33344455L', 'Juan de Troya','123123', 'SI');
 INSERT INTO `perapinchos`.`jurado` (`DniJur`, `Nombre`, `PasswordJ`, `Juradocol`) VALUES ('11122233A', 'Merche Rguez', '22222', 'SI');
 /* Mapa */
-INSERT INTO `PeraPinchos`.`Gastromapa` (`NombreGas`, `MapaUrl`, `Concurso_NombreC`) VALUES ('Pera Pinchos 24/11 Map', 'http://hollow.es', 'Pera Pinchos 24/11');
+INSERT INTO `PeraPinchos`.`Gastromapa` (`NombreGas`, `MapaUrl`, `Concurso_NombreC`) VALUES ('Pera Pinchos 24/11 Map', 'bizarro.com', 'Pera Pinchos 24/11');
 
 /* Votaciones */
-
 INSERT INTO `perapinchos`.`pincho_has_jurado` (`Pincho_NombrePincho`, `Jurado_DniJur`, `VotoPro`) VALUES ('Babel Tower Split', '11122233A', NULL);
 INSERT INTO `perapinchos`.`pincho_has_jurado` (`Pincho_NombrePincho`, `Jurado_DniJur`, `VotoPro`) VALUES ('Pinchazo final', '11122233A', NULL);
 INSERT INTO `perapinchos`.`pincho_has_jurado` (`Pincho_NombrePincho`, `Jurado_DniJur`, `VotoPro`) VALUES ('Babel Tower Split', '33344455L', NULL);
 INSERT INTO `perapinchos`.`pincho_has_jurado` (`Pincho_NombrePincho`, `Jurado_DniJur`, `VotoPro`) VALUES ('Pinchazo final', '33344455L', NULL);
+
+/* Concursos y establecimientos */
+INSERT INTO `perapinchos`.`establecimiento_has_concurso` (`Establecimiento_NombreEst`, `Concurso_NombreC`) VALUES ('A casa do Perico', 'Pera Pinchos 24/11'), ('A casa do Manolo', 'Pera Pinchos 24/11');
+
+/* Concursos y jurados */ 
+INSERT INTO `perapinchos`.`concurso_has_jurado` (`Concurso_NombreC`, `Jurado_DniJur`) VALUES ('Pera Pinchos 24/11', '33344455L');
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
