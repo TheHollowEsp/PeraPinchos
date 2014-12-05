@@ -9,6 +9,6 @@
 
 <h1><?= i18n("Estas en la pagina principal del establecimiento") ?></h1>
 
-<form action="index.php?controller=concurso&amp;action=listar" method="POST">
+<form action="index.php?controller=concurso&amp;action=listarParaEstablecimiento" method="POST">
 <input type="submit" value="<?= i18n("Registrate en un concurso") ?>">
 </form>
