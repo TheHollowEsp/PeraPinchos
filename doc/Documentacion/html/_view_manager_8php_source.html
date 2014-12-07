@@ -1,0 +1,247 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.8"/>
+<title>Pera Pinchos: Fichero Fuente C:/Users/Hollow/Documents/GitHub/PeraPinchos/src/core/ViewManager.php</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="icon300.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Pera Pinchos
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+   <div id="projectbrief">Plataforma basada en PHP para la gestión de concursos de pinchos.</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.8.8 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Página&#160;principal</span></a></li>
+      <li><a href="pages.html"><span>Páginas&#160;relacionadas</span></a></li>
+      <li><a href="annotated.html"><span>Estructuras&#160;de&#160;Datos</span></a></li>
+      <li class="current"><a href="files.html"><span>Archivos</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Lista&#160;de&#160;archivos</span></a></li>
+      <li><a href="globals.html"><span>Globales</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Estructuras de Datos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Páginas</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_8ceffd4ee35c3518d4e8bdc7e638efe8.html">Users</a></li><li class="navelem"><a class="el" href="dir_0e71f4ba034e00cb82299a6fad2ed1ad.html">Hollow</a></li><li class="navelem"><a class="el" href="dir_c48357b1a70a54607d5b7867e4f44f74.html">Documents</a></li><li class="navelem"><a class="el" href="dir_16332118e3478790a381f54dca059455.html">GitHub</a></li><li class="navelem"><a class="el" href="dir_6ecc2c1999bfece90ba7ac50df099311.html">PeraPinchos</a></li><li class="navelem"><a class="el" href="dir_faec2d7a5214cd620ec626f5efce56ce.html">src</a></li><li class="navelem"><a class="el" href="dir_ebcbbc81de38d6261bff86e1d18cdf62.html">core</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">ViewManager.php</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_view_manager_8php.html">Ir a la documentación de este archivo.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;&lt;?php</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// file: /core/ViewManager.php</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;ini_set(<span class="stringliteral">&#39;display_errors&#39;</span>, <span class="stringliteral">&#39;On&#39;</span>);</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="class_view_manager.html">   26</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_view_manager.html">ViewManager</a> {</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="class_view_manager.html#ab8a14d835d51d35af5ed5e153fd051b7">   33</a></span>&#160;  <span class="keyword">const</span> <a class="code" href="class_view_manager.html#ab8a14d835d51d35af5ed5e153fd051b7">DEFAULT_FRAGMENT</a> = <span class="stringliteral">&quot;__default__&quot;</span>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <span class="keyword">private</span> $fragmentContents = array();</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <span class="keyword">private</span> $variables = array();</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <span class="keyword">private</span> $currentFragment = self::DEFAULT_FRAGMENT;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <span class="keyword">private</span> $layout = <span class="stringliteral">&quot;default&quot;</span>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  <span class="keyword">private</span> <span class="keyword">function</span> __construct() {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordflow">if</span> (session_status() == PHP_SESSION_NONE) {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;      session_start();</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    }</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    ob_start();</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  }</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  <span class="keyword">private</span> <span class="keyword">function</span> saveCurrentFragment() {</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="comment">//save current fragment</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    $this-&gt;fragmentContents[$this-&gt;currentFragment].=ob_get_contents();</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="comment">//clean output buffer</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    ob_clean();</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  }</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="class_view_manager.html#a3ba67f39a5246854c8a65e07972af235">   96</a></span>&#160;  <span class="keyword">public</span> <span class="keyword">function</span> <a class="code" href="class_view_manager.html#a3ba67f39a5246854c8a65e07972af235">moveToFragment</a>($name) {</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;      <span class="comment">//save the current fragment contents</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;      $this-&gt;saveCurrentFragment();</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;      $this-&gt;currentFragment = $name;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  }</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
+<div class="line"><a name="l00110"></a><span class="lineno"><a class="line" href="class_view_manager.html#aed90c986506c799d658829f8ce6e50a5">  110</a></span>&#160;  <span class="keyword">public</span> <span class="keyword">function</span> <a class="code" href="class_view_manager.html#aed90c986506c799d658829f8ce6e50a5">moveToDefaultFragment</a>(){</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    $this-&gt;<a class="code" href="class_view_manager.html#a3ba67f39a5246854c8a65e07972af235">moveToFragment</a>(self::DEFAULT_FRAGMENT);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  }</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;</div>
+<div class="line"><a name="l00122"></a><span class="lineno"><a class="line" href="class_view_manager.html#ac388d2ab6ed50fb73426223188a287be">  122</a></span>&#160;  <span class="keyword">public</span> <span class="keyword">function</span> <a class="code" href="class_view_manager.html#ac388d2ab6ed50fb73426223188a287be">getFragment</a>($fragment, $default=<span class="stringliteral">&quot;&quot;</span>) {</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="keywordflow">if</span> (!isset($this-&gt;fragmentContents[$fragment])) {</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;      <span class="keywordflow">return</span> $default;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    }</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="keywordflow">return</span> $this-&gt;fragmentContents[$fragment];</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;  }</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;</div>
+<div class="line"><a name="l00141"></a><span class="lineno"><a class="line" href="class_view_manager.html#a3ce925076e9fc9c1783a6c93f3f985af">  141</a></span>&#160;  <span class="keyword">public</span> <span class="keyword">function</span> <a class="code" href="class_view_manager.html#a3ce925076e9fc9c1783a6c93f3f985af">setVariable</a>($varname, $value, $flash=<span class="keyword">false</span>) {</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    $this-&gt;variables[$varname] = $value;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    <span class="keywordflow">if</span> ($flash==<span class="keyword">true</span>) {</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;      <span class="comment">//a flash variable, will be stored in session_start</span></div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;      <span class="keywordflow">if</span>(!isset($_SESSION[<span class="stringliteral">&quot;viewmanager__flasharray__&quot;</span>])) {</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    $_SESSION[<span class="stringliteral">&quot;viewmanager__flasharray__&quot;</span>][ $varname]=$value;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    print_r($_SESSION[<span class="stringliteral">&quot;viewmanager__flasharray__&quot;</span>]);</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;      }<span class="keywordflow">else</span>{</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    $_SESSION[<span class="stringliteral">&quot;viewmanager__flasharray__&quot;</span>][$varname]=$value;</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;      }</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    }</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;  }</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;</div>
+<div class="line"><a name="l00165"></a><span class="lineno"><a class="line" href="class_view_manager.html#abbedcc06e9a7a53caec8b30a57318616">  165</a></span>&#160;  <span class="keyword">public</span> <span class="keyword">function</span> <a class="code" href="class_view_manager.html#abbedcc06e9a7a53caec8b30a57318616">getVariable</a>($varname, $default=NULL) {</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    <span class="keywordflow">if</span> (!isset($this-&gt;variables[$varname])) {</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;      <span class="keywordflow">if</span> (isset($_SESSION[<span class="stringliteral">&quot;viewmanager__flasharray__&quot;</span>])</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;      &amp;&amp; isset($_SESSION[<span class="stringliteral">&quot;viewmanager__flasharray__&quot;</span>][$varname])){</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    $toret=$_SESSION[<span class="stringliteral">&quot;viewmanager__flasharray__&quot;</span>][$varname];</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    unset($_SESSION[<span class="stringliteral">&quot;viewmanager__flasharray__&quot;</span>][$varname]);</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <span class="keywordflow">return</span> $toret;</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;      }</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;      <span class="keywordflow">return</span> $default;</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    }</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    <span class="keywordflow">return</span> $this-&gt;variables[$varname];</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;  }</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;</div>
+<div class="line"><a name="l00187"></a><span class="lineno"><a class="line" href="class_view_manager.html#a3cfb68c998ba1d8152867862656dd91a">  187</a></span>&#160;  <span class="keyword">public</span> <span class="keyword">function</span> <a class="code" href="class_view_manager.html#a3cfb68c998ba1d8152867862656dd91a">setFlash</a>($flashMessage) {</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    $this-&gt;<a class="code" href="class_view_manager.html#a3ce925076e9fc9c1783a6c93f3f985af">setVariable</a>(<span class="stringliteral">&quot;__flashmessage__&quot;</span>, $flashMessage, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;  }</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;</div>
+<div class="line"><a name="l00197"></a><span class="lineno"><a class="line" href="class_view_manager.html#a2d24224606fd2e9921dc676339f43e4c">  197</a></span>&#160;  <span class="keyword">public</span> <span class="keyword">function</span> <a class="code" href="class_view_manager.html#a2d24224606fd2e9921dc676339f43e4c">popFlash</a>() {</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    <span class="keywordflow">return</span> $this-&gt;<a class="code" href="class_view_manager.html#abbedcc06e9a7a53caec8b30a57318616">getVariable</a>(<span class="stringliteral">&quot;__flashmessage__&quot;</span>, <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;  }</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;</div>
+<div class="line"><a name="l00210"></a><span class="lineno"><a class="line" href="class_view_manager.html#a702b3376618a26e6c02c05bae65c6b9e">  210</a></span>&#160;  <span class="keyword">public</span> <span class="keyword">function</span> <a class="code" href="class_view_manager.html#a702b3376618a26e6c02c05bae65c6b9e">setLayout</a>($layout) {</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    $this-&gt;layout = $layout;</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;  }</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;</div>
+<div class="line"><a name="l00229"></a><span class="lineno"><a class="line" href="class_view_manager.html#aa7a472271c3d34a45e8dd1eaa2f128a4">  229</a></span>&#160;  <span class="keyword">public</span> <span class="keyword">function</span> <a class="code" href="class_view_manager.html#aa7a472271c3d34a45e8dd1eaa2f128a4">render</a>($controller, $viewname) {</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;    include(__DIR__.<span class="stringliteral">&quot;/../view/$controller/$viewname.php&quot;</span>);</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;    $this-&gt;renderLayout();</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;  }</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;</div>
+<div class="line"><a name="l00243"></a><span class="lineno"><a class="line" href="class_view_manager.html#aba83e8b7c8228b84b40ef0b63fce8358">  243</a></span>&#160;  <span class="keyword">public</span> <span class="keyword">function</span> <a class="code" href="class_view_manager.html#aba83e8b7c8228b84b40ef0b63fce8358">redirect</a>($controller, $action, $queryString=NULL) {</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    header(<span class="stringliteral">&quot;Location: index.php?controller=$controller&amp;action=$action&quot;</span>.(isset($queryString)?<span class="stringliteral">&quot;&amp;$queryString&quot;</span>:<span class="stringliteral">&quot;&quot;</span>));</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;    die();</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;  }</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;  <span class="keyword">private</span> <span class="keyword">function</span> renderLayout() {</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    <span class="comment">// move to layout fragment so</span></div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    <span class="comment">// all previously generated output contents</span></div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    <span class="comment">// were saved in the $this-&gt;fragmentContents</span></div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    <span class="comment">// array</span></div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    $this-&gt;<a class="code" href="class_view_manager.html#a3ba67f39a5246854c8a65e07972af235">moveToFragment</a>(<span class="stringliteral">&quot;layout&quot;</span>);</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    <span class="comment">// draw the layout. Inside the layout we use this</span></div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    <span class="comment">// view manager to retrieve previously generated contents,</span></div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;    <span class="comment">// specially the DEFAULT_FRAGMENT (the main content)</span></div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    include(__DIR__.<span class="stringliteral">&quot;/../view/layouts/&quot;</span>.$this-&gt;layout.<span class="stringliteral">&quot;.php&quot;</span>);</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    ob_flush();</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;  }</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;  <span class="comment">// singleton</span></div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;  <span class="keyword">private</span> <span class="keyword">static</span> $viewmanager_singleton = NULL;</div>
+<div class="line"><a name="l00273"></a><span class="lineno"><a class="line" href="class_view_manager.html#ac93fbec81f07e5d15f80db907e63dc10">  273</a></span>&#160;  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">function</span> <a class="code" href="class_view_manager.html#ac93fbec81f07e5d15f80db907e63dc10">getInstance</a>() {</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;    <span class="keywordflow">if</span> (self::$viewmanager_singleton == null) {</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;      self::$viewmanager_singleton = <span class="keyword">new</span> <a class="code" href="class_view_manager.html">ViewManager</a>();</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    }</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    <span class="keywordflow">return</span> self::$viewmanager_singleton;</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;  }</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;}</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;<span class="comment">// force the first instantiation of the ViewManager</span></div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;<span class="comment">// since the buffered output will be needed including</span></div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;<span class="comment">// those cases where neither the controller nor the view get the instance of the viewmanager</span></div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;<a class="code" href="class_view_manager.html#ac93fbec81f07e5d15f80db907e63dc10">ViewManager::getInstance</a>();</div>
+<div class="ttc" id="class_view_manager_html"><div class="ttname"><a href="class_view_manager.html">ViewManager</a></div><div class="ttdef"><b>Definition:</b> <a href="_view_manager_8php_source.html#l00026">ViewManager.php:26</a></div></div>
+<div class="ttc" id="class_view_manager_html_a3ba67f39a5246854c8a65e07972af235"><div class="ttname"><a href="class_view_manager.html#a3ba67f39a5246854c8a65e07972af235">ViewManager\moveToFragment</a></div><div class="ttdeci">moveToFragment($name)</div><div class="ttdef"><b>Definition:</b> <a href="_view_manager_8php_source.html#l00096">ViewManager.php:96</a></div></div>
+<div class="ttc" id="class_view_manager_html_aba83e8b7c8228b84b40ef0b63fce8358"><div class="ttname"><a href="class_view_manager.html#aba83e8b7c8228b84b40ef0b63fce8358">ViewManager\redirect</a></div><div class="ttdeci">redirect($controller, $action, $queryString=NULL)</div><div class="ttdef"><b>Definition:</b> <a href="_view_manager_8php_source.html#l00243">ViewManager.php:243</a></div></div>
+<div class="ttc" id="class_view_manager_html_ab8a14d835d51d35af5ed5e153fd051b7"><div class="ttname"><a href="class_view_manager.html#ab8a14d835d51d35af5ed5e153fd051b7">ViewManager\DEFAULT_FRAGMENT</a></div><div class="ttdeci">const DEFAULT_FRAGMENT</div><div class="ttdef"><b>Definition:</b> <a href="_view_manager_8php_source.html#l00033">ViewManager.php:33</a></div></div>
+<div class="ttc" id="class_view_manager_html_a3ce925076e9fc9c1783a6c93f3f985af"><div class="ttname"><a href="class_view_manager.html#a3ce925076e9fc9c1783a6c93f3f985af">ViewManager\setVariable</a></div><div class="ttdeci">setVariable($varname, $value, $flash=false)</div><div class="ttdoc">VARIABLES MANAGEMENT. </div><div class="ttdef"><b>Definition:</b> <a href="_view_manager_8php_source.html#l00141">ViewManager.php:141</a></div></div>
+<div class="ttc" id="class_view_manager_html_aed90c986506c799d658829f8ce6e50a5"><div class="ttname"><a href="class_view_manager.html#aed90c986506c799d658829f8ce6e50a5">ViewManager\moveToDefaultFragment</a></div><div class="ttdeci">moveToDefaultFragment()</div><div class="ttdef"><b>Definition:</b> <a href="_view_manager_8php_source.html#l00110">ViewManager.php:110</a></div></div>
+<div class="ttc" id="class_view_manager_html_a3cfb68c998ba1d8152867862656dd91a"><div class="ttname"><a href="class_view_manager.html#a3cfb68c998ba1d8152867862656dd91a">ViewManager\setFlash</a></div><div class="ttdeci">setFlash($flashMessage)</div><div class="ttdef"><b>Definition:</b> <a href="_view_manager_8php_source.html#l00187">ViewManager.php:187</a></div></div>
+<div class="ttc" id="class_view_manager_html_ac93fbec81f07e5d15f80db907e63dc10"><div class="ttname"><a href="class_view_manager.html#ac93fbec81f07e5d15f80db907e63dc10">ViewManager\getInstance</a></div><div class="ttdeci">static getInstance()</div><div class="ttdef"><b>Definition:</b> <a href="_view_manager_8php_source.html#l00273">ViewManager.php:273</a></div></div>
+<div class="ttc" id="class_view_manager_html_ac388d2ab6ed50fb73426223188a287be"><div class="ttname"><a href="class_view_manager.html#ac388d2ab6ed50fb73426223188a287be">ViewManager\getFragment</a></div><div class="ttdeci">getFragment($fragment, $default=&quot;&quot;)</div><div class="ttdef"><b>Definition:</b> <a href="_view_manager_8php_source.html#l00122">ViewManager.php:122</a></div></div>
+<div class="ttc" id="class_view_manager_html_aa7a472271c3d34a45e8dd1eaa2f128a4"><div class="ttname"><a href="class_view_manager.html#aa7a472271c3d34a45e8dd1eaa2f128a4">ViewManager\render</a></div><div class="ttdeci">render($controller, $viewname)</div><div class="ttdef"><b>Definition:</b> <a href="_view_manager_8php_source.html#l00229">ViewManager.php:229</a></div></div>
+<div class="ttc" id="class_view_manager_html_abbedcc06e9a7a53caec8b30a57318616"><div class="ttname"><a href="class_view_manager.html#abbedcc06e9a7a53caec8b30a57318616">ViewManager\getVariable</a></div><div class="ttdeci">getVariable($varname, $default=NULL)</div><div class="ttdef"><b>Definition:</b> <a href="_view_manager_8php_source.html#l00165">ViewManager.php:165</a></div></div>
+<div class="ttc" id="class_view_manager_html_a2d24224606fd2e9921dc676339f43e4c"><div class="ttname"><a href="class_view_manager.html#a2d24224606fd2e9921dc676339f43e4c">ViewManager\popFlash</a></div><div class="ttdeci">popFlash()</div><div class="ttdef"><b>Definition:</b> <a href="_view_manager_8php_source.html#l00197">ViewManager.php:197</a></div></div>
+<div class="ttc" id="class_view_manager_html_a702b3376618a26e6c02c05bae65c6b9e"><div class="ttname"><a href="class_view_manager.html#a702b3376618a26e6c02c05bae65c6b9e">ViewManager\setLayout</a></div><div class="ttdeci">setLayout($layout)</div><div class="ttdoc">RENDERING. </div><div class="ttdef"><b>Definition:</b> <a href="_view_manager_8php_source.html#l00210">ViewManager.php:210</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado el Lunes, 8 de Diciembre de 2014 00:21:01 para Pera Pinchos por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.8
+</small></address>
+</body>
+</html>
