@@ -7,6 +7,7 @@ require_once (__DIR__ . "/../model/PinchoMapper.php");
 require_once (__DIR__ . "/../model/Organizador.php");
 require_once (__DIR__ . "/../model/OrganizadorMapper.php");
 require_once (__DIR__ . "/../model/Jurado.php");
+require_once (__DIR__ . "/../model/JuradoMapper.php");
 
 require_once (__DIR__ . "/../controller/BaseController.php");
 ini_set('display_errors', 'On');
