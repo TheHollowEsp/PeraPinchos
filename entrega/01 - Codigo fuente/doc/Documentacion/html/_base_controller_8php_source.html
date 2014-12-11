@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.8"/>
+<title>Pera Pinchos: Fichero Fuente C:/Users/Hollow/Documents/GitHub/PeraPinchos/src/controller/BaseController.php</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="icon300.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Pera Pinchos
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+   <div id="projectbrief">Plataforma basada en PHP para la gestión de concursos de pinchos.</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.8.8 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Página&#160;principal</span></a></li>
+      <li><a href="pages.html"><span>Páginas&#160;relacionadas</span></a></li>
+      <li><a href="annotated.html"><span>Estructuras&#160;de&#160;Datos</span></a></li>
+      <li class="current"><a href="files.html"><span>Archivos</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Lista&#160;de&#160;archivos</span></a></li>
+      <li><a href="globals.html"><span>Globales</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Estructuras de Datos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Páginas</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_8ceffd4ee35c3518d4e8bdc7e638efe8.html">Users</a></li><li class="navelem"><a class="el" href="dir_0e71f4ba034e00cb82299a6fad2ed1ad.html">Hollow</a></li><li class="navelem"><a class="el" href="dir_c48357b1a70a54607d5b7867e4f44f74.html">Documents</a></li><li class="navelem"><a class="el" href="dir_16332118e3478790a381f54dca059455.html">GitHub</a></li><li class="navelem"><a class="el" href="dir_6ecc2c1999bfece90ba7ac50df099311.html">PeraPinchos</a></li><li class="navelem"><a class="el" href="dir_faec2d7a5214cd620ec626f5efce56ce.html">src</a></li><li class="navelem"><a class="el" href="dir_23dffa28694c040195f57f844496eaed.html">controller</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">BaseController.php</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_base_controller_8php.html">Ir a la documentación de este archivo.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;&lt;?php</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">//file: controller/BaseController.php</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;require_once(__DIR__.<span class="stringliteral">&quot;/../core/ViewManager.php&quot;</span>);</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;require_once(__DIR__.<span class="stringliteral">&quot;/../core/I18n.php&quot;</span>);</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;require_once(__DIR__.<span class="stringliteral">&quot;/../model/User.php&quot;</span>);</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="class_base_controller.html">   19</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_base_controller.html">BaseController</a> {</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="class_base_controller.html#acccf2eac8663e0cebe8101e90fbab089">   25</a></span>&#160;  <span class="keyword">protected</span> <a class="code" href="class_base_controller.html#acccf2eac8663e0cebe8101e90fbab089">$view</a>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  </div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="class_base_controller.html#a478a2fc0252b087f8bc01921fef09b78">   31</a></span>&#160;  <span class="keyword">protected</span> <a class="code" href="class_base_controller.html#a478a2fc0252b087f8bc01921fef09b78">$currentUser</a>;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  </div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="class_base_controller.html#a095c5d389db211932136b53f25f39685">   33</a></span>&#160;  <span class="keyword">public</span> <span class="keyword">function</span> <a class="code" href="class_base_controller.html#a095c5d389db211932136b53f25f39685">__construct</a>() {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    $this-&gt;view = <a class="code" href="class_view_manager.html#ac93fbec81f07e5d15f80db907e63dc10">ViewManager::getInstance</a>();</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="comment">// get the current user and put it to the view</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordflow">if</span> (session_status() == PHP_SESSION_NONE) {      </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    session_start();</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    }</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordflow">if</span>(isset($_SESSION[<span class="stringliteral">&quot;currentuser&quot;</span>])) {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;     </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;      $this-&gt;currentUser = <span class="keyword">new</span> <a class="code" href="class_user.html">User</a>($_SESSION[<span class="stringliteral">&quot;currentuser&quot;</span>]);      </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;      <span class="comment">//add current user to the view, since some views require it</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;      $this-&gt;view-&gt;setVariable(<span class="stringliteral">&quot;currentusername&quot;</span>, </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                  $this-&gt;currentUser-&gt;getUsername());</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    }     </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  }</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;}</div>
+<div class="ttc" id="class_base_controller_html_a478a2fc0252b087f8bc01921fef09b78"><div class="ttname"><a href="class_base_controller.html#a478a2fc0252b087f8bc01921fef09b78">BaseController\$currentUser</a></div><div class="ttdeci">$currentUser</div><div class="ttdef"><b>Definition:</b> <a href="_base_controller_8php_source.html#l00031">BaseController.php:31</a></div></div>
+<div class="ttc" id="class_user_html"><div class="ttname"><a href="class_user.html">User</a></div><div class="ttdef"><b>Definition:</b> <a href="_user_8php_source.html#l00013">User.php:13</a></div></div>
+<div class="ttc" id="class_view_manager_html_ac93fbec81f07e5d15f80db907e63dc10"><div class="ttname"><a href="class_view_manager.html#ac93fbec81f07e5d15f80db907e63dc10">ViewManager\getInstance</a></div><div class="ttdeci">static getInstance()</div><div class="ttdef"><b>Definition:</b> <a href="_view_manager_8php_source.html#l00273">ViewManager.php:273</a></div></div>
+<div class="ttc" id="class_base_controller_html_acccf2eac8663e0cebe8101e90fbab089"><div class="ttname"><a href="class_base_controller.html#acccf2eac8663e0cebe8101e90fbab089">BaseController\$view</a></div><div class="ttdeci">$view</div><div class="ttdef"><b>Definition:</b> <a href="_base_controller_8php_source.html#l00025">BaseController.php:25</a></div></div>
+<div class="ttc" id="class_base_controller_html"><div class="ttname"><a href="class_base_controller.html">BaseController</a></div><div class="ttdef"><b>Definition:</b> <a href="_base_controller_8php_source.html#l00019">BaseController.php:19</a></div></div>
+<div class="ttc" id="class_base_controller_html_a095c5d389db211932136b53f25f39685"><div class="ttname"><a href="class_base_controller.html#a095c5d389db211932136b53f25f39685">BaseController\__construct</a></div><div class="ttdeci">__construct()</div><div class="ttdef"><b>Definition:</b> <a href="_base_controller_8php_source.html#l00033">BaseController.php:33</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado el Lunes, 8 de Diciembre de 2014 00:21:01 para Pera Pinchos por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.8
+</small></address>
+</body>
+</html>

@@ -1,0 +1,305 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.8"/>
+<title>Pera Pinchos: Fichero Fuente C:/Users/Hollow/Documents/GitHub/PeraPinchos/src/controller/JuradoController.php</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="icon300.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Pera Pinchos
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+   <div id="projectbrief">Plataforma basada en PHP para la gestión de concursos de pinchos.</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.8.8 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Página&#160;principal</span></a></li>
+      <li><a href="pages.html"><span>Páginas&#160;relacionadas</span></a></li>
+      <li><a href="annotated.html"><span>Estructuras&#160;de&#160;Datos</span></a></li>
+      <li class="current"><a href="files.html"><span>Archivos</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Lista&#160;de&#160;archivos</span></a></li>
+      <li><a href="globals.html"><span>Globales</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Estructuras de Datos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Páginas</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_8ceffd4ee35c3518d4e8bdc7e638efe8.html">Users</a></li><li class="navelem"><a class="el" href="dir_0e71f4ba034e00cb82299a6fad2ed1ad.html">Hollow</a></li><li class="navelem"><a class="el" href="dir_c48357b1a70a54607d5b7867e4f44f74.html">Documents</a></li><li class="navelem"><a class="el" href="dir_16332118e3478790a381f54dca059455.html">GitHub</a></li><li class="navelem"><a class="el" href="dir_6ecc2c1999bfece90ba7ac50df099311.html">PeraPinchos</a></li><li class="navelem"><a class="el" href="dir_faec2d7a5214cd620ec626f5efce56ce.html">src</a></li><li class="navelem"><a class="el" href="dir_23dffa28694c040195f57f844496eaed.html">controller</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">JuradoController.php</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_jurado_controller_8php.html">Ir a la documentación de este archivo.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;&lt;?php</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;require_once (__DIR__.<span class="stringliteral">&quot;/../core/ViewManager.php&quot;</span>);</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;require_once (__DIR__.<span class="stringliteral">&quot;/../core/I18n.php&quot;</span>);</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;require_once (__DIR__.<span class="stringliteral">&quot;/../model/Jurado.php&quot;</span>);</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;require_once (__DIR__.<span class="stringliteral">&quot;/../model/JuradoMapper.php&quot;</span>);</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;require_once (__DIR__.<span class="stringliteral">&quot;/../model/Pincho.php&quot;</span>);</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;require_once (__DIR__.<span class="stringliteral">&quot;/../model/PinchoMapper.php&quot;</span>);</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;require_once (__DIR__.<span class="stringliteral">&quot;/../controller/BaseController.php&quot;</span>);</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;ini_set(<span class="stringliteral">&#39;display_errors&#39;</span>, <span class="stringliteral">&#39;On&#39;</span>);</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="class_jurado_controller.html">   15</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_jurado_controller.html">JuradoController</a> <span class="keyword">extends</span> <a class="code" href="class_base_controller.html">BaseController</a> {</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keyword">private</span> $JuradoMapper;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keyword">private</span> $PinchoMapper;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  </div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="class_jurado_controller.html#a095c5d389db211932136b53f25f39685">   20</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">function</span> <a class="code" href="class_jurado_controller.html#a095c5d389db211932136b53f25f39685">__construct</a>() {</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        parent::__construct();</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        $this-&gt;<a class="code" href="class_jurado_mapper.html">JuradoMapper</a> = <span class="keyword">new</span> <a class="code" href="class_jurado_mapper.html">JuradoMapper</a>();</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        $this-&gt;<a class="code" href="class_pincho_mapper.html">PinchoMapper</a> = <span class="keyword">new</span> <a class="code" href="class_pincho_mapper.html">PinchoMapper</a>();</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        $this-&gt;view-&gt;setLayout(<span class="stringliteral">&quot;welcome&quot;</span>); <span class="comment">//pendiente de cambio</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  }</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="class_jurado_controller.html#a23c39a41f8721b9e9865d8300c72edc2">   32</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">function</span> <a class="code" href="class_jurado_controller.html#a23c39a41f8721b9e9865d8300c72edc2">registrarNewJurado</a>() {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <a class="code" href="jurado_2consultar_8php.html#a2ad6db7f36699c8fb08681863efdc945">$jurado</a> = <span class="keyword">new</span> <a class="code" href="class_jurado.html">Jurado</a>();</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keywordflow">if</span> (isset($_POST[<span class="stringliteral">&quot;DniJur&quot;</span>])){</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <a class="code" href="jurado_2consultar_8php.html#a2ad6db7f36699c8fb08681863efdc945">$jurado</a>-&gt;setDniJurado($_POST[<span class="stringliteral">&quot;DniJur&quot;</span>]);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <a class="code" href="jurado_2consultar_8php.html#a2ad6db7f36699c8fb08681863efdc945">$jurado</a>-&gt;setNombreJurado($_POST[<span class="stringliteral">&quot;Nombre&quot;</span>]);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <a class="code" href="jurado_2consultar_8php.html#a2ad6db7f36699c8fb08681863efdc945">$jurado</a>-&gt;setPasswordJurado($_POST[<span class="stringliteral">&quot;PasswordJ&quot;</span>]);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;      </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keywordflow">try</span>{</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <a class="code" href="jurado_2consultar_8php.html#a2ad6db7f36699c8fb08681863efdc945">$jurado</a>-&gt;checkIsValidForRegisterJurado();</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keywordflow">if</span> (!$this-&gt;<a class="code" href="class_jurado_mapper.html">JuradoMapper</a>-&gt;<a class="code" href="class_jurado_mapper.html#a11703f960050cbf7408f1b7a0878ade7">juradoExistsByDNI</a>($_POST[<span class="stringliteral">&quot;DniJur&quot;</span>])){</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        $this-&gt;<a class="code" href="class_jurado_mapper.html">JuradoMapper</a>-&gt;<a class="code" href="class_jurado_mapper.html#ae53ede7da65cc44cac2397866a87de0f">save</a>(<a class="code" href="jurado_2consultar_8php.html#a2ad6db7f36699c8fb08681863efdc945">$jurado</a>);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="comment">//$this-&gt;view-&gt;setFlash(&quot;dniJurado &quot;.$jurado-&gt;getNombreJurado().&quot; successfully added. Please login now&quot;);</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        $this-&gt;view-&gt;redirect(<span class="stringliteral">&quot;users&quot;</span>, <span class="stringliteral">&quot;login&quot;</span>);<span class="comment">//falta cambiar</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;      </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            <a class="code" href="concurso_2consultar_8php.html#ab24faf4aa647cdcee494fc48524ad4ff">$errors</a> = array();</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            <a class="code" href="concurso_2consultar_8php.html#ab24faf4aa647cdcee494fc48524ad4ff">$errors</a>[<span class="stringliteral">&quot;dniJurado&quot;</span>] = <span class="stringliteral">&quot;Ya existe un jurado con ese mismo DNI&quot;</span>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            $this-&gt;view-&gt;setVariable(<span class="stringliteral">&quot;errors&quot;</span>, <a class="code" href="concurso_2consultar_8php.html#ab24faf4aa647cdcee494fc48524ad4ff">$errors</a>);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        }</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        }<span class="keywordflow">catch</span>(<a class="code" href="class_validation_exception.html">ValidationException</a> $ex) {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <a class="code" href="concurso_2consultar_8php.html#ab24faf4aa647cdcee494fc48524ad4ff">$errors</a> = $ex-&gt;<a class="code" href="class_validation_exception.html#a6e548ebf2656742bfd19939ead923ed2">getErrors</a>();</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        $this-&gt;view-&gt;setVariable(<span class="stringliteral">&quot;errors&quot;</span>, <a class="code" href="concurso_2consultar_8php.html#ab24faf4aa647cdcee494fc48524ad4ff">$errors</a>);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        }</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    }</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    $this-&gt;view-&gt;setVariable(<span class="stringliteral">&quot;jurado&quot;</span>, <a class="code" href="jurado_2consultar_8php.html#a2ad6db7f36699c8fb08681863efdc945">$jurado</a>);<span class="comment">//falta cambiar</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    $this-&gt;view-&gt;render(<span class="stringliteral">&quot;jurado&quot;</span>, <span class="stringliteral">&quot;registroJurado&quot;</span>);<span class="comment">//falta cambiar</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  }</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    </div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="class_jurado_controller.html#a586c2c605daf78152b27bfb9eb698d6c">   63</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">function</span> <a class="code" href="class_jurado_controller.html#a586c2c605daf78152b27bfb9eb698d6c">registrarJuradoProfesional</a>() {</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <a class="code" href="jurado_2consultar_8php.html#a2ad6db7f36699c8fb08681863efdc945">$jurado</a> = <span class="keyword">new</span> <a class="code" href="class_jurado.html">Jurado</a>();</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordflow">if</span> (isset($_POST[<span class="stringliteral">&quot;DniJur&quot;</span>])){</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <a class="code" href="jurado_2consultar_8php.html#a2ad6db7f36699c8fb08681863efdc945">$jurado</a>-&gt;setDniJurado($_POST[<span class="stringliteral">&quot;DniJur&quot;</span>]);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <a class="code" href="jurado_2consultar_8php.html#a2ad6db7f36699c8fb08681863efdc945">$jurado</a>-&gt;setNombreJurado($_POST[<span class="stringliteral">&quot;Nombre&quot;</span>]);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <a class="code" href="jurado_2consultar_8php.html#a2ad6db7f36699c8fb08681863efdc945">$jurado</a>-&gt;setPasswordJurado($_POST[<span class="stringliteral">&quot;PasswordJ&quot;</span>]);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <a class="code" href="jurado_2consultar_8php.html#a2ad6db7f36699c8fb08681863efdc945">$jurado</a>-&gt;setIsProfesional(<span class="stringliteral">&quot;SI&quot;</span>);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;      </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordflow">try</span>{</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <a class="code" href="jurado_2consultar_8php.html#a2ad6db7f36699c8fb08681863efdc945">$jurado</a>-&gt;checkIsValidForRegisterJurado();</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keywordflow">if</span> (!$this-&gt;<a class="code" href="class_jurado_mapper.html">JuradoMapper</a>-&gt;<a class="code" href="class_jurado_mapper.html#a11703f960050cbf7408f1b7a0878ade7">juradoExistsByDNI</a>($_POST[<span class="stringliteral">&quot;DniJur&quot;</span>])){</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        $this-&gt;<a class="code" href="class_jurado_mapper.html">JuradoMapper</a>-&gt;<a class="code" href="class_jurado_mapper.html#ae53ede7da65cc44cac2397866a87de0f">save</a>(<a class="code" href="jurado_2consultar_8php.html#a2ad6db7f36699c8fb08681863efdc945">$jurado</a>);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="comment">//$this-&gt;view-&gt;setFlash(&quot;dniJurado &quot;.$jurado-&gt;getNombreJurado().&quot; successfully added. Please login now&quot;);</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        $this-&gt;view-&gt;redirect(<span class="stringliteral">&quot;organizador&quot;</span>, <span class="stringliteral">&quot;inicioOrganizador&quot;</span>);<span class="comment">//falta cambiar</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;      </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            <a class="code" href="concurso_2consultar_8php.html#ab24faf4aa647cdcee494fc48524ad4ff">$errors</a> = array();</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            <a class="code" href="concurso_2consultar_8php.html#ab24faf4aa647cdcee494fc48524ad4ff">$errors</a>[<span class="stringliteral">&quot;dniJurado&quot;</span>] = <span class="stringliteral">&quot;Ya existe un jurado con ese mismo DNI&quot;</span>;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            $this-&gt;view-&gt;setVariable(<span class="stringliteral">&quot;errors&quot;</span>, <a class="code" href="concurso_2consultar_8php.html#ab24faf4aa647cdcee494fc48524ad4ff">$errors</a>);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        }</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        }<span class="keywordflow">catch</span>(<a class="code" href="class_validation_exception.html">ValidationException</a> $ex) {</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <a class="code" href="concurso_2consultar_8php.html#ab24faf4aa647cdcee494fc48524ad4ff">$errors</a> = $ex-&gt;<a class="code" href="class_validation_exception.html#a6e548ebf2656742bfd19939ead923ed2">getErrors</a>();</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        $this-&gt;view-&gt;setVariable(<span class="stringliteral">&quot;errors&quot;</span>, <a class="code" href="concurso_2consultar_8php.html#ab24faf4aa647cdcee494fc48524ad4ff">$errors</a>);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        }</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    }</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    $this-&gt;view-&gt;setVariable(<span class="stringliteral">&quot;jurado&quot;</span>, <a class="code" href="jurado_2consultar_8php.html#a2ad6db7f36699c8fb08681863efdc945">$jurado</a>);<span class="comment">//falta cambiar</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    $this-&gt;view-&gt;render(<span class="stringliteral">&quot;jurado&quot;</span>, <span class="stringliteral">&quot;registroJuradoProfesional&quot;</span>);<span class="comment">//falta cambiar</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  }</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  </div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="class_jurado_controller.html#a20badbc308822475434f4e72984ef23a">   96</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">function</span> <a class="code" href="class_jurado_controller.html#a20badbc308822475434f4e72984ef23a">listar</a>() {</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="comment">//Esta funcion solo la puede hacer el organizador, hay que poner al inicio de todo una comprobacion</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="comment">//de sesion, falta cambiar</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        $juradoL = $this-&gt;<a class="code" href="class_jurado_mapper.html">JuradoMapper</a>-&gt;<a class="code" href="class_jurado_mapper.html#a73a1b0348919b6755e4f69dcc70eba64">findAll</a>();</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        $this -&gt; view -&gt; setVariable(<span class="stringliteral">&quot;jurado&quot;</span>, $juradoL);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            <span class="comment">//falta agregar la vista, no se continuar</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        $this-&gt;view-&gt;render(<span class="stringliteral">&quot;jurado&quot;</span>, <span class="stringliteral">&quot;listar&quot;</span>);<span class="comment">//falta cambiar</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  }</div>
+<div class="line"><a name="l00104"></a><span class="lineno"><a class="line" href="class_jurado_controller.html#aadf449249978ab117454a371d0c3d2d3">  104</a></span>&#160;  <span class="keyword">public</span> <span class="keyword">function</span> <a class="code" href="class_jurado_controller.html#aadf449249978ab117454a371d0c3d2d3">listarParaUnir</a>() {</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="comment">//Esta funcion solo la puede hacer el organizador, hay que poner al inicio de todo una comprobacion</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="comment">//de sesion, falta cambiar</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    $_SESSION[<span class="stringliteral">&quot;nomCon&quot;</span>]=$_GET[<span class="stringliteral">&quot;NombreCon&quot;</span>];</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        $juradoL = $this-&gt;<a class="code" href="class_jurado_mapper.html">JuradoMapper</a>-&gt;<a class="code" href="class_jurado_mapper.html#a73a1b0348919b6755e4f69dcc70eba64">findAll</a>();</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        $this -&gt; view -&gt; setVariable(<span class="stringliteral">&quot;jurado&quot;</span>, $juradoL);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            <span class="comment">//falta agregar la vista, no se continuar</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        $this-&gt;view-&gt;render(<span class="stringliteral">&quot;jurado&quot;</span>, <span class="stringliteral">&quot;listarUnir&quot;</span>);<span class="comment">//falta cambiar</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;  }</div>
+<div class="line"><a name="l00119"></a><span class="lineno"><a class="line" href="class_jurado_controller.html#a655e36eb03bdd7f71537b28c11d917f5">  119</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">function</span> <a class="code" href="class_jurado_controller.html#a655e36eb03bdd7f71537b28c11d917f5">unir</a>() {</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        </div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        $juradodni = $_GET[<span class="stringliteral">&quot;dniJurado&quot;</span>];</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <a class="code" href="jurado_2consultar_8php.html#a2ad6db7f36699c8fb08681863efdc945">$jurado</a> = $this-&gt;<a class="code" href="class_jurado_mapper.html">JuradoMapper</a>-&gt;<a class="code" href="class_jurado_mapper.html#af922f4e9af6766fd4732d34bbdfde326">findByDNI</a>($juradodni);</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            $this-&gt;<a class="code" href="class_jurado_mapper.html">JuradoMapper</a>-&gt;<a class="code" href="class_jurado_mapper.html#a77d101318c2ce1503811865e1e3f6444">unir</a>($juradodni,$_SESSION[<span class="stringliteral">&quot;nomCon&quot;</span>]);</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            $this-&gt;view-&gt;setFlash(<span class="stringliteral">&quot;Unido correctamente en el concurso&quot;</span>);</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            $this-&gt;view-&gt;render(<span class="stringliteral">&quot;organizador&quot;</span>, <span class="stringliteral">&quot;inicioOrganizador&quot;</span>);</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;   </div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;  }</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    </div>
+<div class="line"><a name="l00130"></a><span class="lineno"><a class="line" href="class_jurado_controller.html#a85b4bc662200aa2a1dfa873e4af025e9">  130</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">function</span> <a class="code" href="class_jurado_controller.html#a85b4bc662200aa2a1dfa873e4af025e9">consultar</a>() {</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        <span class="keywordflow">if</span> (!isset($_GET[<span class="stringliteral">&quot;dniJurado&quot;</span>])) {</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        <span class="keywordflow">throw</span> <span class="keyword">new</span> Exception(<span class="stringliteral">&quot;Es obligatorio proporcionar el DNI&quot;</span>);</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        }</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        $juradodni = $_GET[<span class="stringliteral">&quot;dniJurado&quot;</span>];</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        <a class="code" href="jurado_2consultar_8php.html#a2ad6db7f36699c8fb08681863efdc945">$jurado</a> = $this-&gt;<a class="code" href="class_jurado_mapper.html">JuradoMapper</a>-&gt;<a class="code" href="class_jurado_mapper.html#af922f4e9af6766fd4732d34bbdfde326">findByDNI</a>($juradodni);</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    </div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="jurado_2consultar_8php.html#a2ad6db7f36699c8fb08681863efdc945">$jurado</a> == NULL) {</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        <span class="keywordflow">throw</span> <span class="keyword">new</span> Exception(<span class="stringliteral">&quot;No existe ningun jurado con DNI: &quot;</span>.$juradodni);</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        }</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        $this-&gt;view-&gt;setVariable(<span class="stringliteral">&quot;jurado&quot;</span>, <a class="code" href="jurado_2consultar_8php.html#a2ad6db7f36699c8fb08681863efdc945">$jurado</a>);<span class="comment">//falta cambiar</span></div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        $this-&gt;view-&gt;render(<span class="stringliteral">&quot;jurado&quot;</span>, <span class="stringliteral">&quot;consultar&quot;</span>);<span class="comment">//falta cambiar</span></div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;   </div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;  }</div>
+<div class="line"><a name="l00149"></a><span class="lineno"><a class="line" href="class_jurado_controller.html#ae05738af445a2eb4f3456604f1b9be8f">  149</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">function</span> <a class="code" href="class_jurado_controller.html#ae05738af445a2eb4f3456604f1b9be8f">eliminar</a>() {</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        <span class="keywordflow">if</span> (!isset($_GET[<span class="stringliteral">&quot;dniJurado&quot;</span>])) {</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;            <span class="keywordflow">throw</span> <span class="keyword">new</span> Exception(<span class="stringliteral">&quot;Es obligatorio proporcionar el DNI del jurado a eliminar&quot;</span>);</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        }</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        $juradodni = $_GET[<span class="stringliteral">&quot;dniJurado&quot;</span>];</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        <a class="code" href="jurado_2consultar_8php.html#a2ad6db7f36699c8fb08681863efdc945">$jurado</a> = $this-&gt;<a class="code" href="class_jurado_mapper.html">JuradoMapper</a>-&gt;<a class="code" href="class_jurado_mapper.html#af922f4e9af6766fd4732d34bbdfde326">findByDNI</a>($juradodni);</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="jurado_2consultar_8php.html#a2ad6db7f36699c8fb08681863efdc945">$jurado</a> == NULL) {</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;            <span class="keywordflow">throw</span> <span class="keyword">new</span> Exception(<span class="stringliteral">&quot;No existe el jurado con el DNI: &quot;</span>.$juradodni);</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        }  </div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    </div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    <span class="comment">// habria que comprobar, por temas de seguridad, que fuese el organizador el que </span></div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    <span class="comment">// elimina, sino, quitar este if</span></div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        <span class="comment">// if ($jurado-&gt;getAuthor() != $this-&gt;currentUser) {</span></div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;            <span class="comment">// throw new Exception(&quot;Post author is not the logged user&quot;);</span></div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        <span class="comment">// }// falta cmabiar todo este if</span></div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    </div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        $this-&gt;<a class="code" href="class_jurado_mapper.html">JuradoMapper</a>-&gt;<a class="code" href="class_jurado_mapper.html#a75198c33829f88ad860167f3e8efec9d">delete</a>(<a class="code" href="jurado_2consultar_8php.html#a2ad6db7f36699c8fb08681863efdc945">$jurado</a>);</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        $this-&gt;view-&gt;setFlash(<span class="stringliteral">&quot;jurado \&quot;&quot;</span>.<a class="code" href="jurado_2consultar_8php.html#a2ad6db7f36699c8fb08681863efdc945">$jurado</a> -&gt;getNombreJurado().<span class="stringliteral">&quot;\&quot; eliminado correctamente.&quot;</span>);    </div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        $this-&gt;view-&gt;redirect(<span class="stringliteral">&quot;jurado&quot;</span>, <span class="stringliteral">&quot;listar&quot;</span>);<span class="comment">//falta cambiar</span></div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;  }</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    </div>
+<div class="line"><a name="l00171"></a><span class="lineno"><a class="line" href="class_jurado_controller.html#acb88046a0a54d698c14758a1440a3b74">  171</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">function</span> <a class="code" href="class_jurado_controller.html#acb88046a0a54d698c14758a1440a3b74">inicio</a>(){</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        $this-&gt;view-&gt;redirect(<span class="stringliteral">&quot;jurado&quot;</span>, <span class="stringliteral">&quot;inicioJurado&quot;</span>);</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    }</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    </div>
+<div class="line"><a name="l00175"></a><span class="lineno"><a class="line" href="class_jurado_controller.html#a2559e412173ef0e94e8323bbff628dea">  175</a></span>&#160;          <span class="keyword">public</span> <span class="keyword">function</span> <a class="code" href="class_jurado_controller.html#a2559e412173ef0e94e8323bbff628dea">listarParaUnirP</a>() {</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    <span class="comment">//Esta funcion solo la puede hacer el organizador, hay que poner al inicio de todo una comprobacion</span></div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    <span class="comment">//de sesion, falta cambiar</span></div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        $juradoL = $this-&gt;<a class="code" href="class_jurado_mapper.html">JuradoMapper</a>-&gt;<a class="code" href="class_jurado_mapper.html#a73a1b0348919b6755e4f69dcc70eba64">findAll</a>();</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        </div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        $this -&gt; view -&gt; setVariable(<span class="stringliteral">&quot;jurado&quot;</span>, $juradoL);</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;            <span class="comment">//falta agregar la vista, no se continuar</span></div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        $this-&gt;view-&gt;render(<span class="stringliteral">&quot;jurado&quot;</span>, <span class="stringliteral">&quot;listarParaPincho&quot;</span>);<span class="comment">//falta cambiar</span></div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;  }</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    </div>
+<div class="line"><a name="l00185"></a><span class="lineno"><a class="line" href="class_jurado_controller.html#a78daf0559a699c011a26191e2395aa65">  185</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">function</span> <a class="code" href="class_jurado_controller.html#a78daf0559a699c011a26191e2395aa65">listaAsignarPincho</a>(){</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        $_SESSION[<span class="stringliteral">&quot;dnij&quot;</span>]=$_GET[<span class="stringliteral">&quot;dniJurado&quot;</span>];</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;        $pinchoL = $this-&gt;<a class="code" href="class_pincho_mapper.html">PinchoMapper</a>-&gt;<a class="code" href="class_pincho_mapper.html#a73a1b0348919b6755e4f69dcc70eba64">findAll</a>();</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        </div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        $this -&gt; view -&gt; setVariable(<span class="stringliteral">&quot;pinchos&quot;</span>, $pinchoL);</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;            <span class="comment">//falta agregar la vista, no se continuar</span></div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;        $this-&gt;view-&gt;render(<span class="stringliteral">&quot;pinchos&quot;</span>, <span class="stringliteral">&quot;listaPUnirJ&quot;</span>);<span class="comment">//falta cambiar</span></div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    } </div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;}</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;?&gt;</div>
+<div class="ttc" id="class_jurado_mapper_html_a11703f960050cbf7408f1b7a0878ade7"><div class="ttname"><a href="class_jurado_mapper.html#a11703f960050cbf7408f1b7a0878ade7">JuradoMapper\juradoExistsByDNI</a></div><div class="ttdeci">juradoExistsByDNI($dniJurado)</div><div class="ttdef"><b>Definition:</b> <a href="_jurado_mapper_8php_source.html#l00066">JuradoMapper.php:66</a></div></div>
+<div class="ttc" id="concurso_2consultar_8php_html_ab24faf4aa647cdcee494fc48524ad4ff"><div class="ttname"><a href="concurso_2consultar_8php.html#ab24faf4aa647cdcee494fc48524ad4ff">$errors</a></div><div class="ttdeci">$errors</div><div class="ttdef"><b>Definition:</b> <a href="concurso_2consultar_8php_source.html#l00011">consultar.php:11</a></div></div>
+<div class="ttc" id="class_jurado_controller_html_a586c2c605daf78152b27bfb9eb698d6c"><div class="ttname"><a href="class_jurado_controller.html#a586c2c605daf78152b27bfb9eb698d6c">JuradoController\registrarJuradoProfesional</a></div><div class="ttdeci">registrarJuradoProfesional()</div><div class="ttdef"><b>Definition:</b> <a href="_jurado_controller_8php_source.html#l00063">JuradoController.php:63</a></div></div>
+<div class="ttc" id="class_jurado_controller_html_a20badbc308822475434f4e72984ef23a"><div class="ttname"><a href="class_jurado_controller.html#a20badbc308822475434f4e72984ef23a">JuradoController\listar</a></div><div class="ttdeci">listar()</div><div class="ttdef"><b>Definition:</b> <a href="_jurado_controller_8php_source.html#l00096">JuradoController.php:96</a></div></div>
+<div class="ttc" id="class_jurado_mapper_html_ae53ede7da65cc44cac2397866a87de0f"><div class="ttname"><a href="class_jurado_mapper.html#ae53ede7da65cc44cac2397866a87de0f">JuradoMapper\save</a></div><div class="ttdeci">save(Jurado $jurado)</div><div class="ttdef"><b>Definition:</b> <a href="_jurado_mapper_8php_source.html#l00021">JuradoMapper.php:21</a></div></div>
+<div class="ttc" id="class_jurado_mapper_html_a75198c33829f88ad860167f3e8efec9d"><div class="ttname"><a href="class_jurado_mapper.html#a75198c33829f88ad860167f3e8efec9d">JuradoMapper\delete</a></div><div class="ttdeci">delete(Jurado $jurado)</div><div class="ttdef"><b>Definition:</b> <a href="_jurado_mapper_8php_source.html#l00115">JuradoMapper.php:115</a></div></div>
+<div class="ttc" id="class_pincho_mapper_html"><div class="ttname"><a href="class_pincho_mapper.html">PinchoMapper</a></div><div class="ttdef"><b>Definition:</b> <a href="_pincho_mapper_8php_source.html#l00018">PinchoMapper.php:18</a></div></div>
+<div class="ttc" id="class_pincho_mapper_html_a73a1b0348919b6755e4f69dcc70eba64"><div class="ttname"><a href="class_pincho_mapper.html#a73a1b0348919b6755e4f69dcc70eba64">PinchoMapper\findAll</a></div><div class="ttdeci">findAll()</div><div class="ttdef"><b>Definition:</b> <a href="_pincho_mapper_8php_source.html#l00047">PinchoMapper.php:47</a></div></div>
+<div class="ttc" id="class_validation_exception_html"><div class="ttname"><a href="class_validation_exception.html">ValidationException</a></div><div class="ttdef"><b>Definition:</b> <a href="_validation_exception_8php_source.html#l00014">ValidationException.php:14</a></div></div>
+<div class="ttc" id="class_jurado_mapper_html_a73a1b0348919b6755e4f69dcc70eba64"><div class="ttname"><a href="class_jurado_mapper.html#a73a1b0348919b6755e4f69dcc70eba64">JuradoMapper\findAll</a></div><div class="ttdeci">findAll()</div><div class="ttdef"><b>Definition:</b> <a href="_jurado_mapper_8php_source.html#l00035">JuradoMapper.php:35</a></div></div>
+<div class="ttc" id="class_jurado_html"><div class="ttname"><a href="class_jurado.html">Jurado</a></div><div class="ttdef"><b>Definition:</b> <a href="_jurado_8php_source.html#l00006">Jurado.php:6</a></div></div>
+<div class="ttc" id="class_jurado_controller_html_acb88046a0a54d698c14758a1440a3b74"><div class="ttname"><a href="class_jurado_controller.html#acb88046a0a54d698c14758a1440a3b74">JuradoController\inicio</a></div><div class="ttdeci">inicio()</div><div class="ttdef"><b>Definition:</b> <a href="_jurado_controller_8php_source.html#l00171">JuradoController.php:171</a></div></div>
+<div class="ttc" id="class_jurado_mapper_html"><div class="ttname"><a href="class_jurado_mapper.html">JuradoMapper</a></div><div class="ttdef"><b>Definition:</b> <a href="_jurado_mapper_8php_source.html#l00008">JuradoMapper.php:8</a></div></div>
+<div class="ttc" id="class_jurado_controller_html_a655e36eb03bdd7f71537b28c11d917f5"><div class="ttname"><a href="class_jurado_controller.html#a655e36eb03bdd7f71537b28c11d917f5">JuradoController\unir</a></div><div class="ttdeci">unir()</div><div class="ttdef"><b>Definition:</b> <a href="_jurado_controller_8php_source.html#l00119">JuradoController.php:119</a></div></div>
+<div class="ttc" id="class_jurado_controller_html_a85b4bc662200aa2a1dfa873e4af025e9"><div class="ttname"><a href="class_jurado_controller.html#a85b4bc662200aa2a1dfa873e4af025e9">JuradoController\consultar</a></div><div class="ttdeci">consultar()</div><div class="ttdef"><b>Definition:</b> <a href="_jurado_controller_8php_source.html#l00130">JuradoController.php:130</a></div></div>
+<div class="ttc" id="class_validation_exception_html_a6e548ebf2656742bfd19939ead923ed2"><div class="ttname"><a href="class_validation_exception.html#a6e548ebf2656742bfd19939ead923ed2">ValidationException\getErrors</a></div><div class="ttdeci">getErrors()</div><div class="ttdef"><b>Definition:</b> <a href="_validation_exception_8php_source.html#l00032">ValidationException.php:32</a></div></div>
+<div class="ttc" id="class_jurado_controller_html_a23c39a41f8721b9e9865d8300c72edc2"><div class="ttname"><a href="class_jurado_controller.html#a23c39a41f8721b9e9865d8300c72edc2">JuradoController\registrarNewJurado</a></div><div class="ttdeci">registrarNewJurado()</div><div class="ttdef"><b>Definition:</b> <a href="_jurado_controller_8php_source.html#l00032">JuradoController.php:32</a></div></div>
+<div class="ttc" id="class_jurado_controller_html_a2559e412173ef0e94e8323bbff628dea"><div class="ttname"><a href="class_jurado_controller.html#a2559e412173ef0e94e8323bbff628dea">JuradoController\listarParaUnirP</a></div><div class="ttdeci">listarParaUnirP()</div><div class="ttdef"><b>Definition:</b> <a href="_jurado_controller_8php_source.html#l00175">JuradoController.php:175</a></div></div>
+<div class="ttc" id="class_jurado_controller_html_aadf449249978ab117454a371d0c3d2d3"><div class="ttname"><a href="class_jurado_controller.html#aadf449249978ab117454a371d0c3d2d3">JuradoController\listarParaUnir</a></div><div class="ttdeci">listarParaUnir()</div><div class="ttdef"><b>Definition:</b> <a href="_jurado_controller_8php_source.html#l00104">JuradoController.php:104</a></div></div>
+<div class="ttc" id="class_jurado_mapper_html_a77d101318c2ce1503811865e1e3f6444"><div class="ttname"><a href="class_jurado_mapper.html#a77d101318c2ce1503811865e1e3f6444">JuradoMapper\unir</a></div><div class="ttdeci">unir($Jurado_DniJur, $Concurso_NombreCon)</div><div class="ttdef"><b>Definition:</b> <a href="_jurado_mapper_8php_source.html#l00134">JuradoMapper.php:134</a></div></div>
+<div class="ttc" id="class_jurado_controller_html"><div class="ttname"><a href="class_jurado_controller.html">JuradoController</a></div><div class="ttdef"><b>Definition:</b> <a href="_jurado_controller_8php_source.html#l00015">JuradoController.php:15</a></div></div>
+<div class="ttc" id="class_jurado_controller_html_ae05738af445a2eb4f3456604f1b9be8f"><div class="ttname"><a href="class_jurado_controller.html#ae05738af445a2eb4f3456604f1b9be8f">JuradoController\eliminar</a></div><div class="ttdeci">eliminar()</div><div class="ttdef"><b>Definition:</b> <a href="_jurado_controller_8php_source.html#l00149">JuradoController.php:149</a></div></div>
+<div class="ttc" id="class_jurado_mapper_html_af922f4e9af6766fd4732d34bbdfde326"><div class="ttname"><a href="class_jurado_mapper.html#af922f4e9af6766fd4732d34bbdfde326">JuradoMapper\findByDNI</a></div><div class="ttdeci">findByDNI($juradodni)</div><div class="ttdef"><b>Definition:</b> <a href="_jurado_mapper_8php_source.html#l00080">JuradoMapper.php:80</a></div></div>
+<div class="ttc" id="class_jurado_controller_html_a78daf0559a699c011a26191e2395aa65"><div class="ttname"><a href="class_jurado_controller.html#a78daf0559a699c011a26191e2395aa65">JuradoController\listaAsignarPincho</a></div><div class="ttdeci">listaAsignarPincho()</div><div class="ttdef"><b>Definition:</b> <a href="_jurado_controller_8php_source.html#l00185">JuradoController.php:185</a></div></div>
+<div class="ttc" id="class_base_controller_html"><div class="ttname"><a href="class_base_controller.html">BaseController</a></div><div class="ttdef"><b>Definition:</b> <a href="_base_controller_8php_source.html#l00019">BaseController.php:19</a></div></div>
+<div class="ttc" id="class_jurado_controller_html_a095c5d389db211932136b53f25f39685"><div class="ttname"><a href="class_jurado_controller.html#a095c5d389db211932136b53f25f39685">JuradoController\__construct</a></div><div class="ttdeci">__construct()</div><div class="ttdef"><b>Definition:</b> <a href="_jurado_controller_8php_source.html#l00020">JuradoController.php:20</a></div></div>
+<div class="ttc" id="jurado_2consultar_8php_html_a2ad6db7f36699c8fb08681863efdc945"><div class="ttname"><a href="jurado_2consultar_8php.html#a2ad6db7f36699c8fb08681863efdc945">$jurado</a></div><div class="ttdeci">$jurado</div><div class="ttdef"><b>Definition:</b> <a href="jurado_2consultar_8php_source.html#l00008">consultar.php:8</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado el Lunes, 8 de Diciembre de 2014 00:21:01 para Pera Pinchos por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.8
+</small></address>
+</body>
+</html>
