@@ -125,7 +125,7 @@ class ConcursoController extends BaseController {
 		$this->ConcursoMapper->delete($concurso);
 
 		$this->view->setFlash("Concurso \"".$concurso ->getNombreCon()."\" eliminado correctamente.");
-		$this->view->redirect("posts", "index");//falta cambiar
+		$this->view->redirect("concurso", "inicioOrganizador");
 	}
 
 }
