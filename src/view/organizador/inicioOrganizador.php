@@ -8,7 +8,8 @@
  $concursos = $view->getVariable ( "concurso" );
 ?>
 
-<h1><?= i18n("Estas en la pagina principal del organizador, que quieres hacer") ?></h1>
+<h1><?= sprintf(i18n("Bienvenido, %s"),$_SESSION["currentuser"]) ?></h1>
+<h3><?= i18n("Éstas son tus opciones: ") ?></h3>
 <div class="form-group">
 <form action="index.php?controller=jurado&amp;action=registrarJuradoProfesional"  method="POST">      
 <input class="btn btn-default" type="submit" value="<?= i18n("Registro de Jurado Profesional")?>"></form></br>
@@ -32,5 +33,5 @@
 <input class="btn btn-default" type="submit" value="<?= i18n("a RELLENAR")?>"></form></br>
 </div>
 
-<h1><?=i18n("Posts")?></h1>
+
 

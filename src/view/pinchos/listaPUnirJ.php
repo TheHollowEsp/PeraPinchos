@@ -9,7 +9,11 @@ $view -> setVariable("title", "Pinchos");
 ?><h1><?=i18n("Pinchos") ?></h1>
 
 
-<table border="1">
+   
+   <div class="row">
+        <div class="col-md-6">
+          <table class="table">
+            <thead>
 	<tr>
 		<th><?= i18n("Nombre") ?></th>
 		<th><?= i18n("Descripcion") ?></th>
@@ -17,7 +21,7 @@ $view -> setVariable("title", "Pinchos");
 		<th><?= i18n("Establecimiento") ?></th>
 		<th><?= i18n("Asignar?") ?></th>
 	</tr>
-
+ </thead>
     <?php foreach ($pinchos as $pincho): ?>
 	    <tr>
 		<td><a
@@ -40,3 +44,6 @@ $view -> setVariable("title", "Pinchos");
     <?php endforeach; ?>
 
     </table>
+    </div>
+    </div>
+	

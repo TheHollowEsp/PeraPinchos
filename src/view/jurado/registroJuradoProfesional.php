@@ -8,18 +8,18 @@
  $view->setVariable("title", "registrarNewJurado");
 ?>
 <h1><?= i18n("Registrarte como jurado")?></h1>
-<form action="index.php?controller=jurado&amp;action=registrarJuradoProfesional" method="POST">
-      <?= i18n("DNI")?>: <input type="text" name="DniJur" 
-			value="<?= $jurado->getDniJurado() ?>">
+<form class="form-inline" action="index.php?controller=jurado&amp;action=registrarJuradoProfesional" method="POST">
+      <div class="form-group"><label for="inputDNI"><?= i18n("DNI")?>:</label>
+       <input id="inputDNI" class="form-control" type="text" name="DniJur" value="<?= $jurado->getDniJurado() ?>">
       <?= isset($errors["DniJur"])?$errors["DniJur"]:"" ?><br>
-      
-      <?= i18n("Nombre")?>: <input type="text" name="Nombre" 
+      </div>
+      <div class="form-group"><label for="inputNombre"><?= i18n("Nombre")?>:</label>  <input id="inputNombre" class="form-control" type="text" name="Nombre" 
 			value="">
       <?= isset($errors["Nombre"])?$errors["Nombre"]:"" ?><br>
-      
-      <?= i18n("Contraseña")?>: <input type="password" name="PasswordJ" 
+      </div>
+      <div class="form-group"><label for="inputPass"><?= i18n("Contraseña")?>:</label>  <input id="inputPass" class="form-control" type="password" name="PasswordJ" 
 			value="">
       <?= isset($errors["PasswordJ"])?$errors["PasswordJ"]:"" ?><br>
-      
-      <input type="submit" value="<?= i18n("Registro")?>">
-</form>
+      </div>
+      <input class="btn btn-default" type="submit" value="<?= i18n("Registro")?>">
+</form><br>
