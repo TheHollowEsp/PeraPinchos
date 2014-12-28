@@ -8,14 +8,17 @@ $view->setVariable ( "title", "Concurso" );
 
 ?><h1><?=i18n("Concursos")?></h1>
 
-<table border="1">
+<div class="row">
+        <div class="col-md-6">
+<table class="table table-hover">
+	<thead>
 	<tr>
 		<th><?= i18n("Nombre concurso")?></th>
 		<th><?= i18n("Bases Concurso")?></th>
 		<th><?= i18n("Premios")?></th>
 		<th><?= i18n("Apuntarse")?></th>
 	</tr>
-
+</thead>
     <?php foreach ($concurso as $con): ?>
 	    <tr>
 			<td><a
@@ -37,4 +40,6 @@ $view->setVariable ( "title", "Concurso" );
 	</tr>
     <?php endforeach; ?>
 
-    </table
+   </table>
+    </div>
+    </div>

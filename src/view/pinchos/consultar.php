@@ -39,21 +39,26 @@ if ($pincho -> getIsValidado() == 0)
 		</dl>		
 	</p>
 	
-    <p>
+    <h2>
     <?= sprintf(i18n("Solo en: %s"), $pincho -> getEstablecimiento()) ?>
-    </p>
+    </h2>
     
     <?php if($isjurado){ ?>
     	
 <form action="index.php?controller=pinchos&amp;action=valorar&amp;nombrePincho=<?= $pincho -> getNombrePincho() ?>" method="POST">
-<select name="valoracion">    
-       <option value="1" selected="selected">1</option>
-       <option value="2">2</option>
-       <option value="3">3</option>
-       <option value="4">4</option>
-       <option value="5">5</option>       
+
+
+
+<select name="valoracion" class="form-control">    
+       <option value="1" selected="selected">1 - <?= i18n("Very bad") ?></option>
+       <option value="2">2 - <?= i18n("Bad") ?></option>
+       <option value="3">3 - <?= i18n("Plain") ?></option>
+       <option value="4">4 - <?= i18n("Good") ?></option>
+       <option value="5">5 - <?= i18n("Very good") ?></option>       
    </select>
-<input type="submit" value="<?= i18n("Valorar") ?>">
+  </br>
+<input class="btn btn-info btn-lg" type="submit" value="<?= i18n("Valorar") ?>">
+  </br>  </br>
 </form>
 
 <?php } ?>

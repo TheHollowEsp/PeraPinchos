@@ -11,12 +11,41 @@ $concurso = $view->getVariable("concurso");
 $errors = $view->getVariable("errors");
 
 $view->setVariable("title", "Consultar concurso");
-?><h1><?= i18n("concurso").": ".htmlentities($concurso->getNombreCon()) ?></h1>
-	<em><?= sprintf(i18n("Fecha de inicio: %s"),$concurso->getFechaIniCon()) ?></em> </br>
-	<em><?= sprintf(i18n("Fecha de fin: %s"),$concurso->getFechaFinCon()) ?></em></br>
-	<em><?= sprintf(i18n("Bases del concurso: %s"),$concurso->getBasesConcurso()) ?></em></br>
-	<em><?= sprintf(i18n("Patrocinadores: %s"),$concurso->getPatrocinadoresCon()) ?></em></br>
-	<em><?= sprintf(i18n("Premios: %s"),$concurso->getPremiosCon()) ?></em></br>
-	<em><?= sprintf(i18n("Organizador: %s"),$concurso->getOrganizadorCon()) ?></em></br>
+?>
+
+<h1>
+	<dl class="dl-horizontal">
+		<dt style='white-space: wrap;width: 190px;'><?= i18n("Concurso:")?></dt>
+  		<dd><?=$concurso->getNombreCon() ?></dd>
+	</dl>
+</h1>
+<p>
+		<dl class="dl-horizontal">
+  			<dt><?= i18n("Fecha de inicio: ") ?></dt>
+  			<dd><?=$concurso->getFechaIniCon() ?></dd>
+		</dl>
+		<dl class="dl-horizontal">
+  			<dt><?= i18n("Fecha de fin: ") ?></dt>
+	  		<dd><?=$concurso->getFechaFinCon() ?></dd>
+		</dl>
+		<dl class="dl-horizontal">
+  			<dt><?= i18n("Bases del concurso: ")?></dt>
+  			<dd><?=$concurso->getBasesConcurso() ?></dd>
+		</dl>
+		<dl class="dl-horizontal">
+  			<dt><?= i18n("Patrocinadores:") ?></dt>
+  			<dd><?=$concurso->getPatrocinadoresCon() ?></dd>
+		</dl>
+		<dl class="dl-horizontal">
+  			<dt><?= i18n("Premios:") ?></dt>
+  			<dd><?=$concurso->getPremiosCon() ?></dd>
+		</dl>
+		<dl class="dl-horizontal">
+  			<dt><?= i18n("Organizador:") ?></dt>
+  			<dd><?=$concurso->getOrganizadorCon() ?></dd>
+		</dl>		
+	</p>
+
+
 
     

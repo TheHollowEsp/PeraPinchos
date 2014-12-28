@@ -7,8 +7,10 @@ $concurso = $view->getVariable ( "concurso" );
 $view->setVariable ( "title", "Concurso" );
 
 ?><h1><?=i18n("Concursos")?></h1>
-
-<table border="1">
+<div class="row">
+        <div class="col-md-6">
+<table class="table table-hover">
+	<thead>
 	<tr>
 		<th><?= i18n("Nombre concurso")?></th>
 		<th><?= i18n("Fecha inicio")?></th>
@@ -19,6 +21,7 @@ $view->setVariable ( "title", "Concurso" );
 		<th><?= i18n("Añadir jurado")?></th>
 		<th><?= i18n("Eliminar concurso")?></th>
 	</tr>
+	</thead>
 
     <?php foreach ($concurso as $con): ?>
 	    <tr>
@@ -55,3 +58,5 @@ $view->setVariable ( "title", "Concurso" );
     <?php endforeach; ?>
 
     </table>
+     </div>
+    </div>
