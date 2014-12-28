@@ -56,7 +56,11 @@ ini_set('display_errors', 'On');
     
     
 	    <div class="container theme-showcase" role="main">
-	<main> <!-- flash message -->
+	<main>
+		<?php
+	include (__DIR__ . "/backButton.php");
+						?>
+		 <!-- flash message -->
 	<div id="flash">
 	<?= $view -> popFlash() ?>
       </div>

@@ -40,22 +40,13 @@ ini_set('display_errors', 'On');
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <!--<li class="active"><a href="#">Home</a></li>-->
-            <li><a href="index.php?controller=jurado&amp;action=registrarJuradoProfesional"><?= i18n("Añadir Jurado")?></a></li>
-            <li><a href="index.php?controller=concurso&amp;action=registrarConcurso"><?= i18n("Registrar Concurso")?></a></li>
-            <li><a href="index.php?controller=concurso&amp;action=listarParaOrganizador"><?= i18n("Listar concursos")?></a></li>
-            <li><a href="index.php?controller=organizador&amp;action=listarPinchosNoValidado"><?= i18n("Validar pinchos")?></a></li>
-            <li><a href="index.php?controller=jurado&amp;action=listarParaUnirP"><?= i18n("Asignar pinchos")?></a></li>
-            <li><a href="index.php?controller=organizador&amp;action=eliminar"><?= i18n("Darse de baja")?></a></li>
+            <li><a href="index.php?controller=jurado&amp;action=registrarJuradoProfesional"><?= i18n("Añadir Jurado") ?></a></li>
+            <li><a href="index.php?controller=concurso&amp;action=registrarConcurso"><?= i18n("Registrar Concurso") ?></a></li>
+            <li><a href="index.php?controller=concurso&amp;action=listarParaOrganizador"><?= i18n("Listar concursos") ?></a></li>
+            <li><a href="index.php?controller=organizador&amp;action=listarPinchosNoValidado"><?= i18n("Validar pinchos") ?></a></li>
+            <li><a href="index.php?controller=jurado&amp;action=listarParaUnirP"><?= i18n("Asignar pinchos") ?></a></li>
+            <li><a href="index.php?controller=organizador&amp;action=eliminar"><?= i18n("Darse de baja") ?></a></li>
             <li><a href="index.php?controller=login&amp;action=logout">Logout</a></li>
-            
-           <!-- 
- 
-
-<form action=""  method="POST">      
-<input type="submit" value=""></form>
-           	--> 
-            
-            
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -63,12 +54,15 @@ ini_set('display_errors', 'On');
     
     
     
-	    <div class="container theme-showcase" role="main">
+<div class="container theme-showcase" role="main">
 	<main> <!-- flash message -->
-	<div id="flash">
-	<?= $view -> popFlash() ?>
-      </div>
-      <?= $view -> getFragment(ViewManager::DEFAULT_FRAGMENT) ?>
+		<?php
+	include (__DIR__ . "/backButton.php");
+						?>
+		<div id="flash">
+			<?= $view -> popFlash() ?>
+      	</div>
+      	<?= $view -> getFragment(ViewManager::DEFAULT_FRAGMENT) ?>
     </main>
     
 	<footer>

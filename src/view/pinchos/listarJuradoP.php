@@ -5,17 +5,20 @@ $view = ViewManager::getInstance();
 
 $pinchos = $view -> getVariable("pinchos");
 
-$view -> setVariable("title", "Pinchos Especiales");
-?><h1><?=i18n("Pinchos especiales") ?></h1>
+$view -> setVariable("title", "Listado de Pinchos");
+?><h1><?=i18n("Pinchos de Jurado Profesional") ?></h1>
 
-<table border="1">
+<div class="row">
+        <div class="col-md-6">
+          <table class="table">
+          	<thead>
 	<tr>
 		<th><?= i18n("Nombre") ?></th>
 		<th><?= i18n("Descripcion") ?></th>
 		<th><?= i18n("Precio") ?></th>
 		<th><?= i18n("Establecimiento") ?></th>
 	</tr>
-
+</thead>
     <?php foreach ($pinchos as $pin): ?>
 	    <tr>
 		<td><a
@@ -35,3 +38,6 @@ $view -> setVariable("title", "Pinchos Especiales");
     <?php endforeach; ?>
 
     </table>
+    </div>
+    </div>
+    
