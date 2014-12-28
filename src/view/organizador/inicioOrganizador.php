@@ -9,22 +9,28 @@
 ?>
 
 <h1><?= i18n("Estas en la pagina principal del organizador, que quieres hacer") ?></h1>
-
+<div class="form-group">
 <form action="index.php?controller=jurado&amp;action=registrarJuradoProfesional"  method="POST">      
-<input type="submit" value="<?= i18n("Registro de Jurado Profesional")?>"></form>
+<input class="btn btn-default" type="submit" value="<?= i18n("Registro de Jurado Profesional")?>"></form></br>
 
 <form action="index.php?controller=concurso&amp;action=registrarConcurso"  method="POST">      
-<input type="submit" value="<?= i18n("Registro de Concurso")?>"></form>
+<input class="btn btn-default" type="submit" value="<?= i18n("Registro de Concurso")?>"></form></br>
 
 <form action="index.php?controller=concurso&amp;action=listarParaOrganizador"  method="POST">      
-<input type="submit" value="<?= i18n("Listar concursos")?>"></form>
+<input class="btn btn-default" type="submit" value="<?= i18n("Listar concursos")?>"></form></br>
 
 <form action="index.php?controller=organizador&amp;action=listarPinchosNoValidado"  method="POST">      
-<input type="submit" value="<?= i18n("Validar pinchos")?>"></form>
+<input class="btn btn-default" type="submit" value="<?= i18n("Validar pinchos")?>"></form></br>
 
 <form action="index.php?controller=jurado&amp;action=listarParaUnirP"  method="POST">      
-<input type="submit" value="<?= i18n("Asignar pincho a jurado")?>"></form>
+<input class="btn btn-default" type="submit" value="<?= i18n("Asignar pincho a jurado")?>"></form></br>
 
+<form action="#"  method="POST">      
+<input class="btn btn-default" type="submit" value="<?= i18n("A RELLENAR")?>"></form></br>
+
+<form action="#"  method="POST">      
+<input class="btn btn-default" type="submit" value="<?= i18n("a RELLENAR")?>"></form></br>
+</div>
 
 <h1><?=i18n("Posts")?></h1>
 

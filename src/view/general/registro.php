@@ -11,17 +11,19 @@
 <h1><?= i18n("Registro") ?></h1>
 <?= isset($errors["general"])?$errors["general"]:"" ?>
 
-<form action="index.php?controller=jurado&amp;action=registrarNewJurado" method="POST">
-<input type="submit" value="<?= i18n("Registrate como Jurado") ?>">
+<form class="form-inline" action="index.php?controller=jurado&amp;action=registrarNewJurado" method="POST">
+<input class="btn btn-info " type="submit" value="<?= i18n("Registrate como Jurado") ?>">
 </form>
+</br>
 
-<form action="index.php?controller=establecimiento&amp;action=registrarEstablecimiento" method="POST">
-<input type="submit" value="<?= i18n("Registrate como Establecimiento") ?>">
+<form class="form-inline" action="index.php?controller=establecimiento&amp;action=registrarEstablecimiento" method="POST">
+<input class="btn btn-info " type="submit" value="<?= i18n("Registrate como Establecimiento") ?>">
 </form>
-
-<form action="index.php?controller=organizador&amp;action=registrarOrganizador" method="POST">
-<input type="submit" value="<?= i18n("Registrate como Organizador") ?>">
+</br>
+<form class="form-inline" action="index.php?controller=organizador&amp;action=registrarOrganizador" method="POST">
+<input class="btn btn-info " type="submit" value="<?= i18n("Registrate como Organizador") ?>">
 </form>
-
-<form action="index.php?controller=users&amp;action=login"  method="POST">      
-<input type="submit" value="<?= i18n("Inicio sesion")?>">
+</br>
+<form class="form-inline" action="index.php?controller=users&amp;action=login"  method="POST">      
+<input class="btn btn-info " type="submit" value="<?= i18n("Inicio sesion")?>">
+</br></br>
