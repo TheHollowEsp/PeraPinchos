@@ -26,8 +26,7 @@ $view -> setVariable("title", "Proponer pincho");
 			value="">
       <?= isset($errors["ingredientes"]) ? $errors["ingredientes"] : "" ?><br>
       
-      <?= i18n("Foto") ?>: <input type="file" name="foto" enctype="multipart/form-data"
-			value="">
+      <?= i18n("Foto") ?>: <input type="file" name="foto" enctype="multipart/form-data">
       <?= isset($errors["foto"]) ? $errors["foto"] : "" ?><br>
       
       <?= i18n("Informacion adicional") ?>: <input type="text" name="info" 

@@ -1,7 +1,11 @@
-<?php
+<?php 
 // file: view/layouts/language_select_element.php
+if( $_SESSION["__currentlang__"] == "es"){
 ?>
+<a href="index.php?controller=language&action=change&lang=es" id="buttonES" class="btn btn-primary disabled"role="button"> <?= i18n("Spanish") ?></a>
+<a href="index.php?controller=language&action=change&lang=en" id="buttonEN" class="btn btn-primary active"role="button"> <?= i18n("English") ?></a>
+<?php }else{ ?>
+<a href="index.php?controller=language&action=change&lang=es" id="buttonES" class="btn btn-primary active"role="button"> <?= i18n("Spanish") ?></a>
+<a href="index.php?controller=language&action=change&lang=en" id="buttonEN" class="btn btn-primary disabled"role="button"> <?= i18n("English") ?></a>
+<?php } ?>
 
-	
-	<button type="button" class="btn btn-default" a href="index.php?controller=language&amp;action=change&amp;lang=es"><?= i18n("Spanish") ?></button>
-	<button type="button" class="btn btn-primary" a href="index.php?controller=language&amp;action=change&amp;lang=en"><?= i18n("English") ?></button>

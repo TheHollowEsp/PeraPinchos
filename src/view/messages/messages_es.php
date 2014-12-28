@@ -16,7 +16,7 @@
     "Login" => "Entrar",
     "Username" => "Nombre de usuario",
     "Password" => "Contraseña",
-    "Not user?" => "Nuevo aquí?",
+    "Not user?" => "¿Eres nuevo en esto?",
     "Register here!" => "¡Regístrate aquí!",
     "Register" => "Registro",
     "Edit" => "Editar",
@@ -29,6 +29,7 @@
     "do comment" => "comentar",
     "Spanish" => "Español",
     "English" => "Inglés",
+    "Pinchos" => "Things",
     "Welcome to the Blog App!" => "¡Bienvenido a la App Blog!",
     "are you sure?" => "¿Estás seguro?"
   );
