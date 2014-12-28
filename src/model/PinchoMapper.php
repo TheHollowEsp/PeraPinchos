@@ -37,7 +37,7 @@ class PinchoMapper {
 		foreach ($pinchos_db as $pincho) {
 		 echo "Metiendo un pincho";
 		 
-		 array_push($pinchos, new Pincho($pincho["NombrePincho"], $pincho["Descripcion"], $pincho["Precio"], $pincho["Ingredientes"], $pincho["Fotos"], $pincho["Informacion"], $pincho["Validado"], $pincho["Establecimiento_NombreEst"]));
+		 array_push($pinchos, new Pincho($pincho["NombrePincho"], $pincho["Descripcion"], $pincho["Precio"], $pincho["Ingredientes"], $pincho["Fotos"], $pincho["Informacion"], $pincho["Validado"], $pincho["Cif"]));
 		 }
 		 echo "Retornando pincho";
 		 return $pinchos;
@@ -51,7 +51,7 @@ class PinchoMapper {
 		$pinchos = array();
 
 		foreach ($pinchos_db as $pincho) {
-			array_push($pinchos, new Pincho($pincho["NombrePincho"], $pincho["Descripcion"], $pincho["Precio"], $pincho["Ingredientes"], $pincho["Fotos"], $pincho["Informacion"], $pincho["Validado"], $pincho["Establecimiento_NombreEst"]));
+			array_push($pinchos, new Pincho($pincho["NombrePincho"], $pincho["Descripcion"], $pincho["Precio"], $pincho["Ingredientes"], $pincho["Fotos"], $pincho["Informacion"], $pincho["Validado"], $pincho["Cif"]));
 		}
 
 		return $pinchos;
@@ -66,7 +66,7 @@ class PinchoMapper {
 		foreach ($pinchos_db as $pincho) {
 			//$establecimiento = new Establecimiento($pincho["Establecimiento_NombreEst"]);
 			//Usar nombres de las columnas en la DB
-			array_push($pinchos, new Pincho($pincho["NombrePincho"], $pincho["Descripcion"], $pincho["Precio"], $pincho["Ingredientes"], $pincho["Fotos"], $pincho["Informacion"], $pincho["Validado"], $pincho["Establecimiento_NombreEst"]));
+			array_push($pinchos, new Pincho($pincho["NombrePincho"], $pincho["Descripcion"], $pincho["Precio"], $pincho["Ingredientes"], $pincho["Fotos"], $pincho["Informacion"], $pincho["Validado"], $pincho["Cif"]));
 		}
 
 		return $pinchos;
@@ -86,7 +86,7 @@ class PinchoMapper {
 		$pincho = $stmt -> fetch(PDO::FETCH_ASSOC);
 
 		if (!sizeof($pincho) == 0) {
-			return new Pincho($pincho["NombrePincho"], $pincho["Descripcion"], $pincho["Precio"], $pincho["Ingredientes"], $pincho["Fotos"], $pincho["Informacion"], $pincho["Validado"], $pincho["Establecimiento_NombreEst"]);
+			return new Pincho($pincho["NombrePincho"], $pincho["Descripcion"], $pincho["Precio"], $pincho["Ingredientes"], $pincho["Fotos"], $pincho["Informacion"], $pincho["Validado"], $pincho["Cif"]);
 		} else {
 			return NULL;
 		}
@@ -99,7 +99,7 @@ class PinchoMapper {
 	 */
 	public function save(Pincho $pincho) {
 		echo "Entrando en el guardado";
-		$stmt = $this -> db -> prepare("INSERT INTO Pincho (NombrePincho, Descripcion, Precio, Ingredientes, Fotos, Informacion, Validado, Establecimiento_NombreEst) values (?,?,?,?,?,?,?,?)");
+		$stmt = $this -> db -> prepare("INSERT INTO Pincho (NombrePincho, Descripcion, Precio, Ingredientes, Fotos, Informacion, Validado, Cif) values (?,?,?,?,?,?,?,?)");
 		$stmt -> execute(array($pincho -> getNombrePincho(), $pincho -> getDescripcionPincho(), $pincho -> getPrecioPincho(), $pincho -> getIngredientesPincho(), $pincho -> getFotosPincho(), $pincho -> getInfoPincho(), $pincho -> getIsValidado(), $pincho -> getEstablecimiento()));
 	}
 

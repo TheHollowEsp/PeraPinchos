@@ -149,7 +149,7 @@ CREATE TABLE IF NOT EXISTS `Jurado` (
   `DniJur` varchar(9) NOT NULL,
   `Nombre` varchar(50) NOT NULL,
   `PasswordJ` varchar(50) NOT NULL,
-  `Juradocol` varchar(45) DEFAULT 'NO',
+  `Juradocol` TINYINT(1) DEFAULT 0,
   PRIMARY KEY (`DniJur`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

@@ -19,7 +19,7 @@ class EstablecimientoMapper {
 
 	public function isValidUser($Cif, $PasswordE) {
 		$stmt = $this -> db -> prepare("SELECT count(Cif) FROM Establecimiento where Cif=? and PasswordE=?");
-		$stmt -> execute(array($NombreEst, $PasswordE));
+		$stmt -> execute(array($Cif, $PasswordE));
 		if ($stmt -> fetchColumn() > 0) {
 			return true;
 		}

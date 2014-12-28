@@ -70,7 +70,7 @@ class JuradoController extends BaseController {
 			$jurado -> setDniJurado($_POST["DniJur"]);
 			$jurado -> setNombreJurado($_POST["Nombre"]);
 			$jurado -> setPasswordJurado($_POST["PasswordJ"]);
-			$jurado -> setIsProfesional("SI");
+			$jurado -> setIsProfesional(1);
 
 			try {
 				$jurado -> checkIsValidForRegisterJurado();
