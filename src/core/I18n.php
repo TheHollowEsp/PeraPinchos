@@ -60,6 +60,8 @@ class I18n {
     if (isset($this->messages[$key])){
       return $this->messages[$key];
     }else{
+      $string = '"'.$key.'"'."=>".'"'.$key.'",'."\n";
+      $success = file_put_contents (__DIR__."/../view/messages/messages_nopuesto.php" , $string, FILE_APPEND);
       return $key;
     }
   }
