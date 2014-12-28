@@ -166,7 +166,7 @@ class JuradoController extends BaseController {
 		
 		$this -> JuradoMapper -> delete($juradodni);
 
-		$this -> view -> setFlash("jurado \"" . $jurado -> getNombreJurado() . "\" eliminado correctamente.");
+		
 		$this -> view -> redirect("jurado", "listar");
 		//falta cambiar
 	}

@@ -113,9 +113,9 @@ class JuradoMapper {
 	 * @throws PDOException if a database error occurs
 	 * @return void
 	 */
-  	public function delete(Jurado $jurado) {
+  	public function delete($jurado) {
 		$stmt = $this -> db -> prepare("DELETE from Jurado WHERE DniJur=?");
-		$stmt -> execute(array($jurado -> getDniJurado()));
+		$stmt -> execute(array($jurado));
 	}
 	
 	/**
