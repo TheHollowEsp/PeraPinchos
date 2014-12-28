@@ -29,7 +29,7 @@ class PinchoMapper {
 
 	public function findAllForJuradoConcreto($jurado) {
 		
-		$stmt = $this -> db -> prepare("SELECT P.* FROM jurado J, pincho_has_jurado PJ, pincho P WHERE J.DniJur = PJ.Jurado_dniJur AND PJ.Pincho_NombrePincho = P.NombrePincho AND J.DniJur = ?");
+		$stmt = $this -> db -> prepare("SELECT P.* FROM Jurado J, Pincho_has_Jurado PJ, Pincho P WHERE J.DniJur = PJ.Jurado_dniJur AND PJ.Pincho_NombrePincho = P.NombrePincho AND J.DniJur = ?");
 		$stmt -> execute(array($jurado -> getDniJurado()));
 		$pinchos_db = $stmt -> fetchAll(PDO::FETCH_ASSOC);
 		
@@ -45,7 +45,7 @@ class PinchoMapper {
 	}
 
 	public function findAll() {
-		$stmt = $this -> db -> query("SELECT * FROM pincho where Validado=1");
+		$stmt = $this -> db -> query("SELECT * FROM Pincho where Validado=1");
 		$pinchos_db = $stmt -> fetchAll(PDO::FETCH_ASSOC);
 
 		$pinchos = array();
@@ -58,7 +58,7 @@ class PinchoMapper {
 	}
 
 	public function findAllNoValidado() {
-		$stmt = $this -> db -> query("SELECT * FROM pincho where Validado=0");
+		$stmt = $this -> db -> query("SELECT * FROM Pincho where Validado=0");
 		$pinchos_db = $stmt -> fetchAll(PDO::FETCH_ASSOC);
 
 		$pinchos = array();
@@ -81,7 +81,7 @@ class PinchoMapper {
 	 */
 	public function findById($nombrePincho) {
 		//$stmt = $this -> db -> prepare("SELECT * FROM pincho WHERE NombrePincho=? AND Validado=1");
-		$stmt = $this -> db -> prepare("SELECT * FROM pincho WHERE NombrePincho=?");
+		$stmt = $this -> db -> prepare("SELECT * FROM Pincho WHERE NombrePincho=?");
 		$stmt -> execute(array($nombrePincho));
 		$pincho = $stmt -> fetch(PDO::FETCH_ASSOC);
 
@@ -99,7 +99,7 @@ class PinchoMapper {
 	 */
 	public function save(Pincho $pincho) {
 		echo "Entrando en el guardado";
-		$stmt = $this -> db -> prepare("INSERT INTO pincho (NombrePincho, Descripcion, Precio, Ingredientes, Fotos, Informacion, Validado, Establecimiento_NombreEst) values (?,?,?,?,?,?,?,?)");
+		$stmt = $this -> db -> prepare("INSERT INTO Pincho (NombrePincho, Descripcion, Precio, Ingredientes, Fotos, Informacion, Validado, Establecimiento_NombreEst) values (?,?,?,?,?,?,?,?)");
 		$stmt -> execute(array($pincho -> getNombrePincho(), $pincho -> getDescripcionPincho(), $pincho -> getPrecioPincho(), $pincho -> getIngredientesPincho(), $pincho -> getFotosPincho(), $pincho -> getInfoPincho(), $pincho -> getIsValidado(), $pincho -> getEstablecimiento()));
 	}
 
@@ -109,7 +109,7 @@ class PinchoMapper {
 	 * @return void
 	 */
 	public function update(Pincho $pincho) {
-		$stmt = $this -> db -> prepare("UPDATE pincho set Descripcion=?, Precio=?, Ingredientes=?, Fotos=?, Informacion=?, Validado=? where NombrePincho=?");
+		$stmt = $this -> db -> prepare("UPDATE Pincho set Descripcion=?, Precio=?, Ingredientes=?, Fotos=?, Informacion=?, Validado=? where NombrePincho=?");
 		$stmt -> execute(array($pincho -> getDescripcionPincho(), $pincho -> getPrecioPincho(), $pincho -> getIngredientesPincho(), $pincho -> getFotosPincho(), $pincho -> getInfoPincho(), $pincho -> getIsValidado(), $pincho -> getNombrePincho()));
 	}//Aquí no se cambia la clave foranea
 
@@ -119,12 +119,12 @@ class PinchoMapper {
 	 * @return void
 	 */
 	public function delete(Pincho $pincho) {
-		$stmt = $this -> db -> prepare("DELETE from pincho WHERE NombrePincho=?");
+		$stmt = $this -> db -> prepare("DELETE from Pincho WHERE NombrePincho=?");
 		$stmt -> execute(array($pincho -> getNombrePincho()));
 	}
 	
 	public function valorarPincho($nombre,$valoracion,$user){
-		$stmt = $this -> db -> prepare("UPDATE pincho_has_jurado set VotoPro=? WHERE Pincho_NombrePincho=? AND Jurado_DniJur=?");
+		$stmt = $this -> db -> prepare("UPDATE Pincho_has_Jurado set VotoPro=? WHERE Pincho_NombrePincho=? AND Jurado_DniJur=?");
 		
 		$stmt -> execute(array($valoracion, $nombre,$user));
 	
@@ -132,7 +132,7 @@ class PinchoMapper {
 	
 	public function pinchoExists($NombrePincho) {
 		echo "Comprobando existencia de " . $NombrePincho;
-		$stmt = $this -> db -> prepare("SELECT count(NombrePincho) FROM pincho where NombrePincho=?");
+		$stmt = $this -> db -> prepare("SELECT count(NombrePincho) FROM Pincho where NombrePincho=?");
 		$stmt -> execute(array($NombrePincho));
 
 		if ($stmt -> fetchColumn() > 0) {
@@ -140,11 +140,11 @@ class PinchoMapper {
 		}
 	}
 		public function unirP($Pincho_NombreP, $Jurado_DniJ) {
-		$stmt = $this -> db -> prepare("SELECT count(Pincho_NombrePincho) FROM pincho_has_jurado where Pincho_NombrePincho=? and Jurado_DniJur=?");
+		$stmt = $this -> db -> prepare("SELECT count(Pincho_NombrePincho) FROM Pincho_has_Jurado where Pincho_NombrePincho=? and Jurado_DniJur=?");
 		$stmt -> execute(array($Pincho_NombreP, $Jurado_DniJ));
 
 		if ($stmt -> fetchColumn() == 0) {
-			$stmt = $this -> db -> prepare("INSERT INTO pincho_has_jurado values (?,?,?)");
+			$stmt = $this -> db -> prepare("INSERT INTO Pincho_has_Jurado values (?,?,?)");
 			$stmt -> execute(array($Pincho_NombreP, $Jurado_DniJ,NULL));
 			return true;
 		}else{

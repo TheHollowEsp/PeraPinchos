@@ -32,7 +32,7 @@ class concursoMapper {
 	 * @return mixed Array of Post instances (without comments)
 	 */
 	public function findAll() {
-		$stmt = $this -> db -> query("SELECT * FROM concurso");
+		$stmt = $this -> db -> query("SELECT * FROM Concurso");
 		$concursos_db = $stmt -> fetchAll(PDO::FETCH_ASSOC);
 
 		$concursoL = array();
@@ -53,7 +53,7 @@ class concursoMapper {
 	 * @return concurso / NULL si no encuentra el concurso
 	 */
 	public function findByName($nombreconcurso) {
-		$stmt = $this -> db -> prepare("SELECT * FROM concurso WHERE NombreC=?");
+		$stmt = $this -> db -> prepare("SELECT * FROM Concurso WHERE NombreC=?");
 		$stmt -> execute(array($nombreconcurso));
 		$concurso = $stmt -> fetch(PDO::FETCH_ASSOC);
 
@@ -83,7 +83,7 @@ class concursoMapper {
 	 * @return void
 	 */
 	public function save(concurso $concurso) {
-		$stmt = $this -> db -> prepare("INSERT INTO concurso values (?,?,?,?,?,?,?)");
+		$stmt = $this -> db -> prepare("INSERT INTO Concurso values (?,?,?,?,?,?,?)");
 		$stmt -> execute(array(
 		$concurso -> getNombreCon(), 
 		$concurso -> getFechaIniCon(), 
@@ -101,7 +101,7 @@ class concursoMapper {
 	 * @return void
 	 */
 	public function update(concurso $concurso) {
-		$stmt = $this -> db -> prepare("UPDATE concurso set NombreC=?, FechaIni=?, FechaFin=?, BasesCon=?, Patrocinadores=?, Premios=?, Organizador_DniOrg=? where NombreC=?");
+		$stmt = $this -> db -> prepare("UPDATE Concurso set NombreC=?, FechaIni=?, FechaFin=?, BasesCon=?, Patrocinadores=?, Premios=?, Organizador_DniOrg=? where NombreC=?");
 		$stmt -> execute(array(
 		$concurso -> getNombreCon(), 
 		$concurso -> getFechaIni(), 
@@ -119,7 +119,7 @@ class concursoMapper {
 	 * @return void
 	 */
 	public function delete(concurso $concurso) {
-		$stmt = $this -> db -> prepare("DELETE from concurso WHERE NombreC=?");
+		$stmt = $this -> db -> prepare("DELETE from Concurso WHERE NombreC=?");
 		$stmt -> execute(array($concurso -> getNombreconcurso()));
 	}
 

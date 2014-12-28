@@ -17,8 +17,8 @@ class EstablecimientoMapper {
 	 * Funcion para validar user y pass establecimiento
 	 */
 
-	public function isValidUser($NombreEst, $PasswordE) {
-		$stmt = $this -> db -> prepare("SELECT count(NombreEst) FROM establecimiento where NombreEst=? and PasswordE=?");
+	public function isValidUser($Cif, $PasswordE) {
+		$stmt = $this -> db -> prepare("SELECT count(Cif) FROM Establecimiento where Cif=? and PasswordE=?");
 		$stmt -> execute(array($NombreEst, $PasswordE));
 		if ($stmt -> fetchColumn() > 0) {
 			return true;
@@ -31,8 +31,8 @@ class EstablecimientoMapper {
 	 * @return void
 	 */
 	public function save($establecimiento) {
-		$stmt = $this -> db -> prepare("INSERT INTO establecimiento values (?,?,?,?,?,?)");
-		$stmt -> execute(array($establecimiento -> getNombreEst(), $establecimiento -> getDireccion(), $establecimiento -> getHorario(), $establecimiento -> getFotos(), $establecimiento -> getWeb(), $establecimiento -> getPasswordE()));
+		$stmt = $this -> db -> prepare("INSERT INTO Establecimiento values (?,?,?,?,?,?,?)");
+		$stmt -> execute(array($establecimiento -> getCif(), $establecimiento -> getNombreEst(), $establecimiento -> getDireccion(), $establecimiento -> getHorario(), $establecimiento -> getFotos(), $establecimiento -> getWeb(), $establecimiento -> getPasswordE()));
 	}
 
 	/**
@@ -41,22 +41,22 @@ class EstablecimientoMapper {
 	 * @param string $username the username to check
 	 * @return boolean true if the username exists, false otherwise
 	 */
-	public function establecimientoExists($nombreEst) {
-		$stmt = $this -> db -> prepare("SELECT count(NombreEst) FROM Establecimiento where NombreEst=?");
-		$stmt -> execute(array($nombreEst));
+	public function establecimientoExists($Cif) {
+		$stmt = $this -> db -> prepare("SELECT count(Cif) FROM Establecimiento where Cif=?");
+		$stmt -> execute(array($Cif));
 
 		if ($stmt -> fetchColumn() > 0) {
 			return true;
 		}
 	}
 
-	public function registrarEnConcurso($nombreEst, $nombreCon) {
-		$stmt = $this -> db -> prepare("SELECT count(Establecimiento_NombreEst) FROM establecimiento_has_concurso where Establecimiento_NombreEst=? and Concurso_NombreC=?");
-		$stmt -> execute(array($nombreEst, $nombreCon));
+	public function registrarEnConcurso($cif, $nombreCon) {
+		$stmt = $this -> db -> prepare("SELECT count(Cif) FROM Establecimiento_has_Concurso where Cif=? and Concurso_NombreC=?");
+		$stmt -> execute(array($cif, $nombreCon));
 
 		if ($stmt -> fetchColumn() == 0) {
-			$stmt = $this -> db -> prepare("INSERT INTO establecimiento_has_concurso values (?,?)");
-			$stmt -> execute(array($nombreEst, $nombreCon));
+			$stmt = $this -> db -> prepare("INSERT INTO Establecimiento_has_Concurso values (?,?)");
+			$stmt -> execute(array($cif, $nombreCon));
 			return true;
 		}else{
 			return false;

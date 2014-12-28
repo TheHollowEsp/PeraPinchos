@@ -19,7 +19,7 @@ class OrganizadorMapper {
 	 * @return void
 	 */
 	public function save(Organizador $organizador) {
-		$stmt = $this -> db -> prepare("INSERT INTO organizador values (?,?,?,?,?)");
+		$stmt = $this -> db -> prepare("INSERT INTO Organizador values (?,?,?,?,?)");
 		$stmt -> execute(array(
 		$organizador -> getDniOrg(), 
 		$organizador -> getNombreOrg(), 
@@ -46,7 +46,7 @@ class OrganizadorMapper {
 	 * @return void
 	 */
 	public function update(Organizador $organizador) {
-		$stmt = $this -> db -> prepare("UPDATE concurso set DniOrg=?, NombreOrg=?, Telefono=?, Email=? where DniOrg=?");
+		$stmt = $this -> db -> prepare("UPDATE Concurso set DniOrg=?, NombreOrg=?, Telefono=?, Email=? where DniOrg=?");
 		$stmt -> execute(array(
 		$organizador -> getDniOrg(),
 		$organizador -> getNombreOrg(),
@@ -62,12 +62,12 @@ class OrganizadorMapper {
 	 * @return void
 	 */
 	public function delete(Organizador $organizador) {
-		$stmt = $this -> db -> prepare("DELETE from concurso WHERE Nombrec=?");
+		$stmt = $this -> db -> prepare("DELETE from Concurso WHERE Nombrec=?");
 		$stmt -> execute(array($concurso -> getNombreconcurso()));
 	}
 	
 		public function organizadorExistsByDNI($DniOrg) {
-		$stmt = $this->db->prepare("SELECT count(DniOrg) FROM organizador where DniOrg=?");
+		$stmt = $this->db->prepare("SELECT count(DniOrg) FROM Organizador where DniOrg=?");
 		$stmt->execute(array($DniOrg));
     
 		if ($stmt->fetchColumn() > 0) {

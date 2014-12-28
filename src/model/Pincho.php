@@ -14,10 +14,10 @@ class Pincho {
 	private $Fotos;
 	private $Informacion;
 	private $Validado;
-	private $Establecimiento_NombreEst;
+	private $Cif;
 	//Poner la lista en el constructor luego.
 
-	public function __construct($NombrePincho = NULL, $Descripcion = NULL, $Precio = NULL, $Ingredientes = NULL, $Fotos = NULL, $Informacion = NULL, $Validado = NULL, $Establecimiento_NombreEst = NULL) {
+	public function __construct($NombrePincho = NULL, $Descripcion = NULL, $Precio = NULL, $Ingredientes = NULL, $Fotos = NULL, $Informacion = NULL, $Validado = NULL, $Cif = NULL) {
 		$this -> NombrePincho = $NombrePincho;
 		$this -> Descripcion = $Descripcion;
 		$this -> Precio = $Precio;
@@ -25,7 +25,7 @@ class Pincho {
 		$this -> Fotos = $Fotos;
 		$this -> Informacion = $Informacion;
 		$this -> Validado = $Validado;
-		$this -> Establecimiento_NombreEst = $Establecimiento_NombreEst;
+		$this -> Cif = $Cif;
 	}
 
 	public function getNombrePincho() {
@@ -85,11 +85,11 @@ class Pincho {
 	}
 
 	public function getEstablecimiento() {
-		return $this -> Establecimiento_NombreEst;
+		return $this -> Cif;
 	}
 
-	public function setEstablecimiento($Establecimiento_NombreEst) {
-		$this -> Establecimiento_NombreEst = $Establecimiento_NombreEst;
+	public function setEstablecimiento($Cif) {
+		$this -> Cif = $Cif;
 	}
 
 	public function __toString() {
