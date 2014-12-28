@@ -26,12 +26,9 @@
 <form action="index.php?controller=jurado&amp;action=listarParaUnirP"  method="POST">      
 <input class="btn btn-default" type="submit" value="<?= i18n("Asignar pincho a jurado")?>"></form></br>
 
-<form action="#"  method="POST">      
-<input class="btn btn-default" type="submit" value="<?= i18n("A RELLENAR")?>"></form></br>
+<form action="index.php?controller=jurado&amp;action=listar"  method="POST">      
+<input class="btn btn-default" type="submit" value="<?= i18n("Listar jurado")?>"></form></br>
 
-<form action="#"  method="POST">      
-<input class="btn btn-default" type="submit" value="<?= i18n("a RELLENAR")?>"></form></br>
-</div>
 
 
 
