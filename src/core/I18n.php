@@ -60,8 +60,12 @@ class I18n {
     if (isset($this->messages[$key])){
       return $this->messages[$key];
     }else{
-      $string = '"'.$key.'"'."=>".'"'.$key.'",'."\n";
-      $success = file_put_contents (__DIR__."/../view/messages/messages_nopuesto.php" , $string, FILE_APPEND);
+    	$string = '"'.$key.'"'."=>".'"'.$key.'",'."\n";	  
+        $success = file_put_contents (__DIR__."/../view/messages/messages_nopuesto.php", $string, FILE_APPEND);
+    	$lines = file(__DIR__."/../view/messages/messages_nopuesto.php");
+		$lines = array_unique($lines);
+		file_put_contents(__DIR__."/../view/messages/messages_nopuesto.php", implode($lines));
+      
       return $key;
     }
   }
