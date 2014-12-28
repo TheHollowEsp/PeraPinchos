@@ -151,4 +151,43 @@ class PinchoMapper {
 			return false;
 		}
 	}
+	
+	public function countP(){
+			$stmt2 = $this -> db -> prepare("SELECT count(NombrePincho) FROM pincho");
+			$stmt2 -> execute();
+			$numPinchos = $stmt2 -> fetchColumn();
+			return $numPinchos;
+		}
+		
+		
+		public function unirAzarP($num, $Jurado_Dni){
+			$stmt = $this -> db -> prepare("SELECT NombrePincho FROM pincho");
+			$stmt2 = $this -> db -> prepare("SELECT count(NombrePincho) FROM pincho");
+			$stmt -> execute();	
+			$stmt2 -> execute();
+			$pincho_db = $stmt -> fetchAll(PDO::FETCH_ASSOC);
+			$numPinchos = $stmt2 -> fetchColumn();
+			$array = array();
+			foreach ($pincho_db as $p) {
+				$array[] = $p	;
+			}
+			for ($i=0; $i < $num; $i++) {
+				$number = rand(0, $numPinchos-1);
+				$nom_pincho = implode("", $array[$number]);
+				$stmt = $this -> db -> prepare("SELECT count(Pincho_NombrePincho) FROM Pincho_has_Jurado where Pincho_NombrePincho=? and Jurado_DniJur=?");
+				$stmt -> execute(array($nom_pincho, $Jurado_Dni));
+				
+				$stmt3 = $this -> db -> prepare("SELECT count(Pincho_NombrePincho) FROM Pincho_has_Jurado where Jurado_DniJur=?");
+				$stmt3 -> execute(array($Jurado_Dni));
+
+				if ($stmt -> fetchColumn() == 0 && $stmt3 -> fetchColumn() != $numPinchos) {
+					$stmt = $this -> db -> prepare("INSERT INTO Pincho_has_Jurado values (?,?,?)");
+					$stmt -> execute(array($nom_pincho, $Jurado_Dni,NULL));
+					
+				}else{
+					 $i--;
+					
+				}
+			}
+		}
 }

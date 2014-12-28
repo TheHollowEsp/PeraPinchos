@@ -35,7 +35,7 @@ $view -> setVariable("title", "Jurado");
 			href="index.php?controller=jurado&amp;action=listaAsignarPincho&dniJurado=<?= $jur->getDniJurado()?>"><?= htmlentities("Añadir") ?></a>
 		</td>
 		<td>
-			<form class="form-inline" action="#" method="POST">
+			<form class="form-inline" action="index.php?controller=jurado&amp;action=asignarAzar&dniJurado=<?= $jur->getDniJurado()?>" method="POST">
 			<input id="inputNumPinchos" class="form-control" type="text" name="numPinchos" value="">
 			<input class="btn btn-primary" type="submit" value="<?= i18n("Añadir")?>">
 			</form>
