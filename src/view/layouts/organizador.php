@@ -39,8 +39,8 @@ ini_set('display_errors', 'On');
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="index.php?controller=jurado&amp;action=registrarJuradoProfesional"><?= i18n("Registrar Jurado")?></a></li>
+            <!--<li class="active"><a href="#">Home</a></li>-->
+            <li><a href="index.php?controller=jurado&amp;action=registrarJuradoProfesional"><?= i18n("Añadir Jurado")?></a></li>
             <li><a href="index.php?controller=concurso&amp;action=registrarConcurso"><?= i18n("Registrar Concurso")?></a></li>
             <li><a href="index.php?controller=concurso&amp;action=listarParaOrganizador"><?= i18n("Listar concursos")?></a></li>
             <li><a href="index.php?controller=organizador&amp;action=listarPinchosNoValidado"><?= i18n("Validar pinchos")?></a></li>
