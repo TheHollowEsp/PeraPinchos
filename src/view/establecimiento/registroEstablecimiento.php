@@ -8,6 +8,9 @@ $view -> setVariable("title", "Registrar establecimiento");
 ?>
 <h1><?= i18n("Registrarse como Establecimiento") ?></h1>
 <form action="index.php?controller=establecimiento&amp;action=registrarEstablecimiento" method="POST">
+	  <?= i18n("Cif del Establecimiento") ?>: <input type="text" name="Cif" 
+			value="">
+	  <?= isset($errors["Cif"]) ? $errors["Cif"] : "" ?><br>
       <?= i18n("Nombre del Establecimiento") ?>: <input type="text" name="NombreEst" 
 			value="">
       <?= isset($errors["NombreEst"]) ? $errors["NombreEst"] : "" ?><br>
