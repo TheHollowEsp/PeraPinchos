@@ -164,7 +164,7 @@ class JuradoController extends BaseController {
 		
 		$juradodni = $_GET["dniJurado"];
 		
-		$this -> JuradoMapper -> delete($jurado);
+		$this -> JuradoMapper -> delete($juradodni);
 
 		$this -> view -> setFlash("jurado \"" . $jurado -> getNombreJurado() . "\" eliminado correctamente.");
 		$this -> view -> redirect("jurado", "listar");
