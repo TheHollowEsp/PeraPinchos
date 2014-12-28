@@ -28,7 +28,8 @@ class EstablecimientoController extends BaseController {
 	public function registrarEstablecimiento(){
 		$establecimiento = new Establecimiento();
     
-		if (isset($_POST["NombreEst"])){
+		if (isset($_POST["Cif"])){
+		$establecimiento->setCif($_POST["Cif"]);
 		$establecimiento->setNombreEst($_POST["NombreEst"]);
 		$establecimiento->setDireccion($_POST["Direccion"]);
 		$establecimiento->setHorario($_POST["Horario"]);
@@ -39,14 +40,14 @@ class EstablecimientoController extends BaseController {
 		try{
 		$establecimiento->checkIsValidForRegisterEstablecimiento();
 	  //if (!$this->JuradoMapper->juradoExistsByDNI($_POST["DniJur"])){
-		if (!$this->EstablecimientoMapper->establecimientoExists($_POST["NombreEst"])){
+		if (!$this->EstablecimientoMapper->establecimientoExists($_POST["Cif"])){
 		$this->EstablecimientoMapper->save($establecimiento);
 		//$this->view->setFlash("NombreEst ".$establecimiento->setNombreEst()." successfully added. Please login now");
 		$this->view->redirect("users", "login");//falta cambiar
 	  
 		} else {
 			$errors = array();
-			$errors["NombreEst"] = "Ya existe un establecimiento con ese mismo nombre";
+			$errors["Cif"] = "Ya existe un establecimiento con ese mismo cif";
 			$this->view->setVariable("errors", $errors);
 		}
 		}catch(ValidationException $ex) {
@@ -58,9 +59,6 @@ class EstablecimientoController extends BaseController {
     $this->view->render("establecimiento", "registroEstablecimiento");//falta cambiar
 	}
 	
-	 public function proponerPincho(){
- 		
-	 }
 	 
 	 public function registrarseEnConcurso(){
 	 	if(true){
