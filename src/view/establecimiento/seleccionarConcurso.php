@@ -47,7 +47,7 @@ $view->setVariable ( "title", "Concurso" );
 			
 			<td>
 				<a
-				href="#"  class="btn btn-primary active" role="button"></a>
+				href="index.php?controller=pinchos&amp;action=proponer&amp;NombreCon=<?= $con->getNombreCon()?>" class="btn btn-primary active" role="button"><?= htmlentities($con->getNombreCon()) ?></a>
 			</td>
 			
 		

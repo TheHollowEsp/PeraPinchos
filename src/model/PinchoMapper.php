@@ -99,8 +99,8 @@ class PinchoMapper {
 	 */
 	public function save(Pincho $pincho) {
 		echo "Entrando en el guardado";
-		$stmt = $this -> db -> prepare("INSERT INTO Pincho (NombrePincho, Descripcion, Precio, Ingredientes, Fotos, Informacion, Validado, Cif) values (?,?,?,?,?,?,?,?)");
-		$stmt -> execute(array($pincho -> getNombrePincho(), $pincho -> getDescripcionPincho(), $pincho -> getPrecioPincho(), $pincho -> getIngredientesPincho(), $pincho -> getFotosPincho(), $pincho -> getInfoPincho(), $pincho -> getIsValidado(), $pincho -> getEstablecimiento()));
+		$stmt = $this -> db -> prepare("INSERT INTO Pincho (NombrePincho, Descripcion, Precio, Ingredientes, Fotos, Informacion, Validado, Cif, NombreC) values (?,?,?,?,?,?,?,?,?)");
+		$stmt -> execute(array($pincho -> getNombrePincho(), $pincho -> getDescripcionPincho(), $pincho -> getPrecioPincho(), $pincho -> getIngredientesPincho(), $pincho -> getFotosPincho(), $pincho -> getInfoPincho(), $pincho -> getIsValidado(), $pincho -> getEstablecimiento(), $pincho->getNombreCon()));
 	}
 
 	/**
@@ -110,7 +110,7 @@ class PinchoMapper {
 	 */
 	public function update(Pincho $pincho) {
 		$stmt = $this -> db -> prepare("UPDATE Pincho set Descripcion=?, Precio=?, Ingredientes=?, Fotos=?, Informacion=?, Validado=? where NombrePincho=?");
-		$stmt -> execute(array($pincho -> getDescripcionPincho(), $pincho -> getPrecioPincho(), $pincho -> getIngredientesPincho(), $pincho -> getFotosPincho(), $pincho -> getInfoPincho(), $pincho -> getIsValidado(), $pincho -> getNombrePincho()));
+		$stmt -> execute(array($pincho -> getDescripcionPincho(), $pincho -> getPrecioPincho(), $pincho -> getIngredientesPincho(), $pincho -> getFotosPincho(), $pincho -> getInfoPincho(), $pincho -> getIsValidado()));
 	}//Aquí no se cambia la clave foranea
 
 	/**

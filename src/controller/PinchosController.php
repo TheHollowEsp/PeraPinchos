@@ -2,6 +2,8 @@
 require_once (__DIR__ . "/../core/ViewManager.php");
 require_once (__DIR__ . "/../core/I18n.php");
 
+require_once(__DIR__."/../model/Concurso.php");
+require_once(__DIR__."/../model/ConcursoMapper.php");
 require_once (__DIR__ . "/../model/Pincho.php");
 require_once (__DIR__ . "/../model/PinchoMapper.php");
 require_once (__DIR__ . "/../model/Jurado.php");
@@ -25,12 +27,15 @@ class PinchosController extends BaseController {
 	 */
 	private $pinchoMapper;
 	private $juradoMapper;
+	private $ConcursoMapper;
 
 	public function __construct() {
 		parent::__construct();
 
 		$this -> pinchoMapper = new PinchoMapper();
 		$this -> juradoMapper = new JuradoMapper();
+		$this -> ConcursoMapper = new ConcursoMapper();
+
 
 		// Users controller operates in a "welcome" layout
 		// different to the "default" layout where the internal
@@ -108,6 +113,17 @@ class PinchosController extends BaseController {
 
 	}
 
+		public function proponerFirst() {
+		$concursoL = $this -> ConcursoMapper -> findAll();
+		$this -> view -> setVariable("concurso", $concursoL);
+		$this -> view -> render("establecimiento", "seleccionarConcurso");
+	}
+	
+	public function seleccionarConcurso() {
+		$_SESSION["concursoElegido"] = $_GET["NombreCon"];
+		$this -> view -> redirect("pinchos", "proponer");
+	}
+
 	public function proponer() {
 		$pincho = new Pincho();
 
@@ -121,6 +137,8 @@ class PinchosController extends BaseController {
 			$pincho -> setInfoPincho($_POST["info"]);
 			$pincho -> setIsValidado(0);
 			$pincho -> setEstablecimiento($_SESSION["currentuser"]);
+			$pincho -> setNombreCon($_SESSION["concursoElegido"]);
+			
 
 			try {
 
