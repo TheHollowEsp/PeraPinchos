@@ -106,7 +106,7 @@ class OrganizadorController extends BaseController {
 		$this->OrganizadorMapper->delete($DniOrg);
 		//$this->view->setFlash("Has sido eliminado junto con el concurso");
 		//$this -> view -> setLayout("organizador");
-		$this->view->redirect("index");
+		$this->view->redirect("login","logout");
 	}
 
 	
