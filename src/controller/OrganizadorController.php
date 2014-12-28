@@ -102,7 +102,7 @@ class OrganizadorController extends BaseController {
 	public function eliminar(){
 
 		$DniOrg = $_SESSION['currentuser'];
-		$organizador = $this->OrganizadorMapper->findByDni($DniOrg);
+		//$organizador = $this->OrganizadorMapper->findByDni($DniOrg);
 		$this->OrganizadorMapper->delete($DniOrg);
 		//$this->view->setFlash("Has sido eliminado junto con el concurso");
 		//$this -> view -> setLayout("organizador");
