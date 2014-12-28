@@ -45,6 +45,7 @@ ini_set('display_errors', 'On');
             <li><a href="index.php?controller=concurso&amp;action=listarParaOrganizador"><?= i18n("Listar concursos")?></a></li>
             <li><a href="index.php?controller=organizador&amp;action=listarPinchosNoValidado"><?= i18n("Validar pinchos")?></a></li>
             <li><a href="index.php?controller=jurado&amp;action=listarParaUnirP"><?= i18n("Asignar pinchos")?></a></li>
+            <li><a href="index.php?controller=organizador&amp;action=eliminar"><?= i18n("Darse de baja")?></a></li>
             <li><a href="index.php?controller=login&amp;action=logout">Logout</a></li>
             
            <!-- 

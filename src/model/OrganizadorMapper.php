@@ -61,9 +61,9 @@ class OrganizadorMapper {
 	 * @throws PDOException if a database error occurs
 	 * @return void
 	 */
-	public function delete(Organizador $organizador) {
-		$stmt = $this -> db -> prepare("DELETE from Concurso WHERE Nombrec=?");
-		$stmt -> execute(array($concurso -> getNombreconcurso()));
+	public function delete($organizador) {
+		$stmt = $this -> db -> prepare("DELETE from Organizador WHERE DniOrg=?");
+		$stmt -> execute(array($organizador));
 	}
 	
 		public function organizadorExistsByDNI($DniOrg) {

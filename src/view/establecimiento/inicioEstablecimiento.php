@@ -19,3 +19,6 @@
 <form action="index.php?controller=pinchos&amp;action=proponer" method="POST">
 <input type="submit" value="<?= i18n("Proponer pincho") ?>">
 </form>
+<form action="index.php?controller=establecimiento&amp;action=eliminar" method="POST">
+<input type="submit" value="<?= i18n("Darse de baja") ?>">
+</form>

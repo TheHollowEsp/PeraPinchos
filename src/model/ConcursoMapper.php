@@ -118,9 +118,9 @@ class concursoMapper {
 	 * @throws PDOException if a database error occurs
 	 * @return void
 	 */
-	public function delete(concurso $concurso) {
+	public function delete($con) {
 		$stmt = $this -> db -> prepare("DELETE from Concurso WHERE NombreC=?");
-		$stmt -> execute(array($concurso -> getNombreconcurso()));
+		$stmt -> execute(array($con));
 	}
 
 }

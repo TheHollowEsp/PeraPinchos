@@ -72,5 +72,15 @@ class EstablecimientoController extends BaseController {
 	 		$this->view->render("concurso", "listar");
 		}
 	 }
+	 
+	 public function eliminar() {
+		$cif = $_SESSION['currentuser'];
+		
+
+		$this->EstablecimientoMapper->delete($cif);
+
+		$this->view->setFlash("Baja correcta");
+		$this->view->redirect("users", "login");
+	}
 }
 ?>
