@@ -35,7 +35,7 @@ ini_set('display_errors', 'On');
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">PeraPinchos for Organizadores</a>
+          <a class="navbar-brand" href="index.php?controller=organizador&amp;action=HomeOrganizador">PeraPinchos for Organizadores</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">

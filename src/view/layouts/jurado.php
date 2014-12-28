@@ -35,11 +35,11 @@ ini_set('display_errors', 'On');
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">PeraPinchos for Jurado</a>
+          <a class="navbar-brand" href="index.php?controller=jurado&amp;action=HomeJurado">PeraPinchos for Jurado</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
+            
             <li><a href="index.php?controller=pinchos&amp;action=listarParaJurado">Listar pinchos</a></li>
             <li><a href="#">Darse de baja</a></li>
             <li><a href="index.php?controller=login&amp;action=logout">Logout</a></li>

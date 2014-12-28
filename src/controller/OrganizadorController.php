@@ -38,7 +38,9 @@ class OrganizadorController extends BaseController {
 		
 	}
 	
-	
+	public function HomeOrganizador(){
+		$this -> view -> render("organizador", "inicioOrganizador");
+	}
 	/** 
 	 * 
 	 * Funcion de registro de organizador

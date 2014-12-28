@@ -26,6 +26,10 @@ class JuradoController extends BaseController {
 		//pendiente de cambio
 	}
 
+	public function HomeJurado(){
+		$this -> view -> render("jurado", "inicioJurado");
+	}
+	
 	/**
 	 * Se llama a esta funcion con un GET para obtener el formulario
 	 * Se llama a esta funcion con un POST para intentar registrar al Jurado

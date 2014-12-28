@@ -35,7 +35,11 @@ ini_set('display_errors', 'On');
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">PeraPinchos</a>
+          <a class="navbar-brand">
+          	<img alt="PeraPinchos logo" style="max-width:300px; margin-top: -7px;"
+             src="/src/view/general/logoHome2.png">
+          
+          </a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
