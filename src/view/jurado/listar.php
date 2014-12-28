@@ -24,7 +24,7 @@ $view -> setVariable("title", "Jurado");
 		<?= $jur -> getNombreJurado() ?>
 	    </td>
 		<td>
-		<?= $jur -> getIsProfesional() ?>
+		<?= (int)$jur -> getIsProfesional() ? 'Yes' : 'No'?>
 		</td>
 		
 		<td><a

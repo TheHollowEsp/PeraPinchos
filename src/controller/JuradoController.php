@@ -160,21 +160,10 @@ class JuradoController extends BaseController {
 	 * El dato que se espera es dniJurado
 	 */
 	public function eliminar() {
-		if (!isset($_GET["dniJurado"])) {
-			throw new Exception("Es obligatorio proporcionar el DNI del jurado a eliminar");
-		}
+		
+		
 		$juradodni = $_GET["dniJurado"];
-		$jurado = $this -> JuradoMapper -> findByDNI($juradodni);
-		if ($jurado == NULL) {
-			throw new Exception("No existe el jurado con el DNI: " . $juradodni);
-		}
-
-		// habria que comprobar, por temas de seguridad, que fuese el organizador el que
-		// elimina, sino, quitar este if
-		// if ($jurado->getAuthor() != $this->currentUser) {
-		// throw new Exception("Post author is not the logged user");
-		// }// falta cmabiar todo este if
-
+		
 		$this -> JuradoMapper -> delete($jurado);
 
 		$this -> view -> setFlash("jurado \"" . $jurado -> getNombreJurado() . "\" eliminado correctamente.");
