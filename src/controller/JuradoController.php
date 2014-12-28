@@ -22,7 +22,7 @@ class JuradoController extends BaseController {
 
 		$this -> JuradoMapper = new JuradoMapper();
 		$this -> PinchoMapper = new PinchoMapper();
-		$this -> view -> setLayout("welcome");
+		//$this -> view -> setLayout("organizador");
 		//pendiente de cambio
 	}
 

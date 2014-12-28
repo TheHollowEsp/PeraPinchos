@@ -33,11 +33,9 @@ class OrganizadorController extends BaseController {
 		$this -> OrganizadorMapper = new OrganizadorMapper();
 		$this -> PinchoMapper = new PinchoMapper();
 
-		// Users controller operates in a "welcome" layout
-		// different to the "default" layout where the internal
-		// menu is displayed
-		$this -> view -> setLayout("welcome");
-		//pendiente de cambio
+		
+		//$this -> view -> setLayout("organizador");
+		
 	}
 	
 	
@@ -71,6 +69,7 @@ class OrganizadorController extends BaseController {
 		}
 		}
 		$this->view->setVariable("organizador",$organizador);//falta cambiar
+		//$this -> view -> setLayout("organizador");
 		$this->view->render("organizador","registro");//falta cambiar
 	}
 	
@@ -81,6 +80,7 @@ class OrganizadorController extends BaseController {
 		$this -> view -> setVariable("pinchos", $pinchos);
 
 		// renderiza la vista (/view/pinchos/listar.php)
+		//$this -> view -> setLayout("organizador");
 		$this -> view -> render("organizador", "listar");
 	}
 	
@@ -90,6 +90,7 @@ class OrganizadorController extends BaseController {
 		$pincho = $this -> PinchoMapper -> findById($nombrePincho);
 		$pincho->setIsValidado(1);
 		$this -> PinchoMapper -> update($pincho);
+		//$this -> view -> setLayout("organizador");
 		$this -> view -> render("organizador", "inicioOrganizador");
 	}
 	/**
@@ -104,6 +105,7 @@ class OrganizadorController extends BaseController {
 		$organizador = $this->OrganizadorMapper->findByDni($DniOrg);
 		$this->OrganizadorMapper->delete($organizador);
 		//$this->view->setFlash("Has sido eliminado junto con el concurso");
+		//$this -> view -> setLayout("organizador");
 		$this->view->redirect("index");
 	}
 

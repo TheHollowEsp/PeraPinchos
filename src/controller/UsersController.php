@@ -33,7 +33,7 @@ class UsersController extends BaseController {
     // Users controller operates in a "welcome" layout
     // different to the "default" layout where the internal
     // menu is displayed
-    $this->view->setLayout("welcome");     
+    //$this->view->setLayout("welcome");     
   }
 
  /**

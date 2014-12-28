@@ -17,7 +17,7 @@ ini_set ( 'display_errors', 'On' );
 <body>
 	<!-- header -->
 	<header>
-		<h1>Pinchos Pera</h1>
+		<h1>Pinchos Pera layout feo</h1>
 
 	</header>
 

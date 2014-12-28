@@ -35,7 +35,9 @@ class PinchosController extends BaseController {
 		// Users controller operates in a "welcome" layout
 		// different to the "default" layout where the internal
 		// menu is displayed
-		$this -> view -> setLayout("welcome");
+		
+		
+		
 		//pendiente de cambio
 	}
 
@@ -80,9 +82,11 @@ class PinchosController extends BaseController {
 			throw new Exception("nombrePincho es obligatorio");
 		}
 		$pinchoid = $_GET["nombrePincho"];
-
+		
+		if(isset($_SESSION["currentuser"])){
 		$isjurado = $this -> juradoMapper -> juradoExistsByDNI($_SESSION["currentuser"]);
-
+		}
+		else{$isjurado = false;}
 		// Busca el pincho en la DB
 		$pincho = $this -> pinchoMapper -> findById($pinchoid);
 

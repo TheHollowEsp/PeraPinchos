@@ -35,13 +35,25 @@ ini_set('display_errors', 'On');
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">PeraPinchos</a>
+          <a class="navbar-brand" href="#">PeraPinchos for Organizadores</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Home</a></li>
-            <li><a href="index.php?controller=login&amp;action=logout">Login y registro</a></li>
-            <li><a href="index.php?controller=pinchos&amp;action=listar">Ver pinchos</a></li>
+            <li><a href="index.php?controller=jurado&amp;action=registrarJuradoProfesional"><?= i18n("Registrar Jurado")?></a></li>
+            <li><a href="index.php?controller=concurso&amp;action=registrarConcurso"><?= i18n("Registrar Concurso")?></a></li>
+            <li><a href="index.php?controller=concurso&amp;action=listarParaOrganizador"><?= i18n("Listar concursos")?></a></li>
+            <li><a href="index.php?controller=organizador&amp;action=listarPinchosNoValidado"><?= i18n("Validar pinchos")?></a></li>
+            <li><a href="index.php?controller=jurado&amp;action=listarParaUnirP"><?= i18n("Asignar pinchos")?></a></li>
+            <li><a href="index.php?controller=login&amp;action=logout">Logout</a></li>
+            
+           <!-- 
+ 
+
+<form action=""  method="POST">      
+<input type="submit" value=""></form>
+           	--> 
+            
             
           </ul>
         </div><!--/.nav-collapse -->

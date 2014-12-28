@@ -17,7 +17,7 @@ class ConcursoController extends BaseController {
 		parent::__construct();
 
 		$this->ConcursoMapper = new ConcursoMapper();
-		$this->view->setLayout("welcome"); //pendiente de cambio
+		
 	}
 	/**
 	 * Se llama a esta funcion con un GET para obtener el formulario
@@ -26,7 +26,7 @@ class ConcursoController extends BaseController {
 	 */
 	public function registrarConcurso() {
 		$concurso = new Concurso();
-
+		
 		if (isset($_POST["NombreCon"])){
 			$concurso->setNombreCon($_POST["NombreCon"]);
 			$concurso->setFechaIniCon($_POST["FechaIniCon"]);
@@ -63,7 +63,7 @@ class ConcursoController extends BaseController {
 	 */
 	public function listarParaOrganizador() {
 		$concursoL = $this -> ConcursoMapper -> findAll();
-
+		
 		// manda el array que contiene los pinchos a la vista(view)
 		$this -> view -> setVariable("concurso", $concursoL);
 
@@ -74,7 +74,7 @@ class ConcursoController extends BaseController {
 	
 		public function listarParaEstablecimiento() {
 		$concursoL = $this -> ConcursoMapper -> findAll();
-
+		
 		// manda el array que contiene los pinchos a la vista(view)
 		$this -> view -> setVariable("concurso", $concursoL);
 

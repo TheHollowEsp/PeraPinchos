@@ -22,7 +22,7 @@ class EstablecimientoController extends BaseController {
 		
 		$this -> EstablecimientoMapper = new EstablecimientoMapper();
 		$this -> ConcursoMapper = new ConcursoMapper();
-		$this -> view -> setLayout("welcome");
+		
 	}
 	
 	public function registrarEstablecimiento(){

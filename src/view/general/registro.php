@@ -1,10 +1,11 @@
 <?php 
- //file: view/users/login.php
+ //file: view/general/login.php
  
  require_once(__DIR__."/../../core/ViewManager.php");
  $view = ViewManager::getInstance();
  $view->setVariable("title", "Registro");
  $errors = $view->getVariable("errors");
+ $this -> view -> setLayout("defaultPera");
 ?>
 
 <h1><?= i18n("Registro") ?></h1>
