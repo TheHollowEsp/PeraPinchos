@@ -35,11 +35,11 @@ class PinchoMapper {
 		
 		$pinchos = array();
 		foreach ($pinchos_db as $pincho) {
-		 echo "Metiendo un pincho";
+		 
 		 
 		 array_push($pinchos, new Pincho($pincho["NombrePincho"], $pincho["Descripcion"], $pincho["Precio"], $pincho["Ingredientes"], $pincho["Fotos"], $pincho["Informacion"], $pincho["Validado"], $pincho["Cif"]));
 		 }
-		 echo "Retornando pincho";
+		 
 		 return $pinchos;
 
 	}

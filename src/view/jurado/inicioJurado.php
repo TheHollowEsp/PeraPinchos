@@ -9,4 +9,13 @@
 
 <h1><?= sprintf(i18n("Bienvenido a tu página de inicio, %s"),$_SESSION["currentuser"]) ?></h1>
 
-<p><a href="index.php?controller=pinchos&amp;action=listarParaJurado">Listar pinchos asignados</a></p>
+<div class="form-group">
+<form action="index.php?controller=pinchos&amp;action=listarParaJurado" method="POST">
+<input class="btn btn-default" type="submit" value="<?= i18n("Listar pinchos asignados") ?>">
+</form>
+</div>
+<div class="form-group">
+<form action="#" method="POST">
+<input class="btn btn-default" type="submit" value="<?= i18n("Darse de baja") ?>">
+</form>
+</div>

@@ -7,15 +7,25 @@
  $errors = $view->getVariable("errors");
 ?>
 
-<h1><?= i18n("Estas en la pagina principal del establecimiento") ?></h1>
-
-<form action="index.php?controller=concurso&amp;action=listarParaEstablecimiento" method="POST">
-<input type="submit" value="<?= i18n("Registrate en un concurso") ?>">
-</form>
-
+<h1><?= sprintf(i18n("Bienvenido a tu inicio, %s"),$_SESSION["currentuser"]) ?></h1>
+<div class="form-group">
 <form action="index.php?controller=pinchos&amp;action=listar" method="POST">
-<input type="submit" value="<?= i18n("Listar pinchos") ?>">
+<input class="btn btn-default" type="submit" value="<?= i18n("Listar pinchos") ?>">
 </form>
+</div>
+<div class="form-group">
+<form action="index.php?controller=concurso&amp;action=listarParaEstablecimiento" method="POST">
+<input class="btn btn-default" type="submit" value="<?= i18n("Apuntarse a un concurso") ?>">
+</form>
+</div>
+<div class="form-group">
 <form action="index.php?controller=pinchos&amp;action=proponer" method="POST">
-<input type="submit" value="<?= i18n("Proponer pincho") ?>">
+<input class="btn btn-default" type="submit" value="<?= i18n("Proponer pincho") ?>">
 </form>
+</div>
+<div class="form-group">
+<form action="#" method="POST">
+<input class="btn btn-default" type="submit" value="<?= i18n("Darse de baja") ?>">
+</form>
+</div>
+

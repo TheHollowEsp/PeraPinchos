@@ -59,7 +59,7 @@ class PinchosController extends BaseController {
 		$jurado = $this -> juradoMapper -> findByDNI($_SESSION["currentuser"]);
 
 		if ($jurado -> isJuradoP == "SI") {//Si es profesional le buscamos sus pinchos
-			echo "Es jurado profesional!!!";
+			
 			$pinchos = $this -> pinchoMapper -> findAllForJuradoConcreto($jurado);
 
 			// manda el array que contiene los pinchos a la vista(view)
@@ -106,7 +106,7 @@ class PinchosController extends BaseController {
 		$pincho = new Pincho();
 
 		if (isset($_POST["nombre"])) {
-			echo "He entrado en el seteo\n";
+			
 			$pincho -> setNombrePincho($_POST["nombre"]);
 			$pincho -> setDescripcionPincho($_POST["descripcion"]);
 			$pincho -> setPrecioPincho($_POST["precio"]);
