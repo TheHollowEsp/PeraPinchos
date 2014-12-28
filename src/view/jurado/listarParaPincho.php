@@ -15,7 +15,8 @@ $view -> setVariable("title", "Jurado");
 					<th><?= i18n("DNI") ?></th>
 					<th><?= i18n("Nombre") ?></th>
 					<th><?= i18n("Es Profesional") ?></th>
-					<th><?= i18n("Añadir pincho?") ?></th>
+					<th><?= i18n("Añadir a mano") ?></th>
+					<th><?= i18n("Autoañadir") ?></th>
 				</tr>
 			</thead>
     <?php foreach ($jurado as $jur): ?>
@@ -32,6 +33,12 @@ $view -> setVariable("title", "Jurado");
 		
 		<td><a
 			href="index.php?controller=jurado&amp;action=listaAsignarPincho&dniJurado=<?= $jur->getDniJurado()?>"><?= htmlentities("Añadir") ?></a>
+		</td>
+		<td>
+			<form class="form-inline" action="#" method="POST">
+			<input id="inputNumPinchos" class="form-control" type="text" name="numPinchos" value="">
+			<input class="btn btn-primary" type="submit" value="<?= i18n("Añadir")?>">
+			</form>
 		</td>
 		
 	</tr>
