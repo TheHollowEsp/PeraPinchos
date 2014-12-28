@@ -52,7 +52,13 @@ class PinchosController extends BaseController {
 		$this -> view -> render("pinchos", "listar");
 
 	}
-
+	
+	public function verFolleto() {
+		$pinchos = $this -> pinchoMapper -> findAll();
+		$this -> view -> setVariable("pinchos", $pinchos);
+		$this -> view -> render("pinchos", "folleto");
+	}
+	
 	// TODO: Pensar en una forma de hacer el join m:n para saber cuales son
 	public function listarParaJurado() {
 
