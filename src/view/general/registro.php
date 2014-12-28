@@ -5,7 +5,7 @@
  $view = ViewManager::getInstance();
  $view->setVariable("title", "Registro");
  $errors = $view->getVariable("errors");
- $this -> view -> setLayout("defaultPera");
+
 ?>
 
 <h1><?= i18n("Registro") ?></h1>
