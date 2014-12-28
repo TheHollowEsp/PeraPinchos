@@ -107,13 +107,25 @@ class ConcursoController extends BaseController {
 	 * El dato que se espera es dniJurado
 	 */
 	public function eliminar() {
-		
+		if (!isset($_POST["NombreCon"])) {
+			throw new Exception("Es obligatorio proporcionar el nombre del concurso a eliminar");
+		}
 		$NombreCon = $_REQUEST["NombreCon"];
-		
-		$this->ConcursoMapper->delete($NombreCon);
+		$concurso = $this->ConcursoMapper->findByName($NombreCon);
+		if ($concurso == NULL) {
+			throw new Exception("No existe el concurso con ese nombre: ".$NombreCon);
+		}
 
-		$this->view->setFlash("Concurso eliminado correctamente.");
-		$this->view->render("organizador", "inicioOrganizador");
+		// habria que comprobar, por temas de seguridad, que fuese el organizador el que
+		// elimina, sino, quitar este if
+		if ($concurso->getDNIOrg() != $_SESSION['login']) {
+			throw new Exception("Usted no es el organizador de este concurso");
+		}// falta cmabiar todo este if
+
+		$this->ConcursoMapper->delete($concurso);
+
+		$this->view->setFlash("Concurso \"".$concurso ->getNombreCon()."\" eliminado correctamente.");
+		$this->view->redirect("concurso", "inicioOrganizador");
 	}
 
 }

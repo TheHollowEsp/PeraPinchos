@@ -7,6 +7,16 @@ $view -> setVariable("title", "Login");
 $errors = $view -> getVariable("errors");
 ?>
 <html>
+	<div class="row text-center">
+	<img src="/src/view/general/logo.png" alt="Logo inicial" class="img-rounded">
+	</div>
+	<div class="jumbotron"> 
+		<div class="container">
+  <h2>Bienvenido a PeraPinchos </br><small> Tu plataforma de gestión de concursos de pinchos</small></h1>
+  <p>PeraPinchos ha sido creada por el grupo 7 de la asignatura ABP para cubrir la necesidad de gestionar de manera digital y centralizada el Concurso de Pinchos anual de la ciudad de Ourense.</p>
+  </div>
+</div>
+	
 <h1><?= i18n("Login") ?></h1>
 <?= isset($errors["general"]) ? $errors["general"] : "" ?>
 
