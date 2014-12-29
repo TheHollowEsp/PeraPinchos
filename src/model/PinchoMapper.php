@@ -172,7 +172,7 @@ class PinchoMapper {
 			foreach ($pincho_db as $p) {
 				$array[] = $p	;
 			}
-			for ($i=0; $i == $num; $i++) {
+			for ($i=0; $i < $num; $i++) {
 				$number = rand(0, $numPinchos-1);
 				$nom_pincho = implode("", $array[$number]);
 				$stmt = $this -> db -> prepare("SELECT count(Pincho_NombrePincho) FROM Pincho_has_Jurado where Pincho_NombrePincho=? and Jurado_DniJur=?");
@@ -199,7 +199,9 @@ class PinchoMapper {
 		$votos_db = $stmt -> fetchAll(PDO::FETCH_ASSOC);
 
 		$votos = array();
-
+		$stmt2 = $this -> db -> query("SELECT VotoPro FROM Pincho_has_Jurado where VotoPro is not null");
+		$aux = $stmt2 -> fetchAll(PDO::FETCH_ASSOC);
+		$suma;
 		foreach ($votos_db as $voto) {
 			
 			array_push($votos, new Voto($voto["Pincho_NombrePincho"], $voto["count(*)"], ($voto["sum(VotoPro)"])/($voto["count(*)"]), $voto["NombreC"]));

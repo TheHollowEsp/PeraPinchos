@@ -204,13 +204,13 @@ class JuradoController extends BaseController {
 		public function asignarAzar(){
 		$_SESSION["dnij"] = $_GET["dniJurado"];
 		$aux = $this->PinchoMapper->countP();
-		if($_POST["numPinchos"] >=$aux){
+		if($_POST["numPinchos"] >$aux){
 			$juradoL = $this -> JuradoMapper -> findAll();
 
 			$this -> view -> setVariable("jurado", $juradoL);
 			$this -> view -> render("jurado", "listarParaPincho");
 		}else{
-		$this->PinchoMapper->unirAzarP($_POST["numPinchos"], $_SESSION["dnij"]);
+		$this->PinchoMapper->unirAzarP($_POST["numPinchos"], $_GET["dniJurado"]);
 	 	$this->view->render("organizador", "inicioOrganizador");
 		}
 	}
