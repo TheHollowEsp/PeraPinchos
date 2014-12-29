@@ -29,6 +29,10 @@
 <form action="index.php?controller=jurado&amp;action=listar"  method="POST">      
 <input class="btn btn-default" type="submit" value="<?= i18n("Listar jurado")?>"></form></br>
 
+<form action="index.php?controller=pinchos&amp;action=listarVotos"  method="POST">      
+<input class="btn btn-default" type="submit" value="<?= i18n("Consultar votos")?>"></form></br>
+
+
 
 
 

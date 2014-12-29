@@ -2,8 +2,11 @@
 require_once (__DIR__ . "/../core/ViewManager.php");
 require_once (__DIR__ . "/../core/I18n.php");
 
+require_once (__DIR__ . "/../model/Voto.php");
 require_once (__DIR__ . "/../model/Pincho.php");
 require_once (__DIR__ . "/../model/PinchoMapper.php");
+require_once (__DIR__ . "/../model/Concurso.php");
+require_once (__DIR__ . "/../model/ConcursoMapper.php");
 require_once (__DIR__ . "/../model/Jurado.php");
 require_once (__DIR__ . "/../model/JuradoMapper.php");
 require_once (__DIR__ . "/../model/Establecimiento.php");
@@ -25,12 +28,14 @@ class PinchosController extends BaseController {
 	 */
 	private $pinchoMapper;
 	private $juradoMapper;
+	private $concursoMapper;
 
 	public function __construct() {
 		parent::__construct();
 
 		$this -> pinchoMapper = new PinchoMapper();
 		$this -> juradoMapper = new JuradoMapper();
+		$this -> concursoMapper = new ConcursoMapper();
 
 		// Users controller operates in a "welcome" layout
 		// different to the "default" layout where the internal
@@ -192,5 +197,14 @@ class PinchosController extends BaseController {
 	 		$this->view->render("organizador", "inicioOrganizador");
    
   }
+			
+	public function listarVotos() {
+		$votos = $this -> pinchoMapper -> votos();
+		$concursos = $this -> concursoMapper -> findAll();
+		$this -> view -> setVariable("votos", $votos);
+		$this -> view -> setVariable("concursos", $concursos);
+		$this -> view -> render("pinchos", "listarVotos");
+
+	}
 }
 ?>

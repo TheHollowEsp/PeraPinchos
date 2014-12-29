@@ -5,6 +5,7 @@ require_once (__DIR__ . "/../core/PDOConnection.php");
 require_once (__DIR__ . "/../model/Establecimiento.php");
 
 require_once (__DIR__ . "/../model/Pincho.php");
+require_once (__DIR__ . "/../model/Voto.php");
 
 ini_set('display_errors', 'On');
 /**
@@ -171,7 +172,7 @@ class PinchoMapper {
 			foreach ($pincho_db as $p) {
 				$array[] = $p	;
 			}
-			for ($i=0; $i < $num; $i++) {
+			for ($i=0; $i == $num; $i++) {
 				$number = rand(0, $numPinchos-1);
 				$nom_pincho = implode("", $array[$number]);
 				$stmt = $this -> db -> prepare("SELECT count(Pincho_NombrePincho) FROM Pincho_has_Jurado where Pincho_NombrePincho=? and Jurado_DniJur=?");
@@ -190,4 +191,23 @@ class PinchoMapper {
 				}
 			}
 		}
+
+	public function votos(){
+		$stmt = $this -> db -> query("SELECT NombreC, Pincho_NombrePincho, sum(VotoPro), count(*) FROM Pincho_has_Jurado, Pincho where VotoPro is not null and Pincho_NombrePincho=NombrePincho group by Pincho_NombrePincho order by (sum(VotoPro)/count(*)) desc");
+		
+		$stmt2 = $this -> db -> query("SELECT VotoPro FROM Pincho_has_Jurado where VotoPro is not null");
+		$aux = $stmt2 -> fetchAll(PDO::FETCH_ASSOC);
+		$suma;
+		
+		$votos_db = $stmt -> fetchAll(PDO::FETCH_ASSOC);
+
+		$votos = array();
+
+		foreach ($votos_db as $voto) {
+			
+			array_push($votos, new Voto($voto["Pincho_NombrePincho"], $voto["count(*)"], ($voto["sum(VotoPro)"])/($voto["count(*)"]), $voto["NombreC"]));
+		}
+
+		return $votos;
+	}
 }

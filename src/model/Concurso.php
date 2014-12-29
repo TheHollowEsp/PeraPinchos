@@ -86,7 +86,7 @@ class Concurso {
 			 fecha de fin = $this->FechaFinCon," . "
 			 bases de concurso = $this->BasesConcurso, " . "
 			 PatrocinadoresCon = $this->PatrocinadoresCon, " . "
-			 PremiosCon = $this->infoPincho, ";
+			 PremiosCon = $this->infoPincho";
 	}
 	
 	/**
