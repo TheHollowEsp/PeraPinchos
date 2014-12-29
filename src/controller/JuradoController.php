@@ -42,6 +42,7 @@ class JuradoController extends BaseController {
 			$jurado -> setDniJurado($_POST["DniJur"]);
 			$jurado -> setNombreJurado($_POST["Nombre"]);
 			$jurado -> setPasswordJurado($_POST["PasswordJ"]);
+			$jurado -> setIsProfesional(0);
 
 			try {
 				$jurado -> checkIsValidForRegisterJurado();
@@ -117,7 +118,7 @@ class JuradoController extends BaseController {
 		//Esta funcion solo la puede hacer el organizador, hay que poner al inicio de todo una comprobacion
 		//de sesion, falta cambiar
 		$_SESSION["nomCon"] = $_GET["NombreCon"];
-		$juradoL = $this -> JuradoMapper -> findAll();
+		$juradoL = $this -> JuradoMapper -> findAllPro();
 
 		$this -> view -> setVariable("jurado", $juradoL);
 		//falta agregar la vista, no se continuar
@@ -182,7 +183,7 @@ class JuradoController extends BaseController {
 	public function listarParaUnirP() {
 		//Esta funcion solo la puede hacer el organizador, hay que poner al inicio de todo una comprobacion
 		//de sesion, falta cambiar
-		$juradoL = $this -> JuradoMapper -> findAll();
+		$juradoL = $this -> JuradoMapper -> findAllPro();
 
 		$this -> view -> setVariable("jurado", $juradoL);
 		//falta agregar la vista, no se continuar

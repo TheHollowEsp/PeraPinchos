@@ -6,8 +6,9 @@ require_once (__DIR__ . "/../core/ValidationException.php");
 class Jurado {
 	var $dniJurado;
 	var $nombreJurado;
-	var $isJuradoP;
+	
 	var $passJurado;
+	var $isJuradoP;
 	
 	public function __construct($dniJurado=NULL, $nombreJurado=NULL, $passJurado=NULL, $isJuradoP=NULL) {
 		$this -> dniJurado = $dniJurado;

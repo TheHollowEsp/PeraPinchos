@@ -24,6 +24,10 @@ class EstablecimientoController extends BaseController {
 		$this -> ConcursoMapper = new ConcursoMapper();
 		
 	}
+	public function HomeEstablecimiento(){
+		$this -> view -> render("establecimiento", "inicioEstablecimiento");
+		
+	}
 	
 	public function registrarEstablecimiento(){
 		$establecimiento = new Establecimiento();

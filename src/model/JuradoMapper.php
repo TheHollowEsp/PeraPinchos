@@ -39,11 +39,22 @@ class JuradoMapper {
 		$juradoL = array();
 
 		foreach ($jurado_db as $jurado) {
-			array_push($juradoL, new Jurado($jurado["DniJur"], $jurado["Nombre"], $jurado["Juradocol"]));
+			array_push($juradoL, new Jurado($jurado["DniJur"], $jurado["Nombre"],null, $jurado["Juradocol"]));
+			//print_r($jurado);
 		}
 		return $juradoL;
 	}
-	
+	public function findAllPro() {
+		$stmt = $this -> db -> query("SELECT * FROM Jurado WHERE Juradocol ='1'");
+		$jurado_db = $stmt -> fetchAll(PDO::FETCH_ASSOC);
+
+		$juradoL = array();
+
+		foreach ($jurado_db as $jurado) {
+			array_push($juradoL, new Jurado($jurado["DniJur"], $jurado["Nombre"],null, $jurado["Juradocol"]));
+		}
+		return $juradoL;
+	}
 	/**
 	* Comprueba si existe un Jurado segun el nombre
 	* @throws PDOException if a database error occurs

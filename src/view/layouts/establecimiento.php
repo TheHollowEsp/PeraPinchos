@@ -35,11 +35,11 @@ ini_set('display_errors', 'On');
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">PeraPinchos for Establecimiento</a>
+          <a class="navbar-brand" href="index.php?controller=establecimiento&amp;action=HomeEstablecimiento">PeraPinchos for Establecimiento</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
+            
             <li><a href="index.php?controller=pinchos&amp;action=listar"><?= i18n("Listar pinchos") ?></a></li>
             <li><a href="index.php?controller=concurso&action=listarParaEstablecimiento"><?= i18n("Apuntarse a concurso") ?></a></li>
             <li><a href="index.php?controller=pinchos&amp;action=proponer"><?= i18n("Proponer pincho") ?></a></li>

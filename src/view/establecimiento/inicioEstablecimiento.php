@@ -19,7 +19,7 @@
 </form>
 </div>
 <div class="form-group">
-<form action="index.php?controller=pinchos&amp;action=proponer" method="POST">
+<form action="index.php?controller=pinchos&amp;action=proponerFirst" method="POST">
 <input class="btn btn-default" type="submit" value="<?= i18n("Proponer pincho") ?>">
 </form>
 </div>

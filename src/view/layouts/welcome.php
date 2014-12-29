@@ -43,8 +43,8 @@ ini_set('display_errors', 'On');
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="index.php?controller=login&amp;action=logout">Login y registro</a></li>
+            
+            <li class="active"><a href="index.php?controller=login&amp;action=logout">Login y registro</a></li>
             <li><a href="index.php?controller=pinchos&amp;action=listar">Ver pinchos</a></li>
             <li><a href="index.php?controller=pinchos&amp;action=verFolleto">Folleto</a></li>
             

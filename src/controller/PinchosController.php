@@ -2,7 +2,12 @@
 require_once (__DIR__ . "/../core/ViewManager.php");
 require_once (__DIR__ . "/../core/I18n.php");
 
+<<<<<<< HEAD
 require_once (__DIR__ . "/../model/Voto.php");
+=======
+require_once(__DIR__."/../model/Concurso.php");
+require_once(__DIR__."/../model/ConcursoMapper.php");
+>>>>>>> origin/master
 require_once (__DIR__ . "/../model/Pincho.php");
 require_once (__DIR__ . "/../model/PinchoMapper.php");
 require_once (__DIR__ . "/../model/Concurso.php");
@@ -28,14 +33,23 @@ class PinchosController extends BaseController {
 	 */
 	private $pinchoMapper;
 	private $juradoMapper;
+<<<<<<< HEAD
 	private $concursoMapper;
+=======
+	private $ConcursoMapper;
+>>>>>>> origin/master
 
 	public function __construct() {
 		parent::__construct();
 
 		$this -> pinchoMapper = new PinchoMapper();
 		$this -> juradoMapper = new JuradoMapper();
+<<<<<<< HEAD
 		$this -> concursoMapper = new ConcursoMapper();
+=======
+		$this -> ConcursoMapper = new ConcursoMapper();
+
+>>>>>>> origin/master
 
 		// Users controller operates in a "welcome" layout
 		// different to the "default" layout where the internal
@@ -69,7 +83,7 @@ class PinchosController extends BaseController {
 
 		$jurado = $this -> juradoMapper -> findByDNI($_SESSION["currentuser"]);
 
-		if ($jurado -> isJuradoP == "SI") {//Si es profesional le buscamos sus pinchos
+		if ($jurado -> isJuradoP == "1") {//Si es profesional le buscamos sus pinchos
 			
 			$pinchos = $this -> pinchoMapper -> findAllForJuradoConcreto($jurado);
 
@@ -112,11 +126,38 @@ class PinchosController extends BaseController {
 		$this -> view -> render("pinchos", "consultar");
 
 	}
-
+		//Punto de entrada, no recibe nada.
+		public function proponerFirst() {
+		$concursoL = $this -> ConcursoMapper -> findAll();
+		$this -> view -> setVariable("concurso", $concursoL);
+		$this -> view -> render("establecimiento", "seleccionarConcurso");
+	}
+	
+	//Recibe un nombre de concurso a ameter en el pincho
+	public function seleccionarConcurso() {
+		if (isset($_POST["NombreCon"]))    
+		{ 
+			$_SESSION["concursoElegido"] = $_POST["NombreCon"];
+			echo $_SESSION["concursoElegido"];
+		
+		}
+		$this -> view -> redirect("pinchos", "proponer");
+	}
+	//Recibe los datos del pincho Y el nombre del concurso
 	public function proponer() {
 		$pincho = new Pincho();
+		
+		$NombreC = NULL;
 
+		if (isset($_SESSION['concursoElegido'])) {
+			$NombreC = $_SESSION['concursoElegido'];
+		}
+		
+		
+		
+		
 		if (isset($_POST["nombre"])) {
+			
 			
 			$pincho -> setNombrePincho($_POST["nombre"]);
 			$pincho -> setDescripcionPincho($_POST["descripcion"]);
@@ -126,6 +167,8 @@ class PinchosController extends BaseController {
 			$pincho -> setInfoPincho($_POST["info"]);
 			$pincho -> setIsValidado(0);
 			$pincho -> setEstablecimiento($_SESSION["currentuser"]);
+			$pincho -> setNombreCon($NombreC);
+			
 
 			try {
 
