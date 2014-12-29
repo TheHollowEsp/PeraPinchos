@@ -14,6 +14,7 @@ require_once (__DIR__ . "/../model/ConcursoMapper.php");
 require_once (__DIR__ . "/../model/Jurado.php");
 require_once (__DIR__ . "/../model/JuradoMapper.php");
 require_once (__DIR__ . "/../model/Establecimiento.php");
+require_once (__DIR__ . "/../model/EstablecimientoMapper.php");
 
 require_once (__DIR__ . "/../controller/BaseController.php");
 ini_set('display_errors', 'On');
@@ -32,7 +33,7 @@ class PinchosController extends BaseController {
 	 */
 	private $pinchoMapper;
 	private $juradoMapper;
-
+	private $establecimientoMapper;
 	private $concursoMapper;
 
 	public function __construct() {
@@ -40,7 +41,7 @@ class PinchosController extends BaseController {
 
 		$this -> pinchoMapper = new PinchoMapper();
 		$this -> juradoMapper = new JuradoMapper();
-
+		$this -> establecimientoMapper = new EstablecimientoMapper();
 		$this -> concursoMapper = new ConcursoMapper();
 
 
@@ -111,10 +112,11 @@ class PinchosController extends BaseController {
 		if ($pincho == NULL) {
 			throw new Exception("No existe el pincho: " . $pinchoid);
 		}
-
+		$establecimiento = $this -> establecimientoMapper -> getEstablecimientoByPincho($_GET["nombrePincho"]);
 		// Manda el objeto pincho a la vista
 		$this -> view -> setVariable("pincho", $pincho);
 		$this -> view -> setVariable("isjurado", $isjurado);
+		$this -> view -> setVariable("est", $establecimiento);
 		// renderiza la vista (/view/pinchos/consultar.php)
 		$this -> view -> render("pinchos", "consultar");
 

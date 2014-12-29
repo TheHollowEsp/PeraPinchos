@@ -53,7 +53,7 @@ $view -> setVariable("title", "Pinchos");
     
 
     </table>
-    
+    <br><br><br>
     <?php endforeach; ?>
     </div>
     </div>
