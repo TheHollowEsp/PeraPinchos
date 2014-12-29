@@ -41,7 +41,6 @@ ini_set('display_errors', 'On');
           <ul class="nav navbar-nav">
             
             <li><a href="index.php?controller=pinchos&amp;action=listarParaJurado">Listar pinchos</a></li>
-            <li><a href="#">Darse de baja</a></li>
             <li><a href="index.php?controller=login&amp;action=logout">Logout</a></li>
             
           

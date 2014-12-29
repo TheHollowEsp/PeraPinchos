@@ -42,7 +42,7 @@ ini_set('display_errors', 'On');
             
             <li><a href="index.php?controller=pinchos&amp;action=listar"><?= i18n("Listar pinchos") ?></a></li>
             <li><a href="index.php?controller=concurso&action=listarParaEstablecimiento"><?= i18n("Apuntarse a concurso") ?></a></li>
-            <li><a href="index.php?controller=pinchos&amp;action=proponer"><?= i18n("Proponer pincho") ?></a></li>
+            <li><a href="index.php?controller=pinchos&amp;action=proponerD"><?= i18n("Proponer pincho") ?></a></li>
             <li><a href="index.php?controller=establecimiento&amp;action=eliminar"><?= i18n("Darse de baja") ?></a></li>
             <li><a href="index.php?controller=login&amp;action=logout">Logout</a></li>
             
