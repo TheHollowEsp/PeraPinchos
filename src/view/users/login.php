@@ -17,16 +17,16 @@ $errors = $view -> getVariable("errors");
   </div>
 </div>
 	
-<h1><?= i18n("Login") ?></h1>
+<h1><?= i18n("Entrar") ?></h1>
 <?= isset($errors["general"]) ? $errors["general"] : "" ?>
 
 <form action="index.php?controller=login&amp;action=loginL" method="POST">
 	<div class="form-group">
-		<label for="inputUsername"><?= i18n("Username") ?>:</label> 
+		<label for="inputUsername"><?= i18n("Usuario") ?>:</label> 
 		<input type="text" id="inputUsername" class="form-control" name="username"/>
 	</div>
 	<div class="form-group">
-		 <label for="inputPass"><?= i18n("Password") ?>:</label>
+		 <label for="inputPass"><?= i18n("Contraseña") ?>:</label>
 		<input type="password" id="inputPass"  class="form-control" name="passwd"/>
 	</div>
 	 
