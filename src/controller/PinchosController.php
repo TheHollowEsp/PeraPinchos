@@ -2,13 +2,19 @@
 require_once (__DIR__ . "/../core/ViewManager.php");
 require_once (__DIR__ . "/../core/I18n.php");
 
+require_once (__DIR__ . "/../model/Voto.php");
+
 require_once(__DIR__."/../model/Concurso.php");
 require_once(__DIR__."/../model/ConcursoMapper.php");
+
 require_once (__DIR__ . "/../model/Pincho.php");
 require_once (__DIR__ . "/../model/PinchoMapper.php");
+require_once (__DIR__ . "/../model/Concurso.php");
+require_once (__DIR__ . "/../model/ConcursoMapper.php");
 require_once (__DIR__ . "/../model/Jurado.php");
 require_once (__DIR__ . "/../model/JuradoMapper.php");
 require_once (__DIR__ . "/../model/Establecimiento.php");
+require_once (__DIR__ . "/../model/EstablecimientoMapper.php");
 
 require_once (__DIR__ . "/../controller/BaseController.php");
 ini_set('display_errors', 'On');
@@ -27,14 +33,16 @@ class PinchosController extends BaseController {
 	 */
 	private $pinchoMapper;
 	private $juradoMapper;
-	private $ConcursoMapper;
+	private $establecimientoMapper;
+	private $concursoMapper;
 
 	public function __construct() {
 		parent::__construct();
 
 		$this -> pinchoMapper = new PinchoMapper();
 		$this -> juradoMapper = new JuradoMapper();
-		$this -> ConcursoMapper = new ConcursoMapper();
+		$this -> establecimientoMapper = new EstablecimientoMapper();
+		$this -> concursoMapper = new ConcursoMapper();
 
 
 		// Users controller operates in a "welcome" layout
@@ -104,15 +112,23 @@ class PinchosController extends BaseController {
 		if ($pincho == NULL) {
 			throw new Exception("No existe el pincho: " . $pinchoid);
 		}
-
+		$establecimiento = $this -> establecimientoMapper -> getEstablecimientoByPincho($_GET["nombrePincho"]);
 		// Manda el objeto pincho a la vista
 		$this -> view -> setVariable("pincho", $pincho);
 		$this -> view -> setVariable("isjurado", $isjurado);
+		$this -> view -> setVariable("est", $establecimiento);
 		// renderiza la vista (/view/pinchos/consultar.php)
 		$this -> view -> render("pinchos", "consultar");
 
 	}
 		//Punto de entrada, no recibe nada.
+
+		public function proponerFirst() {
+		$concursoL = $this -> concursoMapper -> findAll();
+		$this -> view -> setVariable("concurso", $concursoL);
+		$this -> view -> render("establecimiento", "seleccionarConcurso");
+	}
+
 	
 	public function proponerD() {
 			
@@ -199,7 +215,7 @@ class PinchosController extends BaseController {
 		echo $valoracion;
 		$user = $_SESSION["currentuser"];
 		$pincho = $this -> pinchoMapper -> valorarPincho($nombre,$valoracion,$user);
-		$this -> view -> redirect("pinchos", "listar");
+		$this -> view -> redirect("pinchos", "listarParaJurado");
 		
 		
 
@@ -214,5 +230,14 @@ class PinchosController extends BaseController {
 	 		$this->view->render("organizador", "inicioOrganizador");
    
   }
+			
+	public function listarVotos() {
+		$votos = $this -> pinchoMapper -> votos();
+		$concursos = $this -> concursoMapper -> findAll();
+		$this -> view -> setVariable("votos", $votos);
+		$this -> view -> setVariable("concursos", $concursos);
+		$this -> view -> render("pinchos", "listarVotos");
+
+	}
 }
 ?>

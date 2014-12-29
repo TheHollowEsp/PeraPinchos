@@ -68,5 +68,14 @@ class EstablecimientoMapper {
 		$stmt -> execute(array($establecimiento -> getCif()));
 	}
 	
-
+	public function getEstablecimientoByPincho($pincho) {
+		$stmt = $this -> db -> prepare("SELECT NombreEst FROM Establecimiento, Pincho where Establecimiento.Cif=Pincho.cif and NombrePincho=?");
+		$stmt -> execute(array($pincho));
+		$est = $stmt -> fetch(PDO::FETCH_ASSOC);
+		$establecimiento = array();
+		foreach ($est as $esta) {
+			array_push($establecimiento, new Establecimiento(NULL, $est["NombreEst"], NULL, NULL, NULL, NULL, NULL));
+		}
+		return $establecimiento;
+	}
 }

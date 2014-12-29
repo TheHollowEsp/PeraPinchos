@@ -7,6 +7,7 @@ $view = ViewManager::getInstance();
 
 $pincho = $view -> getVariable("pincho");
 $isjurado = $view -> getVariable("isjurado");
+$est = $view -> getVariable("est");
 
 $errors = $view -> getVariable("errors");
 
@@ -39,9 +40,11 @@ if ($pincho -> getIsValidado() == 0)
 		</dl>		
 	</p>
 	
+	<?php foreach ($est as $et): ?>
     <h2>
-    <?= sprintf(i18n("Solo en: %s"), $pincho -> getEstablecimiento()) ?>
+    <?= sprintf(i18n("Solo en: %s"), $et -> getNombreEst()) ?>
     </h2>
+    <?php endforeach; ?>
     
     <?php if($isjurado){ ?>
     	
