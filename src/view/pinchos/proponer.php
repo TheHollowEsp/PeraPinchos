@@ -6,10 +6,12 @@ ini_set('display_errors', 'On');
 $view = ViewManager::getInstance();
 $errors = $view -> getVariable("errors");
 $pincho = $view -> getVariable("pincho");
+$ests = $view -> getVariable("est");
 $concursos = $view -> getVariable("concursos");
 $view -> setVariable("title", "Proponer pincho");
 ?>
 <html>
+	 <?PHP if($ests != null){   ?>
 	<h1><?= i18n("Propon un pincho") ?></h1>
 		<form action="index.php?controller=pinchos&amp;action=proponer" method="POST">       
 			<div class="form-group">
@@ -47,17 +49,25 @@ $view -> setVariable("title", "Proponer pincho");
       	<input id="inputInfo" class="form-control"type="text" name="info"	value="">
       	<?= isset($errors["info"]) ? $errors["info"] : "" ?><br>      
       </div>
-       	<?php foreach ($concursos as $concurso): ?>
+       	<?php foreach ($ests as $est): ?>
        	<div class="radio">
       		<label>
-	      	<input id="inputConcurso" class="form-control" type="radio" name="jarl"	value="<?= $concurso -> getNombreCon()?>" ><?=$concurso -> getNombreCon() ?>	  
+	      	<input id="inputConcurso" class="form-control" type="radio" name="jarl"	value="<?= $est -> getNomCon()?>" ><?=$est -> getNomCon() ?>	  
 	      	</label>
 	      	
 	    	      
 	      	<?= isset($errors["info"]) ? $errors["info"] : "" ?><br>
 	    <?php endforeach; ?>
-	    </div>      
+	    </div>   
+	   
       	<input class="btn btn-default btn-lg" type="submit" value="<?= i18n("Proponer") ?>">
-      
 	</form>
+		<?php } else { ?>
+			<div class="jumbotron"> 
+		<div class="container">
+  <h2>No puedes proponer mas pinchos </br></h1>
+  <p>Ya has introducido un pincho en los concursos en los que estás asociado, si desea proponer uno nuevo tiene que apuntarse a un nuevo concurso.</p>
+  </div>
+</div>
+			<?php } ?>
 </html>

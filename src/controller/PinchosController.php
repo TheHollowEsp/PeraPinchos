@@ -6,7 +6,7 @@ require_once (__DIR__ . "/../model/Voto.php");
 
 require_once(__DIR__."/../model/Concurso.php");
 require_once(__DIR__."/../model/ConcursoMapper.php");
-
+require_once (__DIR__ . "/../model/EstCon.php");
 require_once (__DIR__ . "/../model/Pincho.php");
 require_once (__DIR__ . "/../model/PinchoMapper.php");
 require_once (__DIR__ . "/../model/Concurso.php");
@@ -131,11 +131,13 @@ class PinchosController extends BaseController {
 
 	
 	public function proponerD() {
-			
-			$concursos = $this -> ConcursoMapper -> findAll();
+			$ses = $_SESSION['currentuser'];
+			$est = $this -> concursoMapper -> estaCon($ses);
+			$concursos = $this -> concursoMapper -> findAll();
 
 			// manda el array que contiene los pinchos a la vista(view)
 			$this -> view -> setVariable("concursos", $concursos);
+			$this -> view -> setVariable("est", $est);
 			// renderiza la vista (/view/pinchos/listarJuradoP.php)
 			$this -> view -> render("pinchos", "proponer");
 		

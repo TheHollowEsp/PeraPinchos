@@ -4,6 +4,7 @@ require_once (__DIR__ . "/../core/PDOConnection.php");
 
 require_once (__DIR__ . "/../model/Organizador.php");
 require_once (__DIR__ . "/../model/Concurso.php");
+require_once (__DIR__ . "/../model/EstCon.php");
 
 /**
  * Class concursoMapper
@@ -121,6 +122,21 @@ class concursoMapper {
 	public function delete($con) {
 		$stmt = $this -> db -> prepare("DELETE from Concurso WHERE NombreC=?");
 		$stmt -> execute(array($con));
+	}
+	
+	
+	public function estaCon($cif){
+		$stmt = $this -> db -> prepare("SELECT * FROM establecimiento_has_concurso as P where P.Cif=? AND NOT EXISTS (SELECT * FROM pincho as L WHERE L.Cif=?)");
+		// $stmt -> execute(array($nombreconcurso));
+		$stmt -> execute(array($cif, $cif));
+		$concursos = $stmt -> fetchAll(PDO::FETCH_ASSOC);
+
+		$est = array();
+
+		foreach ($concursos as $concurso) {
+			array_push($est, new EstCon($concurso["Cif"], $concurso["Concurso_NombreC"]));
+		}
+		return $est;
 	}
 
 }

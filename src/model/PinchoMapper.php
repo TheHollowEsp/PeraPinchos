@@ -111,7 +111,7 @@ class PinchoMapper {
 	 */
 	public function update(Pincho $pincho) {
 		$stmt = $this -> db -> prepare("UPDATE Pincho set Descripcion=?, Precio=?, Ingredientes=?, Fotos=?, Informacion=?, Validado=? where NombrePincho=?");
-		$stmt -> execute(array($pincho -> getDescripcionPincho(), $pincho -> getPrecioPincho(), $pincho -> getIngredientesPincho(), $pincho -> getFotosPincho(), $pincho -> getInfoPincho(), $pincho -> getIsValidado()));
+		$stmt -> execute(array($pincho -> getDescripcionPincho(), $pincho -> getPrecioPincho(), $pincho -> getIngredientesPincho(), $pincho -> getFotosPincho(), $pincho -> getInfoPincho(), $pincho -> getIsValidado(), $pincho -> getNombrePincho()));
 	}//Aquí no se cambia la clave foranea
 
 	/**
@@ -195,9 +195,6 @@ class PinchoMapper {
 	public function votos(){
 		$stmt = $this -> db -> query("SELECT NombreC, Pincho_NombrePincho, sum(VotoPro), count(*) FROM Pincho_has_Jurado, Pincho where VotoPro is not null and Pincho_NombrePincho=NombrePincho group by Pincho_NombrePincho order by (sum(VotoPro)/count(*)) desc");
 		
-		$stmt2 = $this -> db -> query("SELECT VotoPro FROM Pincho_has_Jurado where VotoPro is not null");
-		$aux = $stmt2 -> fetchAll(PDO::FETCH_ASSOC);
-		$suma;
 		
 		$votos_db = $stmt -> fetchAll(PDO::FETCH_ASSOC);
 
