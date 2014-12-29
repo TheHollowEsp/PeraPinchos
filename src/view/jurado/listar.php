@@ -4,6 +4,7 @@ require_once (__DIR__ . "/../../core/ViewManager.php");
 $view = ViewManager::getInstance();
 
 $jurado = $view -> getVariable("jurado");
+
 $view -> setVariable("title", "Jurado");
 ?><h1><?=i18n("Jurado") ?></h1>
 

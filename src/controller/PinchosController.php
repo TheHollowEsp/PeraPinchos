@@ -69,7 +69,7 @@ class PinchosController extends BaseController {
 
 		$jurado = $this -> juradoMapper -> findByDNI($_SESSION["currentuser"]);
 
-		if ($jurado -> isJuradoP == "SI") {//Si es profesional le buscamos sus pinchos
+		if ($jurado -> isJuradoP == "1") {//Si es profesional le buscamos sus pinchos
 			
 			$pinchos = $this -> pinchoMapper -> findAllForJuradoConcreto($jurado);
 
@@ -112,13 +112,14 @@ class PinchosController extends BaseController {
 		$this -> view -> render("pinchos", "consultar");
 
 	}
-
+		//Punto de entrada, no recibe nada.
 		public function proponerFirst() {
 		$concursoL = $this -> ConcursoMapper -> findAll();
 		$this -> view -> setVariable("concurso", $concursoL);
 		$this -> view -> render("establecimiento", "seleccionarConcurso");
 	}
 	
+	//Recibe un nombre de concurso a ameter en el pincho
 	public function seleccionarConcurso() {
 		if (isset($_POST["NombreCon"]))    
 		{ 
@@ -128,7 +129,7 @@ class PinchosController extends BaseController {
 		}
 		$this -> view -> redirect("pinchos", "proponer");
 	}
-
+	//Recibe los datos del pincho Y el nombre del concurso
 	public function proponer() {
 		$pincho = new Pincho();
 		
