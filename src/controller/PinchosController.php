@@ -2,12 +2,11 @@
 require_once (__DIR__ . "/../core/ViewManager.php");
 require_once (__DIR__ . "/../core/I18n.php");
 
-<<<<<<< HEAD
 require_once (__DIR__ . "/../model/Voto.php");
-=======
+
 require_once(__DIR__."/../model/Concurso.php");
 require_once(__DIR__."/../model/ConcursoMapper.php");
->>>>>>> origin/master
+
 require_once (__DIR__ . "/../model/Pincho.php");
 require_once (__DIR__ . "/../model/PinchoMapper.php");
 require_once (__DIR__ . "/../model/Concurso.php");
@@ -33,23 +32,17 @@ class PinchosController extends BaseController {
 	 */
 	private $pinchoMapper;
 	private $juradoMapper;
-<<<<<<< HEAD
+
 	private $concursoMapper;
-=======
-	private $ConcursoMapper;
->>>>>>> origin/master
 
 	public function __construct() {
 		parent::__construct();
 
 		$this -> pinchoMapper = new PinchoMapper();
 		$this -> juradoMapper = new JuradoMapper();
-<<<<<<< HEAD
-		$this -> concursoMapper = new ConcursoMapper();
-=======
-		$this -> ConcursoMapper = new ConcursoMapper();
 
->>>>>>> origin/master
+		$this -> concursoMapper = new ConcursoMapper();
+
 
 		// Users controller operates in a "welcome" layout
 		// different to the "default" layout where the internal
@@ -128,7 +121,7 @@ class PinchosController extends BaseController {
 	}
 		//Punto de entrada, no recibe nada.
 		public function proponerFirst() {
-		$concursoL = $this -> ConcursoMapper -> findAll();
+		$concursoL = $this -> concursoMapper -> findAll();
 		$this -> view -> setVariable("concurso", $concursoL);
 		$this -> view -> render("establecimiento", "seleccionarConcurso");
 	}
@@ -225,7 +218,7 @@ class PinchosController extends BaseController {
 		echo $valoracion;
 		$user = $_SESSION["currentuser"];
 		$pincho = $this -> pinchoMapper -> valorarPincho($nombre,$valoracion,$user);
-		$this -> view -> redirect("pinchos", "listar");
+		$this -> view -> redirect("pinchos", "listarParaJurado");
 		
 		
 
