@@ -120,14 +120,29 @@ class PinchosController extends BaseController {
 	}
 	
 	public function seleccionarConcurso() {
-		$_SESSION["concursoElegido"] = $_GET["NombreCon"];
+		if (isset($_POST["NombreCon"]))    
+		{ 
+			$_SESSION["concursoElegido"] = $_POST["NombreCon"];
+			echo $_SESSION["concursoElegido"];
+		
+		}
 		$this -> view -> redirect("pinchos", "proponer");
 	}
 
 	public function proponer() {
 		$pincho = new Pincho();
+		
+		$NombreC = NULL;
 
+		if (isset($_SESSION['concursoElegido'])) {
+			$NombreC = $_SESSION['concursoElegido'];
+		}
+		
+		
+		
+		
 		if (isset($_POST["nombre"])) {
+			
 			
 			$pincho -> setNombrePincho($_POST["nombre"]);
 			$pincho -> setDescripcionPincho($_POST["descripcion"]);
@@ -137,7 +152,7 @@ class PinchosController extends BaseController {
 			$pincho -> setInfoPincho($_POST["info"]);
 			$pincho -> setIsValidado(0);
 			$pincho -> setEstablecimiento($_SESSION["currentuser"]);
-			$pincho -> setNombreCon($_SESSION["concursoElegido"]);
+			$pincho -> setNombreCon($NombreC);
 			
 
 			try {
