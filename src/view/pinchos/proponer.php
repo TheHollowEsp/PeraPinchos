@@ -6,6 +6,7 @@ ini_set('display_errors', 'On');
 $view = ViewManager::getInstance();
 $errors = $view -> getVariable("errors");
 $pincho = $view -> getVariable("pincho");
+$concursos = $view -> getVariable("concursos");
 $view -> setVariable("title", "Proponer pincho");
 ?>
 <html>
@@ -45,7 +46,18 @@ $view -> setVariable("title", "Proponer pincho");
       	<label for="inputInfo">  <?= i18n("Informacion adicional") ?>:</label> 
       	<input id="inputInfo" class="form-control"type="text" name="info"	value="">
       	<?= isset($errors["info"]) ? $errors["info"] : "" ?><br>      
-      	<input class="btn btn-default btn-lg" type="submit" value="<?= i18n("Proponer") ?>">
       </div>
+       	<?php foreach ($concursos as $concurso): ?>
+       	<div class="radio">
+      		<label>
+	      	<input id="inputConcurso" class="form-control" type="radio" name="jarl"	value="<?= $concurso -> getNombreCon()?>" ><?=$concurso -> getNombreCon() ?>	  
+	      	</label>
+	      	
+	    	      
+	      	<?= isset($errors["info"]) ? $errors["info"] : "" ?><br>
+	    <?php endforeach; ?>
+	    </div>      
+      	<input class="btn btn-default btn-lg" type="submit" value="<?= i18n("Proponer") ?>">
+      
 	</form>
 </html>

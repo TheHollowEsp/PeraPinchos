@@ -113,33 +113,21 @@ class PinchosController extends BaseController {
 
 	}
 		//Punto de entrada, no recibe nada.
-		public function proponerFirst() {
-		$concursoL = $this -> ConcursoMapper -> findAll();
-		$this -> view -> setVariable("concurso", $concursoL);
-		$this -> view -> render("establecimiento", "seleccionarConcurso");
+	
+	public function proponerD() {
+			
+			$concursos = $this -> ConcursoMapper -> findAll();
+
+			// manda el array que contiene los pinchos a la vista(view)
+			$this -> view -> setVariable("concursos", $concursos);
+			// renderiza la vista (/view/pinchos/listarJuradoP.php)
+			$this -> view -> render("pinchos", "proponer");
+		
 	}
 	
-	//Recibe un nombre de concurso a ameter en el pincho
-	public function seleccionarConcurso() {
-		if (isset($_POST["NombreCon"]))    
-		{ 
-			$_SESSION["concursoElegido"] = $_POST["NombreCon"];
-			echo $_SESSION["concursoElegido"];
-		
-		}
-		$this -> view -> redirect("pinchos", "proponer");
-	}
 	//Recibe los datos del pincho Y el nombre del concurso
 	public function proponer() {
 		$pincho = new Pincho();
-		
-		$NombreC = NULL;
-
-		if (isset($_SESSION['concursoElegido'])) {
-			$NombreC = $_SESSION['concursoElegido'];
-		}
-		
-		
 		
 		
 		if (isset($_POST["nombre"])) {
@@ -153,7 +141,7 @@ class PinchosController extends BaseController {
 			$pincho -> setInfoPincho($_POST["info"]);
 			$pincho -> setIsValidado(0);
 			$pincho -> setEstablecimiento($_SESSION["currentuser"]);
-			$pincho -> setNombreCon($NombreC);
+			$pincho -> setNombreCon($_POST['jarl']);
 			
 
 			try {
