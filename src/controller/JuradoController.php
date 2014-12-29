@@ -205,7 +205,7 @@ class JuradoController extends BaseController {
 		$_SESSION["dnij"] = $_GET["dniJurado"];
 		$aux = $this->PinchoMapper->countP();
 		if($_POST["numPinchos"] >$aux){
-			$juradoL = $this -> JuradoMapper -> findAll();
+			$juradoL = $this -> JuradoMapper -> findAllPro();
 
 			$this -> view -> setVariable("jurado", $juradoL);
 			$this -> view -> render("jurado", "listarParaPincho");
