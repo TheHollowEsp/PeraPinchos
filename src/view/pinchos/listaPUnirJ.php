@@ -9,7 +9,7 @@ $view -> setVariable("title", "Pinchos");
 ?><h1><?=i18n("Pinchos") ?></h1>
 
 
-   
+
    <div class="row">
         <div class="col-md-6">
           <table class="table">
@@ -37,13 +37,12 @@ $view -> setVariable("title", "Pinchos");
 						<?= $pincho -> getEstablecimiento() ?>
 								</td>
 								<td><a
-							href="index.php?controller=pinchos&amp;action=unir&amp;nombrePincho=<?= $pincho -> getNombrePincho() ?>"><?= htmlentities("Asignar") ?></a>
+							href="index.php?controller=pinchos&amp;action=unir&amp;nombrePincho=<?= $pincho -> getNombrePincho() ?>"><?= i18n("Asignar") ?></a>
 								</td>
-		
+
 	</tr>
     <?php endforeach; ?>
 
     </table>
     </div>
     </div>
-	

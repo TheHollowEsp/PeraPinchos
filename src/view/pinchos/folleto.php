@@ -18,17 +18,17 @@ $errors = $view -> getVariable("errors");
   <div class="row">
     <?php foreach ($pinchos as $pincho): ?>
     <div class="col-lg-4 col-sm-6 col-xs-12">
+			<p><?= $pincho -> getNombrePincho() ?></p>
         	<a href="index.php?controller=pinchos&amp;action=consultar&amp;nombrePincho=<?= $pincho -> getNombrePincho() ?>">
-            <img 
-            src="http://placehold.it/800x600" 
-            class="thumbnail img-responsive" 
-            
-            />        
+            <img
+            src="http://placehold.it/800x600"
+            class="thumbnail img-responsive"
+
+            />
     </div>
-     <?php endforeach; ?>     
-     
-     
-     
-     
+     <?php endforeach; ?>
+
+
+
+
   </div>
-  

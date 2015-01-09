@@ -44,16 +44,16 @@ $view->setVariable ( "title", "Concurso" );
 			<td>
 				<?= $con->getPremiosCon()?>
 			</td>
-			
+
 			<td>
 				<a
-				href="index.php?controller=jurado&amp;action=listarParaUnir&amp;NombreCon=<?= $con->getNombreCon() ?>"><?= htmlentities("añadir") ?></a>
+				href="index.php?controller=jurado&amp;action=listarParaUnir&amp;NombreCon=<?= $con->getNombreCon() ?>"><?= i18n("Añadir")?></a>
 			</td>
 			<td>
 				<a
 				href="index.php?controller=concurso&amp;action=eliminar&amp;NombreCon=<?= $con->getNombreCon() ?>"><?= htmlentities($con->getNombreCon()) ?></a>
 			</td>
-		
+
 	</tr>
     <?php endforeach; ?>
 

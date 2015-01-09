@@ -1,17 +1,18 @@
 <?php
   //file: /view/messages/messages_en.php
-  
+
   // empty array, no translation needed,
-  // since keys are in english in the source code.  
+  // since keys are in english in the source code.
   $i18n_messages = array(
 
    "por %s"  =>"by %s",
     "Artículos" => "Posts",
-    "Título" => "Title",    
+    "Título" => "Title",
     "Contenido" => "Contents",
     "Autor" => "Author",
     "Acciones" => "Acciones",
     "Hola %s" => "Hello %s",
+    "Login y registro" => "Login & Register",
     "Usuario"=>  "User" ,
     "Entrar"=>  "Login" ,
     "Nombre de usuario" =>  "Username" ,
@@ -20,7 +21,7 @@
     "¡Regístrate aquí!" => "Register here!",
     "Registro" => "Register",
     "Editar" => "Edit",
-    "Eliminar" => "Delete",    
+    "Eliminar" => "Delete",
     "Comentarios" => "Comments",
     "Escribe un comentario" => "Write a comment",
     "%s ha comentado..."=>"%s commented...",
@@ -29,7 +30,7 @@
     "Español" => "Spanish",
     "Inglés"=> "English"  ,
     "Pinchos" =>"Tapas"  ,
-    "¡Bienvenido a la App Blog!"=> "Welcome to the Blog App!" , 
+    "¡Bienvenido a la App Blog!"=> "Welcome to the Blog App!" ,
     "¿Estás seguro?"=> "are you sure?",
     "Tipo de Usuario"=>"User type",
 	"Organizador"=>"Organizer",
@@ -99,9 +100,11 @@
 	"Listar jurado"=>"List jury",
 	"Consultar votos"=>"See votes",
 	"Añadir Jurado"=>"Add jury",
+    "Ver pinchos"=>"Show tapas",
 	"Registrar Concurso"=>"Register contest",
 	"Asignar pinchos"=>"Assign tapas",
 	"Concurso"=>"Contest",
+    "Folleto"=>"Booklet",
 	"Fecha de Inicio"=>"Start date",
 	"Fecha de Fin"=>"End date",
 	"Bases del concurso"=>"Contest rules",
@@ -120,7 +123,9 @@
 	"Organizador:"=>"Organizer:",
 	"Pinchos no validados"=>"Not validated tapas",
 	"Validar"=>"Validate",
+    "No puedes proponer más pinchos"=>"You can't propose more tapas",
 	"Es Profesional"=>"Is professional",
+    "Solo se permite proponer un pincho por concurso." => "You can only propose a single tapa per contest.",
 	"Añadir a mano"=>"Add by hand",
 	"Autoañadir"=>"Autoadd",
 	"Añadir"=>"Add",
@@ -137,6 +142,6 @@
 	"Jurado"=>"Jury",
 	"Establecimiento"=>"Establishment",
 	"Entrar"=>"Login"
-	
+
   )
 ?>

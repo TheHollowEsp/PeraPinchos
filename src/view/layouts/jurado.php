@@ -8,7 +8,7 @@ ini_set('display_errors', 'On');
 <!DOCTYPE html>
 <html>
 <head>
-	
+
 <title><?= $view -> getVariable("title", "no title") ?></title>
 <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -39,18 +39,18 @@ ini_set('display_errors', 'On');
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            
-            <li><a href="index.php?controller=pinchos&amp;action=listarParaJurado">Listar pinchos</a></li>
+
+            <li><a href="index.php?controller=pinchos&amp;action=listarParaJurado"><?= i18n("Listar pinchos")?></a></li>
             <li><a href="index.php?controller=login&amp;action=logout">Logout</a></li>
-            
-          
+
+
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
-    
-    
-    
+
+
+
 	    <div class="container theme-showcase" role="main">
 	<main>
 		<?php
@@ -62,7 +62,7 @@ ini_set('display_errors', 'On');
       </div>
       <?= $view -> getFragment(ViewManager::DEFAULT_FRAGMENT) ?>
     </main>
-    
+
 	<footer>
       <?php
 	include (__DIR__ . "/language_select_element.php");

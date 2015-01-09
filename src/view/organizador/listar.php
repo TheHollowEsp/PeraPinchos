@@ -37,14 +37,13 @@ $view -> setVariable("title", "Pinchos");
 								</td>
 								<td>
 									<a
-			href="index.php?controller=organizador&amp;action=validarPincho&amp;nombrePincho=<?= $pincho -> getNombrePincho() ?>">Validar</a>
-								
+			href="index.php?controller=organizador&amp;action=validarPincho&amp;nombrePincho=<?= $pincho -> getNombrePincho() ?>"><?= i18n("Validar")?></a>
+
 								</td>
-		
+
 	</tr>
     <?php endforeach; ?>
 
     </table>
      </div>
     </div>
- 
