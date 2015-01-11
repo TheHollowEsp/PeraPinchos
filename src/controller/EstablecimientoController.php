@@ -37,7 +37,7 @@ class EstablecimientoController extends BaseController {
 		$establecimiento->setNombreEst($_POST["NombreEst"]);
 		$establecimiento->setDireccion($_POST["Direccion"]);
 		$establecimiento->setHorario($_POST["Horario"]);
-		$establecimiento->setFotos($_POST["Fotos"]);
+		//$establecimiento->setFotos($_POST["Fotos"]);
 		$establecimiento->setWeb($_POST["Web"]);
 		$establecimiento->setPasswordE($_POST["PasswordE"]);
       

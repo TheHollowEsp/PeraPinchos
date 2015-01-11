@@ -195,7 +195,7 @@ CREATE TABLE IF NOT EXISTS `Pincho` (
   `Descripcion` varchar(500) NOT NULL,
   `Precio` int(11) NOT NULL,
   `Ingredientes` varchar(200) NOT NULL,
-  `Fotos` blob,
+  `Fotos` varchar(60),
   `Informacion` varchar(300) NOT NULL,
   `Validado` tinyint(1) NOT NULL,
   `Cif` varchar(9) NOT NULL,

@@ -21,6 +21,11 @@ if ($pincho -> getIsValidado() == 0)
   		<dd><?=$pincho -> getNombrePincho() ?></dd>
 	</dl>
 </h1>
+
+	<div class="img-responsive center-block" style="width:300px;height:300px;overflow:hidden;" >
+   <img src="<?=$pincho->getFotosPincho()?>" alt="Imagen del pincho"  width="300px" height="auto"/>
+	</div>
+	
 	<p>
 		<dl class="dl-horizontal">
   			<dt><?= i18n("Descripcion:") ?></dt>

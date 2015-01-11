@@ -37,7 +37,7 @@ ini_set('display_errors', 'On');
           </button>
           <a class="navbar-brand">
           	<img alt="PeraPinchos logo" style="max-width:300px; margin-top: -7px;"
-             src="/src/view/general/logoHome2.png">
+             src="./view/general/logoHome2.png">
 
           </a>
         </div>
@@ -63,7 +63,7 @@ ini_set('display_errors', 'On');
       <?= $view -> getFragment(ViewManager::DEFAULT_FRAGMENT) ?>
     </main>
 
-	<footer>
+	<footer class="footer">
       <?php
 	include (__DIR__ . "/language_select_element.php");
 						?>

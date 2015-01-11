@@ -150,12 +150,35 @@ class PinchosController extends BaseController {
 		
 		if (isset($_POST["nombre"])) {
 			
+			$ruta="./res/raw/";
+			$fotoTAM = $_FILES['foto']['size'];
+			$foto = $ruta . $_FILES['foto']['name'];
+			$fotoTMP = $_FILES['foto']['tmp_name'];
+			$foto = $ruta.$_FILES['foto']['name'];
+			if (strlen($foto)>=50){
+				$foto = substr($foto, 0, 40).'.jpg';
+					}
+					echo '<pre>';			
+		if (move_uploaded_file($_FILES['foto']['tmp_name'], $foto)) {
+    		echo "File is valid, and was successfully uploaded.\n";
+		} else {
+  		  echo "Possible file upload attack!\n";
+		}
+
+		echo 'Here is some more debugging info:';
+		print_r($_FILES);
+		print($foto);
+
+					print "</pre>";
+			
+			
 			
 			$pincho -> setNombrePincho($_POST["nombre"]);
 			$pincho -> setDescripcionPincho($_POST["descripcion"]);
 			$pincho -> setPrecioPincho($_POST["precio"]);
 			$pincho -> setIngredientesPincho($_POST["ingredientes"]);
-			$pincho -> setFotosPincho($_POST["foto"]);
+			
+			$pincho -> setFotosPincho($foto);
 			$pincho -> setInfoPincho($_POST["info"]);
 			$pincho -> setIsValidado(0);
 			$pincho -> setEstablecimiento($_SESSION["currentuser"]);

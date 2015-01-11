@@ -65,7 +65,7 @@ ini_set('display_errors', 'On');
       	<?= $view -> getFragment(ViewManager::DEFAULT_FRAGMENT) ?>
     </main>
     
-	<footer>
+	<footer class="footer">
       <?php
 	include (__DIR__ . "/language_select_element.php");
 						?>

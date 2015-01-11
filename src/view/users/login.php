@@ -8,7 +8,7 @@ $errors = $view -> getVariable("errors");
 ?>
 <html>
 	<div class="row text-center">
-	<img src="/src/view/general/logo.png" alt="Logo inicial" class="img-rounded">
+	<img src="./view/general/logo.png" alt="Logo inicial" class="img-rounded">
 	</div>
 	<div class="jumbotron"> 
 		<div class="container">

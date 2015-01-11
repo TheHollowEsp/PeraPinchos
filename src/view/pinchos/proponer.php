@@ -13,7 +13,7 @@ $view -> setVariable("title", "Proponer pincho");
 <html>
 	 <?PHP if($ests != null){   ?>
 	<h1><?= i18n("Propon un pincho") ?></h1>
-		<form action="index.php?controller=pinchos&amp;action=proponer" method="POST">
+		<form action="index.php?controller=pinchos&amp;action=proponer" enctype="multipart/form-data" method="POST">
 			<div class="form-group">
 		      	<label for="inputNombre"> <?= i18n("Nombre") ?>:</label>
 		      	<input id="inputNombre" class="form-control" type="text" name="nombre" value="">
@@ -39,8 +39,8 @@ $view -> setVariable("title", "Proponer pincho");
       </div>
 
       <div class="form-group">
-    	<label for="einputFile"> <?= i18n("Foto") ?>:</label>
-   		<input type="file" id="einputFile" type="file" name="foto" enctype="multipart/form-data">
+    	<label for="foto"> <?= i18n("Foto") ?>:</label>
+   		<input type="file" id="foto" type="file" name="foto" >
       	<?= isset($errors["foto"]) ? $errors["foto"] : "" ?><br>
       </div>
 

@@ -8,31 +8,33 @@ $view -> setVariable("title", "Registrar establecimiento");
 ?>
 <h1><?= i18n("Registrarse como Establecimiento") ?></h1>
 <form action="index.php?controller=establecimiento&amp;action=registrarEstablecimiento" method="POST">
-	  <?= i18n("Cif del Establecimiento") ?>: <input type="text" name="Cif" 
-			value="">
+	  <div class="form-group">
+	  <label><?= i18n("Cif del Establecimiento") ?>:</label>  
+	  	<input type="text" class="form-control" name="Cif" value="">
 	  <?= isset($errors["Cif"]) ? $errors["Cif"] : "" ?><br>
-      <?= i18n("Nombre del Establecimiento") ?>: <input type="text" name="NombreEst" 
+      <label><?= i18n("Nombre del Establecimiento") ?>:</label>   <input class="form-control" type="text" name="NombreEst" 
 			value="">
       <?= isset($errors["NombreEst"]) ? $errors["NombreEst"] : "" ?><br>
       
-      <?= i18n("Direccion") ?>: <input type="text" name="Direccion" 
+      <label><?= i18n("Direccion") ?>:</label>   <input class="form-control"  type="text" name="Direccion" 
 			value="">
       <?= isset($errors["Direccion"]) ? $errors["Direccion"] : "" ?><br>
       
-      <?= i18n("Horario") ?>: <input type="text" name="Horario" 
+      <label><?= i18n("Horario") ?>:</label>   <input class="form-control" type="text" name="Horario" 
 			value="">
       <?= isset($errors["Horario"]) ? $errors["Horario"] : "" ?><br>
       
-      <?= i18n("Fotos") ?>: <input type="text" name="Fotos" 
+      <!--<label><?= i18n("Fotos") ?>:</label>   <input class="form-control" type="text" name="Fotos" 
 			value="">
-      <?= isset($errors["Fotos"]) ? $errors["Fotos"] : "" ?><br>
+      <?= isset($errors["Fotos"]) ? $errors["Fotos"] : "" ?><br>-->
       
-      <?= i18n("Web") ?>: <input type="text" name="Web" 
+      <label><?= i18n("Web") ?>:</label>   <input class="form-control" type="text" name="Web" 
 			value="">
       <?= isset($errors["Web"]) ? $errors["Web"] : "" ?><br>
       
-      <?= i18n("Password") ?>: <input type="password" name="PasswordE" 
+      <label><?= i18n("Password") ?>:</label>   <input class="form-control" type="password" name="PasswordE" 
 			value="">
       <?= isset($errors["PasswordE"]) ? $errors["PasswordE"] : "" ?><br>
-      <input type="submit" value="<?= i18n("Registrarse") ?>">
+      <input class="btn btn-warning btn-lg" type="submit" value="<?= i18n("Registrarse") ?>">
+      </div>
 </form>

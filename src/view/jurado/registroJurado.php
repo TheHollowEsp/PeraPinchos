@@ -9,17 +9,17 @@
 ?>
 <h1><?= i18n("Registrarte como jurado")?></h1>
 <form action="index.php?controller=jurado&amp;action=registrarNewJurado" method="POST">
-      <?= i18n("DNI")?>: <input type="text" name="DniJur" 
+      <label><?= i18n("DNI")?>:</label>   <input class="form-control" type="text" name="DniJur" 
 			value="<?= $jurado->getDniJurado() ?>">
       <?= isset($errors["DniJur"])?$errors["DniJur"]:"" ?><br>
       
-      <?= i18n("Nombre")?>: <input type="text" name="Nombre" 
+      <label><?= i18n("Nombre")?>:</label>   <input class="form-control" type="text" name="Nombre" 
 			value="">
       <?= isset($errors["Nombre"])?$errors["Nombre"]:"" ?><br>
       
-      <?= i18n("Contraseña")?>: <input type="password" name="PasswordJ" 
+      <label><?= i18n("Contraseña")?>:</label>   <input class="form-control" type="password" name="PasswordJ" 
 			value="">
       <?= isset($errors["PasswordJ"])?$errors["PasswordJ"]:"" ?><br>
       
-      <input type="submit" value="<?= i18n("Registro")?>">
+      <input class="btn btn-warning btn-lg" type="submit" value="<?= i18n("Registro")?>">
 </form>
