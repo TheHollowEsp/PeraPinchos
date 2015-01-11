@@ -81,7 +81,7 @@ class PinchoMapper {
 	 * @return Pincho / NULL si no encuentra el pincho
 	 */
 	public function findById($nombrePincho) {
-		//$stmt = $this -> db -> prepare("SELECT * FROM pincho WHERE NombrePincho=? AND Validado=1");
+		//$stmt = $this -> db -> prepare("SELECT * FROM Pincho WHERE NombrePincho=? AND Validado=1");
 		$stmt = $this -> db -> prepare("SELECT * FROM Pincho WHERE NombrePincho=?");
 		$stmt -> execute(array($nombrePincho));
 		$pincho = $stmt -> fetch(PDO::FETCH_ASSOC);
@@ -154,7 +154,7 @@ class PinchoMapper {
 	}
 	
 	public function countP(){
-			$stmt2 = $this -> db -> prepare("SELECT count(NombrePincho) FROM pincho");
+			$stmt2 = $this -> db -> prepare("SELECT count(NombrePincho) FROM Pincho");
 			$stmt2 -> execute();
 			$numPinchos = $stmt2 -> fetchColumn();
 			return $numPinchos;
@@ -162,8 +162,8 @@ class PinchoMapper {
 		
 		
 		public function unirAzarP($num, $Jurado_Dni){
-			$stmt = $this -> db -> prepare("SELECT NombrePincho FROM pincho");
-			$stmt2 = $this -> db -> prepare("SELECT count(NombrePincho) FROM pincho");
+			$stmt = $this -> db -> prepare("SELECT NombrePincho FROM Pincho");
+			$stmt2 = $this -> db -> prepare("SELECT count(NombrePincho) FROM Pincho");
 			$stmt -> execute();	
 			$stmt2 -> execute();
 			$pincho_db = $stmt -> fetchAll(PDO::FETCH_ASSOC);

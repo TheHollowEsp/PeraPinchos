@@ -126,7 +126,7 @@ class concursoMapper {
 	
 	
 	public function estaCon($cif){
-		$stmt = $this -> db -> prepare("SELECT * FROM establecimiento_has_concurso as P where P.Cif=? AND NOT EXISTS (SELECT * FROM pincho as L WHERE L.Cif=?)");
+		$stmt = $this -> db -> prepare("SELECT * FROM Establecimiento_has_Concurso as P where P.Cif=? AND NOT EXISTS (SELECT * FROM Pincho as L WHERE L.Cif=?)");
 		// $stmt -> execute(array($nombreconcurso));
 		$stmt -> execute(array($cif, $cif));
 		$concursos = $stmt -> fetchAll(PDO::FETCH_ASSOC);

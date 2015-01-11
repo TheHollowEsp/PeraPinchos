@@ -14,8 +14,3 @@
 <input class="btn btn-default" type="submit" value="<?= i18n("Listar pinchos asignados") ?>">
 </form>
 </div>
-<div class="form-group">
-<form action="#" method="POST">
-<input class="btn btn-default" type="submit" value="<?= i18n("Darse de baja") ?>">
-</form>
-</div>
