@@ -65,7 +65,7 @@ class EstablecimientoMapper {
 	
 	public function delete($cif) {
 		$stmt = $this -> db -> prepare("DELETE from Establecimiento WHERE Cif=?");
-		$stmt -> execute(array($establecimiento -> getCif()));
+		$stmt -> execute(array($cif));
 	}
 	
 	public function getEstablecimientoByPincho($pincho) {
